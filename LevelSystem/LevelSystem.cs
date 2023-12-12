@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using BepInEx;
 using EpicMMOSystem.Gui;
@@ -37,12 +38,16 @@ Specializing
     • Construction piece health?
     • Tree cutting  
 */
+
+
 public enum Parameter
 {
     Strength = 0, Agility = 1, Intellect = 2, Body = 3, Vigour = 4 , Special = 5 // Strength, Dexterity, Intelligence, Endurance, Vigour, Specializing
 }
 public partial class LevelSystem
 {
+
+    CultureInfo invC = CultureInfo.InvariantCulture;
     #region Singlton
     private static LevelSystem instance;
     public static LevelSystem Instance
@@ -128,7 +133,7 @@ public partial class LevelSystem
             {
                 var total = getTotalExp();
                 hold = (int)total; // try
-                Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_CurrentExp"] = hold.ToString();
+                Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_CurrentExp"] = hold.ToString(invC);
             }
             catch
             { }
@@ -140,7 +145,7 @@ public partial class LevelSystem
     private void setCurrentExp(long value)
     {
         if (!Player.m_localPlayer) return;
-        Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_CurrentExp"]= value.ToString();
+        Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_CurrentExp"]= value.ToString(invC);
     }
 
     public long getTotalExp()
@@ -156,7 +161,7 @@ public partial class LevelSystem
     private void setTotalExp(long value)
     {
         if (!Player.m_localPlayer) return;
-        Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_TotalExp"] = value.ToString();
+        Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_TotalExp"] = value.ToString(invC);
     }
     public void addTotalExp(long value)
     {
@@ -165,8 +170,15 @@ public partial class LevelSystem
         {
             Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_TotalExp"] = "1";
         }
-        long total = int.Parse(Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_TotalExp"]) + value;
-        Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_TotalExp"] = total.ToString();
+        long total = 1;
+        if (long.TryParse((Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_TotalExp"]), out var totalexp)){
+            total = totalexp + value;
+        }else
+        {
+            total = value;
+        }
+        //long total = int.Parse(Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_TotalExp"]) + value;
+        Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_TotalExp"] = total.ToString(invC);
     }
 
     private void setParameter(Parameter parameter, int value)
