@@ -1,5 +1,5 @@
 # Description:
-This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.8.9.1
+This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.8.91
 
 
 Support me!
@@ -262,10 +262,10 @@ Original Creator: LambaSun or my [mod branch](https://discord.com/channels/82657
 
 | Version | Changes                                                                                                                                                                                                                                                                                                                                |
 |----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.8.9.1| - Add more level checks for some people getting rare errors. 
+| 1.8.91| - Add more level checks for some people getting rare errors. 
 | 1.8.9  | - Add Korean****
 | 1.8.8  | - Updated Monstrum.json for new mobs
-| 1.8.7  | - Fix for header. </br> Updated Mobs, Default.json
+| 1.8.7  | - Fix for header. </br> Updated Mobs, Default.json****
 | 1.8.6  | - Maybe fix for very rare directory error.
 | 1.8.5  | - Fix for rare error resetting points. </br> Adjusting value default starting xp requirements and orbs to make leveling earlier a lot smoother. </br> Changed config names, FirstLevelExperience -> LevelExperience, "FirstLevelExperience used on each level" -> "Add LevelExperience on each level", Sorry. </br> ServerSync and Itemmanger update </br> Updated Excel sheet
 | 1.8.2  | - Wacky learned Vulkan
