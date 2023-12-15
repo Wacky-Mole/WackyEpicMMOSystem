@@ -1,5 +1,5 @@
 # Description:
-This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.8.9
+This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.8.9.1
 
 
 Support me!
@@ -262,7 +262,8 @@ Original Creator: LambaSun or my [mod branch](https://discord.com/channels/82657
 
 | Version | Changes                                                                                                                                                                                                                                                                                                                                |
 |----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.8.9  | - Add Korean
+| 1.8.9.1| - Add more level checks for some people getting rare errors. 
+| 1.8.9  | - Add Korean****
 | 1.8.8  | - Updated Monstrum.json for new mobs
 | 1.8.7  | - Fix for header. </br> Updated Mobs, Default.json
 | 1.8.6  | - Maybe fix for very rare directory error.
