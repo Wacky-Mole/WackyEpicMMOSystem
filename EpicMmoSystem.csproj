@@ -406,19 +406,33 @@
     <EmbeddedResource Include="Data\MonsterDB_Jewelcrafting.json" />
     <EmbeddedResource Include="Data\MonsterDB_RtDMonsters.json" />
     <None Include="packages.config" />
-    <EmbeddedResource Include="translations\Russian.yml" />
+    <EmbeddedResource Include="translations\Russian.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="translations\English.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="translations\Spanish.yml" />
-    <EmbeddedResource Include="translations\German.yml" />
-    <EmbeddedResource Include="translations\Chinese.yml" />
-    <EmbeddedResource Include="translations\Portuguese.yml" />
+    <EmbeddedResource Include="translations\Spanish.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="translations\German.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="translations\Chinese.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="translations\Portuguese.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="translations\Korean.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <None Include="translations\French.yml" />
-    <None Include="translations\Swedish.yml" />
+    <EmbeddedResource Include="translations\French.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="translations\Swedish.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Libs\publicized_assemblies\" />

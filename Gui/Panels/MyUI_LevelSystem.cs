@@ -300,17 +300,29 @@ public partial class MyUI
                 switch (uiTooltip.m_topic)
                 { 
                     case "Strength":
-                        uiTooltip.m_text = localization["$strength_tooltip"]; break;
+                        uiTooltip.m_text = localization["$strength_tooltip"];
+                        uiTooltip.m_topic = localization["$parameter_strength"];
+                        break;
                     case "Dexterity":
-                        uiTooltip.m_text = localization["$dexterity_tooltip"];  break;
+                        uiTooltip.m_text = localization["$dexterity_tooltip"];
+                        uiTooltip.m_topic = localization["$parameter_agility"];
+                        break;
                     case "Intelect":
-                        uiTooltip.m_text = localization["$intelect_tooltip"]; break;
+                        uiTooltip.m_text = localization["$intelect_tooltip"];
+                        uiTooltip.m_topic = localization["$parameter_intellect"]; 
+                        break;
                     case "Endurance":
-                        uiTooltip.m_text = localization["$endurance_tooltip"]; break;
+                        uiTooltip.m_text = localization["$endurance_tooltip"];
+                        uiTooltip.m_topic = localization["$parameter_body"]; 
+                        break;
                     case "Vigour":
-                        uiTooltip.m_text = localization["$vigour_tooltip"]; break;
+                        uiTooltip.m_text = localization["$vigour_tooltip"];
+                        uiTooltip.m_topic = localization["$parameter_vigour"];
+                        break;
                     case "Special":
-                        uiTooltip.m_text = localization["$special_tooltip"]; break;
+                        uiTooltip.m_text = localization["$special_tooltip"];
+                        uiTooltip.m_topic = localization["$parameter_special"];
+                        break;
 
                 }
             }
