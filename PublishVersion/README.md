@@ -1,5 +1,5 @@
 # Description:
-This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.8.92
+This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.8.93
 
 
 Support me!
@@ -16,7 +16,7 @@ Features:
  - Shared group XP. Outside of groups all XP awards go to the character who struck the last blow. Requires Group Mod
  - MMO-like friends list. -[Groups](https://valheim.thunderstore.io/package/Smoothbrain/Groups/)
  - Compatible with [ItemRequiresSkillLevel](https://valheim.thunderstore.io/package/Detalhes/ItemRequiresSkillLevel/) mod. Equipment can be limited by level or attribute.
- - Compatible with [KGMarketplace mod](https://valheim.thunderstore.io/package/KGvalheim/Marketplace_And_Server_NPCs_Revamped/). Experience rewards can be added: (EpicMMO_Exp:250) Quests can be limited by level (EpicMMO_Level: text, 20)
+ - Compatible with [KGMarketplace mod](https://valheim.thunderstore.io/package/KGvalheim/Marketplace_And_Server_NPCs_Revamped/). Experience rewards can be added: <s>(EpicMMO_Exp:250) Quests can be limited by level (EpicMMO_Level: text, 20) </s> Read updated Marketplace docs
  
  ![https://wackymole.com/hosts/2nd%20image.png](https://wackymole.com/hosts/2nd%20image.png)
 
@@ -262,6 +262,7 @@ Original Creator: LambaSun or my [mod branch](https://discord.com/channels/82657
 
 | Version | Changes                                                                                                                                                                                                                                                                                                                                |
 |----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1.8.93 | - Added Polish, fixed some Chinese language stuff.
 | 1.8.92 | - Various language fixes, 
 | 1.8.91 | - Add more level checks for some people getting rare errors. 
 | 1.8.9  | - Add Korean****
