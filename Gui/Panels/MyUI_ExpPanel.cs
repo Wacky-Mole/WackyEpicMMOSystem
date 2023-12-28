@@ -312,7 +312,7 @@ public partial class MyUI
                 flagforMove = 0;
             }
 
-            if (max < 2 && EitrGameObj.activeSelf)
+            if (max < 2 && EitrGameObj.activeSelf && !EpicMMOSystem.forceMagicBar.Value)
             {
                 EitrGameObj.SetActive(false);
                 expPanel.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 1050);
@@ -320,7 +320,7 @@ public partial class MyUI
                 flagforMove = 1;
 
             }
-            if (max > 2 && !EitrGameObj.activeSelf) // for god mode in serverdev
+            if ((max > 2 || EpicMMOSystem.forceMagicBar.Value) && !EitrGameObj.activeSelf) // for god mode in serverdev
             {
                 EitrGameObj.SetActive(true);
                 expPanel.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 1475);

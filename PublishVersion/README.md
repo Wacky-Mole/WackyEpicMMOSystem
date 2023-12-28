@@ -1,5 +1,5 @@
 # Description:
-This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.8.93
+This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.8.94
 
 
 Support me!
@@ -262,6 +262,7 @@ Original Creator: LambaSun or my [mod branch](https://discord.com/channels/82657
 
 | Version | Changes                                                                                                                                                                                                                                                                                                                                |
 |----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1.8.94 | - JiuJitsuJones paid for config Force EitrBar
 | 1.8.93 | - Added Polish, fixed some Chinese language stuff.
 | 1.8.92 | - Various language fixes, 
 | 1.8.91 | - Add more level checks for some people getting rare errors. 

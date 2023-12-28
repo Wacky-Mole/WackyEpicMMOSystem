@@ -34,7 +34,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string ModVersion = "1.8.93";
+    internal const string ModVersion = "1.8.94";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -168,6 +168,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     //Hud
     public static ConfigEntry<bool> oldExpBar;
     public static ConfigEntry<bool> showMaxHp;
+    public static ConfigEntry<bool> forceMagicBar;
     public static ConfigEntry<float> HudBarScale;
     public static ConfigEntry<float> LevelHudGroupScale;
     public static ConfigEntry<string> HudExpBackgroundCol;
@@ -332,6 +333,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         string hud = "4.Hud--------------------";
         oldExpBar = config(hud, "OldXPBar", false, "Use the old eXP Bar only (need restart, not server sync) Does not move or scale", false);
         showMaxHp = config(hud, "ShowMaxHp", true, "Show max hp (100 / 100)", false);
+        forceMagicBar = config(hud, "Force EitrBar", false, "Force the Eitr bar to always show up even when empty", false);
 
         HudPanelPosition = config(hud, "1.0HudGrouplPosition", new Vector2(0, 0), "Position of the Main EpicHudBarBackground in (x,y) - You can drag individual components below", false);
         HudExpBackgroundCol = config(hud, "1.1BackgroundCol", "#2F1600", "Background color in Hex, set to 'none' to make transparent", false);
