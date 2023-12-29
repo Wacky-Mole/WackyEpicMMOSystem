@@ -22,7 +22,7 @@ Features:
 
 <details><summary>Attributes</summary>
 
-	Strength: Physical Damage increase, Carry Weight Increase, Decreased Black Stamina Consumption, Critical Damage
+	Strength: Physical Damage increase, Carry Weight Increase, Decreased **Black** Stamina Consumption, Critical Damage
 
 	Dexterity: Player Attack/Usage Speed**%,**  Stamina consumption (running, jumping) decreased,
 
@@ -262,7 +262,7 @@ Original Creator: LambaSun or my [mod branch](https://discord.com/channels/82657
 
 | Version | Changes                                                                                                                                                                                                                                                                                                                                |
 |----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.8.94 | - JiuJitsuJones paid for config Force EitrBar
+| 1.8.94 | - JiuJitsuJones sponsored a config Force EitrBar
 | 1.8.93 | - Added Polish, fixed some Chinese language stuff.
 | 1.8.92 | - Various language fixes, 
 | 1.8.91 | - Add more level checks for some people getting rare errors. 
