@@ -59,7 +59,11 @@ public class Localizationold
     else if (currentLanguage == "Polish")
     {
          PolishLocalization();
-    }
+    } 
+    else if (currentLanguage == "Portuguese_Brazilian")
+     {
+         Portuguese_Brazilian();
+     }
     else
     {
         var fileName = $"Custom_EpicMMOSystem_Localization.txt";
@@ -1070,6 +1074,107 @@ public class Localizationold
 
 
 
+    }
+
+    private void Portuguese_Brazilian()
+    {
+        _dictionary.Add("$attributes", "Atributos");
+        _dictionary.Add("$parameter_strength", "Força");
+        _dictionary.Add("$parameter_intellect", "Inteligência");
+        _dictionary.Add("$free_points", "Pontos disponíveis");
+        _dictionary.Add("$level", "Nível");
+        _dictionary.Add("$lvl", "Lvl.");
+        _dictionary.Add("$exp", "Experiência");
+        _dictionary.Add("$cancel", "Cancelar");
+        _dictionary.Add("$apply", "Aceitar");
+        _dictionary.Add("$reset_parameters", "Redefinir pontos");
+        _dictionary.Add("$no", "Não");
+        _dictionary.Add("$yes", "Sim");
+        _dictionary.Add("$get_exp", "Experiência recebida");
+        _dictionary.Add("$reset_point_text", "Você realmente deseja perder todos os pontos por {0} {1}?");
+        //Parameter
+        _dictionary.Add("$physic_damage", "Dano físico");
+        _dictionary.Add("$add_weight", "Carregar peso");
+        _dictionary.Add("$reduced_stamina", "Consumo de resistência (correr, pular)");
+        _dictionary.Add("$magic_damage", "Dano elemental");
+        _dictionary.Add("$magic_armor", "Redução de dano elemental");
+        _dictionary.Add("$add_hp", "Aumento de vida");
+        _dictionary.Add("$add_stamina", "Aumento de resistência");
+        _dictionary.Add("$physic_armor", "Redução de dano físico");
+        _dictionary.Add("$reduced_stamina_block", "Bloquear o consumo de resistência");
+        _dictionary.Add("$regen_hp", "Regeneração de vida");
+        _dictionary.Add("$damage", "Dano");
+        _dictionary.Add("$armor", "Armadura");
+        _dictionary.Add("$survival", "Sobrevivência");
+        _dictionary.Add("$regen_eitr", "Regeneração de eitr");
+        _dictionary.Add("$stamina_reg", "Regeneração de resistência");
+        _dictionary.Add("$add_eitr", "Aumento de eitr");
+        // new/changed Params 1.7.0
+        _dictionary.Add("$parameter_agility", "Destreza");
+        _dictionary.Add("$parameter_body", "Resistência");
+        _dictionary.Add("$parameter_vigour", "Vigor");
+        _dictionary.Add("$parameter_special", "Especialização");
+        _dictionary.Add("$specialother", "Especial");//divheader
+        _dictionary.Add("$attack_speed", "Velocidade de ataque");
+        _dictionary.Add("$attack_stamina", "Consumo de resistência em ataque");
+        _dictionary.Add("$crtcDmgMulti", "Multiplicador de dano crítico");
+        _dictionary.Add("$mining_speed", "Aumento de dano na mineração");
+        _dictionary.Add("$piece_health", "Aumento da saúde das peças");
+        _dictionary.Add("$tree_cutting", "Aumento de dano em árvores");
+        _dictionary.Add("$crit_chance", "Aumento da chance de crítico");
+
+        //Friends list
+        _dictionary.Add("$notify", "<color=#00E6FF>Alerta</color>");
+        _dictionary.Add("$friends_list", "Lista de amigos");
+        _dictionary.Add("$send", "Enviar");
+        _dictionary.Add("$invited", "Convites");
+        _dictionary.Add("$friends", "Amigos");
+        _dictionary.Add("$online", "Online");
+        _dictionary.Add("$offline", "Offline");
+        _dictionary.Add("$not_found", "O jogador {0} não foi encontrado.");
+        _dictionary.Add("$send_invite", "Uma solicitação de amizade foi enviada ao jogador {0}.");
+        _dictionary.Add("$get_invite", "Uma solicitação de amizade foi recebida do jogador {0}");
+        _dictionary.Add("$accept_invite", "Jogador {0} aceitou o pedido de amizade.");
+        _dictionary.Add("$cancel_invite", "Jogador {0} cancelou seu pedido de amizade.");
+        //Terminal
+        _dictionary.Add("$terminal_set_level", "Você atingiu {0} nível");
+        _dictionary.Add("$terminal_reset_points", "Seus pontos de atributos foram redefinidos");
+
+
+        _dictionary.Add("$strength_tooltip", "<size=20>Alterações de força:</size> \n" +
+                            "<color=yellow> Aumento de dano físico </color> \n" +
+                            "<color=blue> Aumento de capacidade de transporte </color> \n" +
+                            "<color=green> Diminuição do consumo de resistência ao bloquear </color> \n" +
+                            "<color=red> Aumento de dano crítico (em acertos críticos) </color>");
+
+        _dictionary.Add("$dexterity_tooltip", "<size=20>Alterações de destreza:</size> \n" +
+                            "<color=red> Aumento da velocidade de ataque (menos para arcos) </color> \n" +
+                            "<color=yellow> Diminuição do consumo de resistência nos ataques </color> \n" +
+                            "<color=green> Diminuição do consumo de resistência para correr e saltar </color> ");
+
+        _dictionary.Add("$intelect_tooltip", "<size=20>Alterações de inteligência: </size> \n" +
+                            "<color=green> Aumento de todo o dano elemental </color>\n" +
+                            "<color=red> Aumento do valor base do Eitr (depois de ter o Eitr) </color> \n" +
+                            "<color=red> Aumento de regeneração de Eitr </color> ");
+
+
+        _dictionary.Add("$endurance_tooltip", "<size=20>Alterações de resistência:</size> \n" +
+                            "<color=yellow> Aumento da quantidade de resistência </color>\n" +
+                            "<color=yellow> Aumento da regeneração de resistência </color> \n" +
+                            "<color=green> Redução do dano físico sofrido </color> ");
+
+
+        _dictionary.Add("$vigour_tooltip", "<size=20>Alterações de vigor:</size> \n" +
+                            "<color=red> Aumento na quantidade de HP </color>\n" +
+                            "<color=yellow> Regeneração da vida </color> \n" +
+                            "<color=green> Redução do dano elemental recebido </color> ");
+
+
+        _dictionary.Add("$special_tooltip", "<size=20>Alterações especiais:</size> \n" +
+                            "<color=red> Aumento da chance de ataque crítico </color> \n" +
+                            "<color=blue> Aumento do dano na mineração </color> \n" +
+                            "<color=blue> Aumento da saúde das peças de construção </color> \n" +
+                            "<color=green> Aumento do dano causado ​​ao cortar árvores </color>");
     }
 
     public string this[string key]
