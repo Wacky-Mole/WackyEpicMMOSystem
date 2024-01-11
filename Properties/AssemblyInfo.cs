@@ -32,5 +32,5 @@ using EpicMMOSystem;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion(EpicMMOSystem.EpicMMOSystem.ModVersion)]
-[assembly: AssemblyFileVersion(EpicMMOSystem.EpicMMOSystem.ModVersion)]
+[assembly: AssemblyVersion(EpicMMOSystem.EpicMMOSystem.VERSION)]
+[assembly: AssemblyFileVersion(EpicMMOSystem.EpicMMOSystem.VERSION)]

@@ -385,7 +385,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="LICENSE.txt" />
-    <Content Include="PublishVersion\icon.png" />
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
@@ -439,9 +438,11 @@
     <EmbeddedResource Include="translations\Portuguese_Brazilian.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Content Include="UpdateManifest.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Libs\publicized_assemblies\" />
+    <Folder Include="PublishVersion\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets" Condition="Exists('packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets')" />
@@ -451,6 +452,76 @@
     </PropertyGroup>
     <Error Condition="!Exists('packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets'))" />
   </Target>
+	<Target Name="GetAssemblyVersion" AfterTargets="ILRepack">
+		<GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+			<Output TaskParameter="Assemblies" ItemName="Targets" />
+		</GetAssemblyIdentity>
+		<ItemGroup>
+			<AssemblyVersions Include="@(Targets->'%(Version)')" />
+		</ItemGroup>
+		<Error Text="Failed to get Assembly Version." Condition="'%(AssemblyVersions.Identity)' == ''" />
+		<PropertyGroup>
+			<AssemblyVersion>%(AssemblyVersions.Identity)</AssemblyVersion>
+			<Major>$(AssemblyVersion.Split('.')[0])</Major>
+			<Minor>$(AssemblyVersion.Split('.')[1])</Minor>
+			<Patch>$(AssemblyVersion.Split('.')[2])</Patch>
+			<PackageName>$(AssemblyName)_v$(Major).$(Minor).$(Patch)</PackageName>
+			<PackageVersion>$(Major).$(Minor).$(Patch)</PackageVersion>
+			<VersionString>$(Major).$(Minor).$(Patch)</VersionString>
+			<PackageDir>$(ProjectDir)\Thunderstore\$(PackageName)</PackageDir>
+		</PropertyGroup>
+	</Target>
+  <UsingTask TaskName="WriteManifestFile" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup>
+      <ManifestFile ParameterType="System.String" Required="true" />
+      <AssemblyName ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Code Type="Fragment" Language="cs"><![CDATA[
+if (!System.IO.File.Exists(ManifestFile))
+{
+string content = @"{
+  ""name"": """ + AssemblyName + @""",
+  ""version_number"": ""1.0.0"",
+  ""website_url"": ""https://discord.gg/pdHgy6Bsng"",
+  ""description"": ""Your mod description goes here. Do not forget to replace the icon.png file with your own. Must be 256x256. Your Readme.md file will be copied from the one in your project folder."",
+  ""dependencies"": [
+    ""denikson-BepInExPack_Valheim-5.4.2105""
+]
+}";
+System.IO.File.WriteAllText(ManifestFile, content);
+}
+]]></Code>
+    </Task>
+  </UsingTask>
+  <Target Name="UpdateManifestVersion" AfterTargets="GetAssemblyVersion" Condition=" ('$(Configuration)|$(Platform)' == 'Release|AnyCPU') And ('$(OS)' == 'Windows_NT') ">
+    <WriteManifestFile ManifestFile="$(ProjectDir)Thunderstore\manifest.json" AssemblyName="$(AssemblyName)" />
+    <ItemGroup>
+      <ManifestFile Include="$(ProjectDir)Thunderstore\manifest.json" />
+    </ItemGroup>
+    <Message Text="ManifestFile is @(ManifestFile)" />
+    <Message Text="Updating version number in Thunderstore\manifest.json" Condition="Exists(@(ManifestFile))" />
+    <Exec Command="powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; { &amp; '$(ProjectDir)UpdateManifest.ps1' -manifestFile '@(ManifestFile)' -versionString '$(PackageVersion)' }&quot;" />
+  </Target>
+  <Target Name="CopyOutputDLL" AfterTargets="GetAssemblyVersion">
+    <Error Text="DLL not found in target directory." Condition="!Exists('$(TargetDir)$(AssemblyName).dll')" />
+    <Copy SourceFiles="$(TargetDir)$(AssemblyName).dll" DestinationFolder="$(ProjectDir)Thunderstore" OverwriteReadOnlyFiles="true" />
+  </Target>
+	<Target Name="MakeThunderstorePackage" AfterTargets="CopyOutputDLL" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<Error Text="manifest.json not found in Thunderstore directory." Condition="!Exists('$(ProjectDir)\Thunderstore\manifest.json')" />
+		<Error Text="icon.png not found in Thunderstore directory. Please note that Thunderstore requires this image to be 256x256 in dimension" Condition="!Exists('$(ProjectDir)\Thunderstore\icon.png')" />
+		<ItemGroup>
+			<PackageFiles Include="$(TargetDir)$(AssemblyName).dll" Condition="Exists('$(TargetDir)$(AssemblyName).dll')" />
+			<PackageFiles Include="$(ProjectDir)\Thunderstore\README.md" Condition="Exists('$(ProjectDir)\Thunderstore\README.md')" />
+			<PackageFiles Include="$(ProjectDir)\Thunderstore\manifest.json" Condition="Exists('$(ProjectDir)\Thunderstore\manifest.json')" />
+			<PackageFiles Include="$(ProjectDir)\Thunderstore\icon.png" Condition="Exists('$(ProjectDir)\Thunderstore\icon.png')" />
+			<PackageFiles Include="$(ProjectDir)\Thunderstore\epicmmo_exp_multiplier_levels.xlsx" Condition="Exists('$(ProjectDir)\Thunderstore\epicmmo_exp_multiplier_levels.xlsx')" />
+		</ItemGroup>
+		<MakeDir Directories="$(PackageDir)" />
+		<Copy SourceFiles="@(PackageFiles)" DestinationFolder="$(PackageDir)" />
+		<ZipDirectory SourceDirectory="$(PackageDir)" DestinationFile="Thunderstore\WackyEpicMMOSystem-$(PackageVersion).zip" Overwrite="true" />
+		<RemoveDir Directories="$(PackageDir)" />
+	</Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">

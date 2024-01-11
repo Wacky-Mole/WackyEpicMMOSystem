@@ -27,14 +27,14 @@ using System.Collections;
 
 namespace EpicMMOSystem;
 
-[BepInPlugin(ModGUID, ModName, ModVersion)]
+[BepInPlugin(ModGUID, ModName, VERSION)]
 [BepInDependency("org.bepinex.plugins.groups", BepInDependency.DependencyFlags.SoftDependency)]
 [BepInDependency("org.bepinex.plugins.creaturelevelcontrol", BepInDependency.DependencyFlags.SoftDependency)] 
 
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string ModVersion = "1.8.95";
+    internal const string VERSION = "1.8.96";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -50,7 +50,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         BepInEx.Logging.Logger.CreateLogSource(ModName);
 
     public static readonly ConfigSync ConfigSync = new(ModGUID)
-    { DisplayName = ModName, CurrentVersion = ModVersion, MinimumRequiredVersion = ModVersion };
+    { DisplayName = ModName, CurrentVersion = VERSION, MinimumRequiredVersion = VERSION };
 
     public static AssetBundle _asset;
     private string folderpath = Path.Combine(Paths.ConfigPath, EpicMMOSystem.ModName);
