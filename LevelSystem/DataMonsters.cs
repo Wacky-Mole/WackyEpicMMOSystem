@@ -165,6 +165,7 @@ public static class DataMonsters
         var json12 = "MonsterDB-PungusSouls.json";
         var json13 = "MonsterDB_Jewelcrafting.json";
         var json14 = "MonsterDB_RtDMonsters.json";
+        var json15 = "MonsterDB_Therzie.Wizardry.json";
 
         if (!Directory.Exists(folderpath)){
             Directory.CreateDirectory(folderpath);
@@ -214,10 +215,12 @@ public static class DataMonsters
                 cleartowrite = true;
             if (filev == "1.8.7")
                 cleartowrite = true;
+            if (filev == "1.8.8")
+                cleartowrite = true;
 
 
 
-            if (filev == "1.8.8") // last version to get a DB update
+            if (filev == "1.8.97") // last version to get a DB update
                 cleartowrite = false;
 
             if (filev == "NO" || filev == "no" || filev == "No" || filev == "STOP" || filev == "stop" || filev == "Stop")
@@ -229,7 +232,7 @@ public static class DataMonsters
         if (cleartowrite)
         {
             //list.Clear();
-            File.WriteAllText(versionpath, "1.8.8"); // Write Version file, don't auto update
+            File.WriteAllText(versionpath, "1.8.97"); // Write Version file, don't auto update
 
             File.WriteAllText(warningtext, "Erase numbers in Version.txt and write NO or stop in file. This should stop DB json files from updating on an update. If you make your own custom json file, then that one should never be updated.");
 
@@ -262,6 +265,8 @@ public static class DataMonsters
             File.WriteAllText(Path.Combine(folderpath, json13), getDefaultJsonMonster(json13));
 
             File.WriteAllText(Path.Combine(folderpath, json14), getDefaultJsonMonster(json14));
+
+            File.WriteAllText(Path.Combine(folderpath, json15), getDefaultJsonMonster(json15));
 
 
             if (EpicMMOSystem.extraDebug.Value)

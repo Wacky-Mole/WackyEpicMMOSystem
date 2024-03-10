@@ -1,5 +1,5 @@
 # Description:
-This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.8.96
+This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.8.97
 
 
 Support me!
@@ -124,7 +124,7 @@ You can combine multiple Skills for one Requirement
 
 	Mob's data (names, levels, exp) from other mods are included:
 
-	Fantasy-Creatures, AirAnimals, Defaults, DoOrDieMonsters, LandAnimals, MonsterlabZ, Outsiders, SeaAnimals, Monstrum, Krumpac Mods, Teddy Bears, PungusSouls, JewelCrafting, RTDMonsters
+	Fantasy-Creatures, AirAnimals, Defaults, DoOrDieMonsters, LandAnimals, MonsterlabZ, Outsiders, SeaAnimals, Monstrum, Krumpac Mods, Teddy Bears, PungusSouls, JewelCrafting, RTDMonsters, Wizardy
 
 	A folder listing all monsters and their levels is located in config/EpicMMOSystem/ Default is for vanilla mobs
 
@@ -132,7 +132,7 @@ You can combine multiple Skills for one Requirement
 
 	A file called Version.txt is created in the folder. It contains the mod version that was used to create it. Replace it with "NO" to stop it from overwritting on a future update.
 
-	Latest Update for Jsons config is <b> 1.8.8 </b>(Number will be updated when Jsons recieve an update)
+	Latest Update for Jsons config is <b> 1.8.97 </b>(Number will be updated when Jsons recieve an update)
 
 </details>
 
@@ -262,10 +262,11 @@ Original Creator: LambaSun or my [mod branch](https://discord.com/channels/82657
 
 | Version | Changes                                                                                                                                                                                                                                                                                                                                |
 |----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1.8.97 | - Added Therzie.Wizardry.json and updated Monstrum, thanks Majestic
 | 1.8.96 | - Updated Various Languages
 | 1.8.95 | - Added Portuguese_Brazilian
 | 1.8.94 | - JiuJitsuJones sponsored a config Force EitrBar
-| 1.8.93 | - Added Polish, fixed some Chinese language stuff.
+| 1.8.93 | - Added Polish, fixed some Chinese language stuff.****
 | 1.8.92 | - Various language fixes, 
 | 1.8.91 | - Add more level checks for some people getting rare errors. 
 | 1.8.9  | - Add Korean

@@ -192,6 +192,12 @@
     "level": 73
   },
   {
+    "name": "JotunnCrusher_TW",
+    "minExp": 8000,
+    "maxExp": 10000,
+    "level": 73
+  },
+  {
     "name": "StormWolf_TW",
     "minExp": 4000,
     "maxExp": 4500,

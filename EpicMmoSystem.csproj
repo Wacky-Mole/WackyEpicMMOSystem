@@ -404,6 +404,7 @@
     <EmbeddedResource Include="Data\MonsterDB-PungusSouls.json" />
     <EmbeddedResource Include="Data\MonsterDB_Jewelcrafting.json" />
     <EmbeddedResource Include="Data\MonsterDB_RtDMonsters.json" />
+    <EmbeddedResource Include="Data\MonsterDB_Therzie.Wizardry.json" />
     <None Include="packages.config" />
     <EmbeddedResource Include="translations\Russian.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -452,25 +453,25 @@
     </PropertyGroup>
     <Error Condition="!Exists('packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets'))" />
   </Target>
-	<Target Name="GetAssemblyVersion" AfterTargets="ILRepack">
-		<GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
-			<Output TaskParameter="Assemblies" ItemName="Targets" />
-		</GetAssemblyIdentity>
-		<ItemGroup>
-			<AssemblyVersions Include="@(Targets->'%(Version)')" />
-		</ItemGroup>
-		<Error Text="Failed to get Assembly Version." Condition="'%(AssemblyVersions.Identity)' == ''" />
-		<PropertyGroup>
-			<AssemblyVersion>%(AssemblyVersions.Identity)</AssemblyVersion>
-			<Major>$(AssemblyVersion.Split('.')[0])</Major>
-			<Minor>$(AssemblyVersion.Split('.')[1])</Minor>
-			<Patch>$(AssemblyVersion.Split('.')[2])</Patch>
-			<PackageName>$(AssemblyName)_v$(Major).$(Minor).$(Patch)</PackageName>
-			<PackageVersion>$(Major).$(Minor).$(Patch)</PackageVersion>
-			<VersionString>$(Major).$(Minor).$(Patch)</VersionString>
-			<PackageDir>$(ProjectDir)\Thunderstore\$(PackageName)</PackageDir>
-		</PropertyGroup>
-	</Target>
+  <Target Name="GetAssemblyVersion" AfterTargets="ILRepack">
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="Targets" />
+    </GetAssemblyIdentity>
+    <ItemGroup>
+      <AssemblyVersions Include="@(Targets->'%(Version)')" />
+    </ItemGroup>
+    <Error Text="Failed to get Assembly Version." Condition="'%(AssemblyVersions.Identity)' == ''" />
+    <PropertyGroup>
+      <AssemblyVersion>%(AssemblyVersions.Identity)</AssemblyVersion>
+      <Major>$(AssemblyVersion.Split('.')[0])</Major>
+      <Minor>$(AssemblyVersion.Split('.')[1])</Minor>
+      <Patch>$(AssemblyVersion.Split('.')[2])</Patch>
+      <PackageName>$(AssemblyName)_v$(Major).$(Minor).$(Patch)</PackageName>
+      <PackageVersion>$(Major).$(Minor).$(Patch)</PackageVersion>
+      <VersionString>$(Major).$(Minor).$(Patch)</VersionString>
+      <PackageDir>$(ProjectDir)\Thunderstore\$(PackageName)</PackageDir>
+    </PropertyGroup>
+  </Target>
   <UsingTask TaskName="WriteManifestFile" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
     <ParameterGroup>
       <ManifestFile ParameterType="System.String" Required="true" />
@@ -507,21 +508,21 @@ System.IO.File.WriteAllText(ManifestFile, content);
     <Error Text="DLL not found in target directory." Condition="!Exists('$(TargetDir)$(AssemblyName).dll')" />
     <Copy SourceFiles="$(TargetDir)$(AssemblyName).dll" DestinationFolder="$(ProjectDir)Thunderstore" OverwriteReadOnlyFiles="true" />
   </Target>
-	<Target Name="MakeThunderstorePackage" AfterTargets="CopyOutputDLL" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<Error Text="manifest.json not found in Thunderstore directory." Condition="!Exists('$(ProjectDir)\Thunderstore\manifest.json')" />
-		<Error Text="icon.png not found in Thunderstore directory. Please note that Thunderstore requires this image to be 256x256 in dimension" Condition="!Exists('$(ProjectDir)\Thunderstore\icon.png')" />
-		<ItemGroup>
-			<PackageFiles Include="$(TargetDir)$(AssemblyName).dll" Condition="Exists('$(TargetDir)$(AssemblyName).dll')" />
-			<PackageFiles Include="$(ProjectDir)\Thunderstore\README.md" Condition="Exists('$(ProjectDir)\Thunderstore\README.md')" />
-			<PackageFiles Include="$(ProjectDir)\Thunderstore\manifest.json" Condition="Exists('$(ProjectDir)\Thunderstore\manifest.json')" />
-			<PackageFiles Include="$(ProjectDir)\Thunderstore\icon.png" Condition="Exists('$(ProjectDir)\Thunderstore\icon.png')" />
-			<PackageFiles Include="$(ProjectDir)\Thunderstore\epicmmo_exp_multiplier_levels.xlsx" Condition="Exists('$(ProjectDir)\Thunderstore\epicmmo_exp_multiplier_levels.xlsx')" />
-		</ItemGroup>
-		<MakeDir Directories="$(PackageDir)" />
-		<Copy SourceFiles="@(PackageFiles)" DestinationFolder="$(PackageDir)" />
-		<ZipDirectory SourceDirectory="$(PackageDir)" DestinationFile="Thunderstore\WackyEpicMMOSystem-$(PackageVersion).zip" Overwrite="true" />
-		<RemoveDir Directories="$(PackageDir)" />
-	</Target>
+  <Target Name="MakeThunderstorePackage" AfterTargets="CopyOutputDLL" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Error Text="manifest.json not found in Thunderstore directory." Condition="!Exists('$(ProjectDir)\Thunderstore\manifest.json')" />
+    <Error Text="icon.png not found in Thunderstore directory. Please note that Thunderstore requires this image to be 256x256 in dimension" Condition="!Exists('$(ProjectDir)\Thunderstore\icon.png')" />
+    <ItemGroup>
+      <PackageFiles Include="$(TargetDir)$(AssemblyName).dll" Condition="Exists('$(TargetDir)$(AssemblyName).dll')" />
+      <PackageFiles Include="$(ProjectDir)\Thunderstore\README.md" Condition="Exists('$(ProjectDir)\Thunderstore\README.md')" />
+      <PackageFiles Include="$(ProjectDir)\Thunderstore\manifest.json" Condition="Exists('$(ProjectDir)\Thunderstore\manifest.json')" />
+      <PackageFiles Include="$(ProjectDir)\Thunderstore\icon.png" Condition="Exists('$(ProjectDir)\Thunderstore\icon.png')" />
+      <PackageFiles Include="$(ProjectDir)\Thunderstore\epicmmo_exp_multiplier_levels.xlsx" Condition="Exists('$(ProjectDir)\Thunderstore\epicmmo_exp_multiplier_levels.xlsx')" />
+    </ItemGroup>
+    <MakeDir Directories="$(PackageDir)" />
+    <Copy SourceFiles="@(PackageFiles)" DestinationFolder="$(PackageDir)" />
+    <ZipDirectory SourceDirectory="$(PackageDir)" DestinationFile="Thunderstore\WackyEpicMMOSystem-$(PackageVersion).zip" Overwrite="true" />
+    <RemoveDir Directories="$(PackageDir)" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">
