@@ -118,7 +118,7 @@ public partial class LevelSystem
         {
             return 0;
         }
-        int hold = 0;
+        long hold = 0;
         try
         {
              hold = int.Parse(Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_CurrentExp"]);
@@ -132,7 +132,7 @@ public partial class LevelSystem
             try
             {
                 var total = getTotalExp();
-                hold = (int)total; // try
+                hold = total; // try
                 Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_CurrentExp"] = hold.ToString(invC);
             }
             catch
@@ -155,7 +155,18 @@ public partial class LevelSystem
         {
             return 0;
         }
-        return int.Parse(Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_TotalExp"]);
+
+        if (long.TryParse(Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_TotalExp"], out long result))
+        {
+            return result;
+        }
+        else
+        {
+            EpicMMOSystem.MLLogger.LogWarning("error on TotalExp, returned 0");
+            return 0;
+        }
+
+        
     }
 
     private void setTotalExp(long value)
@@ -532,8 +543,15 @@ public static class SetZDOLevel
 [HarmonyPatch(typeof(Player), nameof(Player.OnDeath))]
 public static class Death
 {
-    public static void Prefix()
+    public static void Prefix(Player __instance)
     {
+       
+        if (__instance.m_nview.IsOwner())
+        {
+            Debug.Log("OnDeath call but not the owner");
+            return;
+        }
+
         LevelSystem.Instance.DeathPlayer();
     }
 }

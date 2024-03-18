@@ -1,5 +1,5 @@
 # Description:
-This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.8.97
+This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.8.98
 
 
 Support me!
@@ -262,6 +262,7 @@ Original Creator: LambaSun or my [mod branch](https://discord.com/channels/82657
 
 | Version | Changes                                                                                                                                                                                                                                                                                                                                |
 |----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1.8.98 | - Bug fix for Group XP loss on Player death </br> Bug fix for rare error on Player death due to overflow
 | 1.8.97 | - Added Therzie.Wizardry.json and updated Monstrum, thanks Majestic
 | 1.8.96 | - Updated Various Languages
 | 1.8.95 | - Added Portuguese_Brazilian

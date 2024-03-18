@@ -73,8 +73,8 @@ public static class MonsterDeath_Path
             if (monsterLevel > maxRangeLevel && EpicMMOSystem.mentor.Value)
                 playerExp = exp; // give full *group exp with mentor mode
         }
-
-
+        
+        if (playerExp > 0)
         LevelSystem.Instance.AddExp(playerExp);
     }
     
@@ -163,7 +163,7 @@ public static class MonsterDeath_Path
         var groupFactor = EpicMMOSystem.groupExp.Value;
         foreach (var playerReference in Groups.API.GroupPlayers())
         {
-            if (playerReference.name != Player.m_localPlayer.GetPlayerName())
+            if (playerReference.name != Player.m_localPlayer.GetPlayerName() && exp > 0)
             {
                 var sendExp = exp * groupFactor;
                 ZRoutedRpc.instance.InvokeRoutedRPC(
