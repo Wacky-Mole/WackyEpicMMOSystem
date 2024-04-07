@@ -15,6 +15,10 @@ public partial class EpicMMOSystem
             var vfx = _asset.LoadAsset<GameObject>("LevelUpVFX");
             __instance.m_prefabs.Add(vfx);
             __instance.m_namedPrefabs.Add(vfx.name.GetStableHashCode(), vfx);
+
+            var vfx2 = _asset.LoadAsset<GameObject>("LevelUpVFX2");
+            __instance.m_prefabs.Add(vfx2);
+            __instance.m_namedPrefabs.Add(vfx2.name.GetStableHashCode(), vfx2);
         }
     }
     
