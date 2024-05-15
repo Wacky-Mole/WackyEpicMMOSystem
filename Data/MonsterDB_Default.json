@@ -270,6 +270,90 @@
     "level": 61
   },
   {
+    "name": "Charred_Archer",
+    "minExp": 1000,
+    "maxExp": 1100,
+    "level": 71
+  },
+  {
+    "name": "Charred_Mage",
+    "minExp": 1000,
+    "maxExp": 1100,
+    "level": 71
+  },
+  {
+    "name": "Charred_Melee",
+    "minExp": 1000,
+    "maxExp": 1100,
+    "level": 71
+  },
+  {
+    "name": "Charred_Twitcher",
+    "minExp": 1000,
+    "maxExp": 1100,
+    "level": 71
+  },
+  {
+    "name": "Charred_Archer_Fader",
+    "minExp": 500,
+    "maxExp": 500,
+    "level": 71
+  },
+  {
+    "name": "Charred_Melee_Fader",
+    "minExp": 500,
+    "maxExp": 500,
+    "level": 71
+  },
+  {
+    "name": "Charred_Twitcher_Summoned",
+    "minExp": 500,
+    "maxExp": 500,
+    "level": 71
+  },
+  {
+    "name": "Charred_Melee_Dyrnwyn",
+    "minExp": 1500,
+    "maxExp": 1700,
+    "level": 73
+  },
+  {
+    "name": "BlobLava",
+    "minExp": 1000,
+    "maxExp": 1100,
+    "level": 71
+  },
+  {
+    "name": "Asksvin",
+    "minExp": 1200,
+    "maxExp": 1300,
+    "level": 72
+  },
+  {
+    "name": "FallenValkyrie",
+    "minExp": 1500,
+    "maxExp": 1700,
+    "level": 73
+  },
+  {
+    "name": "Morgen_NonSleeping",
+    "minExp": 1400,
+    "maxExp": 1600,
+    "level": 73
+  },
+  {
+    "name": "Morgen",
+    "minExp": 1400,
+    "maxExp": 1600,
+    "level": 73
+  },
+  {
+    "name": "BonemawSerpent",
+    "minExp": 1500,
+    "maxExp": 1700,
+    "level": 73
+  },
+  {
     "name": "Hen",
     "minExp": 10,
     "maxExp": 20,
@@ -364,5 +448,11 @@
     "minExp": 3200,
     "maxExp": 4500,
     "level": 66
+  },
+  {
+    "name": "Fader",
+    "minExp": 4700,
+    "maxExp": 6400,
+    "level": 76
   }
 ]

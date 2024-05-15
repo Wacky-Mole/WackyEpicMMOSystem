@@ -48,7 +48,7 @@ public static class EffectPatches
         public static void Prefix(ItemDrop.ItemData item)
         {
             //EpicMMOSystem.MLLogger.LogInfo("Player Consume "  );
-            if (!Player.m_localPlayer.m_seman.HaveStatusEffect("MMO_XP"))
+            if (!Player.m_localPlayer.m_seman.HaveStatusEffect("MMO_XP".GetStableHashCode()))
             {
 
                 GameObject found = null;

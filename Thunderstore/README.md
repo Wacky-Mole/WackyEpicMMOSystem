@@ -1,5 +1,5 @@
 # Description:
-This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.8.99
+This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.02
 
 
 Support me!
@@ -124,7 +124,7 @@ You can combine multiple Skills for one Requirement
 
 	Mob's data (names, levels, exp) from other mods are included:
 
-	Fantasy-Creatures, AirAnimals, Defaults, DoOrDieMonsters, LandAnimals, MonsterlabZ, Outsiders, SeaAnimals, Monstrum, Krumpac Mods, Teddy Bears, PungusSouls, JewelCrafting, RTDMonsters, Wizardy
+	Fantasy-Creatures, AirAnimals, Defaults(Ashlands), DoOrDieMonsters, LandAnimals, MonsterlabZ, Outsiders, SeaAnimals, Monstrum, Krumpac Mods, Teddy Bears, PungusSouls, JewelCrafting, RTDMonsters, Wizardy
 
 	A folder listing all monsters and their levels is located in config/EpicMMOSystem/ Default is for vanilla mobs
 
@@ -132,7 +132,7 @@ You can combine multiple Skills for one Requirement
 
 	A file called Version.txt is created in the folder. It contains the mod version that was used to create it. Replace it with "NO" to stop it from overwritting on a future update.
 
-	Latest Update for Jsons config is <b> 1.8.97 </b>(Number will be updated when Jsons recieve an update)
+	Latest Update for Jsons config is <b> 1.9.002 </b>(Number will be updated when Jsons recieve an update)
 
 </details>
 
@@ -262,6 +262,7 @@ Original Creator: LambaSun or my [mod branch](https://discord.com/channels/82657
 
 | Version | Changes                                                                                                                                                                                                                                                                                                                                |
 |----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1.9.02 | - Updated for Ashlands. </br> Added Critical Start Chance </br> Updated PieceManager </br> Updated MonsterDB_Default for vanilla mobs - Values subject to change
 | 1.8.99 | - Added altLevelUpSound for the adventurous Level Upper
 | 1.8.98 | - Bug fix for Group XP loss on Player death </br> Bug fix for rare error on Player death due to overflow
 | 1.8.97 | - Added Therzie.Wizardry.json and updated Monstrum, thanks Majestic

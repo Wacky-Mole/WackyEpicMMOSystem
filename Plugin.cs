@@ -34,7 +34,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.8.99";
+    internal const string VERSION = "1.9.02";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -137,6 +137,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
 
     //LevelSystem arg property <Specializing>
     public static ConfigEntry<float> critChance;
+    public static ConfigEntry<float> startCritChance;
     public static ConfigEntry<float> miningSpeed;
     public static ConfigEntry<float> constructionPieceHealth;
     public static ConfigEntry<float> treeCuttingSpeed;
@@ -302,7 +303,8 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         magicArmor = config(levelSystemVigour, "MagicArmor", 0.1f, "Increase magical protection per point. ");
 
         string levelSystemSpecializing = "1.LevelSystem Specializing------";
-        critChance = config(levelSystemSpecializing, "Critical Chance", 0.1f, "Critical Chance, Starts with CriticalStartChance amount(0%), increment per point - default 0.1% ");
+        startCritChance = config(levelSystemSpecializing, "Critical Start Chance", 1f, "Critical Chance Starts at (1%) after 1 point assigned ");
+        critChance = config(levelSystemSpecializing, "Critical Chance", 0.1f, "Critical Chance, Starts with Critical Start Chance, increment per point - default 0.1% ");
         miningSpeed = config(levelSystemSpecializing, "MiningSpeed", 0.4f, "Mining Dmg Multiplier per point"); //check
         constructionPieceHealth = config(levelSystemSpecializing, "PieceHealth", 2f, "Increase max health of new pieces built per point"); // check
         treeCuttingSpeed = config(levelSystemSpecializing, "TreeCuttingSpeed", 0.4f, "Increase tree cutting speed per point.");

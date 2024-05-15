@@ -351,15 +351,15 @@ public partial class LevelSystem
         if (noxpMulti)
             giveExp = exp;
 
-        if (Player.m_localPlayer.m_seman.HaveStatusEffect("Potion_MMO_Greater") )
+        if (Player.m_localPlayer.m_seman.HaveStatusEffect("Potion_MMO_Greater".GetStableHashCode()) )
         {
             giveExp = EpicMMOSystem.XPforGreaterPotion.Value * giveExp;
         }
-        else if (Player.m_localPlayer.m_seman.HaveStatusEffect("Potion_MMO_Medium"))
+        else if (Player.m_localPlayer.m_seman.HaveStatusEffect("Potion_MMO_Medium".GetStableHashCode()))
         {
             giveExp = EpicMMOSystem.XPforMediumPotion.Value * giveExp;
         }
-        else if (Player.m_localPlayer.m_seman.HaveStatusEffect("Potion_MMO_Minor"))
+        else if (Player.m_localPlayer.m_seman.HaveStatusEffect("Potion_MMO_Minor".GetStableHashCode()))
         {
             giveExp = EpicMMOSystem.XPforMinorPotion.Value * giveExp;
         }
