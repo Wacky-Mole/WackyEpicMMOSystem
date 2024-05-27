@@ -42,9 +42,10 @@ public partial class LevelSystem
     {
         var parameter = getParameter(Parameter.Special);
         var multiplayer = EpicMMOSystem.critChance.Value ;
-        multiplayer += EpicMMOSystem.startCritChance.Value;
-        return (parameter * multiplayer) + EpicMMOSystem.CriticalStartChance.Value;
+        var hello = parameter * multiplayer;
 
+        hello = hello + EpicMMOSystem.startCritChance.Value;
+        return hello;
     }
 
 

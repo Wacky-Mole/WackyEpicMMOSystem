@@ -34,7 +34,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.12";
+    internal const string VERSION = "1.9.13";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -57,10 +57,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
 
     internal static EpicMMOSystem Instance;
     public static bool CLLCLoaded = false;
-    public static CustomSE MMOXP = new CustomSE("MMO_XP");
-    //  public static CustomSE Potion_MMO_Greater = new CustomSE("Potion_MMO_Greater");
-    //public static CustomSE Potion_MMO_Minor = new CustomSE("Potion_MMO_Minor");
-    //public static CustomSE Potion_MMO_Medium = new CustomSE("Potion_MMO_Medium");
+    public static CustomSE MMOXP; // must assign in awake
 
     internal static Recipe Mead1Alt;
     internal static Recipe Mead2Alt;
@@ -226,17 +223,13 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     public static ConfigEntry<int> OrdDropMaxAmountFromBoss;
 
 
-    //internal static Localization english = null!;
-    //internal static Localization russian = null!;
-    //internal static Localization spanish = null!;
     public void Awake()
     {
         Localizer.Load();
-        //english = new Localization();
-
 
 
         Instance = this;
+        MMOXP = new CustomSE("MMO_XP");
 
         string general = "0.General---------------";
         _serverConfigLocked = config(general, "Force Server Config", true, "Force Server Config");
