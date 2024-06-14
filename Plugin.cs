@@ -29,12 +29,13 @@ namespace EpicMMOSystem;
 
 [BepInPlugin(ModGUID, ModName, VERSION)]
 [BepInDependency("org.bepinex.plugins.groups", BepInDependency.DependencyFlags.SoftDependency)]
-[BepInDependency("org.bepinex.plugins.creaturelevelcontrol", BepInDependency.DependencyFlags.SoftDependency)] 
+[BepInDependency("org.bepinex.plugins.creaturelevelcontrol", BepInDependency.DependencyFlags.SoftDependency)]
+[BepInDependency("WackyMole.WackysDatabase", BepInDependency.DependencyFlags.SoftDependency)]
 
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.13";
+    internal const string VERSION = "1.9.14";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -226,8 +227,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     public void Awake()
     {
         Localizer.Load();
-
-
+       
         Instance = this;
         MMOXP = new CustomSE("MMO_XP");
 
@@ -391,7 +391,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
             return speed * (1+LevelSystem.Instance.getAddAttackSpeed()/100);
         });
 
-
+        //ConfigSync.value
 
         _ = ConfigSync.AddLockingConfigEntry(_serverConfigLocked);
 
@@ -742,6 +742,8 @@ public partial class EpicMMOSystem : BaseUnityPlugin
             MLLogger.LogError("Please check your config entries for spelling and format!");
         }
     }
+
+
 
     // private void Update()
     // {

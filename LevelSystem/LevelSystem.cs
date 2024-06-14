@@ -64,7 +64,7 @@ public partial class LevelSystem
     }
     #endregion
 
-    private Dictionary<int, long> levelsExp;
+    private static Dictionary<int, long> levelsExp;
     private string pluginKey = EpicMMOSystem.ModName;
     private const string midleKey = "LevelSystem";
     private int[] depositPoint = { 0, 0, 0, 0 ,0 , 0}; //6
