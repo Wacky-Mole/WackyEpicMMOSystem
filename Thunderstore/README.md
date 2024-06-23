@@ -262,6 +262,7 @@ Original Creator: LambaSun or my [mod branch](https://discord.com/channels/82657
 
 | Version | Changes                                                                                                                                                                                                                                                                                                                                |
 |----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1.9.15 | - Polish lang fix
 | 1.9.14 | - Bug fix with wackydb, thx Advize ize
 | 1.9.13 | - Fixed CriticalStartChance </br> Fixed a error for SE assign
 | 1.9.12 | - Updated for Ashlands. </br> Added Critical Start Chance </br> Updated PieceManager </br> Updated MonsterDB_Default for vanilla mobs - Values subject to change
