@@ -35,7 +35,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.14";
+    internal const string VERSION = "1.9.15";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -67,6 +67,9 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     internal static ItemDrop Mead1D = null;
     internal static ItemDrop Mead2D = null;
     internal static ItemDrop Mead3D = null;
+    internal static ItemDrop Drink1 = null;
+    internal static ItemDrop Drink2 = null;
+    internal static ItemDrop Drink3 = null;
 
     internal static int numofCats = 6;
     internal static GameObject fx_seeker_crit = null;
@@ -222,6 +225,9 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     public static ConfigEntry<float> OrbDropChance;
     public static ConfigEntry<float> OrbDropChancefromBoss;
     public static ConfigEntry<int> OrdDropMaxAmountFromBoss;
+    public static ConfigEntry<bool> UseRegFerm;
+
+
 
 
     public void Awake()
@@ -377,6 +383,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         OrbDropChance = config(OrbandPotion, "Orb Drop Chance", 1f, "Chance for Magic Orb to drop from a monster - default 1%");
         OrbDropChancefromBoss = config(OrbandPotion, "Ord Drop Boss", 100f, "Drop Chance for Orbs to drop from a boss - default 100%");
         OrdDropMaxAmountFromBoss = config(OrbandPotion, "Orb Boss Max Amount", 3, "Max Amount of Orbs to drop from Boss if any orbs drop. So there is a chance 1-3 will drop on default");
+        UseRegFerm = config(OrbandPotion, "Use Regular Fermentor", false, "For the people that can't handle a little fireworks in their bases, you can use the regular fermentor instead.");
 
         Localizer.AddPlaceholder("mmoxpdrink1_description", "power1", XPforMinorPotion, power1 => ((power1 -1)*100).ToString());
         Localizer.AddPlaceholder("mmoxpdrink2_description", "power2", XPforMediumPotion, power2 => ((power2 - 1) * 100).ToString());
@@ -416,6 +423,9 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         DrinkMed.ToggleConfigurationVisibility(Configurability.Drop);
         Item DrinkGreater = new("mmo_xp", "mmo_xp_drink3", "asset");
         DrinkGreater.ToggleConfigurationVisibility(Configurability.Drop);
+        Drink1 = DrinkMinor.Prefab.GetComponent<ItemDrop>();
+        Drink2 = DrinkMed.Prefab.GetComponent<ItemDrop>();
+        Drink3 = DrinkGreater.Prefab.GetComponent<ItemDrop>();
 
 
 
@@ -470,6 +480,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         Ferm.RequiredItems.Add("FineWood", 30, true);
         Ferm.RequiredItems.Add("Bronze", 5, true);
         Ferm.RequiredItems.Add("Coins",200,true);
+
         
         Item ResetTrophy = new("epicmmoitems", "ResetTrophy", "asset");
         ResetTrophy.ToggleConfigurationVisibility(Configurability.Drop);
@@ -478,6 +489,51 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         
     }
     
+    internal static void runSSvalues()
+    {
+        if (EpicMMOSystem.UseRegFerm.Value)
+        {
+            Fermenter cald = null;
+            var list2 = Resources.FindObjectsOfTypeAll<Fermenter>();
+            foreach (var item in list2)
+            {
+                
+                if (item.name == "fermenter")
+                    cald = item;
+            }
+            if (cald != null)
+            {
+                bool contains = false;
+                foreach (var conv in cald.m_conversion)
+                {
+                    if (conv.m_from == Mead1D)
+                        contains = true;
+                }
+                if (!contains)
+                {
+                    Fermenter.ItemConversion one = new();
+                    Fermenter.ItemConversion two = new();
+                    Fermenter.ItemConversion three = new();
+                    one.m_from = Mead1D;
+                    one.m_to = Drink1;
+                    one.m_producedItems = 3;
+
+                    two.m_from = Mead2D;
+                    two.m_to = Drink2;
+                    two.m_producedItems = 3;
+
+                    three.m_from = Mead3D;
+                    three.m_to = Drink3;
+                    three.m_producedItems = 3;
+
+                    cald.m_conversion.Add(one);
+                    cald.m_conversion.Add(two);
+                    cald.m_conversion.Add(three);
+                }
+            }
+
+        }
+    }
 
 
     [HarmonyPatch(typeof(ObjectDB), nameof(ObjectDB.Awake))]
@@ -500,6 +556,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
             Mead3Alt.name = "MMO_Recipe_Mead3Alt";
 
             var list = Resources.FindObjectsOfTypeAll<CraftingStation>();
+
             CraftingStation cald = null;
             foreach (var item in list)
             {

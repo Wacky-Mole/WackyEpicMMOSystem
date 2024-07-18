@@ -39,7 +39,17 @@ Specializing
     • Tree cutting  
 */
 
+[HarmonyPatch(typeof(Game), nameof(Game.SpawnPlayer))]
+public static class MainReloadStartSoLoad
+{
+    static void Postfix(Game __instance)
+    {
+        EpicMMOSystem.MLLogger.LogInfo("ReLoading exp chart");
+        LevelSystem.Instance.FillLevelsExp();
+        EpicMMOSystem.runSSvalues();
+    }
 
+}
 public enum Parameter
 {
     Strength = 0, Agility = 1, Intellect = 2, Body = 3, Vigour = 4 , Special = 5 // Strength, Dexterity, Intelligence, Endurance, Vigour, Specializing
@@ -72,7 +82,7 @@ public partial class LevelSystem
 
     public LevelSystem()
     {
-        FillLevelsExp();
+       // FillLevelsExp();
     }
     
     public int getLevel()

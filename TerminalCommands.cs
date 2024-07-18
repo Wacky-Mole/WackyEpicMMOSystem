@@ -138,7 +138,7 @@ public static class TerminalCommands
 
                         args.Context.AddString("level [value] [name] - set level for player name");
                         args.Context.AddString("reset_points [name] - reset points from attribute for player name");
-                        args.Context.AddString("recalc [name] - recalc level for player name based on total gained XP - beta as of 1.5.4 only");
+                        args.Context.AddString("recalc [name] - recalc level for player name based on total gained XP");
                     }),
                 optionsFetcher: () => new List<string>
                     { "level", "reset_points", "recalc" });

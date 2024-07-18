@@ -1,5 +1,5 @@
 # Description:
-This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.14
+This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.15
 
 
 Support me!
@@ -262,7 +262,7 @@ Original Creator: LambaSun or my [mod branch](https://discord.com/channels/82657
 
 | Version | Changes                                                                                                                                                                                                                                                                                                                                |
 |----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.9.15 | - Polish lang fix
+| 1.9.15 | - Polish lang fix </br> Fix for LevelExperience Sync, those of you who cheated will now be a little sad. Admins you can use recalc command to reveal real level of players. </br> Added staff_greenroots_tentaroot check to give xp for vines kills. </br> Added config 'Use Regular Fermentor' for those of you who can't appreciate artistic talent and sparkles.
 | 1.9.14 | - Bug fix with wackydb, thx Advize ize
 | 1.9.13 | - Fixed CriticalStartChance </br> Fixed a error for SE assign
 | 1.9.12 | - Updated for Ashlands. </br> Added Critical Start Chance </br> Updated PieceManager </br> Updated MonsterDB_Default for vanilla mobs - Values subject to change

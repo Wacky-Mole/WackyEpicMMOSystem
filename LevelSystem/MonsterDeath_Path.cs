@@ -181,7 +181,7 @@ public static class MonsterDeath_Path
         public static void Prefix(Character __instance, HitData hit) // maybe check for tames as well to prevent them from hurting high lvl
         {
             if (!EpicMMOSystem.enabledLevelControl.Value) return;
-            //if (EpicMMOSystem.removeDrop.Value) hit.m_toolTier = LevelSystem.Instance.getLevel(); // using toolTier to pass the Lvl of player
+            //if (EpicMMOSystem.removeDrop.Value) hit.m_toolTier = LevelSystem.Instance.getLevel(); // using toolTier to pass the Lvl of player         
             hit.m_toolTier = (short)LevelSystem.Instance.getLevel();
             if (EpicMMOSystem.lowDamageLevel.Value)
             {
@@ -222,7 +222,7 @@ public static class MonsterDeath_Path
             //attacker. faction check Guilds API
             if (attacker)
             {
-                if (attacker.IsPlayer() || attacker.IsTamed() && EpicMMOSystem.tamesGiveXP.Value) // simple, but will have to come back to this tamed check
+                if (attacker.IsPlayer() || (attacker.IsTamed() || attacker.name == "staff_greenroots_tentaroot(Clone)")  && EpicMMOSystem.tamesGiveXP.Value) // simple, but will have to come back to this tamed check
                 {
                     CharacterLastDamageList[__instance] = sender;
                     if (EpicMMOSystem.enabledLevelControl.Value && (EpicMMOSystem.removeBossDropMax.Value || EpicMMOSystem.removeBossDropMin.Value) && BossDropFlag)// removeboss drop and is a boss
@@ -290,15 +290,18 @@ public static class MonsterDeath_Path
         public static void Postfix(Character __instance, HitData hit)
         {
             if (__instance.IsTamed()) return;
-            if (__instance.GetHealth() <= 0f && CharacterLastDamageList.ContainsKey(__instance))
+            if (__instance.GetHealth() <= 0f )
             {
-                var pkg = new ZPackage();
-                pkg.Write(__instance.gameObject.name);
-                pkg.Write(__instance.GetLevel());
-                pkg.Write(__instance.transform.position);
-                long attacker = CharacterLastDamageList[__instance];
-                ZRoutedRpc.instance.InvokeRoutedRPC(attacker, $"{EpicMMOSystem.ModName} DeadMonsters", new object[] { pkg });
-                CharacterLastDamageList.Remove(__instance);
+                if (CharacterLastDamageList.ContainsKey(__instance)) {
+                    var pkg = new ZPackage();
+                    pkg.Write(__instance.gameObject.name);
+                    pkg.Write(__instance.GetLevel());
+                    pkg.Write(__instance.transform.position);
+                    long attacker = CharacterLastDamageList[__instance];
+                    ZRoutedRpc.instance.InvokeRoutedRPC(attacker, $"{EpicMMOSystem.ModName} DeadMonsters", new object[] { pkg });
+                    CharacterLastDamageList.Remove(__instance);
+                }
+                //EpicMMOSystem.MLLogger.LogWarning("Damage " + hit.m_damage + " from " + hit.GetAttacker().name);
             }
         }
     }
