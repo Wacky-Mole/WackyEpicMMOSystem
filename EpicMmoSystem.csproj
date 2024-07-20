@@ -510,6 +510,7 @@ System.IO.File.WriteAllText(ManifestFile, content);
     <ItemGroup>
       <PackageFiles Include="$(TargetDir)$(AssemblyName).dll" Condition="Exists('$(TargetDir)$(AssemblyName).dll')" />
       <PackageFiles Include="$(ProjectDir)\Thunderstore\README.md" Condition="Exists('$(ProjectDir)\Thunderstore\README.md')" />
+      <PackageFiles Include="$(ProjectDir)\Thunderstore\CHANGELOG.md" Condition="Exists('$(ProjectDir)\Thunderstore\CHANGELOG.md')" />
       <PackageFiles Include="$(ProjectDir)\Thunderstore\manifest.json" Condition="Exists('$(ProjectDir)\Thunderstore\manifest.json')" />
       <PackageFiles Include="$(ProjectDir)\Thunderstore\icon.png" Condition="Exists('$(ProjectDir)\Thunderstore\icon.png')" />
       <PackageFiles Include="$(ProjectDir)\Thunderstore\epicmmo_exp_multiplier_levels.xlsx" Condition="Exists('$(ProjectDir)\Thunderstore\epicmmo_exp_multiplier_levels.xlsx')" />
