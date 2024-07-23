@@ -54,23 +54,25 @@ public partial class MyUI
 
     public static void updateExpBar()
     {
-        if (DisableExpBar)
+        try
         {
-            Exp.gameObject.SetActive(false);
+            if (DisableExpBar)
+            {
+                Exp.gameObject.SetActive(false);
+            }
 
-        }
+            var level = LevelSystem.Instance.getLevel();
+            var exp = LevelSystem.Instance.getCurrentExp();
+            var need = LevelSystem.Instance.getNeedExp();
+            if (DisableExpBar && !EpicMMOSystem.oldExpBar.Value)
+                return;
 
-        var level = LevelSystem.Instance.getLevel();
-        var exp = LevelSystem.Instance.getCurrentExp();
-        var need = LevelSystem.Instance.getNeedExp();
-        if (DisableExpBar && !EpicMMOSystem.oldExpBar.Value)
-            return;
-
-        string expPersent = ((float)exp / need * 100).ToString("0.00");
-        eLevelText.text = $"{localization["$lvl"]} {level}";
-        eExpText.text = $"{expPersent.Replace(',','.')} %";
-        eBarImage.fillAmount = (float)exp / need;
-        currentLVL = level;
+            string expPersent = ((float)exp / need * 100).ToString("0.00");
+            eLevelText.text = $"{localization["$lvl"]} {level}";
+            eExpText.text = $"{expPersent.Replace(',', '.')} %";
+            eBarImage.fillAmount = (float)exp / need;
+            currentLVL = level;
+        } catch (Exception e) { EpicMMOSystem.MLLogger.LogWarning("ExpBar update failed " + e); }
 
     }
     internal static void InitHudPanel()
