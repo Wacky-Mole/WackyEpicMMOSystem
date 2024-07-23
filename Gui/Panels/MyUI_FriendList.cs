@@ -198,7 +198,7 @@ public partial class MyUI
     {
         public enum StatusFriend
         {
-            online, offline, invite
+            online, offline, invite,
         } 
         private GameObject cell;
         private FriendInfo friend;

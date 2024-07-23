@@ -333,31 +333,6 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         prefabNameCoins = config(resetAttributesItems, "prefabName", "Coins", "Name prefab item");
         viewTextCoins = config(resetAttributesItems, "viewText", "coins or 1 Reset Trophy", "Name item");
 
-        string hud = "4.Hud--------------------";
-        oldExpBar = config(hud, "OldXPBar", false, "Use the old eXP Bar only (need restart, not server sync) Does not move or scale", false);
-        showMaxHp = config(hud, "ShowMaxHp", true, "Show max hp (100 / 100)", false);
-        forceMagicBar = config(hud, "Force EitrBar", false, "Force the Eitr bar to always show up even when empty", false);
-
-        HudPanelPosition = config(hud, "1.0HudGrouplPosition", new Vector2(0, 0), "Position of the Main EpicHudBarBackground in (x,y) - You can drag individual components below", false);
-        HudExpBackgroundCol = config(hud, "1.1BackgroundCol", "#2F1600", "Background color in Hex, set to 'none' to make transparent", false);
-        HudBarScale = config(hud, "1.2HudGroupScale", .90f, "Scale for HudGroup - exp, background, hp, stamina, eitr - You can do individual below", false);
-        ExpPanelPosition = config(hud, "2.0ExpPanelPosition", new Vector2(0, 0), "Position of the Exp panel (x,y)", false);
-        ExpColor = config(hud, "2.1ExpColor", "#FFFFFF", "Exp fill color in Hex - White bleeds through with purple, set to 'none' to have no xp bar", false);
-        ExpScale = config(hud, "2.2ExpScale", new Vector3(1, 1, 1), "Exp Bar Scale factor", false);
-        StaminaPanelPosition = config(hud, "3.0StaminaPanelPosition", new Vector2(0, 0), "Position of the Stamina panel (x,y)", false);
-        StaminaColor = config(hud, "3.1StaminaColor", "#986100", "Stamina color in Hex, set to 'none' to make vanilla", false);
-        StaminaScale = config(hud, "3.2StaminaScale", new Vector3(1, 1, 1), "Stamina Bar Scale factor", false);
-        HpPanelPosition = config(hud, "4.0HpPanelPosition", new Vector2(0, 0), "Position of the Hp panel (x,y)", false);
-        HpColor = config(hud, "4.1HPColor", "#870000", "HP color in Hex, set to 'none' to make vanilla", false);
-        HPScale = config(hud, "4.2HPScale", new Vector3(1, 1, 1), "HP Bar Scale factor", false);
-        EitrPanelPosition = config(hud, "5.0EitrPanelPosition", new Vector2(0, 0), "Position of the Eitr panel (x,y)", false);
-        EitrColor = config(hud, "5.1EitrColor", "#84257C", "Eitr color in Hex, set to 'none' to make vanilla", false);
-        EitrScale = config(hud, "5.2EitrScale", new Vector3(1, 1, 1), "Eitr Bar Scale factor", false);
-        LevelHudGroupScale = config(hud, "6.2LevelHudGroupScale", 1.0f, "LevelHud Group of Objects Scale factor (Nav Bar, Point Hub)", false);
-        LevelPointPosition = config(hud, "7.0PointHudPosition", new Vector2(0, 0), "Position of the Point panel (x,y)", false);
-        LevelNavPosition = config(hud, "8.0NavBarPosition", new Vector2(0, 100), "Position of the NavBar (x,y)", false);
-
-
         // HealthIcons = config(hud, "DisabledDefaultHealth", true, "Default is true, not synced", false);
 
 
@@ -408,7 +383,6 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         _asset = GetAssetBundle("epicasset");
         itemassets();
         localizationold = new Localizationold();
-        MyUI.Init();
 
         if (Chainloader.PluginInfos.ContainsKey("org.bepinex.plugins.creaturelevelcontrol")){
             CLLCLoaded = true;
@@ -626,6 +600,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
 
     private void Start()
     {
+        MyUI.Init();
         DataMonsters.Init();
         FriendsSystem.Init();
         SetupWatcher();
@@ -858,6 +833,60 @@ public partial class EpicMMOSystem : BaseUnityPlugin
             return AssetBundle.LoadFromStream(stream);
         }
     }
+}
+    
+[BepInPlugin(ModGUID, ModName, VERSION)]
+public partial class EpicMMOSystemUI : BaseUnityPlugin
+{
+    internal const string ModName = "EpicMMOSystemUI";
+    internal const string VERSION = "1.9.16";
+    internal const string Author = "WackyMole";
+    private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
 
+    private ConfigEntry<T> config<T>(string group, string name, T value, ConfigDescription description,
+        bool synchronizedSetting = false)
+    {
+        ConfigDescription extendedDescription =
+            new(
+                description.Description +
+                (synchronizedSetting ? " [Synced with Server]" : " [Not Synced with Server]"),
+                description.AcceptableValues, description.Tags);
+        ConfigEntry<T> configEntry = Config.Bind(group, name, value, extendedDescription);
+        //var configEntry = Config.Bind(group, name, value, description);
+        
+        return configEntry;
+    }
 
+    private ConfigEntry<T> config<T>(string group, string name, T value, string description,
+        bool synchronizedSetting = false)
+    {
+        return config(group, name, value, new ConfigDescription(description), synchronizedSetting);
+    }
+    
+    private void Awake()
+    {
+         string hud = "4.Hud--------------------";
+        EpicMMOSystem.oldExpBar = config(hud, "OldXPBar", false, "Use the old eXP Bar only (need restart, not server sync) Does not move or scale");
+        EpicMMOSystem.showMaxHp = config(hud, "ShowMaxHp", true, "Show max hp (100 / 100)");
+        EpicMMOSystem.forceMagicBar = config(hud, "Force EitrBar", false, "Force the Eitr bar to always show up even when empty");
+
+        EpicMMOSystem.HudPanelPosition = config(hud, "1.0HudGrouplPosition", new Vector2(0, 0), "Position of the Main EpicHudBarBackground in (x,y) - You can drag individual components below");
+        EpicMMOSystem.HudExpBackgroundCol = config(hud, "1.1BackgroundCol", "#2F1600", "Background color in Hex, set to 'none' to make transparent");
+        EpicMMOSystem.HudBarScale = config(hud, "1.2HudGroupScale", .90f, "Scale for HudGroup - exp, background, hp, stamina, eitr - You can do individual below");
+        EpicMMOSystem.ExpPanelPosition = config(hud, "2.0ExpPanelPosition", new Vector2(0, 0), "Position of the Exp panel (x,y)");
+        EpicMMOSystem.ExpColor = config(hud, "2.1ExpColor", "#FFFFFF", "Exp fill color in Hex - White bleeds through with purple, set to 'none' to have no xp bar");
+        EpicMMOSystem.ExpScale = config(hud, "2.2ExpScale", new Vector3(1, 1, 1), "Exp Bar Scale factor");
+        EpicMMOSystem.StaminaPanelPosition = config(hud, "3.0StaminaPanelPosition", new Vector2(0, 0), "Position of the Stamina panel (x,y)");
+        EpicMMOSystem.StaminaColor = config(hud, "3.1StaminaColor", "#986100", "Stamina color in Hex, set to 'none' to make vanilla");
+        EpicMMOSystem.StaminaScale = config(hud, "3.2StaminaScale", new Vector3(1, 1, 1), "Stamina Bar Scale factor");
+        EpicMMOSystem.HpPanelPosition = config(hud, "4.0HpPanelPosition", new Vector2(0, 0), "Position of the Hp panel (x,y)");
+        EpicMMOSystem.HpColor = config(hud, "4.1HPColor", "#870000", "HP color in Hex, set to 'none' to make vanilla");
+        EpicMMOSystem.HPScale = config(hud, "4.2HPScale", new Vector3(1, 1, 1), "HP Bar Scale factor");
+        EpicMMOSystem.EitrPanelPosition = config(hud, "5.0EitrPanelPosition", new Vector2(0, 0), "Position of the Eitr panel (x,y)");
+        EpicMMOSystem.EitrColor = config(hud, "5.1EitrColor", "#84257C", "Eitr color in Hex, set to 'none' to make vanilla");
+        EpicMMOSystem.EitrScale = config(hud, "5.2EitrScale", new Vector3(1, 1, 1), "Eitr Bar Scale factor");
+        EpicMMOSystem.LevelHudGroupScale = config(hud, "6.2LevelHudGroupScale", 1.0f, "LevelHud Group of Objects Scale factor (Nav Bar, Point Hub)");
+        EpicMMOSystem.LevelPointPosition = config(hud, "7.0PointHudPosition", new Vector2(0, 0), "Position of the Point panel (x,y)");
+        EpicMMOSystem.LevelNavPosition = config(hud, "8.0NavBarPosition", new Vector2(0, 100), "Position of the NavBar (x,y)");
+    }
 }

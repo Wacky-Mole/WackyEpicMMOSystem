@@ -13,30 +13,30 @@ namespace EpicMMOSystem;
 
 /*
  *  Strength:   
-    • Player Phys Dmg%
-    • Flat Carry Weight
-    • Decreased Block Stamina Consumption Rate%
-    • Critical Damage
+    â€¢ Player Phys Dmg%
+    â€¢ Flat Carry Weight
+    â€¢ Decreased Block Stamina Consumption Rate%
+    â€¢ Critical Damage
 Dexterity:
-    • Player Attack/Usage Speed%
-    • Decreased Attack Stamina Consumption Rate%
-    • Decreased Running/Jumping Stamina Consumption Rate%
+    â€¢ Player Attack/Usage Speed%
+    â€¢ Decreased Attack Stamina Consumption Rate%
+    â€¢ Decreased Running/Jumping Stamina Consumption Rate%
 Intelligence:
-    • Player Ele Dmg%
-    • Flat Eitr
-    • Eitr Regen Multi%
+    â€¢ Player Ele Dmg%
+    â€¢ Flat Eitr
+    â€¢ Eitr Regen Multi%
 Endurance:
-    • Flat Stamina
-    • Stamina Regen Multi% //or// Health Regen Multi%
-    • Phys Dmg Reduction%
+    â€¢ Flat Stamina
+    â€¢ Stamina Regen Multi% //or// Health Regen Multi%
+    â€¢ Phys Dmg Reduction%
 Vigour: 
-    • Flat Health
-    • Health Regen
-    • Ele Dmg Reduction% 
+    â€¢ Flat Health
+    â€¢ Health Regen
+    â€¢ Ele Dmg Reduction% 
 Specializing
-    • Mining Speed
-    • Construction piece health?
-    • Tree cutting  
+    â€¢ Mining Speed
+    â€¢ Construction piece health?
+    â€¢ Tree cutting  
 */
 
 [HarmonyPatch(typeof(Game), nameof(Game.SpawnPlayer))]
@@ -52,7 +52,7 @@ public static class MainReloadStartSoLoad
 }
 public enum Parameter
 {
-    Strength = 0, Agility = 1, Intellect = 2, Body = 3, Vigour = 4 , Special = 5 // Strength, Dexterity, Intelligence, Endurance, Vigour, Specializing
+    Strength = 0, Agility = 1, Intellect = 2, Body = 3, Vigour = 4 , Special = 5, // Strength, Dexterity, Intelligence, Endurance, Vigour, Specializing
 }
 public partial class LevelSystem
 {
@@ -215,7 +215,7 @@ public partial class LevelSystem
             "Body" => EpicMMOSystem.maxValueEndurance.Value,
             "Vigour" => EpicMMOSystem.maxValueVigour.Value,
             "Special" => EpicMMOSystem.maxValueSpecializing.Value,
-            _ => max = 205
+            _ => max = 205,
         };
         int setValue = Mathf.Clamp(value, 0, max);
         Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_{parameter.ToString()}"] = setValue.ToString();
@@ -240,7 +240,7 @@ public partial class LevelSystem
             "Body" => EpicMMOSystem.maxValueEndurance.Value,
              "Vigour" => EpicMMOSystem.maxValueVigour.Value,
             "Special" => EpicMMOSystem.maxValueSpecializing.Value,
-            _ => max = 205
+            _ => max = 205,
         };
         return Mathf.Clamp(value, 0, max);
     }

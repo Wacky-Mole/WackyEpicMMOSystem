@@ -49,10 +49,10 @@ namespace EpicMMOSystem
                 { 81, 287147}, { 82, 299133}, { 83, 311599}, { 84, 324563}, { 85, 338045},
                 { 86, 352067}, { 87, 366650}, { 88, 381816}, { 89, 397588}, { 90, 413992},
                 { 91, 431051}, { 92, 448793}, { 93, 467245}, { 94, 486435}, { 95, 506392},
-                { 96, 527148}, { 97, 548734}, { 98, 571183}, { 99, 594531}, { 100, 618812}
+                { 96, 527148}, { 97, 548734}, { 98, 571183}, { 99, 594531}, { 100, 618812},
 
 
-        };
+            };
 
             // private static string ConfigFileFullPath = Paths.ConfigPath + Path.DirectorySeparatorChar + "CustomLevel.yml";
             var warningtext = Path.Combine(Paths.ConfigPath, EpicMMOSystem.ModName, $"If you want to stop from updating.txt");

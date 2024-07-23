@@ -36,7 +36,7 @@ public class CritDmgVFX
         DamageText.WorldTextInstance worldTextInstance = new DamageText.WorldTextInstance
         {
             m_worldPos = position,
-            m_gui = UnityEngine.Object.Instantiate(DamageText.instance.m_worldTextBase, DamageText.instance.transform)
+            m_gui = UnityEngine.Object.Instantiate(DamageText.instance.m_worldTextBase, DamageText.instance.transform),
         };
 
         worldTextInstance.m_gui.GetComponent<RectTransform>().sizeDelta *= 2;

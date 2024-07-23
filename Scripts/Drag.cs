@@ -73,7 +73,7 @@ public class DragWindowCntrl : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             {
                 "NavigatePanel" => EpicMMOSystem.LevelNavPosition.Value,
                 "PointPanel" => EpicMMOSystem.LevelPointPosition.Value,
-                _ => rectTransform.anchoredPosition
+                _ => rectTransform.anchoredPosition,
             };
         }
     }
