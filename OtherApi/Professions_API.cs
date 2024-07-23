@@ -16,7 +16,7 @@ public static class Professions_API
 
     private enum API_State
     {
-        NotReady, NotInstalled, Ready 
+        NotReady, NotInstalled, Ready,
     }
 
     

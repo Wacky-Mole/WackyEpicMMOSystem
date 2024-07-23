@@ -23,14 +23,14 @@ namespace EpicMMOSystem.Gui
             {
                 m_worldPos = Player.m_localPlayer.transform.position + Player.m_localPlayer.transform.right * random +
                              Vector3.up * random2,
-                m_gui = UnityEngine.Object.Instantiate(DamageText.instance.m_worldTextBase, DamageText.instance.transform)
+                m_gui = UnityEngine.Object.Instantiate(DamageText.instance.m_worldTextBase, DamageText.instance.transform),
             };
             //random = +.5f;
             DamageText.WorldTextInstance worldTextInstance2 = new DamageText.WorldTextInstance
             {
                 m_worldPos = Player.m_localPlayer.transform.position + (Player.m_localPlayer.transform.right * random)  +
                  Vector3.up * random2,
-                m_gui = UnityEngine.Object.Instantiate(DamageText.instance.m_worldTextBase, DamageText.instance.transform)
+                m_gui = UnityEngine.Object.Instantiate(DamageText.instance.m_worldTextBase, DamageText.instance.transform),
             };
             worldTextInstance.m_gui.GetComponent<RectTransform>().sizeDelta *= 2;
             worldTextInstance.m_textField = worldTextInstance.m_gui.GetComponent<TMP_Text>();

@@ -77,7 +77,7 @@ public class DragControl : MonoBehaviour //IBeginDragHandler//, IDragHandler, IE
                     "Hp" => EpicMMOSystem.HpPanelPosition.Value,
                     "Stamina" => EpicMMOSystem.StaminaPanelPosition.Value,
                     "Eitr" => EpicMMOSystem.EitrPanelPosition.Value,
-                    _ => rectTransform.anchoredPosition
+                    _ => rectTransform.anchoredPosition,
                 };
             }
         }

@@ -13,7 +13,7 @@ public static class DonatShop_API
     
     private enum API_State
     {
-        NotReady, NotInstalled, Ready 
+        NotReady, NotInstalled, Ready,
     }
     
     public static bool IsInstalled()

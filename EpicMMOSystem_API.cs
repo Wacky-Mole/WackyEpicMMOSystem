@@ -16,12 +16,12 @@ public static class EpicMMOSystem_API
 
     private enum API_State
     {
-        NotReady, NotInstalled, Ready 
+        NotReady, NotInstalled, Ready,
     }
 
     public enum Attribut
     {
-        Strength = 0, Agility = 1, Intellect = 2, Body = 3, Vigour = 4, Special = 5
+        Strength = 0, Agility = 1, Intellect = 2, Body = 3, Vigour = 4, Special = 5,
     }
 
     public static int GetLevel()
