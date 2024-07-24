@@ -1,3 +1,5 @@
+| 1.9.17 | - Split EpicMMOUI into it's own cfg file. So main cfg updates shouldn't mess up your UI anymore after this update! </br> Added Staff_root_TW (Wizardry mod)for xp
+#
 | 1.9.16 | - Trying to catch a rare startup bug
 #
 | 1.9.15 | - Polish lang fix </br> Fix for LevelExperience Sync, those of you who cheated will now be a little sad. Admins you can use recalc command to reveal real level of players. </br> Added staff_greenroots_tentaroot check to give xp for vines kills. </br> Added config 'Use Regular Fermentor' for those of you who can't appreciate artistic talent and sparkles.

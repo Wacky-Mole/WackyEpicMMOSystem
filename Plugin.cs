@@ -35,7 +35,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.16";
+    internal const string VERSION = "1.9.17";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -839,8 +839,8 @@ public partial class EpicMMOSystem : BaseUnityPlugin
 public partial class EpicMMOSystemUI : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystemUI";
-    internal const string VERSION = "1.9.16";
-    internal const string Author = "WackyMole";
+    internal const string VERSION = EpicMMOSystem.VERSION;
+    internal const string Author = EpicMMOSystem.Author;
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
 
     private ConfigEntry<T> config<T>(string group, string name, T value, ConfigDescription description,
