@@ -23,6 +23,8 @@ using PieceManager;
 using System.Runtime.Remoting.Messaging;
 using StatusEffectManager;
 using System.Collections;
+using HarmonyLib.Tools;
+using UnityEngine.UIElements;
 
 
 namespace EpicMMOSystem;
@@ -695,45 +697,6 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         var updatelvl = LevelSystem.Instance;
         updatelvl.FillLevelsExp(); // updates when people change levelExp,multiNextLeve, maxlevel
 
-        Color tempC;
-        MyUI.expPanelRoot.GetComponent<CanvasScaler>().scaleFactor = HudBarScale.Value;
-        MyUI.levelSystemPanelRoot.GetComponent<CanvasScaler>().scaleFactor = EpicMMOSystem.LevelHudGroupScale.Value;
-
-        if (EpicMMOSystem.HudExpBackgroundCol.Value == "none")
-            MyUI.expPanelBackground.SetActive(false);
-        else
-        {
-            MyUI.expPanelBackground.SetActive(true);
-            if (ColorUtility.TryParseHtmlString(HudExpBackgroundCol.Value, out tempC))
-                MyUI.expPanelBackground.GetComponent<Image>().color = tempC;
-        }
-        MyUI.DisableHPBar =  (HpColor.Value == "none");
-        MyUI.DisableStaminaBar = (StaminaColor.Value == "none");
-        MyUI.DisableEitrBar = (EitrColor.Value == "none");
-        MyUI.DisableExpBar = (ExpColor.Value == "none");
-
-
-        MyUI.hp.gameObject.SetActive(!MyUI.DisableHPBar);
-        MyUI.DHpBar.SetActive(MyUI.DisableHPBar);
-        MyUI.IconHpBar.SetActive(MyUI.DisableHPBar);
-        MyUI.Exp.gameObject.SetActive(!MyUI.DisableExpBar);
-        MyUI.stamina.gameObject.SetActive(!MyUI.DisableStaminaBar);
-
-
-        if (ColorUtility.TryParseHtmlString(HpColor.Value, out tempC ))
-            MyUI.hpImage.color = tempC;
-        if (ColorUtility.TryParseHtmlString(StaminaColor.Value, out tempC))
-            MyUI.staminaImage.color = tempC;
-        if (ColorUtility.TryParseHtmlString(EitrColor.Value, out tempC))
-            MyUI.EitrImage.color = tempC;
-        if (ColorUtility.TryParseHtmlString(ExpColor.Value, out tempC))
-        {
-            if (ExpColor.Value == "#FFFFFF")
-                MyUI.eBarImage.color = tempC;
-            else
-                MyUI.eBarImage.color = tempC * 2;
-        }
-
         if (ObjectDB.m_instance != null)
         {
             var orb = ObjectDB.m_instance.GetStatusEffect("MMO_XP".GetStableHashCode());
@@ -746,45 +709,8 @@ public partial class EpicMMOSystem : BaseUnityPlugin
             xpP3.m_ttl = PotionSEtime.Value;
         }
 
-        //MyUI.hpImage.color = ColorUtil.GetColorFromHex(HpColor.Value); // maybe  destoryed and color is not beingupdate on static element?
-        //MyUI.staminaImage.color = ColorUtil.GetColorFromHex(StaminaColor.Value);
-        //MyUI.EitrImage.color = ColorUtil.GetColorFromHex(EitrColor.Value);
-
-        MyUI.Exp.GetComponent<RectTransform>().localScale = ExpScale.Value;
-        MyUI.hp.GetComponent<RectTransform>().localScale = HPScale.Value;
-        MyUI.stamina.GetComponent<RectTransform>().localScale = StaminaScale.Value;
-        MyUI.EitrTran.GetComponent<RectTransform>().localScale = EitrScale.Value;
-
-        try
-        {
-            if (EpicMMOSystem.extraDebug.Value)
-                MLLogger.LogInfo("MMO Manual ReadConfigValues called");
-            Config.Reload();
-            DragControl.RestoreWindow(MyUI.expPanel.gameObject);
-            DragControl.RestoreWindow(MyUI.hp.gameObject);
-            DragControl.RestoreWindow(MyUI.Exp.gameObject);
-            DragControl.RestoreWindow(MyUI.stamina.gameObject);
-            DragControl.RestoreWindow(MyUI.EitrGameObj);
-            DragWindowCntrl.RestoreWindow(MyUI.navigationPanel, false);
-            DragWindowCntrl.RestoreWindow(MyUI.levelSystemPanel, false);
-        }
-        catch
-        {
-            MLLogger.LogError($"There was an issue loading your {ConfigFileName}");
-            MLLogger.LogError("Please check your config entries for spelling and format!");
-        }
     }
 
-
-
-    // private void Update()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.Mouse3))
-    //     {
-    //         // LevelSystem.Instance.ResetAllParameter();
-    //         Player.m_localPlayer.m_timeSinceDeath = 3000f;
-    //     }
-    // }
 
 
     #region ConfigOptions
@@ -842,6 +768,7 @@ public partial class EpicMMOSystemUI : BaseUnityPlugin
     internal const string VERSION = EpicMMOSystem.VERSION;
     internal const string Author = EpicMMOSystem.Author;
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
+    private static string ConfigFileName = ModGUID + ".cfg";
 
     private ConfigEntry<T> config<T>(string group, string name, T value, ConfigDescription description,
         bool synchronizedSetting = false)
@@ -888,5 +815,86 @@ public partial class EpicMMOSystemUI : BaseUnityPlugin
         EpicMMOSystem.LevelHudGroupScale = config(hud, "6.2LevelHudGroupScale", 1.0f, "LevelHud Group of Objects Scale factor (Nav Bar, Point Hub)");
         EpicMMOSystem.LevelPointPosition = config(hud, "7.0PointHudPosition", new Vector2(0, 0), "Position of the Point panel (x,y)");
         EpicMMOSystem.LevelNavPosition = config(hud, "8.0NavBarPosition", new Vector2(0, 100), "Position of the NavBar (x,y)");
+
+        SetupWatcher();
+    }
+
+    private void SetupWatcher()
+    {
+
+
+        FileSystemWatcher watcher2 = new(Paths.ConfigPath, ConfigFileName);
+        watcher2.Changed += ReadConfigValuesUI;
+        watcher2.IncludeSubdirectories = false;
+        watcher2.SynchronizingObject = ThreadingHelper.SynchronizingObject;
+        watcher2.EnableRaisingEvents = true;
+
+    }
+
+    internal void ReadConfigValuesUI(object sender = null, FileSystemEventArgs e = null)
+    {
+
+        Color tempC;
+        MyUI.expPanelRoot.GetComponent<CanvasScaler>().scaleFactor = EpicMMOSystem.HudBarScale.Value;
+        MyUI.levelSystemPanelRoot.GetComponent<CanvasScaler>().scaleFactor = EpicMMOSystem.LevelHudGroupScale.Value;
+
+        if (EpicMMOSystem.HudExpBackgroundCol.Value == "none")
+            MyUI.expPanelBackground.SetActive(false);
+        else
+        {
+            MyUI.expPanelBackground.SetActive(true);
+            if (ColorUtility.TryParseHtmlString(EpicMMOSystem.HudExpBackgroundCol.Value, out tempC))
+                MyUI.expPanelBackground.GetComponent<UnityEngine.UI.Image>().color = tempC;
+        }
+        MyUI.DisableHPBar = (EpicMMOSystem.HpColor.Value == "none");
+        MyUI.DisableStaminaBar = (EpicMMOSystem.StaminaColor.Value == "none");
+        MyUI.DisableEitrBar = (EpicMMOSystem.EitrColor.Value == "none");
+        MyUI.DisableExpBar = (EpicMMOSystem.ExpColor.Value == "none");
+
+
+        MyUI.hp.gameObject.SetActive(!MyUI.DisableHPBar);
+        MyUI.DHpBar.SetActive(MyUI.DisableHPBar);
+        MyUI.IconHpBar.SetActive(MyUI.DisableHPBar);
+        MyUI.Exp.gameObject.SetActive(!MyUI.DisableExpBar);
+        MyUI.stamina.gameObject.SetActive(!MyUI.DisableStaminaBar);
+
+
+        if (ColorUtility.TryParseHtmlString(EpicMMOSystem.HpColor.Value, out tempC))
+            MyUI.hpImage.color = tempC;
+        if (ColorUtility.TryParseHtmlString(EpicMMOSystem.StaminaColor.Value, out tempC))
+            MyUI.staminaImage.color = tempC;
+        if (ColorUtility.TryParseHtmlString(EpicMMOSystem.EitrColor.Value, out tempC))
+            MyUI.EitrImage.color = tempC;
+        if (ColorUtility.TryParseHtmlString(EpicMMOSystem.ExpColor.Value, out tempC))
+        {
+            if (EpicMMOSystem.ExpColor.Value == "#FFFFFF")
+                MyUI.eBarImage.color = tempC;
+            else
+                MyUI.eBarImage.color = tempC * 2;
+        }
+
+        MyUI.Exp.GetComponent<RectTransform>().localScale = EpicMMOSystem.ExpScale.Value;
+        MyUI.hp.GetComponent<RectTransform>().localScale = EpicMMOSystem.HPScale.Value;
+        MyUI.stamina.GetComponent<RectTransform>().localScale = EpicMMOSystem.StaminaScale.Value;
+        MyUI.EitrTran.GetComponent<RectTransform>().localScale = EpicMMOSystem.EitrScale.Value;
+
+        try
+        {
+            if (EpicMMOSystem.extraDebug.Value)
+                EpicMMOSystem.MLLogger.LogInfo("MMO Manual ReadConfigValues called");
+            Config.Reload();
+            DragControl.RestoreWindow(MyUI.expPanel.gameObject);
+            DragControl.RestoreWindow(MyUI.hp.gameObject);
+            DragControl.RestoreWindow(MyUI.Exp.gameObject);
+            DragControl.RestoreWindow(MyUI.stamina.gameObject);
+            DragControl.RestoreWindow(MyUI.EitrGameObj);
+            DragWindowCntrl.RestoreWindow(MyUI.navigationPanel, false);
+            DragWindowCntrl.RestoreWindow(MyUI.levelSystemPanel, false);
+        }
+        catch
+        {
+            EpicMMOSystem.MLLogger.LogError($"There was an issue loading your {ConfigFileName}");
+            EpicMMOSystem.MLLogger.LogError("Please check your config entries for spelling and format!");
+        }
     }
 }
