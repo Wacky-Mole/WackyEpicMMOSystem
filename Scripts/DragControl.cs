@@ -10,7 +10,8 @@ public class DragControl : MonoBehaviour //IBeginDragHandler//, IDragHandler, IE
     private RectTransform window;
     //delta drag
     private Vector2 delta;
-    private Coroutine coroutine = null!;
+    public static Coroutine coroutine = null!;
+       
 
     public void Awake()
     {
@@ -18,12 +19,13 @@ public class DragControl : MonoBehaviour //IBeginDragHandler//, IDragHandler, IE
             //window = EpicMMOSystem.RestorePosition(window2); 
             //EpicMMOSystem.MLLogger.LogInfo("Vector3 Awake");
             window = window2;
-    }
+            coroutine = StartCoroutine("Positionpanels");
+        }
 
-    private void Start()
-    {
+    public void StartDelayPosition()
+     {
         coroutine = StartCoroutine("Positionpanels");
-    }
+     }
 
     // Coroutine
     IEnumerator Positionpanels()
@@ -129,6 +131,8 @@ public class DragControl : MonoBehaviour //IBeginDragHandler//, IDragHandler, IE
                     if (EpicMMOSystem.EitrPanelPosition.Value != new Vector2(0, 0))
                         rectTransform.anchoredPosition = EpicMMOSystem.EitrPanelPosition.Value;
                     break;
+
+                    default:break;
             }
           // EpicMMOSystem.MLLogger.LogInfo("Vector3 " + go.name + " Changed to: " + rectTransform.anchoredPosition);
         }
@@ -150,15 +154,16 @@ public class DragControl : MonoBehaviour //IBeginDragHandler//, IDragHandler, IE
                 case "Eitr":
                     EpicMMOSystem.EitrPanelPosition.Value = rectTransform.anchoredPosition;
                     break;
+                        default :break;
             }
         }
         EpicMMOSystem.Instance.Config.Save();
     }
 
-        public void BeginDrag()
+    public void BeginDrag()
     {
         delta = Input.mousePosition - window.position;
-        }
+    }
     public void Drag()
     {
         Vector2 newPos = (Vector2)Input.mousePosition - delta;
@@ -189,6 +194,7 @@ public class DragControl : MonoBehaviour //IBeginDragHandler//, IDragHandler, IE
 
       public void OnEndDrag()
         {
+            
            SaveWindowPositions(window.gameObject, false);
         }
 

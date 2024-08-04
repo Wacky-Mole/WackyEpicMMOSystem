@@ -3,6 +3,9 @@ using EpicMMOSystem.MonoScripts;
 using HarmonyLib;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System.Collections;
+
 
 namespace EpicMMOSystem;
 
@@ -143,27 +146,25 @@ public partial class MyUI
             
             if (visible && !UIToggle && !EpicMMOSystem.oldExpBar.Value)
             {
+                //EpicMMOSystem.MLLogger.LogWarning("Call SetVisable vis");
                 expPanelRoot.gameObject.SetActive(true);
                 UIToggle= true;
 
-                //EpicMMOSystem.Instance.ReadConfigValues();
                 DragControl.SaveWindowPositions(expPanel.gameObject, true);
                 DragControl.SaveWindowPositions(hp.gameObject, true);
                 DragControl.SaveWindowPositions(stamina.gameObject, true);
-
-
+                EpicMMOSystemUI.coroutine = EpicMMOSystemUI.Instance.StartCoroutine("Positionpanels");
             }
             if (!visible && UIToggle && !EpicMMOSystem.oldExpBar.Value)
             {
+                //EpicMMOSystem.MLLogger.LogWarning("Call SetVisable not vis");
                 expPanelRoot.gameObject.SetActive(false);
-               // EpicMMOSystem.print($"UPdate Vis not");
                 UIToggle = false;
                 //expPanelRoot.transform.localPosition = new Vector3(10000f, 0f, 0f);
 
             }
         }
     }
-
 
 
 
@@ -206,6 +207,7 @@ public partial class MyUI
             {
                 buildInfo.localPosition += new Vector3(0, 45, 0); // from 30
             }
+            EpicMMOSystem.MLLogger.LogWarning("Call Awake");
         }
     }
     
@@ -221,16 +223,16 @@ public partial class MyUI
                 return true;
             }
 
-
-            if (DisableHPBar)
-                return true;
-
-
             if (!firstloadHP)
             {
                 expPanelRoot.GetComponent<Canvas>().gameObject.SetActive(true); // idk
                 firstloadHP = true;
             }
+
+            if (DisableHPBar)
+                return true;
+
+
 
             var current = player.GetHealth();
             var max = player.GetMaxHealth();
@@ -258,9 +260,7 @@ public partial class MyUI
             if (EpicMMOSystem.oldExpBar.Value)
             {
                 return true;
-            }
-
-             
+            }       
 
             if (DisableStaminaBar)
                 return true;

@@ -37,7 +37,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.17";
+    internal const string VERSION = "1.9.18";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -770,6 +770,8 @@ public partial class EpicMMOSystemUI : BaseUnityPlugin
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
     private static string ConfigFileName = ModGUID + ".cfg";
 
+    internal static EpicMMOSystemUI Instance;
+    public static Coroutine coroutine = null!;
     private ConfigEntry<T> config<T>(string group, string name, T value, ConfigDescription description,
         bool synchronizedSetting = false)
     {
@@ -790,8 +792,10 @@ public partial class EpicMMOSystemUI : BaseUnityPlugin
         return config(group, name, value, new ConfigDescription(description), synchronizedSetting);
     }
     
+
     private void Awake()
     {
+        Instance = this;
          string hud = "4.Hud--------------------";
         EpicMMOSystem.oldExpBar = config(hud, "OldXPBar", false, "Use the old eXP Bar only (need restart, not server sync) Does not move or scale");
         EpicMMOSystem.showMaxHp = config(hud, "ShowMaxHp", true, "Show max hp (100 / 100)");
@@ -831,7 +835,17 @@ public partial class EpicMMOSystemUI : BaseUnityPlugin
 
     }
 
-    internal void ReadConfigValuesUI(object sender = null, FileSystemEventArgs e = null)
+
+    IEnumerator Positionpanels()
+    {
+        yield return new WaitForSeconds(0.5f); // For some reason it doesn't work when directly called in Start(), have to add a small delay
+        EpicMMOSystem.MLLogger.LogInfo("Restoring UI Positions now");
+        Instance.ReadConfigValuesUI();
+        StopCoroutine(coroutine);
+    }
+
+
+    public static void UIReload()
     {
 
         Color tempC;
@@ -882,7 +896,7 @@ public partial class EpicMMOSystemUI : BaseUnityPlugin
         {
             if (EpicMMOSystem.extraDebug.Value)
                 EpicMMOSystem.MLLogger.LogInfo("MMO Manual ReadConfigValues called");
-            Config.Reload();
+            
             DragControl.RestoreWindow(MyUI.expPanel.gameObject);
             DragControl.RestoreWindow(MyUI.hp.gameObject);
             DragControl.RestoreWindow(MyUI.Exp.gameObject);
@@ -896,5 +910,11 @@ public partial class EpicMMOSystemUI : BaseUnityPlugin
             EpicMMOSystem.MLLogger.LogError($"There was an issue loading your {ConfigFileName}");
             EpicMMOSystem.MLLogger.LogError("Please check your config entries for spelling and format!");
         }
+    }
+
+    internal void ReadConfigValuesUI(object sender = null, FileSystemEventArgs e = null)
+    {
+        Config.Reload();
+        UIReload();
     }
 }

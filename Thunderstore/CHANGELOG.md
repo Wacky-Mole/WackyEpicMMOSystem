@@ -1,3 +1,5 @@
+| 1.9.18 | - Bug fixes for UI stuff.
+#
 | 1.9.17 | - Split EpicMMOUI into it's own cfg file. So main cfg updates shouldn't mess up your UI anymore after this update! </br> Added Staff_root_TW (Wizardry mod)for xp
 #
 | 1.9.16 | - Trying to catch a rare startup bug
