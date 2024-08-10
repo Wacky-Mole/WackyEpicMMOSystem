@@ -108,6 +108,7 @@ public static class MonsterDeath_Path
                 case "Dragon": MobisBoss = true; break;
                 case "GoblinKing": MobisBoss = true; break;
                 case "SeekerQueen": MobisBoss = true; break;
+                case "Fader": MobisBoss = true; break;
                 default: MobisBoss = false; break;// all other mobs
             }
         }

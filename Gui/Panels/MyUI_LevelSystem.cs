@@ -99,6 +99,8 @@ public partial class MyUI
         freePointsText = levelSystemPanel.transform.Find("Points/FreePoints/Text").GetComponent<Text>();
 
         freePointsPanel.transform.Find("Cancel").GetComponent<Button>().onClick.AddListener(ClickCancel);
+        levelSystemPanel.transform.Find("Close").GetComponent<Button>().onClick.AddListener(ClickCancel); // X also cancels
+
         freePointsPanel.transform.Find("Cancel/Text").GetComponent<Text>().text = localization["$cancel"];
         freePointsPanel.transform.Find("Apply").GetComponent<Button>().onClick.AddListener(ClickApply);
         freePointsPanel.transform.Find("Apply/Text").GetComponent<Text>().text = localization["$apply"];
@@ -280,6 +282,8 @@ public partial class MyUI
                 _ => max = 205,
             };
             var current = LevelSystem.Instance.getParameter(parameter);
+            var currentdeposit = LevelSystem.Instance.getDepositPoint(parameter);
+            current += currentdeposit;
             text.text = $"{localization[$"$parameter_{parameter.ToString().ToLower()}"]}: {current}";
             buttons.SetActive(freePoints > 0 && current < max);
         }

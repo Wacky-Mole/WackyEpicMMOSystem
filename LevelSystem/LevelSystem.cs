@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Net;
 using System.Runtime.InteropServices;
 using BepInEx;
 using EpicMMOSystem.Gui;
@@ -284,9 +285,10 @@ public partial class LevelSystem
         {
             usedUp += getParameter((Parameter)i);
         }
+        int totalpending = getTotalDepositPoints();
+        //EpicMMOSystem.MLLogger.LogWarning("totalpending " + totalpending);
 
-
-        return total - usedUp;
+        return total - usedUp -totalpending;
     }
 
     public void addPointsParametr(Parameter parameter, int addPoint)
@@ -295,8 +297,8 @@ public partial class LevelSystem
         if (!(freePoint > 0)) return;
         var applyPoint = Mathf.Clamp(addPoint, 1, freePoint);
         depositPoint[(int)parameter] += applyPoint;
-        var currentPoint = getParameter(parameter);
-        setParameter(parameter, currentPoint + applyPoint);
+       // var currentPoint = getParameter(parameter); set after apply instead for other mods
+       // setParameter(parameter, currentPoint + applyPoint);
     }
     
     public long getNeedExp(int addLvl = 0)
@@ -435,9 +437,34 @@ public partial class LevelSystem
     {
         for (int i = 0; i < depositPoint.Length; i++)
         {
+            var freePoint = getFreePoints();
+            if (!(freePoint > 0)) return;
+            if (depositPoint[i] == 0) continue;
+            
+            var parameter = (Parameter)i;
+            var deposit = depositPoint[i];
+            var applyPoint = Mathf.Clamp(deposit, 1, freePoint);
+            var currentPoint = getParameter(parameter);
+            setParameter(parameter, currentPoint + applyPoint);
             depositPoint[i] = 0;
         }
         MyUI.UpdateParameterPanel();
+    }
+
+    public int getDepositPoint(Parameter parameter )
+    {
+        return depositPoint[(int)parameter];
+    }
+    public int getTotalDepositPoints()
+    {
+        var count = 0;
+        for (int i = 0; i < depositPoint.Length; i++)
+        {
+            if (depositPoint[i] == 0) continue;
+            count= count+ depositPoint[i];
+
+        }
+        return count;
     }
     
     public void cancelDepositPoints()
@@ -446,10 +473,10 @@ public partial class LevelSystem
         for (int i = 0; i < depositPoint.Length; i++)
         {
             if (depositPoint[i] == 0) continue;
-            var parameter = (Parameter)i;
-            var deposit = depositPoint[i];
-            var point = getParameter(parameter);
-            setParameter(parameter, point - deposit);
+            //var parameter = (Parameter)i;
+            //var deposit = depositPoint[i];
+            //var point = getParameter(parameter);
+            //setParameter(parameter, point - deposit);
             depositPoint[i] = 0;
         }
         MyUI.UpdateParameterPanel();

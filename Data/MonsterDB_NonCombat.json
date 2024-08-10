@@ -1,0 +1,338 @@
+[
+    {
+      "name": "Beech1",
+      "minExp": 1,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "Beech_Stub",
+      "minExp": 10,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "beech_log",
+      "minExp": 1,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "beech_log_half",
+      "minExp": 1,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "Birch1",
+      "minExp": 5,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "BirchStub",
+      "minExp": 15,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "Birch1_aut",
+      "minExp": 5,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "Birch2",
+      "minExp": 5,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "Birch2_aut",
+      "minExp": 5,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "Birch_log",
+      "minExp": 5,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "Birch_log_half",
+      "minExp": 5,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "FirTree",
+      "minExp": 1,
+      "maxExp": 1,
+      "level": 100
+    },
+    {
+      "name": "FirTree_log",
+      "minExp": 1,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "FirTree_log_half",
+      "minExp": 1,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "Oak1",
+      "minExp": 10,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "Oak_log",
+      "minExp": 5,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "Oak_log_half",
+      "minExp": 5,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "SwampTree1",
+      "minExp": 5,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "SwampTree1_log",
+      "minExp": 5,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "YggaShoot1",
+      "minExp": 10,
+      "maxExp": 20,
+      "level": 1
+    },
+    {
+      "name": "YggaShoot2",
+      "minExp": 10,
+      "maxExp": 20,
+      "level": 1
+    },
+    {
+      "name": "YggaShoot3",
+      "minExp": 10,
+      "maxExp": 20,
+      "level": 1
+    },
+    {
+      "name": "yggashoot_log",
+      "minExp": 10,
+      "maxExp": 20,
+      "level": 1
+    },
+    {
+      "name": "yggashoot_log_half",
+      "minExp": 10,
+      "maxExp": 20,
+      "level": 1
+    },
+    {
+      "name": "OakStub",
+      "minExp": 20,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "Pinetree_01_Stub",
+      "minExp": 10,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "FirTree_Stub",
+      "minExp": 10,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "SwampTree1_Stub",
+      "minExp": 15,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "MineRock_Tin",
+      "minExp": 2,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "rock4_copper_frac",
+      "minExp": 2,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "mudpile2_frac",
+      "minExp": 3,
+      "maxExp": 10,
+      "level": 1
+    },
+    {
+      "name": "silvervein_frac",
+      "minExp": 3,
+      "maxExp": 10,
+      "level": 1
+    },
+    {
+      "name": "MineRock_Obsidian",
+      "minExp": 5,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "giant_brain_frac",
+      "minExp": 10,
+      "maxExp": 20,
+      "level": 1
+    },
+    {
+      "name": "sapling_seedturnip",
+      "minExp": 1,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "sapling_turnip",
+      "minExp": 1,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "sapling_seedcarrot",
+      "minExp": 1,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "sapling_carrot",
+      "minExp": 1,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "sapling_onion",
+      "minExp": 2,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "sapling_seedonion",
+      "minExp": 2,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "sapling_barley",
+      "minExp": 2,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "sapling_flax",
+      "minExp": 2,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "sapling_magecap",
+      "minExp": 3,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "sapling_jotunpuffs",
+      "minExp": 3,
+      "maxExp": 5,
+      "level": 1
+    },
+    {
+      "name": "Fish1",
+      "minExp": 10,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "Fish2",
+      "minExp": 20,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "Fish3",
+      "minExp": 30,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "Fish4_cave",
+      "minExp": 40,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "Fish5",
+      "minExp": 50,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "Fish6",
+      "minExp": 60,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "Fish7",
+      "minExp": 70,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "Fish8",
+      "minExp": 80,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "Fish9",
+      "minExp": 90,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "Fish10",
+      "minExp": 100,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "Fish11",
+      "minExp": 110,
+      "maxExp": 1,
+      "level": 1
+    },
+    {
+      "name": "Fish12",
+      "minExp": 120,
+      "maxExp": 1,
+      "level": 1
+    }
+  ]

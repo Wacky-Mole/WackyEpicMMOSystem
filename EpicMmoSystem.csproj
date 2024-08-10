@@ -310,6 +310,7 @@
     <Compile Include="Data\MonsterOld.cs" />
     <Compile Include="Gui\Util.cs" />
     <Compile Include="Data\customlevel.cs" />
+    <Compile Include="LevelSystem\LevelSystem_noncombat.cs" />
     <Compile Include="LevelSystem\LevelSystem_Specializing.cs" />
     <Compile Include="LevelSystem\LevelSystem_Vigour.cs" />
     <Compile Include="OtherApi\wackydb_api.cs" />
@@ -392,6 +393,7 @@
     <EmbeddedResource Include="Data\MonsterDB_Jewelcrafting.json" />
     <EmbeddedResource Include="Data\MonsterDB_RtDMonsters.json" />
     <EmbeddedResource Include="Data\MonsterDB_Therzie.Wizardry.json" />
+    <None Include="Data\MonsterDB_NonCombat.json" />
     <None Include="packages.config" />
     <EmbeddedResource Include="translations\Russian.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
