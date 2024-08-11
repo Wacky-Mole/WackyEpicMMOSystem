@@ -37,7 +37,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.19";
+    internal const string VERSION = "1.9.20";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -109,7 +109,10 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     public static ConfigEntry<int> maxValueVigour; 
     public static ConfigEntry<int> maxValueSpecializing; 
     public static ConfigEntry<bool> altLevelUpSound; 
+    public static ConfigEntry<bool> debugNonCombatObjects; 
+    public static ConfigEntry<bool> disableNonCombatObjects; 
     public static ConfigEntry<int> MultiplierForXPTaming; 
+
 
 
     #region Parameters
@@ -275,6 +278,8 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         maxValueSpecializing = config(levelSystem, "maxValueSpecializing", 200, "Maximum number of points you can put into Specializing");
         MultiplierForXPTaming = config(levelSystem, "Taming XP Multiplier", 5, "You get normal xp amount, times this number for taming a creature");
         altLevelUpSound = config(levelSystem, "altLevelUpSound", false, "It's Loud and Heart attack inducing");
+        debugNonCombatObjects = config(levelSystem, "Debug NonCombat Objects", false, "Gives a Warning log for various objects names. Don't forgot that (Clone) is added to everything in the jsons.", false);
+        disableNonCombatObjects = config(levelSystem, "Disable NonCombat XP", false, "Disables non combat XP except for tames, but that can be done with the multiplier.");
 
 
         #region ParameterCofig

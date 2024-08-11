@@ -14,13 +14,30 @@ public partial class LevelSystem
         var multiplayer = EpicMMOSystem.physicDamage.Value;
         return parameter * multiplayer;
     }
-    
+  
+   private static int HoldCarryWeightTimes = 0; // this gets called too much for my liking
+   private static float HoldCarryWeight = 0;  
     public float getAddWeight()
     {
         if (!Player.m_localPlayer) return 0;
-        var parameter = getParameter(Parameter.Strength);
-        var multiplayer = EpicMMOSystem.addWeight.Value;
-        return parameter * multiplayer;
+
+        float HOLD = 0;
+        if (HoldCarryWeightTimes == 0)
+        {         
+            var parameter = getParameter(Parameter.Strength);
+            var multiplayer = EpicMMOSystem.addWeight.Value;
+            //EpicMMOSystem.MLLogger.LogWarning("Call Strenth 2");Performance enhancement
+            HOLD = parameter * multiplayer;
+            HoldCarryWeight = HOLD;
+        }
+        else
+            HOLD = HoldCarryWeight;
+      
+        HoldCarryWeightTimes++;
+        if (HoldCarryWeightTimes == 50) // calls like 50 times a second sometimes
+            HoldCarryWeightTimes = 0;
+
+        return HOLD;
     }
 
     public float getReducedStaminaBlock()
@@ -43,7 +60,6 @@ public partial class LevelSystem
         var parameter = getParameter(Parameter.Special);
         var multiplayer = EpicMMOSystem.critChance.Value ;
         var hello = parameter * multiplayer;
-
         hello = hello + EpicMMOSystem.startCritChance.Value;
         return hello;
     }
@@ -66,14 +82,15 @@ public partial class LevelSystem
             __result.m_pickaxe *= value;
         }
     }
-    
+
     [HarmonyPatch(typeof(Player), nameof(Player.GetMaxCarryWeight))]
     public class AddWeight_Path
     {
         static void Postfix(ref float __result)
-        {
+        {         
             var addWeight = Instance.getAddWeight() + EpicMMOSystem.addDefaultWeight.Value;
-            __result += (float)Math.Round(addWeight);
+            float hold = (float)Math.Round(addWeight);
+            __result += hold;
         }
     }
 

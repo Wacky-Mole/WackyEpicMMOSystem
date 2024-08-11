@@ -1,5 +1,5 @@
 # Description:
-This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.19
+This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.20
 
 
 Support me!
@@ -13,13 +13,14 @@ Features:
  - Usage for Mob Trophies with Potions and XP Orbs
  - Allows admins to adjust player progression
  - Custom mobs can be added for XP gain.
+ - Non Combat XP earning.
  - Shared group XP. Outside of groups all XP awards go to the character who struck the last blow. Requires Group Mod
  - MMO-like friends list. -[Groups](https://valheim.thunderstore.io/package/Smoothbrain/Groups/)
  - Compatible with [ItemRequiresSkillLevel](https://valheim.thunderstore.io/package/Detalhes/ItemRequiresSkillLevel/) mod. Equipment can be limited by level or attribute.
  - Compatible with [KGMarketplace mod](https://valheim.thunderstore.io/package/KGvalheim/Marketplace_And_Server_NPCs_Revamped/). Experience rewards can be added: <s>(EpicMMO_Exp:250) Quests can be limited by level (EpicMMO_Level: text, 20) </s> Read updated Marketplace docs
  
  ![https://wackymole.com/hosts/2nd%20image.png](https://wackymole.com/hosts/2nd%20image.png)
-****
+
 <details><summary>Attributes</summary>
 
 	Strength: Physical Damage increase, Carry Weight Increase, Decreased **Black** Stamina Consumption, Critical Damage
@@ -124,7 +125,7 @@ You can combine multiple Skills for one Requirement
 
 	Mob's data (names, levels, exp) from other mods are included:
 
-	Fantasy-Creatures, AirAnimals, Defaults(Ashlands), DoOrDieMonsters, LandAnimals, MonsterlabZ, Outsiders, SeaAnimals, Monstrum, Krumpac Mods, Teddy Bears, PungusSouls, JewelCrafting, RTDMonsters, Wizardy
+	Fantasy-Creatures, AirAnimals, Defaults(Ashlands), DoOrDieMonsters, LandAnimals, MonsterlabZ, Outsiders, SeaAnimals, Monstrum, Krumpac Mods, Teddy Bears, PungusSouls, JewelCrafting, RTDMonsters, Wizardy, NonCombat
 
 	A folder listing all monsters and their levels is located in config/EpicMMOSystem/ Default is for vanilla mobs
 
@@ -132,7 +133,7 @@ You can combine multiple Skills for one Requirement
 
 	A file called Version.txt is created in the folder. It contains the mod version that was used to create it. Replace it with "NO" to stop it from overwritting on a future update.
 
-	Latest Update for Jsons config is <b> 1.9.12 </b>(Number will be updated when Jsons recieve an update)
+	Latest Update for Jsons config is <b> 1.9.20 </b>(Number will be updated when Jsons recieve an update)
 
 </details>
 
@@ -251,7 +252,7 @@ Support me at https://www.buymeacoffee.com/WackyMole  or https://ko-fi.com/wacky
 
 <img src="https://wackymole.com/hosts/bmc_qr.png" width="100"/>
 
-Original Creator: LambaSun or my [mod branch](https://discord.com/channels/826573164371902465/977656428670111794)
+Original Creator: LambaSun
 
 </details> 
 

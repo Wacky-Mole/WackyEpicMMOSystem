@@ -15,16 +15,21 @@ namespace EpicMMOSystem
         {
             private static void Postfix(Destructible __instance, HitData hit)
             {
-                if (!__instance.m_nview.IsOwner()) return;
-                if (__instance.m_health <= 0) return;
+                if (EpicMMOSystem.disableNonCombatObjects.Value) return;
+                if (!__instance.m_nview.IsOwner()) return;     
+                if(EpicMMOSystem.debugNonCombatObjects.Value)
+                    EpicMMOSystem.MLLogger.LogWarning("Destructible name" + __instance.gameObject.name);
+                if (!__instance.m_destroyed) return;
                 if (!DataMonsters.contains(__instance.gameObject.name)) return;
-                Character attacker = hit.GetAttacker();
-                if (attacker == null) return;
-                if (attacker is not Player player) return;
-                if (!hit.CheckToolTier(__instance.m_minToolTier)) return;
-                if (hit.GetTotalDamage() < 1) return;
-                int expMonster = DataMonsters.getExp(__instance.gameObject.name);
-                LevelSystem.Instance.AddExp(expMonster);
+
+                    Character attacker = hit.GetAttacker();
+                    if (attacker == null) return;
+                    if (attacker is not Player player) return;
+                    if (!hit.CheckToolTier(__instance.m_minToolTier)) return;
+                    if (hit.GetTotalDamage() < 1) return;
+                    int expMonster = DataMonsters.getExp(__instance.gameObject.name);
+                    LevelSystem.Instance.AddExp(expMonster);
+                
 
             }
         }
@@ -34,7 +39,9 @@ namespace EpicMMOSystem
         {
             private static void Postfix(MineRock __instance, HitData hit)
             {
-                if (__instance.m_health <= 0) return;
+                if (EpicMMOSystem.disableNonCombatObjects.Value) return;
+                if (EpicMMOSystem.debugNonCombatObjects.Value)
+                    EpicMMOSystem.MLLogger.LogWarning("MineRock name" + __instance.gameObject.name);
                 if (!DataMonsters.contains(__instance.gameObject.name)) return;
                 Character attacker = hit.GetAttacker();
                 if (attacker == null) return;
@@ -51,7 +58,9 @@ namespace EpicMMOSystem
         {
             private static void Postfix(MineRock5 __instance, HitData hit)
             {
-                if (__instance.m_health > 0) return;
+                if (EpicMMOSystem.disableNonCombatObjects.Value) return;
+                if (EpicMMOSystem.debugNonCombatObjects.Value)
+                    EpicMMOSystem.MLLogger.LogWarning("MineRock5 name" + __instance.gameObject.name);
                 if (!DataMonsters.contains(__instance.gameObject.name)) return;
                 Character attacker = hit.GetAttacker();
                 if (attacker == null) return;
@@ -60,15 +69,55 @@ namespace EpicMMOSystem
                 if (hit.GetTotalDamage() < 1) return;
                 int expMonster = DataMonsters.getExp(__instance.gameObject.name);
                 LevelSystem.Instance.AddExp(expMonster);
+            }
+        }
+        internal static Dictionary<PlayerStatType, int> SeeifDied = new() { }; // 0 is default // 1 is active checking // 2 is playerstat was set
+        [HarmonyPatch(typeof(Game), nameof(Game.IncrementPlayerStat))]
+        private static class CheckPlayerStats
+        {
+            private static void Postfix(PlayerStatType stat)
+            {
+                if (SeeifDied.ContainsKey(stat))
+                {
+                    switch (stat)
+                    {
+                        case PlayerStatType.Logs:
+                            if (SeeifDied[PlayerStatType.Logs] == 1) SeeifDied[PlayerStatType.Logs] = 2;
+                            break;
+                        case PlayerStatType.Tree:
+                            if (SeeifDied[PlayerStatType.Tree] == 1) SeeifDied[PlayerStatType.Tree] = 2;
+                            break;
+                            
+                        case PlayerStatType.LogChops:
+                            if (SeeifDied[PlayerStatType.LogChops] == 1) SeeifDied[PlayerStatType.LogChops] = 2;
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
             }
         }
 
         [HarmonyPatch(typeof(TreeBase), nameof(TreeBase.RPC_Damage))]
         private static class TreeBase_dmg_patch
         {
+           private static void Prefix()
+            {
+                    SeeifDied[PlayerStatType.Tree] = 1;
+            }
             private static void Postfix(TreeBase __instance, HitData hit)
             {
-                if (__instance.m_health <= 0) return;
+                if (EpicMMOSystem.disableNonCombatObjects.Value) return;
+                if (EpicMMOSystem.debugNonCombatObjects.Value)
+                    EpicMMOSystem.MLLogger.LogWarning("Treebase name" + __instance.gameObject.name );
+                    if (SeeifDied[PlayerStatType.Tree] == 1)
+                    {
+                        SeeifDied[PlayerStatType.Tree] = 0;
+                        return;
+                    }
+                    SeeifDied[PlayerStatType.Tree] = 0;
+
                 if (!DataMonsters.contains(__instance.gameObject.name)) return;
                 Character attacker = hit.GetAttacker();
                 if (attacker == null) return;
@@ -80,12 +129,27 @@ namespace EpicMMOSystem
             }
         }
 
-        [HarmonyPatch(typeof(TreeLog), nameof(TreeLog.RPC_Damage))]
+        [HarmonyPatch(typeof(TreeLog), nameof(TreeLog.RPC_Damage))] // TreeLog has a destroy
         private static class TreeLog_dmg_patch
         {
+            private static void Prefix()
+            {
+                SeeifDied[PlayerStatType.Logs] = 1;
+                SeeifDied[PlayerStatType.LogChops] = 1;
+            }
             private static void Postfix(TreeLog __instance, HitData hit)
             {
-                if (__instance.m_health <= 0) return;
+                if (EpicMMOSystem.disableNonCombatObjects.Value) return;
+                if (!__instance.m_nview.IsOwner()) return;
+                if (EpicMMOSystem.debugNonCombatObjects.Value)        
+                    EpicMMOSystem.MLLogger.LogWarning("TreeLog name" + __instance.gameObject.name);
+                /*if (SeeifDied[PlayerStatType.Logs] == 1 || SeeifDied[PlayerStatType.LogChops] == 1)
+                {
+                    SeeifDied[PlayerStatType.LogChops] = 0;
+                    return;
+                }
+                SeeifDied[PlayerStatType.LogChops] = 0;
+                SeeifDied[PlayerStatType.Logs] = 0; */
                 if (!DataMonsters.contains(__instance.gameObject.name)) return;
                 var attacker = hit.GetAttacker();
                 if (attacker == null) return;
@@ -95,6 +159,7 @@ namespace EpicMMOSystem
                 int expMonster = DataMonsters.getExp(__instance.gameObject.name);
                 LevelSystem.Instance.AddExp(expMonster);
             }
+            
         }
 
         [HarmonyPatch(typeof(Tameable), nameof(Tameable.Tame))]
@@ -110,14 +175,18 @@ namespace EpicMMOSystem
                 LevelSystem.Instance.AddExp(expMonster* EpicMMOSystem.MultiplierForXPTaming.Value);
             }
         }
-        [HarmonyPatch(typeof(Player), nameof(Player.PlacePiece))]
-        private static class Player_placepiece_patch_epicmmo
+
+        [HarmonyPatch(typeof(Player), nameof(Player.PlacePiece))]      
+        private static class Player_placepiece_patch_epicmmoA
         {
             private static void Postfix(Player __instance, Piece piece, ref bool __result)
             {
-                if (!piece.m_cultivatedGroundOnly || !__result) return;
-                if (!DataMonsters.contains(__instance.gameObject.name)) return;
-                int expMonster = DataMonsters.getExp(__instance.gameObject.name);
+                if (EpicMMOSystem.disableNonCombatObjects.Value) return;            
+                if (EpicMMOSystem.debugNonCombatObjects.Value)
+                    EpicMMOSystem.MLLogger.LogWarning("piece name" + piece.name);
+                 if( !__result) return;
+                if (!DataMonsters.contains(piece.name+ "(Clone)")) return;  
+                int expMonster = DataMonsters.getExp(piece.name + "(Clone)");
                 LevelSystem.Instance.AddExp(expMonster);
             }
         }
@@ -127,8 +196,11 @@ namespace EpicMMOSystem
         {
             private static void Postfix(Fish __instance)
             {
-                if (!__instance) return;
+                if (EpicMMOSystem.disableNonCombatObjects.Value) return;
+               // if (!__instance) return;
                 if (__instance.m_fishingFloat == null) return;
+                if (EpicMMOSystem.debugNonCombatObjects.Value)
+                    EpicMMOSystem.MLLogger.LogWarning("fish name" + __instance.gameObject.name);
                 if (!DataMonsters.contains(__instance.gameObject.name)) return;
                 Character owner = __instance.m_fishingFloat.GetOwner();
                 if (owner == null) return;
@@ -142,7 +214,6 @@ namespace EpicMMOSystem
                 var playerExp = exp;
                 LevelSystem.Instance.AddExp(playerExp);
             }
-        }
-        
+        }       
     }
 }

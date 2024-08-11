@@ -225,6 +225,7 @@ public partial class LevelSystem
     
     public int getParameter(Parameter parameter)
     {
+        
         if (!Player.m_localPlayer) return 0;
         if (!Player.m_localPlayer.m_knownTexts.ContainsKey($"{pluginKey}_{midleKey}_{parameter.ToString()}"))
         {
@@ -232,6 +233,7 @@ public partial class LevelSystem
         }
         int value = int.Parse(Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_{parameter.ToString()}"]);
         //int max = EpicMMOSystem.maxValueAttribute.Value;
+        //EpicMMOSystem.MLLogger.LogWarning(parameter.ToString() + " level " + value); // strength is going off like 8 times every second
 
         int max = parameter.ToString() switch 
         {
@@ -436,14 +438,14 @@ public partial class LevelSystem
     public void applyDepositPoints()
     {
         for (int i = 0; i < depositPoint.Length; i++)
-        {
-            var freePoint = getFreePoints();
-            if (!(freePoint > 0)) return;
-            if (depositPoint[i] == 0) continue;
-            
+        {        
+            //var freePoint = getFreePoints();
+            //EpicMMOSystem.MLLogger.LogWarning("About to add points , free left" + freePoint);
+             //if (!(freePoint > 0)) return; free points have already been alloc at this point from deposit
+            if (depositPoint[i] == 0) continue;   
             var parameter = (Parameter)i;
             var deposit = depositPoint[i];
-            var applyPoint = Mathf.Clamp(deposit, 1, freePoint);
+            var applyPoint = deposit;// Mathf.Clamp(deposit, 1, freePoint);
             var currentPoint = getParameter(parameter);
             setParameter(parameter, currentPoint + applyPoint);
             depositPoint[i] = 0;
