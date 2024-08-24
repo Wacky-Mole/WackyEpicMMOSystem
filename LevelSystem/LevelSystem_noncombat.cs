@@ -16,7 +16,7 @@ namespace EpicMMOSystem
         {
             private static void Postfix(Destructible __instance, HitData hit)
             {
-                if (EpicMMOSystem.disableNonCombatObjects.Value) return;
+                if (EpicMMOSystem.disableNonCombatObjects.Value || EpicMMOSystem.disableDestructablesXP.Value) return;
                 if (!__instance.m_nview.IsOwner()) return;
                 if (EpicMMOSystem.debugNonCombatObjects.Value)
                     EpicMMOSystem.MLLogger.LogWarning("Destructible name" + __instance.gameObject.name);
@@ -41,7 +41,7 @@ namespace EpicMMOSystem
             private static void Postfix(Pickable __instance)
             {
 
-                if (EpicMMOSystem.disableNonCombatObjects.Value) return;
+                if (EpicMMOSystem.disableNonCombatObjects.Value || EpicMMOSystem.disableMiningXP.Value) return;
                 if (EpicMMOSystem.debugNonCombatObjects.Value)
                     EpicMMOSystem.MLLogger.LogWarning("pickable name" + __instance.name);
 
@@ -58,7 +58,7 @@ namespace EpicMMOSystem
         {
             private static void Postfix(MineRock __instance, HitData hit)
             {
-                if (EpicMMOSystem.disableNonCombatObjects.Value) return;
+                if (EpicMMOSystem.disableNonCombatObjects.Value || EpicMMOSystem.disableMiningXP.Value) return;
                 if (EpicMMOSystem.debugNonCombatObjects.Value)
                     EpicMMOSystem.MLLogger.LogWarning("MineRock name" + __instance.gameObject.name);
                 if (!DataMonsters.contains(__instance.gameObject.name)) return;
@@ -77,7 +77,7 @@ namespace EpicMMOSystem
         {
             private static void Postfix(MineRock5 __instance, HitData hit)
             {
-                if (EpicMMOSystem.disableNonCombatObjects.Value) return;
+                if (EpicMMOSystem.disableNonCombatObjects.Value || EpicMMOSystem.disableMiningXP.Value) return;
                 if (EpicMMOSystem.debugNonCombatObjects.Value)
                     EpicMMOSystem.MLLogger.LogWarning("MineRock5 name" + __instance.gameObject.name);
                 if (!DataMonsters.contains(__instance.gameObject.name)) return;
@@ -127,7 +127,7 @@ namespace EpicMMOSystem
             }
             private static void Postfix(TreeBase __instance, HitData hit)
             {
-                if (EpicMMOSystem.disableNonCombatObjects.Value) return;
+                if (EpicMMOSystem.disableNonCombatObjects.Value || EpicMMOSystem.disableTreeXP.Value) return;
                 if (EpicMMOSystem.debugNonCombatObjects.Value)
                     EpicMMOSystem.MLLogger.LogWarning("Treebase name" + __instance.gameObject.name);
                 if (SeeifDied[PlayerStatType.Tree] == 1)
@@ -158,7 +158,7 @@ namespace EpicMMOSystem
             }
             private static void Postfix(TreeLog __instance, HitData hit)
             {
-                if (EpicMMOSystem.disableNonCombatObjects.Value) return;
+                if (EpicMMOSystem.disableNonCombatObjects.Value || EpicMMOSystem.disableTreeXP.Value) return;
                 if (!__instance.m_nview.IsOwner()) return;
                 if (EpicMMOSystem.debugNonCombatObjects.Value)
                     EpicMMOSystem.MLLogger.LogWarning("TreeLog name" + __instance.gameObject.name);
@@ -186,7 +186,8 @@ namespace EpicMMOSystem
         {
             private static void Postfix(Tameable __instance)
             {
-                if (!__instance.m_nview.IsOwner()) return;
+                if (!__instance.m_nview.IsOwner() || EpicMMOSystem.disableTameXP.Value) return;
+                
                 if (!DataMonsters.contains(__instance.gameObject.name)) return;
                 Player closestPlayer = Player.GetClosestPlayer(__instance.transform.position, 30f);
                 if (!closestPlayer) return;
@@ -201,7 +202,7 @@ namespace EpicMMOSystem
         {
             private static void Postfix(Player __instance, Piece piece, ref bool __result)
             {
-                if (EpicMMOSystem.disableNonCombatObjects.Value) return;
+                if (EpicMMOSystem.disableNonCombatObjects.Value || EpicMMOSystem.disablePieceXP.Value) return;
                 if (piece.m_cultivatedGroundOnly)
                 {
                     if (EpicMMOSystem.debugNonCombatObjects.Value)
@@ -257,7 +258,7 @@ namespace EpicMMOSystem
         {
             private static void Postfix(Fish __instance, Humanoid character, bool repeat, bool alt)
             {
-                if (EpicMMOSystem.disableNonCombatObjects.Value) return;
+                if (EpicMMOSystem.disableNonCombatObjects.Value || EpicMMOSystem.disableFishPickupXP.Value) return;
                 if (!__instance) return;
 
                 if (repeat)

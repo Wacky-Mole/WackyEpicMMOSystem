@@ -1,5 +1,5 @@
 # Description:
-This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.20
+This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.21
 
 
 Support me!
@@ -133,7 +133,7 @@ You can combine multiple Skills for one Requirement
 
 	A file called Version.txt is created in the folder. It contains the mod version that was used to create it. Replace it with "NO" to stop it from overwritting on a future update.
 
-	Latest Update for Jsons config is <b> 1.9.20 </b>(Number will be updated when Jsons recieve an update)
+	Latest Update for Jsons config is <b> 1.9.21 </b>(Number will be updated when Jsons recieve an update)
 
 </details>
 

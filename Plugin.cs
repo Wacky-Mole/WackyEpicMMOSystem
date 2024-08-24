@@ -110,8 +110,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     public static ConfigEntry<int> maxValueSpecializing; 
     public static ConfigEntry<bool> altLevelUpSound; 
     public static ConfigEntry<bool> debugNonCombatObjects; 
-    public static ConfigEntry<bool> disableNonCombatObjects; 
-    public static ConfigEntry<int> MultiplierForXPTaming; 
+ 
 
 
 
@@ -233,6 +232,20 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     public static ConfigEntry<int> OrdDropMaxAmountFromBoss;
     public static ConfigEntry<bool> UseRegFerm;
 
+    // Non Combat
+    public static ConfigEntry<bool> disableNonCombatObjects;
+    public static ConfigEntry<int> MultiplierForXPTaming;
+    public static ConfigEntry<bool> disablePieceXP;
+    public static ConfigEntry<bool> disableTameXP;
+    public static ConfigEntry<bool> disableFishPickupXP;
+    public static ConfigEntry<bool> disableMiningXP;
+    public static ConfigEntry<bool> disablePickableXP;
+    public static ConfigEntry<bool> disableTreeXP;
+    public static ConfigEntry<bool> disableDestructablesXP;
+
+
+
+
 
 
 
@@ -278,8 +291,8 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         maxValueSpecializing = config(levelSystem, "maxValueSpecializing", 200, "Maximum number of points you can put into Specializing");
         MultiplierForXPTaming = config(levelSystem, "Taming XP Multiplier", 5, "You get normal xp amount, times this number for taming a creature");
         altLevelUpSound = config(levelSystem, "altLevelUpSound", false, "It's Loud and Heart attack inducing");
-        debugNonCombatObjects = config(levelSystem, "Debug NonCombat Objects", false, "Gives a Warning log for various objects names. Don't forgot that (Clone) is added to everything in the jsons.", false);
-        disableNonCombatObjects = config(levelSystem, "Disable NonCombat XP", false, "Disables non combat XP except for tames, but that can be done with the multiplier.");
+
+
 
 
         #region ParameterCofig
@@ -368,6 +381,19 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         OrbDropChancefromBoss = config(OrbandPotion, "Ord Drop Boss", 100f, "Drop Chance for Orbs to drop from a boss - default 100%");
         OrdDropMaxAmountFromBoss = config(OrbandPotion, "Orb Boss Max Amount", 3, "Max Amount of Orbs to drop from Boss if any orbs drop. So there is a chance 1-3 will drop on default");
         UseRegFerm = config(OrbandPotion, "Use Regular Fermentor", false, "For the people that can't handle a little fireworks in their bases, you can use the regular fermentor instead.");
+
+        string NonCombat = "7.Non Combat XP------";
+
+        disableNonCombatObjects = config(NonCombat, "Disable NonCombat XP", false, "Disables non combat XP except for tames, but that can be done with the multiplier.");
+        disablePieceXP = config(NonCombat, "Disable Piece XP", false, "Disables Piece XP. You only get xp for once per building, then you have to change to another piece. It still could be abused.");
+        disableTameXP = config(NonCombat, "Disable Tame XP", false, "Disables XP for tames.");
+        disableFishPickupXP = config(NonCombat, "Disable Fish Pickup XP", false, "Disable Fish pickup XP, you still get xp for catching fish.");
+        disableMiningXP = config(NonCombat, "Disable Mining XP", false, "Disable XP for mining.");
+        disablePickableXP = config(NonCombat, "Disable Pickup XP", false, "Disable XP for pickables.");
+        disableTreeXP = config(NonCombat, "Disable Tree XP", false, "Disable XP for Chopping Trees.");
+        disableDestructablesXP = config(NonCombat, "Disable Destructables XP", false, "Disable XP Destructables.");
+        debugNonCombatObjects = config(levelSystem, "Debug NonCombat Objects", false, "Gives a Warning log for various objects names. Don't forgot that (Clone) is added to everything in the jsons.", false);
+
 
         Localizer.AddPlaceholder("mmoxpdrink1_description", "power1", XPforMinorPotion, power1 => ((power1 -1)*100).ToString());
         Localizer.AddPlaceholder("mmoxpdrink2_description", "power2", XPforMediumPotion, power2 => ((power2 - 1) * 100).ToString());

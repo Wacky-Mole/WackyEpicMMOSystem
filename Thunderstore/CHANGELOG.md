@@ -1,3 +1,5 @@
+| 1.9.21 | - Update NonCombat json
+
 | 1.9.20 | - Bug fix for previous update. </br> Adding NonCombat XP. - Mining, Tree Cutting, Fishing(maybe works), Taming, Building. First rollout so... bugs. XP is pretty low for testing. Added 'Disable NonCombat XP' if you don't want the wacky experience.
 
 | 1.9.19 | - Bug fixes for pending points that haven't been accepted. </br>Added Taming XP Multiplier for XP on taming creatures.
