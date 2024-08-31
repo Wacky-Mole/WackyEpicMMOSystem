@@ -1,4 +1,4 @@
-| 1.9.21 | - Update NonCombat json
+| 1.9.21 | - Update NonCombat json. </br> Added new section for Non combat stuff. Pretty much everything can be turned off individually. </br> Tried to make it so building is not easy xp gain. You have to change which piece is built to get xp. Only portal_wood and guard_stone in json, but you can make your own jsons for build pieces. 
 
 | 1.9.20 | - Bug fix for previous update. </br> Adding NonCombat XP. - Mining, Tree Cutting, Fishing(maybe works), Taming, Building. First rollout so... bugs. XP is pretty low for testing. Added 'Disable NonCombat XP' if you don't want the wacky experience.
 

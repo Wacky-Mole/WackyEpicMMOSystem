@@ -23,7 +23,7 @@ Features:
 
 <details><summary>Attributes</summary>
 
-	Strength: Physical Damage increase, Carry Weight Increase, Decreased **Black** Stamina Consumption, Critical Damage
+	Strength: Physical Damage increase, Carry Weight Increase, Decreased Stamina Consumption, Critical Damage
 
 	Dexterity: Player Attack/Usage Speed**%,**  Stamina consumption (running, jumping) decreased,
 

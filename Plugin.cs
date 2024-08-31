@@ -384,7 +384,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
 
         string NonCombat = "7.Non Combat XP------";
 
-        disableNonCombatObjects = config(NonCombat, "Disable NonCombat XP", false, "Disables non combat XP except for tames, but that can be done with the multiplier.");
+        disableNonCombatObjects = config(NonCombat, "1.Disable All NonCombat XP", false, "Disables all non combat xp.");
         disablePieceXP = config(NonCombat, "Disable Piece XP", false, "Disables Piece XP. You only get xp for once per building, then you have to change to another piece. It still could be abused.");
         disableTameXP = config(NonCombat, "Disable Tame XP", false, "Disables XP for tames.");
         disableFishPickupXP = config(NonCombat, "Disable Fish Pickup XP", false, "Disable Fish pickup XP, you still get xp for catching fish.");
@@ -392,7 +392,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         disablePickableXP = config(NonCombat, "Disable Pickup XP", false, "Disable XP for pickables.");
         disableTreeXP = config(NonCombat, "Disable Tree XP", false, "Disable XP for Chopping Trees.");
         disableDestructablesXP = config(NonCombat, "Disable Destructables XP", false, "Disable XP Destructables.");
-        debugNonCombatObjects = config(levelSystem, "Debug NonCombat Objects", false, "Gives a Warning log for various objects names. Don't forgot that (Clone) is added to everything in the jsons.", false);
+        debugNonCombatObjects = config(NonCombat, "2.Debug NonCombat Objects", false, "Gives a Warning log for various objects names. Don't forgot that (Clone) is added to everything in the jsons.", false);
 
 
         Localizer.AddPlaceholder("mmoxpdrink1_description", "power1", XPforMinorPotion, power1 => ((power1 -1)*100).ToString());
