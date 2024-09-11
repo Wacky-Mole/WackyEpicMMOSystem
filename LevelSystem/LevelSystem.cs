@@ -355,7 +355,7 @@ public partial class LevelSystem
         {
             if (exp == -2)
             {
-                Util.FloatingText($"No XP for red/blue creatures :( ");
+                Util.FloatingText(EpicMMOSystem.noExpPastLVLPopup.Value);
             }
             return;
         }

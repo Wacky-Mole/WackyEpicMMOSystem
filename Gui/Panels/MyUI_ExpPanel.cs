@@ -207,7 +207,7 @@ public partial class MyUI
             {
                 buildInfo.localPosition += new Vector3(0, 45, 0); // from 30
             }
-            EpicMMOSystem.MLLogger.LogWarning("Call Awake");
+            EpicMMOSystem.MLLogger.LogInfo("Call Awake");
         }
     }
     
