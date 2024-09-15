@@ -30,6 +30,7 @@ public static class DataMonsters
     private static Dictionary<string, Monster> dictionary = new();
     private static string MonsterDB = "";
     public static List<string> MonsterDBL;
+    public static string PlayerDBL;
     private static readonly Dictionary<Heightmap.Biome, GameObject> OrbsByBiomes = new(10);
     public static readonly Dictionary<GameObject, int> MagicOrbDictionary = new Dictionary<GameObject, int>(10);// thx KG
 
@@ -122,7 +123,7 @@ public static class DataMonsters
         */ // No need already loaded from list json
     }
 
-    private static void createNewDataMonsters(List<string> json)
+    public static void createNewDataMonsters(List<string> json)
     {
         dictionary.Clear();
 
@@ -139,10 +140,29 @@ public static class DataMonsters
                         EpicMMOSystem.MLLogger.LogInfo($"{monster.name}");
 
                     dictionary.Add($"{monster.name}(Clone)", monster);
-                }
-            
+                }            
         }
      
+    }
+
+    public static void createNewDataPlayer(string json)
+    {
+        dictionary.Clear();
+
+            if (EpicMMOSystem.extraDebug.Value)
+                EpicMMOSystem.MLLogger.LogInfo($"/n Json loading /n");
+
+            //var temp = JsonUtility.FromJson<Monster[]>(monster2);
+            var temp = (fastJSON.JSON.ToObject<Monster[]>(json));
+            foreach (var monster in temp)
+            {
+             string name = monster.name.ToUpper(); // players name always uppper
+                if (EpicMMOSystem.extraDebug.Value)
+                    EpicMMOSystem.MLLogger.LogInfo($"{name}");
+
+                dictionary.Add($"{name}", monster);
+            }       
+
     }
 
     public static void Init()
@@ -167,6 +187,9 @@ public static class DataMonsters
         var json14 = "MonsterDB_RtDMonsters.json";
         var json15 = "MonsterDB_Therzie.Wizardry.json";
         var json16 = "MonsterDB_NonCombat.json";
+
+
+
 
         if (!Directory.Exists(folderpath)){
             Directory.CreateDirectory(folderpath);
@@ -283,10 +306,18 @@ public static class DataMonsters
             if (EpicMMOSystem.extraDebug.Value)
                 EpicMMOSystem.MLLogger.LogInfo($"Mobs Jsons Written");
         }
+
+        if (!File.Exists(EpicMMOSystem.playerspath))
+        {
+            File.WriteAllText(EpicMMOSystem.playerspath, getDefaultJsonMonster(EpicMMOSystem.playerjson));
+        }
         List<string> list = new List<string>();
         foreach (string file in Directory.GetFiles(folderpath, "*.json", SearchOption.AllDirectories))
         { 
             var nam = Path.GetFileName(file);
+            if (nam == EpicMMOSystem.playerjson)
+                continue;
+
             if (EpicMMOSystem.extraDebug.Value)
                 EpicMMOSystem.MLLogger.LogInfo(nam + " read");
 
@@ -297,6 +328,13 @@ public static class DataMonsters
         }
         if (EpicMMOSystem.extraDebug.Value)
             EpicMMOSystem.MLLogger.LogInfo($"Mobs Read");
+
+
+        var players = File.ReadAllText(EpicMMOSystem.playerspath);
+        PlayerDBL = players;
+        createNewDataPlayer(players);        
+        if (EpicMMOSystem.extraDebug.Value)
+            EpicMMOSystem.MLLogger.LogInfo($"Player Read");
 
 
         MonsterDBL = list;
@@ -317,14 +355,52 @@ public static class DataMonsters
         }
     }
     
-    [HarmonyPatch(typeof(ZNetScene), nameof(ZNetScene.Awake))]
+    [HarmonyPatch(typeof(ZNetScene), nameof(ZNetScene.Awake))] // cleints
     private static class ZrouteMethodsServerFeedback
     {
         private static void Postfix()
         {
-            if (EpicMMOSystem._isServer) return;
-            ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} SetMonsterDB",
-                new Action<long, List<string>>(SetMonsterDB));
+            if (EpicMMOSystem._isServer)
+            {
+                ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} ReloadJsons",
+                 new Action<long, bool>(ReloadJsons));
+                return;
+            }
+            else
+            {
+                ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} SetMonsterDB",
+                    new Action<long, List<string>>(SetMonsterDB));                
+                
+                ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} UpdatePlayerDB",
+                    new Action<long, List<string>>(SetMonsterDB));
+            }
+        }
+    }
+    public static void ReloadJsons(long peer, bool reload)
+    {
+        List<string> list = new List<string>();
+        foreach (string file in Directory.GetFiles(EpicMMOSystem.folderpath, "*.json", SearchOption.AllDirectories))
+        {
+            var nam = Path.GetFileName(file);
+            if (EpicMMOSystem.extraDebug.Value)
+                EpicMMOSystem.MLLogger.LogInfo(nam + " read");
+
+            var temp = File.ReadAllText(file);
+            list.Add(temp);
+
+        }
+        if (EpicMMOSystem.extraDebug.Value)
+            EpicMMOSystem.MLLogger.LogInfo($"Mobs Updated on Server");
+
+        DataMonsters.MonsterDBL = list;
+
+        createNewDataMonsters(list); // could update coop
+
+        List<ZNetPeer> peers2 = ZNet.instance.GetPeers();
+        foreach (var peer1 in peers2)
+        {
+            if (peer1 == null) return;
+            ZRoutedRpc.instance.InvokeRoutedRPC(peer1.m_uid, $"{EpicMMOSystem.ModName} SetMonsterDB", MonsterDBL); //sync list
         }
     }
 
@@ -336,7 +412,7 @@ public static class DataMonsters
     [HarmonyPatch(typeof(ZNet), "RPC_PeerInfo")]
     private static class ZnetSyncServerInfo
     {
-        private static void Postfix(ZRpc rpc)
+        private static void Postfix(ZRpc rpc) // for server
         {
             if (!EpicMMOSystem._isServer) return; // doesn't work on Coop
             //if (!(ZNet.instance.IsServer() && ZNet.instance.IsDedicated())) return;
@@ -380,6 +456,8 @@ public static class DataMonsters
         public static void Postfix(EnemyHud __instance, Character c, Dictionary<Character, EnemyHud.HudData> ___m_huds, bool __state)
         {
             try { if (c.m_tamed) return; } catch { } // might remove this in future so tames can give xp ect
+
+            //if (___m_huds)
             if (!EpicMMOSystem.enabledLevelControl.Value) return;
             if (!contains(c.gameObject.name)) return;
             Transform go = ___m_huds[c].m_gui.transform.Find("Name/Name(Clone)");
@@ -430,14 +508,39 @@ public static class DataMonsters
             {
                 if (___m_huds == null) return;
                 //if (EpicMMOSystem.CLLCLoaded) return;
-                if (!EpicMMOSystem.enabledLevelControl.Value) return;
+       
                 foreach (KeyValuePair<Character, EnemyHud.HudData> keyValuePair in ___m_huds)
                 {
+                    if (keyValuePair.Key.IsPlayer())
+                    {
+                        int level = 1;
+                        if (contains(keyValuePair.Key.GetHoverName())) // Player(Clone)
+                        {
+                            //EpicMMOSystem.MLLogger.LogWarning("Name is " + keyValuePair.Key.GetHoverName());
+                             level = getLevel(keyValuePair.Key.GetHoverName());
+
+                        }
+                        int maxLevelExp = LevelSystem.Instance.getLevel() + EpicMMOSystem.maxLevelExp.Value;
+                        int minLevelExp = LevelSystem.Instance.getLevel() - EpicMMOSystem.minLevelExp.Value;
+                        int monsterLevel = level;
+                        Color color = monsterLevel > maxLevelExp ? Color.red : Color.white;
+                        if (monsterLevel < minLevelExp) color = Color.cyan;
+
+                        GameObject component = keyValuePair.Value.m_gui.transform.Find("Name").gameObject;
+                        //component.GetComponent<TextMeshProUGUI>().color = color;
+                        component.GetComponent<TextMeshProUGUI>().text = $"({level}) " + keyValuePair.Key.GetHoverName();
+                                             
+                    }
+
+                    if (!EpicMMOSystem.enabledLevelControl.Value) continue;
+
                     Character key = keyValuePair.Key;
                     if (key.IsTamed()) return;
                     if (key != null && keyValuePair.Value.m_gui)
                     {
                         if (!contains(key.gameObject.name)) return;
+
+                        //key.IsPlayer();
                         int maxLevelExp = LevelSystem.Instance.getLevel() + EpicMMOSystem.maxLevelExp.Value;
                         int minLevelExp = LevelSystem.Instance.getLevel() - EpicMMOSystem.minLevelExp.Value;
                         int monsterLevel = getLevel(key.gameObject.name) + key.m_level - 1;
