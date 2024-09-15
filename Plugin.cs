@@ -37,7 +37,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.23";
+    internal const string VERSION = "1.9.22";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -56,11 +56,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     { DisplayName = ModName, CurrentVersion = VERSION, MinimumRequiredVersion = VERSION };
 
     public static AssetBundle _asset;
-    public static string folderpath = Path.Combine(Paths.ConfigPath, EpicMMOSystem.ModName);
-
-
-    public static string playerjson = "Players.json";
-    public static string playerspath = Path.Combine(Paths.ConfigPath, EpicMMOSystem.ModName, playerjson);
+    private string folderpath = Path.Combine(Paths.ConfigPath, EpicMMOSystem.ModName);
 
     internal static EpicMMOSystem Instance;
     public static bool CLLCLoaded = false;
@@ -699,7 +695,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     {
         if (NetisActive)
         {
-            if (ZNet.instance.IsServer() ) // only server
+            if (ZNet.instance.IsServer() && ZNet.instance.IsDedicated()) // only dedicated
             {
                 List<string> list = new List<string>();
                 foreach (string file in Directory.GetFiles(folderpath, "*.json", SearchOption.AllDirectories))
@@ -712,12 +708,10 @@ public partial class EpicMMOSystem : BaseUnityPlugin
                     list.Add(temp);
 
                 }
-                DataMonsters.MonsterDBL = list;
-                DataMonsters.createNewDataMonsters(list); // for coop and singleplayer
-
                 if (EpicMMOSystem.extraDebug.Value)
                     EpicMMOSystem.MLLogger.LogInfo($"Mobs Updated on Server");
 
+                DataMonsters.MonsterDBL = list;
                 List<ZNetPeer> peers = ZNet.instance.GetPeers();
                 foreach (var peer in peers)
                 {
