@@ -1,6 +1,6 @@
 {
     "name": "WackyEpicMMOSystem",
-    "version_number": "1.9.22",
+    "version_number": "1.9.23",
     "website_url": "https://github.com/Wacky-Mole/WackyEpicMMOSystem",
     "description": "Adds to your Valheim world a system of levels and distribution of characteristics",
     "dependencies": [

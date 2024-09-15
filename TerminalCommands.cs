@@ -134,14 +134,24 @@ public static class TerminalCommands
                                 EpicMMOSystem.print("Player is not found");
                             }
                             ZRoutedRpc.instance.InvokeRoutedRPC(userId ?? 200, $"{modName} terminal_Recalc");
+                        }                        
+                        else if (args[1] == "update")
+                        {
+
+                            ZNetPeer peer = ZNet.instance.GetServerPeer();
+                            if (peer == null) return;
+
+                            ZRoutedRpc.instance.InvokeRoutedRPC(peer.m_uid, $"{EpicMMOSystem.ModName} ReloadJsons", true); //sync list
+                            
                         }
 
                         args.Context.AddString("level [value] [name] - set level for player name");
                         args.Context.AddString("reset_points [name] - reset points from attribute for player name");
                         args.Context.AddString("recalc [name] - recalc level for player name based on total gained XP");
+                        args.Context.AddString("update - Updates the Json and pushes to all clients");
                     }),
                 optionsFetcher: () => new List<string>
-                    { "level", "reset_points", "recalc" });
+                    { "level", "reset_points", "recalc", "update" });
         }
     }
 }
