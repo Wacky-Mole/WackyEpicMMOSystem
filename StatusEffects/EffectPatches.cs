@@ -8,13 +8,15 @@ namespace EpicMMOSystem.StatusEffects;
 
 public static class EffectPatches
 {
-
+    [HarmonyPriority(Priority.Low)]
     [HarmonyPatch(typeof(Player), "ConsumeItem")]
     public static class ConsumeMMOXP
     {
-        public static void Prefix(ItemDrop.ItemData item)
+        public static void Postfix(ItemDrop.ItemData item, ref bool __result)
         {
             //EpicMMOSystem.MLLogger.LogInfo("Player Consume "  );
+            if (!__result)
+                return;
             if (!Player.m_localPlayer.m_seman.HaveStatusEffect("MMO_XP".GetStableHashCode()))
             {
 

@@ -127,41 +127,51 @@ public static class DataMonsters
     {
         dictionary.Clear();
 
-            foreach (var monster2 in json)
+        foreach (var monster2 in json)
+        {
+        if (EpicMMOSystem.extraDebug.Value)
+            EpicMMOSystem.MLLogger.LogInfo($"/n Json loading /n");
+
+            //var temp = JsonUtility.FromJson<Monster[]>(monster2);
+            var temp = (fastJSON.JSON.ToObject<Monster[]>(monster2));
+            foreach (var monster in temp)
             {
-            if (EpicMMOSystem.extraDebug.Value)
-                EpicMMOSystem.MLLogger.LogInfo($"/n Json loading /n");
+                if (EpicMMOSystem.extraDebug.Value)
+                    EpicMMOSystem.MLLogger.LogInfo($"{monster.name}");
 
-                //var temp = JsonUtility.FromJson<Monster[]>(monster2);
-                var temp = (fastJSON.JSON.ToObject<Monster[]>(monster2));
-                foreach (var monster in temp)
+                if (dictionary.ContainsKey(monster.name + "(Clone)"))
                 {
-                    if (EpicMMOSystem.extraDebug.Value)
-                        EpicMMOSystem.MLLogger.LogInfo($"{monster.name}");
-
+                    EpicMMOSystem.MLLogger.LogWarning($"{monster.name} is already entered");
+                }
+                else
                     dictionary.Add($"{monster.name}(Clone)", monster);
-                }            
-        }
+            }            
+        }   
      
     }
 
-    public static void createNewDataPlayer(string json)
+    public static void createUpdateDataPlayer(List<string> json)
     {
-        dictionary.Clear();
-
+        if (EpicMMOSystem.extraDebug.Value)
+            EpicMMOSystem.MLLogger.LogInfo($"/n Player json Updating /n");
+        var json2 = json[0];
+        //var temp = JsonUtility.FromJson<Monster[]>(monster2);
+        var temp = (fastJSON.JSON.ToObject<Monster[]>(json2));
+        foreach (var monster in temp)
+        {
+            string name = monster.name.ToUpper(); // players name always uppper
             if (EpicMMOSystem.extraDebug.Value)
-                EpicMMOSystem.MLLogger.LogInfo($"/n Json loading /n");
+                EpicMMOSystem.MLLogger.LogInfo($"{name}");
 
-            //var temp = JsonUtility.FromJson<Monster[]>(monster2);
-            var temp = (fastJSON.JSON.ToObject<Monster[]>(json));
-            foreach (var monster in temp)
+
+            if (dictionary.ContainsKey(name))
             {
-             string name = monster.name.ToUpper(); // players name always uppper
-                if (EpicMMOSystem.extraDebug.Value)
-                    EpicMMOSystem.MLLogger.LogInfo($"{name}");
-
+                    dictionary[name] = monster;
+            }
+            else
                 dictionary.Add($"{name}", monster);
-            }       
+
+        }       
 
     }
 
@@ -332,7 +342,9 @@ public static class DataMonsters
 
         var players = File.ReadAllText(EpicMMOSystem.playerspath);
         PlayerDBL = players;
-        createNewDataPlayer(players);        
+        List<string> playerslist = new List<string>();
+        playerslist.Add(players);
+        createUpdateDataPlayer(playerslist);        
         if (EpicMMOSystem.extraDebug.Value)
             EpicMMOSystem.MLLogger.LogInfo($"Player Read");
 
@@ -355,7 +367,7 @@ public static class DataMonsters
         }
     }
     
-    [HarmonyPatch(typeof(ZNetScene), nameof(ZNetScene.Awake))] // cleints
+    [HarmonyPatch(typeof(ZNetScene), nameof(ZNetScene.Awake))] // clients
     private static class ZrouteMethodsServerFeedback
     {
         private static void Postfix()
@@ -372,7 +384,7 @@ public static class DataMonsters
                     new Action<long, List<string>>(SetMonsterDB));                
                 
                 ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} UpdatePlayerDB",
-                    new Action<long, List<string>>(SetMonsterDB));
+                    new Action<long, List<string>>(UpdatePlayerDB));
             }
         }
     }
@@ -407,6 +419,11 @@ public static class DataMonsters
     public static void SetMonsterDB(long peer, List<string> json)
     {
         createNewDataMonsters(json);
+    }
+
+    public static void UpdatePlayerDB(long peer, List<string> json)
+    {
+        createUpdateDataPlayer(json);
     }
 
     [HarmonyPatch(typeof(ZNet), "RPC_PeerInfo")]

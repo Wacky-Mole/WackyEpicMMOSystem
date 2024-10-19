@@ -1,3 +1,5 @@
+| 1.9.23 | - Fixed exploit with Orbs - reported by ErDu from HIJOS DE FREYJA. </br> Added PVP XP
+
 | 1.9.22 | - Added Config for noExpPastLVLPopup message when being a jerk admin.
 
 | 1.9.21 | - Update NonCombat json. </br> Added new section for Non combat stuff. Pretty much everything can be turned off individually. </br> Tried to make it so building is not easy xp gain. You have to change which piece is built to get xp. Only portal_wood and guard_stone in json, but you can make your own jsons for build pieces. 
