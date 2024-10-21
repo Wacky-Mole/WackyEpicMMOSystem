@@ -376,7 +376,20 @@ public static class DataMonsters
             {
                 ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} ReloadJsons",
                  new Action<long, bool>(ReloadJsons));
-                return;
+
+
+                ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} PlayerDeath",
+                 new Action<long, string>(PlayerDeath));
+
+                ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} PlayerGainLevel",
+                 new Action<long, List<string>>(PlayerGainLevel));
+
+                ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} ReloadPlayerjsons",
+                new Action<long, string>(PlayerDeath));
+
+                ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} ClearPVPDailyXPGain",
+                new Action<long, string>(PlayerDeath));
+
             }
             else
             {
@@ -414,6 +427,15 @@ public static class DataMonsters
             if (peer1 == null) return;
             ZRoutedRpc.instance.InvokeRoutedRPC(peer1.m_uid, $"{EpicMMOSystem.ModName} SetMonsterDB", MonsterDBL); //sync list
         }
+    }
+
+    public static void PlayerDeath(long peer, string playerdead)
+    {
+
+    }    
+    public static void PlayerGainLevel(long peer, List<string> playerg)
+    {
+        // 0 is player // 1 is level
     }
 
     public static void SetMonsterDB(long peer, List<string> json)
@@ -545,7 +567,18 @@ public static class DataMonsters
 
                         GameObject component = keyValuePair.Value.m_gui.transform.Find("Name").gameObject;
                         //component.GetComponent<TextMeshProUGUI>().color = color;
-                        component.GetComponent<TextMeshProUGUI>().text = $"({level}) " + keyValuePair.Key.GetHoverName();
+                        string levelstring = "";
+                        string xpstring = "";
+                        int xpworth = level * EpicMMOSystem.xpPerLevelPVP.Value;
+                        if (EpicMMOSystem.displayPlayerXP.Value)
+                        {
+                            levelstring = "(" + level + ") ";
+                        }
+                        if (EpicMMOSystem.displayPlayerXP.Value)
+                        {
+                            xpstring = " [" + xpworth + "]";
+                        }
+                        component.GetComponent<TextMeshProUGUI>().text = levelstring + keyValuePair.Key.GetHoverName() + xpstring;
                                              
                     }
 

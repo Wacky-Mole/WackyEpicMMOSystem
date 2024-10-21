@@ -248,6 +248,15 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     public static ConfigEntry<bool> disableTreeXP;
     public static ConfigEntry<bool> disableDestructablesXP;
 
+    // PVP 
+    public static ConfigEntry<bool> displayPlayerLevel;
+    public static ConfigEntry<bool> displayPlayerXP;
+    public static ConfigEntry<bool> enablePVPXP;
+    public static ConfigEntry<int> xpPerLevelPVP;
+    public static ConfigEntry<int> xpPerDayNotDead;
+
+
+
 
 
 
@@ -399,6 +408,14 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         disableTreeXP = config(NonCombat, "Disable Tree XP", false, "Disable XP for Chopping Trees.");
         disableDestructablesXP = config(NonCombat, "Disable Destructables XP", false, "Disable XP Destructables.");
         debugNonCombatObjects = config(NonCombat, "2.Debug NonCombat Objects", false, "Gives a Warning log for various objects names. Don't forgot that (Clone) is added to everything in the jsons.", false);
+
+        string PVPCombat = "8.PVP Combat XP------";
+        displayPlayerLevel = config(PVPCombat, "Display Player Level", true, "Display Player Level Next to Name");
+        displayPlayerXP = config(PVPCombat, "Display Players XP Worth", true, "Display the current XP a player is worth next to Name");
+        enablePVPXP = config(PVPCombat, "Enable PVP XP", true, "Enable PVP XP, victor gets XP of fallen player");
+        xpPerLevelPVP = config(PVPCombat, "XP Player baseline Per Level", 50, "How Much XP is a player worth on defeat by another player per level");
+        xpPerDayNotDead = config(PVPCombat, "XP Player Gains Daily for no Deaths", 10, "How extra a player is worth if they haven't died, per day.");
+
 
 
         Localizer.AddPlaceholder("mmoxpdrink1_description", "power1", XPforMinorPotion, power1 => ((power1 -1)*100).ToString());
