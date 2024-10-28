@@ -296,14 +296,14 @@ public static class MonsterDeath_Path
                 var pkg = new ZPackage();
                 pkg.Write(__instance.gameObject.name);
 
-                if (__instance.gameObject.name == "Player(Clone)")
+                if (__instance.gameObject.name == "Player(Clone)" && (!DataMonsters.contains(__instance.name)))
                 {
                     if (!EpicMMOSystem.enablePVPXP.Value) return;
                     Player player = __instance as Player;
                     if (player != null)
                     {
                         string playerName = player.GetPlayerName();
-                        EpicMMOSystem.MLLogger.LogWarning("Player was killed pvp" + playerName);
+                        EpicMMOSystem.MLLogger.LogWarning("Player was killed pvp " + playerName);
                         var zdopla = player.m_nview.GetZDO();
                         int daysalive = zdopla.GetInt(EpicMMOSystem.ModName + EpicMMOSystem.PlayerAliveString, -1);
                         if (daysalive == -1)
@@ -344,14 +344,14 @@ public static class MonsterDeath_Path
                 if (CharacterLastDamageList.ContainsKey(__instance)) {
                     var pkg = new ZPackage();
                     pkg.Write(__instance.gameObject.name);
-                    if (__instance.gameObject.name == "Player(Clone)")
+                    if (__instance.gameObject.name == "Player(Clone)" && (!DataMonsters.contains(__instance.name)))
                     {
                         if (!EpicMMOSystem.enablePVPXP.Value) return;
                         Player player = __instance as Player;
                         if (player != null)
                         {
                             string playerName = player.GetPlayerName();
-                            EpicMMOSystem.MLLogger.LogWarning("Player was killed pvp" + playerName);
+                            EpicMMOSystem.MLLogger.LogWarning("Player was killed pvp " + playerName);
                             var zdopla = player.m_nview.GetZDO();
                             int daysalive = zdopla.GetInt(EpicMMOSystem.ModName + EpicMMOSystem.PlayerAliveString, -1);
                             if (daysalive == -1)
