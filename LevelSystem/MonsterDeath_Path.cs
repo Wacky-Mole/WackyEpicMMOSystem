@@ -298,8 +298,8 @@ public static class MonsterDeath_Path
 
                 if (__instance.gameObject.name == "Player(Clone)")
                 {
+                    if (!EpicMMOSystem.enablePVPXP.Value) return;
                     Player player = __instance as Player;
-
                     if (player != null)
                     {
                         string playerName = player.GetPlayerName();
@@ -346,6 +346,7 @@ public static class MonsterDeath_Path
                     pkg.Write(__instance.gameObject.name);
                     if (__instance.gameObject.name == "Player(Clone)")
                     {
+                        if (!EpicMMOSystem.enablePVPXP.Value) return;
                         Player player = __instance as Player;
                         if (player != null)
                         {

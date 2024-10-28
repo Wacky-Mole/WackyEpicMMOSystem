@@ -548,6 +548,18 @@ public static class DataMonsters
                         string xpstring = "";
                         string daysstring = "";
                         int xpworth = (level * EpicMMOSystem.xpPerLevelPVP.Value) + (daysalive * EpicMMOSystem.xpPerDayNotDead.Value);
+
+                        levelstring = EpicMMOSystem.displayPlayerLevel.Value;
+                        levelstring = levelstring.Replace("@", level.ToString());
+
+                        xpstring = EpicMMOSystem.displayPlayerXP.Value;
+                        xpstring = xpstring.Replace("@", xpworth.ToString());
+
+                        daysstring = EpicMMOSystem.displayDaysAlive.Value;
+                        daysstring = daysstring.Replace("@", daysalive.ToString());
+
+
+                        /*
                         if (EpicMMOSystem.displayPlayerLevel.Value)
                         {
                             levelstring = "(<size=8>Lvl <color=blue>" + level + "</size></color>) ";
@@ -560,7 +572,7 @@ public static class DataMonsters
                         if (EpicMMOSystem.displayDaysAlive.Value)
                         {
                             daysstring = "<color=red>(" + daysalive + "Days Alive)</color>";
-                        }
+                        }*/
                         component.GetComponent<TextMeshProUGUI>().text = levelstring + keyValuePair.Key.GetHoverName() + xpstring + daysstring;
                                              
                     }
