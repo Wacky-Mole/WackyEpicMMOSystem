@@ -25,6 +25,7 @@ using StatusEffectManager;
 using System.Collections;
 using HarmonyLib.Tools;
 using UnityEngine.UIElements;
+using System.Reflection.Emit;
 
 
 namespace EpicMMOSystem;
@@ -79,8 +80,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
 
     internal static int numofCats = 6;
     internal static GameObject fx_seeker_crit = null;
-    public static int playerAliveDays = 0;
-    public static string  PlayerAliveString =  "PlayerAliveDays";
+    public static string  PlayerAliveString =  "_playeralivedays";
 
 
     public static Localizationold localizationold;
@@ -253,6 +253,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     // PVP 
     public static ConfigEntry<bool> displayPlayerLevel;
     public static ConfigEntry<bool> displayPlayerXP;
+    public static ConfigEntry<bool> displayDaysAlive;
     public static ConfigEntry<bool> enablePVPXP;
     public static ConfigEntry<int> xpPerLevelPVP;
     public static ConfigEntry<int> xpPerDayNotDead;
@@ -408,10 +409,11 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         debugNonCombatObjects = config(NonCombat, "2.Debug NonCombat Objects", false, "Gives a Warning log for various objects names. Don't forgot that (Clone) is added to everything in the jsons.", false);
 
         string PVPCombat = "8.PVP Combat XP------";
-        displayPlayerLevel = config(PVPCombat, "Display Player Level", true, "Display Player Level Next to Name");
-        displayPlayerXP = config(PVPCombat, "Display Players XP Worth", true, "Display the current XP a player is worth next to Name");
-        enablePVPXP = config(PVPCombat, "Enable PVP XP", true, "Enable PVP XP, victor gets XP of fallen player");
-        xpPerLevelPVP = config(PVPCombat, "XP Player baseline Per Level", 50, "How Much XP is a player worth on defeat by another player per level");
+        displayPlayerLevel = config(PVPCombat, "Display Player Level", true, "Display player Level Next to name.");
+        displayPlayerXP = config(PVPCombat, "Display Players XP Worth", true, "Display the current XP a player is worth next to name.");
+        displayDaysAlive= config(PVPCombat, "Display Days Alive", true, "Display the how long the player has been alive in Days.");
+        enablePVPXP = config(PVPCombat, "Enable PVP XP", true, "Enable PVP XP, victor gets XP of fallen player.");
+        xpPerLevelPVP = config(PVPCombat, "XP Player baseline Per Level", 50, "How Much XP is a player worth on defeat by another player per level.");
         xpPerDayNotDead = config(PVPCombat, "XP Player Gains Daily for no Deaths", 10, "How extra a player is worth if they haven't died, per day.");
 
 
@@ -684,30 +686,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         }
     } 
 
-    [HarmonyPatch(typeof(Player), nameof(Player.OnSpawned))]
-    private static class GamerespawnMMOPlease
-    {
-        private static void Postfix()
-        {
-         
 
-            if (Player.m_localPlayer.m_customData == null)
-            {
-                EpicMMOSystem.MLLogger.LogWarning("Player customdata is null");
-            }
-
-            if (Player.m_localPlayer.m_customData.TryGetValue(PlayerAliveString, out var val))
-            {
-                int.TryParse(val, out int days);
-                playerAliveDays = days;
-            }
-            else
-            {
-                EpicMMOSystem.MLLogger.LogWarning("Player days alive not set");
-                Player.m_localPlayer.m_customData.Add(PlayerAliveString, "0");
-            }
-        }
-    }   
     [HarmonyPatch(typeof(EnvMan), nameof(EnvMan.OnMorning))]
     private static class MorningAwakeMMO
     {
@@ -715,9 +694,13 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         {
             int.TryParse(Player.m_localPlayer.m_customData[PlayerAliveString], out int days);
             days = days + 1;
-            playerAliveDays = days;
             string daystring = days.ToString();
             Player.m_localPlayer.m_customData[PlayerAliveString] = daystring;
+
+            var zdo = Player.m_localPlayer.m_nview.GetZDO();
+            zdo.Set($"{EpicMMOSystem.ModName + EpicMMOSystem.PlayerAliveString}", days);
+            ZDOMan.instance.ForceSendZDO(zdo.m_uid);
+
         }
     }
 

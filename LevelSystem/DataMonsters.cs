@@ -28,7 +28,6 @@ namespace EpicMMOSystem;
 public static class DataMonsters
 {
     private static Dictionary<string, Monster> dictionary = new();
-    private static Dictionary<string, PlayerXP> dictionaryPlayer = new();
     private static string MonsterDB = "";
     public static List<string> MonsterDBL;
     public static string PlayerDBL;
@@ -88,52 +87,24 @@ public static class DataMonsters
 
     public static bool contains(string name)
     {
-        bool maybe =  dictionary.ContainsKey(name);
-        if (!maybe)
-            maybe =  dictionaryPlayer.ContainsKey(name);
-        return maybe;
+        return  dictionary.ContainsKey(name);
     }
 
     public static int getExp(string name)
     { 
-        if (dictionary.ContainsKey(name))
-        {
-            var monster = dictionary[name];
-            int exp = Random.Range(monster.minExp, monster.maxExp);
-            return exp;
-
-        }
-        else
-        {
-            return dictionaryPlayer[name].XPBonus + (dictionaryPlayer[name].currentlevel * EpicMMOSystem.xpPerLevelPVP.Value);
-        }
+        var monster = dictionary[name];
+        int exp = Random.Range(monster.minExp, monster.maxExp);
+        return exp;
     }
 
     public static int getMaxExp(string name)
     {
-
-        if (dictionary.ContainsKey(name))
-        {
-            return dictionary[name].maxExp;
-
-        }
-        else
-        {
-            return dictionaryPlayer[name].XPBonus + (dictionaryPlayer[name].currentlevel * EpicMMOSystem.xpPerLevelPVP.Value) + (dictionaryPlayer[name].daysAlive * EpicMMOSystem.xpPerDayNotDead.Value);
-        }
+      return dictionary[name].maxExp;
     }
 
     public static int getLevel(string name)
     {
-        if (dictionary.ContainsKey(name))
-        {
-            return dictionary[name].level;
-
-        }else
-        {
-            return dictionaryPlayer[name].currentlevel;
-        }
-        
+        return dictionary[name].level;     
     }
 
 
@@ -171,6 +142,7 @@ public static class DataMonsters
 
     public static void createUpdateDataPlayer(List<string> json)
     {
+        /*
         if (EpicMMOSystem.extraDebug.Value)
             EpicMMOSystem.MLLogger.LogInfo($"/n Player json Updating /n");
         var json2 = json[0];
@@ -191,7 +163,7 @@ public static class DataMonsters
                 dictionaryPlayer.Add($"{name}", monster);
 
         }       
-
+        */
     }
 
     public static void Init()
@@ -335,11 +307,11 @@ public static class DataMonsters
             if (EpicMMOSystem.extraDebug.Value)
                 EpicMMOSystem.MLLogger.LogInfo($"Mobs Jsons Written");
         }
-
+        /*
         if (!File.Exists(EpicMMOSystem.playerspath))
         {
             File.WriteAllText(EpicMMOSystem.playerspath, getDefaultJsonMonster(EpicMMOSystem.playerjson));
-        }
+        } */ 
         List<string> list = new List<string>();
         foreach (string file in Directory.GetFiles(folderpath, "*.json", SearchOption.AllDirectories))
         { 
@@ -358,14 +330,14 @@ public static class DataMonsters
         if (EpicMMOSystem.extraDebug.Value)
             EpicMMOSystem.MLLogger.LogInfo($"Mobs Read");
 
-
+        /*
         var players = File.ReadAllText(EpicMMOSystem.playerspath);
         PlayerDBL = players;
         List<string> playerslist = new List<string>();
         playerslist.Add(players);
         createUpdateDataPlayer(playerslist);        
         if (EpicMMOSystem.extraDebug.Value)
-            EpicMMOSystem.MLLogger.LogInfo($"Player Read");
+            EpicMMOSystem.MLLogger.LogInfo($"Player Read"); */
 
 
         MonsterDBL = list;
@@ -396,26 +368,12 @@ public static class DataMonsters
                 ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} ReloadJsons",
                  new Action<long, bool>(ReloadJsons));
 
-                ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} PlayerDeath",
-                 new Action<long, string>(PlayerDeath));
-
-                ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} PlayerGainLevel",
-                 new Action<long, List<string>>(PlayerGainLevel));
-
-                ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} ReloadPlayerjsons",
-                new Action<long, string>(PlayerDeath));
-
-                ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} ClearPVPDailyXPGain",
-                new Action<long, string>(PlayerDeath));
-
             }
             else
             {
                 ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} SetMonsterDB",
                     new Action<long, List<string>>(SetMonsterDB));                
                 
-                ZRoutedRpc.instance.Register($"{EpicMMOSystem.ModName} UpdatePlayerDB",
-                    new Action<long, List<string>>(UpdatePlayerDB));
             }
         }
     }
@@ -447,24 +405,12 @@ public static class DataMonsters
         }
     }
 
-    public static void PlayerDeath(long peer, string playerdead)
-    {
-        setplayeralivetoZero(playerdead);
-    }    
-    public static void PlayerGainLevel(long peer, List<string> playerg)
-    {
-        // 0 is player // 1 is level
-    }
 
     public static void SetMonsterDB(long peer, List<string> json)
     {
         createNewDataMonsters(json);
     }
 
-    public static void UpdatePlayerDB(long peer, List<string> json)
-    {
-        createUpdateDataPlayer(json);
-    }
 
     [HarmonyPatch(typeof(ZNet), "RPC_PeerInfo")]
     private static class ZnetSyncServerInfo
@@ -555,7 +501,6 @@ public static class DataMonsters
                     hi.color = color;
                 }
             }
-
         }
         
         [HarmonyPatch(typeof(EnemyHud), nameof(EnemyHud.UpdateHuds))]
@@ -571,53 +516,52 @@ public static class DataMonsters
                     if (keyValuePair.Key.IsPlayer() && keyValuePair.Value.m_gui != null)
                     {
                         int level = 1;
-                        if (contains(keyValuePair.Key.GetHoverName())) // Player(Clone)
-                        {
-                            //EpicMMOSystem.MLLogger.LogWarning("Name is " + keyValuePair.Key.GetHoverName());
-                             level = getLevel(keyValuePair.Key.GetHoverName());
-
-                        }
+                        int daysalive = 0;
                         int maxLevelExp = LevelSystem.Instance.getLevel() + EpicMMOSystem.maxLevelExp.Value;
                         int minLevelExp = LevelSystem.Instance.getLevel() - EpicMMOSystem.minLevelExp.Value;
+                        GameObject component = keyValuePair.Value.m_gui.transform.Find("Name").gameObject;
+                        string namesearch = keyValuePair.Key.GetHoverName();
+
+                        var playerlist2 = Player.GetAllPlayers();
+                        foreach (var pla in playerlist2)
+                        {
+                            if (pla.GetPlayerName() == namesearch)
+                            {                             
+                                var zdopla = pla.m_nview.GetZDO();
+                                daysalive = zdopla.GetInt(EpicMMOSystem.ModName + EpicMMOSystem.PlayerAliveString, -1);
+                                if (daysalive == -1)
+                                {
+                                    EpicMMOSystem.MLLogger.LogWarning("Days alive not found" + daysalive);
+                                    daysalive = 0;
+                                }
+                                level = zdopla.GetInt($"{EpicMMOSystem.ModName}_level", 1);
+                                break;
+                            }
+                        }
+
                         int monsterLevel = level;
                         Color color = monsterLevel > maxLevelExp ? Color.red : Color.white;
                         if (monsterLevel < minLevelExp) color = Color.cyan;
 
-                        GameObject component = keyValuePair.Value.m_gui.transform.Find("Name").gameObject;
-                        string namesearch = keyValuePair.Key.GetHoverName();
-                        int daysalive = 0;
-
-                        /*
-                        var playerlist = Player.GetAllPlayers();                     
-                        
-                        foreach (var pla in playerlist)
-                        {
-                            if (pla.name == namesearch)
-                            {
-                                if (pla.m_customData.TryGetValue(EpicMMOSystem.PlayerAliveString, out var val))
-                                {
-                                    int.TryParse(val, out int daysalivefound);
-                                    daysalive = daysalivefound;
-                                    EpicMMOSystem.MLLogger.LogWarning("Days alive is " + daysalivefound);
-                                }
-                                break;
-                            }
-                        } */
-                        daysalive = dictionaryPlayer[namesearch].daysAlive;
-
                         //component.GetComponent<TextMeshProUGUI>().color = color;
                         string levelstring = "";
                         string xpstring = "";
-                        int xpworth = (level * EpicMMOSystem.xpPerLevelPVP.Value) + (daysalive * EpicMMOSystem.xpPerDayNotDead.Value) + dictionaryPlayer[namesearch].XPBonus;
-                        if (EpicMMOSystem.displayPlayerXP.Value)
+                        string daysstring = "";
+                        int xpworth = (level * EpicMMOSystem.xpPerLevelPVP.Value) + (daysalive * EpicMMOSystem.xpPerDayNotDead.Value);
+                        if (EpicMMOSystem.displayPlayerLevel.Value)
                         {
-                            levelstring = "(" + level + ") ";
+                            levelstring = "(<size=8>Lvl <color=blue>" + level + "</size></color>) ";
                         }
                         if (EpicMMOSystem.displayPlayerXP.Value)
                         {
-                            xpstring = " [" + xpworth + "]";
+                            xpstring = " [" + xpworth + " XP]";
                         }
-                        component.GetComponent<TextMeshProUGUI>().text = levelstring + keyValuePair.Key.GetHoverName() + xpstring;
+
+                        if (EpicMMOSystem.displayDaysAlive.Value)
+                        {
+                            daysstring = "<color=red>(" + daysalive + "Days Alive)</color>";
+                        }
+                        component.GetComponent<TextMeshProUGUI>().text = levelstring + keyValuePair.Key.GetHoverName() + xpstring + daysstring;
                                              
                     }
 

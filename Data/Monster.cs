@@ -11,7 +11,7 @@ public struct Monster
     public int level;
     
 }
-
+/*
 public struct PlayerXP
 {
     public string name;
@@ -19,4 +19,5 @@ public struct PlayerXP
     public int currentlevel;
     public int daysAlive;
 
-}
+}  Thought about it
+*/ 

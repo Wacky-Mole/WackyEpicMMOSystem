@@ -90,72 +90,87 @@ public static class MonsterDeath_Path
         string monsterName = pkg.ReadString();
         int level = pkg.ReadInt();
         Vector3 position = pkg.ReadVector3();
-        
-        
-        if (!DataMonsters.contains(monsterName))
+        bool playerdead  = false;
+        var MobisBoss = false;
+        int monsterLevel = 1;
+        int playerExp = 0;
+        int exp = 0;
+
+        if (monsterName == "Player(Clone)")
         {
-            EpicMMOSystem.print($"{EpicMMOSystem.ModName}: Can't find monster {monsterName}");
-            return;
+            EpicMMOSystem.MLLogger.LogInfo("Killed Player - PVP");
+            playerdead = true;
+            // monsterLevel = level;
+            playerExp = level;
+            LevelSystem.Instance.AddExp(playerExp, true);
         }
-        int monsterLevel = DataMonsters.getLevel(monsterName) + level - 1;
-        if (DataMonsters.getLevel(monsterName) == 0)
-            monsterLevel = 0;
-
-            var MobisBoss = false;
-        if (EpicMMOSystem.curveBossExp.Value) 
+        else
         {
-            switch (monsterName) // if a boss then check otherwise false
+            if (!DataMonsters.contains(monsterName))
             {
-                case "Eikthyr": MobisBoss = true; break;
-                case "gd_king": MobisBoss = true; break;
-                case "Bonemass": MobisBoss = true; break;
-                case "Dragon": MobisBoss = true; break;
-                case "GoblinKing": MobisBoss = true; break;
-                case "SeekerQueen": MobisBoss = true; break;
-                case "Fader": MobisBoss = true; break;
-                default: MobisBoss = false; break;// all other mobs
+                EpicMMOSystem.print($"{EpicMMOSystem.ModName}: Can't find monster {monsterName}");
+                return;
             }
-        }
+        
+            monsterLevel = DataMonsters.getLevel(monsterName) + level - 1;
+            if (DataMonsters.getLevel(monsterName) == 0)
+                monsterLevel = 0;
+
+                
+            if (EpicMMOSystem.curveBossExp.Value) 
+            {
+                switch (monsterName) // if a boss then check otherwise false
+                {
+                    case "Eikthyr": MobisBoss = true; break;
+                    case "gd_king": MobisBoss = true; break;
+                    case "Bonemass": MobisBoss = true; break;
+                    case "Dragon": MobisBoss = true; break;
+                    case "GoblinKing": MobisBoss = true; break;
+                    case "SeekerQueen": MobisBoss = true; break;
+                    case "Fader": MobisBoss = true; break;
+                    default: MobisBoss = false; break;// all other mobs
+                }
+            }
         
         
-        if ((double)Vector3.Distance(position, Player.m_localPlayer.transform.position) >= EpicMMOSystem.playerRange.Value) return;
+            if ((double)Vector3.Distance(position, Player.m_localPlayer.transform.position) >= EpicMMOSystem.playerRange.Value) return;
 
-        int expMonster = DataMonsters.getExp(monsterName);
-        int maxExp = DataMonsters.getMaxExp(monsterName);
-        float lvlExp = EpicMMOSystem.expForLvlMonster.Value;
-        var resultExp = expMonster + (maxExp * lvlExp * (level - 1));
-        var exp = Convert.ToInt32(resultExp);
-        var playerExp = exp;
+            int expMonster = DataMonsters.getExp(monsterName);
+            int maxExp = DataMonsters.getMaxExp(monsterName);
+            float lvlExp = EpicMMOSystem.expForLvlMonster.Value;
+            var resultExp = expMonster + (maxExp * lvlExp * (level - 1));
+            exp = Convert.ToInt32(resultExp);
+            playerExp = exp;
+       
 
-
-        if (EpicMMOSystem.enabledLevelControl.Value && (EpicMMOSystem.curveExp.Value || MobisBoss && EpicMMOSystem.curveBossExp.Value || EpicMMOSystem.noExpPastLVL.Value) && monsterLevel != 0)
-        {
-            if (EpicMMOSystem.extraDebug.Value) 
-                EpicMMOSystem.MLLogger.LogInfo("Checking player lvl");
-
-            int maxRangeLevel = LevelSystem.Instance.getLevel() + EpicMMOSystem.maxLevelExp.Value;
-            if (monsterLevel > maxRangeLevel)
+            if (EpicMMOSystem.enabledLevelControl.Value && (EpicMMOSystem.curveExp.Value || MobisBoss && EpicMMOSystem.curveBossExp.Value || EpicMMOSystem.noExpPastLVL.Value) && monsterLevel != 0)
             {
-                if (EpicMMOSystem.noExpPastLVL.Value)
-                    playerExp = -2;// no exp
-                else if (EpicMMOSystem.curveExp.Value)
-                    playerExp = Convert.ToInt32(exp / (monsterLevel - maxRangeLevel));
-                else if (MobisBoss && EpicMMOSystem.curveBossExp.Value)
-                    playerExp = Convert.ToInt32(exp / (monsterLevel - maxRangeLevel));
-            }
-            int minRangeLevel = LevelSystem.Instance.getLevel() - EpicMMOSystem.minLevelExp.Value;
-            if (monsterLevel < minRangeLevel)
-            {
-                if (EpicMMOSystem.noExpPastLVL.Value)
-                    playerExp = -2; // no exp
-                else if (EpicMMOSystem.curveExp.Value)
-                    playerExp = Convert.ToInt32( exp / (minRangeLevel - monsterLevel));
-                else if (MobisBoss && EpicMMOSystem.curveBossExp.Value)
-                    playerExp = Convert.ToInt32(exp / (minRangeLevel - monsterLevel));
-            }
+                if (EpicMMOSystem.extraDebug.Value) 
+                    EpicMMOSystem.MLLogger.LogInfo("Checking player lvl");
+
+                int maxRangeLevel = LevelSystem.Instance.getLevel() + EpicMMOSystem.maxLevelExp.Value;
+                if (monsterLevel > maxRangeLevel)
+                {
+                    if (EpicMMOSystem.noExpPastLVL.Value)
+                        playerExp = -2;// no exp
+                    else if (EpicMMOSystem.curveExp.Value)
+                        playerExp = Convert.ToInt32(exp / (monsterLevel - maxRangeLevel));
+                    else if (MobisBoss && EpicMMOSystem.curveBossExp.Value)
+                        playerExp = Convert.ToInt32(exp / (monsterLevel - maxRangeLevel));
+                }
+                int minRangeLevel = LevelSystem.Instance.getLevel() - EpicMMOSystem.minLevelExp.Value;
+                if (monsterLevel < minRangeLevel)
+                {
+                    if (EpicMMOSystem.noExpPastLVL.Value)
+                        playerExp = -2; // no exp
+                    else if (EpicMMOSystem.curveExp.Value)
+                        playerExp = Convert.ToInt32( exp / (minRangeLevel - monsterLevel));
+                    else if (MobisBoss && EpicMMOSystem.curveBossExp.Value)
+                        playerExp = Convert.ToInt32(exp / (minRangeLevel - monsterLevel));
+                }
+            }      
+            LevelSystem.Instance.AddExp(playerExp);   
         }
-
-        LevelSystem.Instance.AddExp(playerExp);
         if (!Groups.API.IsLoaded()) return;
 
         if (EpicMMOSystem.extraDebug.Value)
@@ -280,7 +295,36 @@ public static class MonsterDeath_Path
             {
                 var pkg = new ZPackage();
                 pkg.Write(__instance.gameObject.name);
-                pkg.Write(__instance.GetLevel());
+
+                if (__instance.gameObject.name == "Player(Clone)")
+                {
+                    Player player = __instance as Player;
+
+                    if (player != null)
+                    {
+                        string playerName = player.GetPlayerName();
+                        EpicMMOSystem.MLLogger.LogWarning("Player was killed pvp" + playerName);
+                        var zdopla = player.m_nview.GetZDO();
+                        int daysalive = zdopla.GetInt(EpicMMOSystem.ModName + EpicMMOSystem.PlayerAliveString, -1);
+                        if (daysalive == -1)
+                        {
+                            EpicMMOSystem.MLLogger.LogWarning("Days alive not found" + daysalive);
+                            daysalive = 0;
+                        }
+                        int level = zdopla.GetInt($"{EpicMMOSystem.ModName}_level", 1);
+                        int xpworth = (level * EpicMMOSystem.xpPerLevelPVP.Value) + (daysalive * EpicMMOSystem.xpPerDayNotDead.Value);
+                        pkg.Write(xpworth);
+                    }
+                    else
+                    {
+                        EpicMMOSystem.MLLogger.LogWarning("Didnt find player");
+                    }
+                }
+                else
+                {
+                    pkg.Write(__instance.GetLevel());
+                }
+                
                 pkg.Write(__instance.transform.position);
                 long attacker = CharacterLastDamageList[__instance];
                 ZRoutedRpc.instance.InvokeRoutedRPC(attacker, $"{EpicMMOSystem.ModName} DeadMonsters", new object[] { pkg });
@@ -300,7 +344,34 @@ public static class MonsterDeath_Path
                 if (CharacterLastDamageList.ContainsKey(__instance)) {
                     var pkg = new ZPackage();
                     pkg.Write(__instance.gameObject.name);
-                    pkg.Write(__instance.GetLevel());
+                    if (__instance.gameObject.name == "Player(Clone)")
+                    {
+                        Player player = __instance as Player;
+                        if (player != null)
+                        {
+                            string playerName = player.GetPlayerName();
+                            EpicMMOSystem.MLLogger.LogWarning("Player was killed pvp" + playerName);
+                            var zdopla = player.m_nview.GetZDO();
+                            int daysalive = zdopla.GetInt(EpicMMOSystem.ModName + EpicMMOSystem.PlayerAliveString, -1);
+                            if (daysalive == -1)
+                            {
+                                EpicMMOSystem.MLLogger.LogWarning("Days alive not found" + daysalive);
+                                daysalive = 0;
+                            }
+                            int level = zdopla.GetInt($"{EpicMMOSystem.ModName}_level", 1);
+                            int xpworth = (level * EpicMMOSystem.xpPerLevelPVP.Value) + (daysalive * EpicMMOSystem.xpPerDayNotDead.Value);
+                            pkg.Write(xpworth);
+                        }
+                        else
+                        {
+                            EpicMMOSystem.MLLogger.LogWarning("Didnt find player");
+                        }
+                    }
+                    else
+                    {
+                        pkg.Write(__instance.GetLevel());
+                    }
+
                     pkg.Write(__instance.transform.position);
                     long attacker = CharacterLastDamageList[__instance];
                     ZRoutedRpc.instance.InvokeRoutedRPC(attacker, $"{EpicMMOSystem.ModName} DeadMonsters", new object[] { pkg });

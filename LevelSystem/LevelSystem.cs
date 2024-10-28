@@ -176,8 +176,7 @@ public partial class LevelSystem
             EpicMMOSystem.MLLogger.LogWarning("error on TotalExp, returned 0");
             return 0;
         }
-
-        
+       
     }
 
     private void setTotalExp(long value)
@@ -498,16 +497,9 @@ public partial class LevelSystem
     public void DeathPlayer()
     {
         Player.m_localPlayer.m_customData[EpicMMOSystem.PlayerAliveString] = "0";
+        var zdo = Player.m_localPlayer.m_nview.GetZDO();
+        zdo.Set($"{EpicMMOSystem.ModName + EpicMMOSystem.PlayerAliveString}", 0);
 
-        if (ZNet.instance.IsServer())
-        {
-
-        }
-        else
-        {
-            ZNetPeer peer = ZNet.instance.GetServerPeer();
-            ZRoutedRpc.instance.InvokeRoutedRPC(peer.m_uid, $"{EpicMMOSystem.ModName} PlayerDeath", Player.m_localPlayer.GetHoverName()); //sync list
-        }
 
         if (!EpicMMOSystem.lossExp.Value) return;
         if (!Player.m_localPlayer.HardDeath()) return;
@@ -521,7 +513,8 @@ public partial class LevelSystem
         setCurrentExp(newExp);
         setTotalExp(TotalExp - (long)(currentExp * lossExp));// remove some totalexp as well
         MyUI.updateExpBar();
-        
+        ZDOMan.instance.ForceSendZDO(zdo.m_uid);
+
     }
     
     //FillLevelExp
@@ -570,21 +563,26 @@ public partial class LevelSystem
 }
 
 [HarmonyPatch(typeof(Game), nameof(Game.SpawnPlayer))]
-[HarmonyPriority(1000)]
+[HarmonyPriority(998)]
 public static class SetZDOLevel
 {
     public static void Postfix()
     { 
         var level = LevelSystem.Instance.getLevel();
         var stringlevel = level.ToString();
-        if (Player.m_localPlayer.m_customData.TryGetValue("epicmmolevel", out var playerlevel))
-        {
-            // nothing for now
-        }else
+        if (Player.m_localPlayer.m_customData.TryGetValue("epicmmolevel", out var playerlevel) == false)       
             Player.m_localPlayer.m_customData.Add("epicmmolevel", stringlevel);
+
+        if (Player.m_localPlayer.m_customData.TryGetValue(EpicMMOSystem.PlayerAliveString, out var val))     
+            int.TryParse(val, out int days);     
+        else     
+            Player.m_localPlayer.m_customData.Add(EpicMMOSystem.PlayerAliveString, "0");
         
+
         var zdo = Player.m_localPlayer.m_nview.GetZDO();
         zdo.Set($"{EpicMMOSystem.ModName}_level", level);
+        zdo.Set($"{EpicMMOSystem.ModName + EpicMMOSystem.PlayerAliveString}", int.Parse(Player.m_localPlayer.m_customData[EpicMMOSystem.PlayerAliveString]));
+        ZDOMan.instance.ForceSendZDO(zdo.m_uid);
     }
 }
 
@@ -606,12 +604,13 @@ public static class Death
     public static void Prefix(Player __instance)
     {
        
+
         if (__instance.m_nview.IsOwner())
         {
             Debug.Log("OnDeath call but not the owner");
-            return;
+            //return;
         }
-
         LevelSystem.Instance.DeathPlayer();
+
     }
 }
