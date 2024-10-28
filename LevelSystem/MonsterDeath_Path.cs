@@ -31,51 +31,55 @@ public static class MonsterDeath_Path
 
     public static void RPC_AddGroupExp(long sender, int exp, Vector3 position, int monsterLevel)
     {
-        if (EpicMMOSystem.extraDebug.Value)
-            EpicMMOSystem.MLLogger.LogInfo("Player was in group so applying exp from group kill");
-
-        if ((double)Vector3.Distance(position, Player.m_localPlayer.transform.position) >= EpicMMOSystem.groupRange.Value) return;
-
-        var playerExp = exp;
-        var MobisBoss = false;
-        if (monsterLevel < 0)
-        {
-            MobisBoss = true;
-            monsterLevel = -1 * monsterLevel; // or -monsterLevel
-        }
-
-        if (EpicMMOSystem.enabledLevelControl.Value && (EpicMMOSystem.curveExp.Value || MobisBoss && EpicMMOSystem.curveBossExp.Value || EpicMMOSystem.noExpPastLVL.Value) && monsterLevel != 0)
+        try
         {
             if (EpicMMOSystem.extraDebug.Value)
-                EpicMMOSystem.MLLogger.LogInfo("Checking player lvl for group exp");
+                EpicMMOSystem.MLLogger.LogInfo("Player was in group so applying exp from group kill");
 
-            int maxRangeLevel = LevelSystem.Instance.getLevel() + EpicMMOSystem.maxLevelExp.Value;
-            if (monsterLevel > maxRangeLevel)
+            if ((double)Vector3.Distance(position, Player.m_localPlayer.transform.position) >= EpicMMOSystem.groupRange.Value) return;
+
+            var playerExp = exp;
+            var MobisBoss = false;
+            if (monsterLevel < 0)
             {
-                if (EpicMMOSystem.noExpPastLVL.Value)
-                    playerExp = 0; // no exp
-                else if (EpicMMOSystem.curveExp.Value)
-                    playerExp = Convert.ToInt32(exp / (monsterLevel - maxRangeLevel));
-                else if (MobisBoss && EpicMMOSystem.curveBossExp.Value)
-                    playerExp = Convert.ToInt32(exp / (monsterLevel - maxRangeLevel));
-            }
-            int minRangeLevel = LevelSystem.Instance.getLevel() - EpicMMOSystem.minLevelExp.Value;
-            if (monsterLevel < minRangeLevel)
-            {
-                if (EpicMMOSystem.noExpPastLVL.Value)
-                    playerExp = 0; // no exp
-                else if (EpicMMOSystem.curveExp.Value)
-                    playerExp = Convert.ToInt32(exp / (minRangeLevel - monsterLevel));
-                else if (MobisBoss && EpicMMOSystem.curveBossExp.Value)
-                    playerExp = Convert.ToInt32(exp / (minRangeLevel - monsterLevel));
+                MobisBoss = true;
+                monsterLevel = -1 * monsterLevel; // or -monsterLevel
             }
 
-            if (monsterLevel > maxRangeLevel && EpicMMOSystem.mentor.Value)
-                playerExp = exp; // give full *group exp with mentor mode
+            if (EpicMMOSystem.enabledLevelControl.Value && (EpicMMOSystem.curveExp.Value || MobisBoss && EpicMMOSystem.curveBossExp.Value || EpicMMOSystem.noExpPastLVL.Value) && monsterLevel != 0)
+            {
+                if (EpicMMOSystem.extraDebug.Value)
+                    EpicMMOSystem.MLLogger.LogInfo("Checking player lvl for group exp");
+
+                int maxRangeLevel = LevelSystem.Instance.getLevel() + EpicMMOSystem.maxLevelExp.Value;
+                if (monsterLevel > maxRangeLevel)
+                {
+                    if (EpicMMOSystem.noExpPastLVL.Value)
+                        playerExp = 0; // no exp
+                    else if (EpicMMOSystem.curveExp.Value)
+                        playerExp = Convert.ToInt32(exp / (monsterLevel - maxRangeLevel));
+                    else if (MobisBoss && EpicMMOSystem.curveBossExp.Value)
+                        playerExp = Convert.ToInt32(exp / (monsterLevel - maxRangeLevel));
+                }
+                int minRangeLevel = LevelSystem.Instance.getLevel() - EpicMMOSystem.minLevelExp.Value;
+                if (monsterLevel < minRangeLevel)
+                {
+                    if (EpicMMOSystem.noExpPastLVL.Value)
+                        playerExp = 0; // no exp
+                    else if (EpicMMOSystem.curveExp.Value)
+                        playerExp = Convert.ToInt32(exp / (minRangeLevel - monsterLevel));
+                    else if (MobisBoss && EpicMMOSystem.curveBossExp.Value)
+                        playerExp = Convert.ToInt32(exp / (minRangeLevel - monsterLevel));
+                }
+
+                if (monsterLevel > maxRangeLevel && EpicMMOSystem.mentor.Value)
+                    playerExp = exp; // give full *group exp with mentor mode
+            }
+
+            if (playerExp > 0)
+                LevelSystem.Instance.AddExp(playerExp);
         }
-        
-        if (playerExp > 0)
-        LevelSystem.Instance.AddExp(playerExp);
+        catch { EpicMMOSystem.MLLogger.LogWarning("Bug catch RPC_AddGroupExp"); }
     }
     
 

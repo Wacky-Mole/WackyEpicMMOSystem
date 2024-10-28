@@ -166,7 +166,7 @@ public static class DataMonsters
 
     public static void setplayeralivetoZero(string playerset)
     {
-        dictionaryPlayer[playerset].daysAlive = 0;
+        //dictionaryPlayer[playerset].daysAlive = 0;
     }
 
     public static void createUpdateDataPlayer(List<string> json)
