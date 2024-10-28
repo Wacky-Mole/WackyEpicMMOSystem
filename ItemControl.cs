@@ -22,7 +22,7 @@ public partial class EpicMMOSystem
         }
     }
     
-    // Не выводить сохраненные значения в компендиум
+
      [HarmonyPatch(typeof(Player), nameof(Player.GetKnownTexts))]
      private static class FixCompendium
      {

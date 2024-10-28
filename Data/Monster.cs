@@ -10,11 +10,13 @@ public struct Monster
     public int maxExp;
     public int level;
     
-    public Monster(string name, int minExp, int maxExp, int level)
-    {
-        this.name = name;
-        this.minExp = minExp;
-        this.maxExp = maxExp;
-        this.level = level;
-    }
+}
+
+public struct PlayerXP
+{
+    public string name;
+    public int XPBonus;
+    public int currentlevel;
+    public int daysAlive;
+
 }

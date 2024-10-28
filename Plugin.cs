@@ -79,6 +79,8 @@ public partial class EpicMMOSystem : BaseUnityPlugin
 
     internal static int numofCats = 6;
     internal static GameObject fx_seeker_crit = null;
+    public static int playerAliveDays = 0;
+    public static string  PlayerAliveString =  "PlayerAliveDays";
 
 
     public static Localizationold localizationold;
@@ -254,10 +256,6 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     public static ConfigEntry<bool> enablePVPXP;
     public static ConfigEntry<int> xpPerLevelPVP;
     public static ConfigEntry<int> xpPerDayNotDead;
-
-
-
-
 
 
 
@@ -654,8 +652,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         }
     }
     
-    
-
+   
     private void Start()
     {
         MyUI.Init();
@@ -669,7 +666,6 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     {
         Config.Save();
     }
-
 
     [HarmonyPatch(typeof(ZNetScene), nameof(ZNetScene.Awake))]
     private static class ZRouteAwake
@@ -686,8 +682,44 @@ public partial class EpicMMOSystem : BaseUnityPlugin
                 }
             }
         }
-    }
+    } 
 
+    [HarmonyPatch(typeof(Player), nameof(Player.OnSpawned))]
+    private static class GamerespawnMMOPlease
+    {
+        private static void Postfix()
+        {
+         
+
+            if (Player.m_localPlayer.m_customData == null)
+            {
+                EpicMMOSystem.MLLogger.LogWarning("Player customdata is null");
+            }
+
+            if (Player.m_localPlayer.m_customData.TryGetValue(PlayerAliveString, out var val))
+            {
+                int.TryParse(val, out int days);
+                playerAliveDays = days;
+            }
+            else
+            {
+                EpicMMOSystem.MLLogger.LogWarning("Player days alive not set");
+                Player.m_localPlayer.m_customData.Add(PlayerAliveString, "0");
+            }
+        }
+    }   
+    [HarmonyPatch(typeof(EnvMan), nameof(EnvMan.OnMorning))]
+    private static class MorningAwakeMMO
+    {
+        private static void Postfix()
+        {
+            int.TryParse(Player.m_localPlayer.m_customData[PlayerAliveString], out int days);
+            days = days + 1;
+            playerAliveDays = days;
+            string daystring = days.ToString();
+            Player.m_localPlayer.m_customData[PlayerAliveString] = daystring;
+        }
+    }
 
     private void SetupWatcher()
     { 

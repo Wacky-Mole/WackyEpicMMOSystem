@@ -1,9 +1,8 @@
 [
   {
     "name": "Ragnar",
-    "minExp": 3000,
-    "maxExp": 3000,
-    "level": 100
+    "XPBonus": 2000,
+    "currentlevel": 100,
+    "daysAlive": 100
   },
-
 ]

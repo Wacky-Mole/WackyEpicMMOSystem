@@ -497,6 +497,18 @@ public partial class LevelSystem
 
     public void DeathPlayer()
     {
+        Player.m_localPlayer.m_customData[EpicMMOSystem.PlayerAliveString] = "0";
+
+        if (ZNet.instance.IsServer())
+        {
+
+        }
+        else
+        {
+            ZNetPeer peer = ZNet.instance.GetServerPeer();
+            ZRoutedRpc.instance.InvokeRoutedRPC(peer.m_uid, $"{EpicMMOSystem.ModName} PlayerDeath", Player.m_localPlayer.GetHoverName()); //sync list
+        }
+
         if (!EpicMMOSystem.lossExp.Value) return;
         if (!Player.m_localPlayer.HardDeath()) return;
         var minExp = EpicMMOSystem.minLossExp.Value;
@@ -550,6 +562,7 @@ public partial class LevelSystem
         ResetAllParameter();
         PlayerFVX.levelUp();
         MyUI.updateExpBar();
+        Player.m_localPlayer.m_customData["epicmmolevel"] = level.ToString();
         var zdo = Player.m_localPlayer.m_nview.GetZDO();
         zdo.Set($"{pluginKey}_level", level);
         ZDOMan.instance.ForceSendZDO(zdo.m_uid);
@@ -561,9 +574,17 @@ public partial class LevelSystem
 public static class SetZDOLevel
 {
     public static void Postfix()
-    {
+    { 
+        var level = LevelSystem.Instance.getLevel();
+        var stringlevel = level.ToString();
+        if (Player.m_localPlayer.m_customData.TryGetValue("epicmmolevel", out var playerlevel))
+        {
+            // nothing for now
+        }else
+            Player.m_localPlayer.m_customData.Add("epicmmolevel", stringlevel);
+        
         var zdo = Player.m_localPlayer.m_nview.GetZDO();
-        zdo.Set($"{EpicMMOSystem.ModName}_level", LevelSystem.Instance.getLevel());
+        zdo.Set($"{EpicMMOSystem.ModName}_level", level);
     }
 }
 
