@@ -95,36 +95,18 @@ public partial class LevelSystem
     }
 
 
-    [HarmonyPatch(typeof(Humanoid), nameof(Humanoid.BlockAttack))]
-    static class Humanoid_BlockAttack_Patch
+
+
+    //SEMan.ModifyBlockStaminaUsage
+
+    [HarmonyPatch(typeof(SEMan), nameof(SEMan.ModifyBlockStaminaUsage))]
+    static class ModifyBlockStaminaUsage_BlockAttack_Patch
     {
-        private static float ReturnMyValue()
+        static void Postfix(float baseStaminaUse, ref float staminaUse)
         {
-            return 1 - Instance.getReducedStaminaBlock() / 100;
+            staminaUse = staminaUse - ((Instance.getReducedStaminaBlock() / 100)* staminaUse);
         }
 
-        [HarmonyTranspiler]
-        private static IEnumerable<CodeInstruction> StaminaBlock(IEnumerable<CodeInstruction> code)
-        {
-            var method = AccessTools.DeclaredMethod(typeof(Character), nameof(Character.UseStamina));
-            var MyMethod = AccessTools.DeclaredMethod(typeof(Humanoid_BlockAttack_Patch), nameof(ReturnMyValue));
-            var instructions = new List<CodeInstruction>(code);
-
-            for (int i = 0; i < instructions.Count; i++)
-            {
-                if (i < instructions.Count - 1)
-                {
-                    CodeInstruction nextInstruction = instructions[i + 1];
-
-                    if (nextInstruction.opcode == OpCodes.Callvirt && nextInstruction.operand == method)
-                    {
-                        yield return new CodeInstruction(OpCodes.Call, MyMethod);
-                        yield return new CodeInstruction(OpCodes.Mul);
-                    }
-                }
-                yield return instructions[i];
-            }
-        }
     }
 
 

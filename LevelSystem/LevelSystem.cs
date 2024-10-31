@@ -602,15 +602,12 @@ public static class SetZDOLevel
 public static class Death
 {
     public static void Prefix(Player __instance)
-    {
-       
-
+    {    
         if (__instance.m_nview.IsOwner())
         {
             Debug.Log("OnDeath call but not the owner");
             //return;
         }
         LevelSystem.Instance.DeathPlayer();
-
     }
 }

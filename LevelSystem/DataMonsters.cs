@@ -71,6 +71,7 @@ public static class DataMonsters
         OrbsByBiomes.Add(Heightmap.Biome.None, Orb2.Prefab);
     }
 
+    /*
 
     [HarmonyPatch(typeof(ItemDrop.ItemData), nameof(ItemDrop.ItemData.GetTooltip), typeof(ItemDrop.ItemData),typeof(int),typeof(bool), typeof(float) )]
     public class GetTooltipPatch
@@ -84,6 +85,22 @@ public static class DataMonsters
             }
         }
     }
+    */
+    [HarmonyPatch(typeof(ItemDrop.ItemData), nameof(ItemDrop.ItemData.GetTooltip), new Type[] { typeof(int) })]
+    public class GetTooltipPatch
+    {
+        public static void Postfix(ItemDrop.ItemData __instance, int stackOverride, ref string __result)
+        {
+            // Ensure that `crafting` is checked and `item` validity is confirmed as in the original patch logic.
+            if (__instance == null || !__instance.m_dropPrefab) return;
+
+            if (MagicOrbDictionary.TryGetValue(__instance.m_dropPrefab, out var expGain))
+            {
+                __result += $" Right Mouse Button click to get <color=yellow>{expGain}</color> EXP";
+            }
+        }
+    }
+
 
     public static bool contains(string name)
     {
@@ -188,6 +205,7 @@ public static class DataMonsters
         var json14 = "MonsterDB_RtDMonsters.json";
         var json15 = "MonsterDB_Therzie.Wizardry.json";
         var json16 = "MonsterDB_NonCombat.json";
+        var json17 = "MonsterDB-Monstrum-DeepNorth.json";
 
 
 
@@ -249,11 +267,13 @@ public static class DataMonsters
             if (filev == "1.9.12")
                 cleartowrite = true;        
             if (filev == "1.9.20")
+                cleartowrite = true;            
+            if (filev == "1.9.21")
                 cleartowrite = true;
 
 
 
-            if (filev == "1.9.21") // last version to get a DB update
+            if (filev == "1.9.23") // last version to get a DB update
                 cleartowrite = false;
 
             if (filev == "NO" || filev == "no" || filev == "No" || filev == "STOP" || filev == "stop" || filev == "Stop")
@@ -265,7 +285,7 @@ public static class DataMonsters
         if (cleartowrite)
         {
             //list.Clear();
-            File.WriteAllText(versionpath, "1.9.21"); // Write Version file, don't auto update
+            File.WriteAllText(versionpath, "1.9.23"); // Write Version file, don't auto update
 
             File.WriteAllText(warningtext, "Erase numbers in Version.txt and write NO or stop in file. This should stop DB json files from updating on an update. If you make your own custom json file, then that one should never be updated.");
 
@@ -302,6 +322,8 @@ public static class DataMonsters
             File.WriteAllText(Path.Combine(folderpath, json15), getDefaultJsonMonster(json15));
 
             File.WriteAllText(Path.Combine(folderpath, json16), getDefaultJsonMonster(json16));
+
+            File.WriteAllText(Path.Combine(folderpath, json17), getDefaultJsonMonster(json17));
 
 
             if (EpicMMOSystem.extraDebug.Value)

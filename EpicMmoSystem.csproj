@@ -395,6 +395,7 @@
     <EmbeddedResource Include="Data\MonsterDB_Therzie.Wizardry.json" />
     <EmbeddedResource Include="Data\MonsterDB_NonCombat.json" />
     <EmbeddedResource Include="Data\Players.json" />
+    <EmbeddedResource Include="Data\MonsterDB-Monstrum-DeepNorth.json" />
     <None Include="packages.config" />
     <EmbeddedResource Include="translations\Russian.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

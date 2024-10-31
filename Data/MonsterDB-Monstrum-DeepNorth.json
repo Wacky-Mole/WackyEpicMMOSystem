@@ -1,0 +1,170 @@
+[
+  {
+    "name": "SurtrImp_TW",
+    "minExp": 1200,
+    "maxExp": 1300,
+    "level": 81
+  },
+  {
+    "name": "SurtrHound_TW",
+    "minExp": 1200,
+    "maxExp": 1300,
+    "level": 81
+  },
+  {
+    "name": "SurtrBones_TW",
+    "minExp": 500,
+    "maxExp": 500,
+    "level": 81
+  },
+  {
+    "name": "SurtrDrake_TW",
+    "minExp": 1200,
+    "maxExp": 1300,
+    "level": 81
+  },
+  {
+    "name": "SurtrSeer_TW",
+    "minExp": 1200,
+    "maxExp": 1300,
+    "level": 81
+  },
+  {
+    "name": "SurtrWarbringer_TW",
+    "minExp": 1200,
+    "maxExp": 1300,
+    "level": 82
+  },
+  {
+    "name": "SurtrBrute_TW",
+    "minExp": 1800,
+    "maxExp": 2000,
+    "level": 82
+  },
+  {
+    "name": "SurtrLegionnaire_TW",
+    "minExp": 1800,
+    "maxExp": 2000,
+    "level": 83
+  },
+  {
+    "name": "DaggerFang_TW",
+    "minExp": 1800,
+    "maxExp": 2000,
+    "level": 83
+  },
+  {
+    "name": "ArcticBear_TW",
+    "minExp": 1200,
+    "maxExp": 1300,
+    "level": 81
+  },
+  {
+    "name": "ArcticBearCub_TW",
+    "minExp": 10,
+    "maxExp": 20,
+    "level": 81
+  },
+  {
+    "name": "ArcticWolf_TW",
+    "minExp": 1200,
+    "maxExp": 1300,
+    "level": 81
+  },
+  {
+    "name": "ArcticWolfCub_TW",
+    "minExp": 10,
+    "maxExp": 20,
+    "level": 81
+  },
+  {
+    "name": "JotunnWolf_TW",
+    "minExp": 1200,
+    "maxExp": 1300,
+    "level": 81
+  },
+  {
+    "name": "StormWolf_TW",
+    "minExp": 1200,
+    "maxExp": 1300,
+    "level": 81
+  },
+  {
+    "name": "StormCultist_TW",
+    "minExp": 1500,
+    "maxExp": 1700,
+    "level": 82
+  },
+  {
+    "name": "StormFenring_TW",
+    "minExp": 1500,
+    "maxExp": 1700,
+    "level": 82
+  },
+  {
+    "name": "ArcticGolem_TW",
+    "minExp": 1500,
+    "maxExp": 1700,
+    "level": 82
+  },
+  {
+    "name": "ArcticSerpent_TW",
+    "minExp": 1500,
+    "maxExp": 1700,
+    "level": 82
+  },
+  {
+    "name": "JotunnBladefist_TW",
+    "minExp": 1500,
+    "maxExp": 1700,
+    "level": 82
+  },
+  {
+    "name": "JotunnShaman_TW",
+    "minExp": 1500,
+    "maxExp": 1700,
+    "level": 82
+  },
+  {
+    "name": "JotunnBrute_TW",
+    "minExp": 1800,
+    "maxExp": 2000,
+    "level": 83
+  },
+  {
+    "name": "JotunnJuggernaut_TW",
+    "minExp": 1800,
+    "maxExp": 2000,
+    "level": 83
+  },
+  {
+    "name": "ArcticMammoth_TW",
+    "minExp": 1800,
+    "maxExp": 2000,
+    "level": 83
+  },
+  {
+    "name": "BossSythrak_TW",
+    "minExp": 6600,
+    "maxExp": 9000,
+    "level": 86
+  },
+  {
+    "name": "BossBrutalis_TW",
+    "minExp": 6600,
+    "maxExp": 9000,
+    "level": 86
+  },
+  {
+    "name": "BossStormHerald_TW",
+    "minExp": 6600,
+    "maxExp": 9000,
+    "level": 86
+  },
+  {
+    "name": "BossGorr_TW",
+    "minExp": 6600,
+    "maxExp": 9000,
+    "level": 86
+  }
+]

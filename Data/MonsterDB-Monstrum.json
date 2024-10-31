@@ -61,8 +61,8 @@
   },
   {
     "name": "BossSvalt_TW",
-    "minExp": 1000,
-    "maxExp": 1200,
+    "minExp": 300,
+    "maxExp": 500,
     "level": 26
   },
   {
@@ -91,8 +91,8 @@
   },
   {
     "name": "BossVrykolathas_TW",
-    "minExp": 1200,
-    "maxExp": 1400,
+    "minExp": 700,
+    "maxExp": 900,
     "level": 36
   },
   {
@@ -124,161 +124,5 @@
     "minExp": 100,
     "maxExp": 110,
     "level": 51
-  },
-  {
-    "name": "ArcticWolf_TW",
-    "minExp": 1500,
-    "maxExp": 2300,
-    "level": 71
-  },
-  {
-    "name": "ArcticWolfCub_TW",
-    "minExp": 100,
-    "maxExp": 100,
-    "level": 71
-  },
-  {
-    "name": "ArcticBear_TW",
-    "minExp": 1800,
-    "maxExp": 2500,
-    "level": 72
-  },
-  {
-    "name": "ArcticBearCub_TW",
-    "minExp": 100,
-    "maxExp": 100,
-    "level": 72
-  },
-  {
-    "name": "ArcticSerpent_TW",
-    "minExp": 1400,
-    "maxExp": 2000,
-    "level": 70
-  },
-  {
-    "name": "ArcticMammoth_TW",
-    "minExp": 2500,
-    "maxExp": 3500,
-    "level": 73
-  },
-  {
-    "name": "ArcticDrake_TW",
-    "minExp": 1800,
-    "maxExp": 2800,
-    "level": 70
-  },
-  {
-    "name": "ArcticFenring_TW",
-    "minExp": 2000,
-    "maxExp": 3000,
-    "level": 72
-  },
-  {
-    "name": "ArcticCultist_TW",
-    "minExp": 2000,
-    "maxExp": 3000,
-    "level": 72
-  },
-  {
-    "name": "ArcticGolem_TW",
-    "minExp": 2500,
-    "maxExp": 3500,
-    "level": 73
-  },
-  {
-    "name": "JotunnBrute_TW",
-    "minExp": 8000,
-    "maxExp": 10000,
-    "level": 73
-  },
-  {
-    "name": "JotunnCrusher_TW",
-    "minExp": 8000,
-    "maxExp": 10000,
-    "level": 73
-  },
-  {
-    "name": "StormWolf_TW",
-    "minExp": 4000,
-    "maxExp": 4500,
-    "level": 74
-  },
-  {
-    "name": "BossStormHerald_TW",
-    "minExp": 9000,
-    "maxExp": 12000,
-    "level": 76
-  },
-  {
-    "name": "AshenWarg_TW",
-    "minExp": 3000,
-    "maxExp": 3600,
-    "level": 70
-  },
-  {
-    "name": "AshenWargCub_TW",
-    "minExp": 100,
-    "maxExp": 100,
-    "level": 70
-  },
-  {
-    "name": "AshenCrab_TW",
-    "minExp": 2800,
-    "maxExp": 3400,
-    "level": 72
-  },
-  {
-    "name": "AshenScorpid_TW",
-    "minExp": 3100,
-    "maxExp": 3700,
-    "level": 72
-  },
-  {
-    "name": "AshenDimetrodon_TW",
-    "minExp": 4000,
-    "maxExp": 4800,
-    "level": 73
-  },
-  {
-    "name": "AshenDrake_TW",
-    "minExp": 3500,
-    "maxExp": 4300,
-    "level": 70
-  },
-  {
-    "name": "AshenImp_TW",
-    "minExp": 2500,
-    "maxExp": 3500,
-    "level": 69
-  },
-  {
-    "name": "AshenDemon_TW",
-    "minExp": 3800,
-    "maxExp": 4500,
-    "level": 71
-  },
-  {
-    "name": "AshenGolem_TW",
-    "minExp": 4500,
-    "maxExp": 5500,
-    "level": 73
-  },
-  {
-    "name": "AshenMinotaur_TW",
-    "minExp": 4000,
-    "maxExp": 5000,
-    "level": 73
-  },
-  {
-    "name": "AshenShark_TW",
-    "minExp": 3800,
-    "maxExp": 4500,
-    "level": 71
-  },
-  {
-    "name": "BossSythrak_TW",
-    "minExp": 9000,
-    "maxExp": 12000,
-    "level": 76
   }
 ]

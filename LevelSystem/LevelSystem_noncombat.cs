@@ -200,7 +200,7 @@ namespace EpicMMOSystem
         [HarmonyPatch(typeof(Player), nameof(Player.PlacePiece))]
         private static class Player_placepiece_patch_epicmmoA
         {
-            private static void Postfix(Player __instance, Piece piece, ref bool __result)
+            private static void Postfix(Player __instance, Piece piece)
             {
                 if (EpicMMOSystem.disableNonCombatObjects.Value || EpicMMOSystem.disablePieceXP.Value) return;
                 if (piece.m_cultivatedGroundOnly)
@@ -218,7 +218,7 @@ namespace EpicMMOSystem
                     lastpiece = piece.name;
                     if (EpicMMOSystem.debugNonCombatObjects.Value)
                         EpicMMOSystem.MLLogger.LogWarning("piece name" + piece.name);
-                    if (!__result) return;
+                    //if (!__result) return;
                     if (!DataMonsters.contains(piece.name + "(Clone)")) return;
                     int expMonster = DataMonsters.getExp(piece.name + "(Clone)");
                     LevelSystem.Instance.AddExp(expMonster);

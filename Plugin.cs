@@ -409,12 +409,12 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         debugNonCombatObjects = config(NonCombat, "2.Debug NonCombat Objects", false, "Gives a Warning log for various objects names. Don't forgot that (Clone) is added to everything in the jsons.", false);
 
         string PVPCombat = "8.PVP Combat XP------";
-        displayPlayerLevel = config(PVPCombat, "Display Player Level", "(Lvl<color=blue> @ </color>) ", " Use @, to display player Level Next to name. Blank for nothing.");
+        displayPlayerLevel = config(PVPCombat, "Display Player Level", "(Lvl<color=blue> @ </color>) ", " Use @, to display player Level next to name. Blank for nothing.");
         displayPlayerXP = config(PVPCombat, "Display Players XP Worth", " [@ XP]", "Use @, to display the current XP a player is worth next to name. Blank for nothing.");
-        displayDaysAlive = config(PVPCombat, "Display Days Alive", " <color=red>(@ Days Alive)</color>", "Use @, to display the how long the player has been alive in Days. Blank for nothing.");
+        displayDaysAlive = config(PVPCombat, "Display Days Alive", " <color=red>(@ Days Alive)</color>", "Use @, to display the how long the player has been alive in days. Blank for nothing.");
         enablePVPXP = config(PVPCombat, "Enable PVP XP", true, "Enable PVP XP, victor gets XP of fallen player.");
-        xpPerLevelPVP = config(PVPCombat, "XP Player baseline Per Level", 50, "How Much XP is a player worth on defeat by another player per level.");
-        xpPerDayNotDead = config(PVPCombat, "XP Player Gains Daily for no Deaths", 10, "How extra a player is worth if they haven't died, per day.");
+        xpPerLevelPVP = config(PVPCombat, "XP Per Level", 50, "How much XP is a player worth on defeat by another player per level.");
+        xpPerDayNotDead = config(PVPCombat, "XP Per Day Alive", 10, "How much extra a player is worth if they haven't died, per day.");
 
 
 

@@ -98,7 +98,7 @@ public static class MonsterDeath_Path
 
         if (monsterName == "Player(Clone)")
         {
-            EpicMMOSystem.MLLogger.LogInfo("Killed Player - PVP");
+            EpicMMOSystem.MLLogger.LogInfo("You Killed Player - PVP");
             playerdead = true;
             // monsterLevel = level;
             playerExp = level;
@@ -225,7 +225,7 @@ public static class MonsterDeath_Path
     }
     
         
-    
+    private static bool lasthitplayer = false;
     
     [HarmonyPatch(typeof(Character), nameof(Character.RPC_Damage))]
     static class QuestEnemyKill
@@ -242,13 +242,13 @@ public static class MonsterDeath_Path
             //attacker. faction check Guilds API
             if (attacker)
             {
+                lasthitplayer = attacker.IsPlayer();
                 if (attacker.IsPlayer() || (attacker.IsTamed() || attacker.name == "staff_greenroots_tentaroot(Clone)" || attacker.name == "Staff_root_TW(Clone)" )  && EpicMMOSystem.tamesGiveXP.Value) // simple, but will have to come back to this tamed check
                 {
                     CharacterLastDamageList[__instance] = sender;
                     if (EpicMMOSystem.enabledLevelControl.Value && (EpicMMOSystem.removeBossDropMax.Value || EpicMMOSystem.removeBossDropMin.Value) && BossDropFlag)// removeboss drop and is a boss
                     {
                         __instance.m_nview.GetZDO().Set("epic playerLevel", hit.m_toolTier); // Check level because is boss
-
                     }
                     else if (EpicMMOSystem.enabledLevelControl.Value && (EpicMMOSystem.removeDropMax.Value || EpicMMOSystem.removeDropMin.Value) && !BossDropFlag) //remove mobdrop and is not a boss
                     {
@@ -259,7 +259,6 @@ public static class MonsterDeath_Path
                     }
                     else /// No lvl check
                     {
-
                         if (EpicMMOSystem.extraDebug.Value) 
                             EpicMMOSystem.MLLogger.LogInfo("else ZDO epic playerLevel to 0");
 
@@ -295,15 +294,16 @@ public static class MonsterDeath_Path
             {
                 var pkg = new ZPackage();
                 pkg.Write(__instance.gameObject.name);
+                long attacker = CharacterLastDamageList[__instance];
 
-                if (__instance.gameObject.name == "Player(Clone)" && (!DataMonsters.contains(__instance.name)))
+                if (__instance.gameObject.name == "Player(Clone)" && lasthitplayer)
                 {
                     if (!EpicMMOSystem.enablePVPXP.Value) return;
                     Player player = __instance as Player;
                     if (player != null)
                     {
                         string playerName = player.GetPlayerName();
-                        EpicMMOSystem.MLLogger.LogWarning("Player was killed pvp " + playerName);
+                        EpicMMOSystem.MLLogger.LogWarning(playerName + " Player was killed pvp ");
                         var zdopla = player.m_nview.GetZDO();
                         int daysalive = zdopla.GetInt(EpicMMOSystem.ModName + EpicMMOSystem.PlayerAliveString, -1);
                         if (daysalive == -1)
@@ -318,6 +318,7 @@ public static class MonsterDeath_Path
                     else
                     {
                         EpicMMOSystem.MLLogger.LogWarning("Didnt find player");
+                        return;
                     }
                 }
                 else
@@ -326,7 +327,6 @@ public static class MonsterDeath_Path
                 }
                 
                 pkg.Write(__instance.transform.position);
-                long attacker = CharacterLastDamageList[__instance];
                 ZRoutedRpc.instance.InvokeRoutedRPC(attacker, $"{EpicMMOSystem.ModName} DeadMonsters", new object[] { pkg });
                 CharacterLastDamageList.Remove(__instance);
             }
@@ -344,14 +344,18 @@ public static class MonsterDeath_Path
                 if (CharacterLastDamageList.ContainsKey(__instance)) {
                     var pkg = new ZPackage();
                     pkg.Write(__instance.gameObject.name);
-                    if (__instance.gameObject.name == "Player(Clone)" && (!DataMonsters.contains(__instance.name)))
+                    long attacker = CharacterLastDamageList[__instance];
+
+
+                    if (__instance.gameObject.name == "Player(Clone)" && lasthitplayer)
                     {
                         if (!EpicMMOSystem.enablePVPXP.Value) return;
                         Player player = __instance as Player;
                         if (player != null)
                         {
+                            //hit.m_attacker.UserID.
                             string playerName = player.GetPlayerName();
-                            EpicMMOSystem.MLLogger.LogWarning("Player was killed pvp " + playerName);
+                            EpicMMOSystem.MLLogger.LogWarning(playerName + " Player was killed pvp " );
                             var zdopla = player.m_nview.GetZDO();
                             int daysalive = zdopla.GetInt(EpicMMOSystem.ModName + EpicMMOSystem.PlayerAliveString, -1);
                             if (daysalive == -1)
@@ -366,6 +370,7 @@ public static class MonsterDeath_Path
                         else
                         {
                             EpicMMOSystem.MLLogger.LogWarning("Didnt find player");
+                            return;
                         }
                     }
                     else
@@ -373,8 +378,7 @@ public static class MonsterDeath_Path
                         pkg.Write(__instance.GetLevel());
                     }
 
-                    pkg.Write(__instance.transform.position);
-                    long attacker = CharacterLastDamageList[__instance];
+                    pkg.Write(__instance.transform.position);            
                     ZRoutedRpc.instance.InvokeRoutedRPC(attacker, $"{EpicMMOSystem.ModName} DeadMonsters", new object[] { pkg });
                     CharacterLastDamageList.Remove(__instance);
                 }

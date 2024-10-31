@@ -1,4 +1,4 @@
-| 1.9.23 | - Fixed exploit with Orbs - reported by ErDu from HIJOS DE FREYJA. </br> Added PVP HUD LVL, XP and Days Alive. </br> Maybe bug fix for Elite Blobs in a group.
+| 1.9.23 | - Bog Witch Update </br> Fixed exploit with Orbs - reported by ErDu from HIJOS DE FREYJA. </br> Added PVP XP, HUD LVL, XP and Days Alive. </br> Maybe bug fix for Elite Blobs in a group.
 
 | 1.9.22 | - Added Config for noExpPastLVLPopup message when being a jerk admin.
 

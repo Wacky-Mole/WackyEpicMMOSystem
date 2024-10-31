@@ -13,6 +13,7 @@ Features:
  - Usage for Mob Trophies with Potions and XP Orbs
  - Allows admins to adjust player progression
  - Custom mobs can be added for XP gain.
+ - PVP XP, With Level, XP worth and Days since the player last died.
  - Non Combat XP earning.
  - Shared group XP. Outside of groups all XP awards go to the character who struck the last blow. Requires Group Mod
  - MMO-like friends list. -[Groups](https://valheim.thunderstore.io/package/Smoothbrain/Groups/)
@@ -125,7 +126,7 @@ You can combine multiple Skills for one Requirement
 
 	Mob's data (names, levels, exp) from other mods are included:
 
-	Fantasy-Creatures, AirAnimals, Defaults(Ashlands), DoOrDieMonsters, LandAnimals, MonsterlabZ, Outsiders, SeaAnimals, Monstrum, Krumpac Mods, Teddy Bears, PungusSouls, JewelCrafting, RTDMonsters, Wizardy, NonCombat
+	Fantasy-Creatures, AirAnimals, Defaults(Ashlands), DoOrDieMonsters, LandAnimals, MonsterlabZ, Outsiders, SeaAnimals, Monstrum, Krumpac Mods, Teddy Bears, PungusSouls, JewelCrafting, RTDMonsters, Wizardy, NonCombat, Monstrum-DeepNorth
 
 	A folder listing all monsters and their levels is located in config/EpicMMOSystem/ Default is for vanilla mobs
 
@@ -133,13 +134,41 @@ You can combine multiple Skills for one Requirement
 
 	A file called Version.txt is created in the folder. It contains the mod version that was used to create it. Replace it with "NO" to stop it from overwritting on a future update.
 
-	Latest Update for Jsons config is <b> 1.9.21 </b>(Number will be updated when Jsons recieve an update)
+	Latest Update for Jsons config is <b> 1.9.23 </b>(Number will be updated when Jsons recieve an update)
 
 </details>
 
+
+<details><summary>PVP XP Mode</summary>
+
+</br>
+</br>
+
+![https://wackymole.com/hosts/SEeffectsMMO.png](https://wackymole.com/hosts/pvphudmmo.png)
+
+You can enable PVP XP in ( 8.PVP Combat XP)
+
+Enable PVP XP - true or false
+
+This mod does not change any aspect of vanilla PVP (pvp toggle)
+
+I also added the ability for players to see other players Level, XP they are worth and Days alive. 
+
+Total XP a player is worth is (Level * XP Per Level) + (XP Per Day Alive * Days).
+
+You can control how much or little information is displayed and changed style and colors.
+
+You can incentivize killing people that have been alive longer.
+
+A player gains a day alive for each morning that they are on for. Everyone starts at 0. 
+
+</br>
+</details>
+
 <details><summary>Potions and Magic Orbs</summary>
-****
+
 ![https://wackymole.com/hosts/SEeffectsMMO.png](https://wackymole.com/hosts/SEeffectsMMO.png)
+
 
 	6 Magic Orb Levels with Various XP given
 
