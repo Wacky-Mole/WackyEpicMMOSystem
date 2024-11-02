@@ -12,41 +12,62 @@ public static class EffectPatches
     [HarmonyPatch(typeof(Player), "ConsumeItem")]
     public static class ConsumeMMOXP
     {
-        public static void Postfix(ItemDrop.ItemData item, ref bool __result)
+        private static ItemDrop.ItemData tempItem;
+
+        public static void Prefix(Inventory inventory, ItemDrop.ItemData item, bool checkWorldLevel = false)
         {
-            //EpicMMOSystem.MLLogger.LogInfo("Player Consume "  );
-            if (!__result)
+            if (Player.m_localPlayer.m_seman.HaveStatusEffect("MMO_XP".GetStableHashCode()))
                 return;
-            if (!Player.m_localPlayer.m_seman.HaveStatusEffect("MMO_XP".GetStableHashCode()))
+
+            tempItem = item;
+        }
+
+        public static void Postfix(ref bool __result)
+        {
+            // Only proceed if the item was successfully consumed (__result is true)
+            if (!__result || tempItem == null)
+                return;
+
+            // badish
+            GameObject found = null;
+            foreach (var GameItem in ObjectDB.instance.m_items)
             {
-
-                GameObject found = null;
-                foreach (var GameItem in ObjectDB.instance.m_items) // much bad
+                if (GameItem.GetComponent<ItemDrop>()?.m_itemData.m_shared.m_name == tempItem.m_shared.m_name)
                 {
-                    if (GameItem.GetComponent<ItemDrop>()?.m_itemData.m_shared.m_name == item.m_shared.m_name)
-                        found = GameItem;
-                }
-
-                switch (found.name)
-                {
-                    case "mmo_orb1":
-                        LevelSystem.Instance.AddExp(EpicMMOSystem.XPforOrb1.Value, true);  break;
-                    case "mmo_orb2":
-                        LevelSystem.Instance.AddExp(EpicMMOSystem.XPforOrb2.Value, true);  break;
-                    case "mmo_orb3":
-                        LevelSystem.Instance.AddExp(EpicMMOSystem.XPforOrb3.Value, true);  break;
-                    case "mmo_orb4":
-                        LevelSystem.Instance.AddExp(EpicMMOSystem.XPforOrb4.Value, true);  break;
-                    case "mmo_orb5":
-                        LevelSystem.Instance.AddExp(EpicMMOSystem.XPforOrb5.Value, true);  break;
-                    case "mmo_orb6":
-                        LevelSystem.Instance.AddExp(EpicMMOSystem.XPforOrb6.Value, true);  break;
-
-                    default: break;
+                    found = GameItem;
+                    break;
                 }
             }
+
+            switch (found?.name)
+            {
+                case "mmo_orb1":
+                    LevelSystem.Instance.AddExp(EpicMMOSystem.XPforOrb1.Value, true);
+                    break;
+                case "mmo_orb2":
+                    LevelSystem.Instance.AddExp(EpicMMOSystem.XPforOrb2.Value, true);
+                    break;
+                case "mmo_orb3":
+                    LevelSystem.Instance.AddExp(EpicMMOSystem.XPforOrb3.Value, true);
+                    break;
+                case "mmo_orb4":
+                    LevelSystem.Instance.AddExp(EpicMMOSystem.XPforOrb4.Value, true);
+                    break;
+                case "mmo_orb5":
+                    LevelSystem.Instance.AddExp(EpicMMOSystem.XPforOrb5.Value, true);
+                    break;
+                case "mmo_orb6":
+                    LevelSystem.Instance.AddExp(EpicMMOSystem.XPforOrb6.Value, true);
+                    break;
+                default:
+                    break;
+            }
+
+            // Clear tempItem to avoid data leakage between calls
+            tempItem = null;
         }
     }
+
 
 
 
