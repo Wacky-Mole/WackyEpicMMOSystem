@@ -99,7 +99,7 @@ This mod should assigns levels to all in-game monsters. Every star added adds +1
 
 <details><summary>ItemRequiresSkillLevel Mod</summary>
 
-[ItemRequiresSkillLevel](https://valheim.thunderstore.io/package/Detalhes/ItemRequiresSkillLevel/)
+[ItemRequiresSkillLevel](https://thunderstore.io/c/valheim/p/WackyMole/WackyItemRequiresSkillLevel/)
 
 Strength Agility Intellect Body Vigour  Special 
 
@@ -215,6 +215,7 @@ The mod looks for your reset currency first and then ResetTrophies. Only consume
 <details><summary>UI</summary>
 
 ![https://wackymole.com/hosts/hoverlarge.png](https://wackymole.com/hosts/hoverlarge.png)
+
 
 Pretty much all of the UI can be scaled, hidden, dragged and remembers their location.
 
