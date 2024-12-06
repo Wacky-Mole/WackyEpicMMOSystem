@@ -69,6 +69,13 @@ public static class EpicMMOSystem_API
         eGetAttribute = actionsMO.GetMethod("GetAttribute", BindingFlags.Public | BindingFlags.Static);
         eSetSingleRate = actionsMO.GetMethod("SetSingleRate", BindingFlags.Public | BindingFlags.Static);
     }
+
+    public static int GetAttribute(string attribute)
+    {
+        if (!Enum.TryParse(attribute, true, out Attribut type)) return 0;
+        var index = (int)type;
+        return LevelSystem.Instance.getParameter((Parameter)index);
+    }
 }
 
 //Don't Use
