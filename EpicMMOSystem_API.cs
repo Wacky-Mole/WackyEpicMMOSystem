@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using EpicMMOSystem;
 using UnityEngine.PostProcessing;
+using static API.EpicMMOSystem_API;
 
 namespace API;
 
@@ -11,6 +12,7 @@ public static class EpicMMOSystem_API
     private static MethodInfo eGetLevel;
     private static MethodInfo eAddExp;
     private static MethodInfo eGetAttribute;
+    private static MethodInfo eGetAttributeRusty;
     private static MethodInfo eSetSingleRate;
 
 
@@ -39,6 +41,14 @@ public static class EpicMMOSystem_API
         if (eGetAttribute != null) result = (int)eGetAttribute.Invoke(null, new object[] {attribute});
         return result;
     }
+    public static int GetAttributeRusty(string attribute)
+    {
+        int result = 0;
+        Init();
+        if (eGetAttributeRusty != null) result = (int)eGetAttributeRusty.Invoke(null, new object[] { attribute });
+        return result;
+    }
+
 
     public static void AddExp(int value)
     {
@@ -67,15 +77,11 @@ public static class EpicMMOSystem_API
         eGetLevel = actionsMO.GetMethod("GetLevel", BindingFlags.Public | BindingFlags.Static);
         eAddExp = actionsMO.GetMethod("AddExp", BindingFlags.Public | BindingFlags.Static);
         eGetAttribute = actionsMO.GetMethod("GetAttribute", BindingFlags.Public | BindingFlags.Static);
+        eGetAttributeRusty = actionsMO.GetMethod("GetAttribute", BindingFlags.Public | BindingFlags.Static);
         eSetSingleRate = actionsMO.GetMethod("SetSingleRate", BindingFlags.Public | BindingFlags.Static);
     }
 
-    public static int GetAttribute(string attribute)
-    {
-        if (!Enum.TryParse(attribute, true, out Attribut type)) return 0;
-        var index = (int)type;
-        return LevelSystem.Instance.getParameter((Parameter)index);
-    }
+
 }
 
 //Don't Use
@@ -99,6 +105,13 @@ public static class EMMOS_API
     public static int GetAttribute(EpicMMOSystem_API.Attribut attribute)
     {
         var index = (int)attribute;
+        return LevelSystem.Instance.getParameter((Parameter)index);
+    }
+
+    public static int GetAttributeRusty(string attribute)
+    {
+        if (!Enum.TryParse(attribute, true, out Attribut type)) return 0;
+        var index = (int)type;
         return LevelSystem.Instance.getParameter((Parameter)index);
     }
 }
