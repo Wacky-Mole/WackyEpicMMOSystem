@@ -1,3 +1,5 @@
+| 1.9.26 | - Expanded API a bit.
+
 | 1.9.25 | - PieceManager Update 
 
 | 1.9.24 | - Bug fix for orbs. 

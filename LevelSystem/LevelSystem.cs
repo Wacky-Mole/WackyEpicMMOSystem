@@ -211,10 +211,13 @@ public partial class LevelSystem
         {
             "Strength" => EpicMMOSystem.maxValueStrength.Value,
             "Agility" => EpicMMOSystem.maxValueDexterity.Value,
+            "Dexterity" => EpicMMOSystem.maxValueDexterity.Value,
             "Intellect" => EpicMMOSystem.maxValueIntelligence.Value,
             "Body" => EpicMMOSystem.maxValueEndurance.Value,
+            "Endurance" => EpicMMOSystem.maxValueEndurance.Value,
             "Vigour" => EpicMMOSystem.maxValueVigour.Value,
             "Special" => EpicMMOSystem.maxValueSpecializing.Value,
+            "Specializing" => EpicMMOSystem.maxValueSpecializing.Value,
             _ => max = 205,
         };
         int setValue = Mathf.Clamp(value, 0, max);
@@ -238,10 +241,13 @@ public partial class LevelSystem
         {
             "Strength" => EpicMMOSystem.maxValueStrength.Value,
             "Agility" => EpicMMOSystem.maxValueDexterity.Value,
+            "Dexterity" => EpicMMOSystem.maxValueDexterity.Value,
             "Intellect" => EpicMMOSystem.maxValueIntelligence.Value,
             "Body" => EpicMMOSystem.maxValueEndurance.Value,
+            "Endurance" => EpicMMOSystem.maxValueEndurance.Value,
              "Vigour" => EpicMMOSystem.maxValueVigour.Value,
             "Special" => EpicMMOSystem.maxValueSpecializing.Value,
+            "Specializing" => EpicMMOSystem.maxValueSpecializing.Value,
             _ => max = 205,
         };
         return Mathf.Clamp(value, 0, max);

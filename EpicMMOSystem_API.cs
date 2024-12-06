@@ -66,7 +66,7 @@ public static class EpicMMOSystem_API
         Type actionsMO = Type.GetType("API.EMMOS_API, EpicMMOSystem");
         eGetLevel = actionsMO.GetMethod("GetLevel", BindingFlags.Public | BindingFlags.Static);
         eAddExp = actionsMO.GetMethod("AddExp", BindingFlags.Public | BindingFlags.Static);
-        eAddExp = actionsMO.GetMethod("GetAttribute", BindingFlags.Public | BindingFlags.Static);
+        eGetAttribute = actionsMO.GetMethod("GetAttribute", BindingFlags.Public | BindingFlags.Static);
         eSetSingleRate = actionsMO.GetMethod("SetSingleRate", BindingFlags.Public | BindingFlags.Static);
     }
 }
