@@ -38,7 +38,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.26";
+    internal const string VERSION = "1.9.27";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -911,7 +911,7 @@ public partial class EpicMMOSystemUI : BaseUnityPlugin
 
     IEnumerator Positionpanels()
     {
-        yield return new WaitForSeconds(0.5f); // For some reason it doesn't work when directly called in Start(), have to add a small delay
+        yield return new WaitForSeconds(1.0f); // For some reason it doesn't work when directly called in Start(), have to add a small delay
         EpicMMOSystem.MLLogger.LogInfo("Restoring UI Positions now");
         Instance.ReadConfigValuesUI();
         StopCoroutine(coroutine);

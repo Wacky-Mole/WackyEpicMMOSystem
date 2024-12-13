@@ -1,3 +1,5 @@
+| 1.9.26 | - UI Placement fix ( bug - sometimes didn't restore position correctly)
+
 | 1.9.26 | - Expanded API a bit.
 
 | 1.9.25 | - PieceManager Update 
