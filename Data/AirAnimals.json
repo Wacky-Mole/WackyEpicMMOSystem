@@ -1,0 +1,122 @@
+[
+	{
+		"name": "AA_BaldEagle",
+		"minExp": 120,
+		"maxExp": 150,
+		"level": 16
+	},
+	{
+		"name": "AA_HarpyEagle",
+		"minExp": 150,
+		"maxExp": 180,
+		"level": 14
+	},
+	{
+		"name": "AA_SecretaryBird",
+		"minExp": 140,
+		"maxExp": 160,
+		"level": 12
+	},
+	{
+		"name": "AA_Archaeopteryx",
+		"minExp": 160,
+		"maxExp": 180,
+		"level": 12
+	},
+	{
+		"name": "AA_Swan",
+		"minExp": 125,
+		"maxExp": 150,
+		"level": 11
+	},
+	{
+		"name": "AA_RedCrownedCrane",
+		"minExp": 100,
+		"maxExp": 120,
+		"level": 10
+	},
+	{
+		"name": "AA_BarnOwl",
+		"minExp": 120,
+		"maxExp": 140,
+		"level": 10
+	},
+	{
+		"name": "AA_WildDuck",
+		"minExp": 90,
+		"maxExp": 110,
+		"level": 9
+	},
+	{
+		"name": "AA_BroadTailHummingbird",
+		"minExp": 100,
+		"maxExp": 120,
+		"level": 8
+	},
+	{
+		"name": "ButterFly1",
+		"minExp": 80,
+		"maxExp": 90,
+		"level": 6
+	},
+	{
+		"name": "ButterFly2",
+		"minExp": 80,
+		"maxExp": 90,
+		"level": 6
+	},
+	{
+		"name": "ButterFly3",
+		"minExp": 80,
+		"maxExp": 90,
+		"level": 6
+	},
+	{
+		"name": "ButterFly4",
+		"minExp": 80,
+		"maxExp": 90,
+		"level": 6
+	},
+	{
+		"name": "ButterFly5",
+		"minExp": 80,
+		"maxExp": 90,
+		"level": 6
+	},
+	{
+		"name": "ButterFly6",
+		"minExp": 80,
+		"maxExp": 90,
+		"level": 6
+	},
+	{
+		"name": "AA_Pigeon",
+		"minExp": 50,
+		"maxExp": 70,
+		"level": 6
+	},
+	{
+		"name": "Beetle1",
+		"minExp": 80,
+		"maxExp": 90,
+		"level": 6
+	},
+	{
+		"name": "Beetle2",
+		"minExp": 80,
+		"maxExp": 90,
+		"level": 6
+	},
+	{
+		"name": "Beetle3",
+		"minExp": 80,
+		"maxExp": 90,
+		"level": 6
+	},
+	{
+		"name": "Beetle4",
+		"minExp": 80,
+		"maxExp": 90,
+		"level": 6
+	}
+]

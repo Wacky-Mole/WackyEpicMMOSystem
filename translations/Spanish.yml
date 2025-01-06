@@ -10,6 +10,13 @@ mmo_xp_orb5: "Orbe Magico Niv. 5"
 mmo_xp_orb5_description: "Da experiencia!"
 mmo_xp_orb6: "Orbe Magico Niv. 6"
 mmo_xp_orb6_description: "Da experiencia!"
+mmo_xp_orb7: "Orbe Magico Niv. 7"
+mmo_xp_orb7_description: "Da experiencia!"
+mmo_xp_orb8: "Orbe Magico Niv. 8"
+mmo_xp_orb8_description: "Da experiencia!"
+
+
+
 mmo_mead1: "Hidromiel de experiencia menor"
 mmo_mead2: "Hidromiel de experiencia media"
 mmo_mead3: "Hidromiel de experiencia superior"

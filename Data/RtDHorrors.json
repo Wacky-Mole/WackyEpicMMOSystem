@@ -1,0 +1,98 @@
+[
+  {
+    "name": "MeadowsHorror_RtD",
+    "minExp": 500,
+    "maxExp": 600,
+    "level": 78
+  },
+  {
+    "name": "MeadowsHorror01_RtD",
+    "minExp": 350,
+    "maxExp": 400,
+    "level": 19
+  },
+  {
+    "name": "BlackForestHorror_RtD",
+    "minExp": 200,
+    "maxExp": 350,
+    "level": 20
+  },
+  {
+    "name": "BlackForestHorror01_RtD",
+    "minExp": 200,
+    "maxExp": 400,
+    "level": 25
+  },
+  {
+    "name": "MountainHorror_RtD",
+    "minExp": 700,
+    "maxExp": 800,
+    "level": 46
+  },
+  {
+    "name": "MountainHorror01_RtD",
+    "minExp": 700,
+    "maxExp": 800,
+    "level": 47
+  },
+  {
+    "name": "SwampChaser_RtD",
+    "minExp": 300,
+    "maxExp": 350,
+    "level": 37
+  },
+  {
+    "name": "SwampHorror01_RtD",
+    "minExp": 350,
+    "maxExp": 400,
+    "level": 38
+  },
+  {
+    "name": "PlainsHorror_RtD",
+    "minExp": 400,
+    "maxExp": 500,
+    "level": 50
+  },
+  {
+    "name": "PlainsHorror01_RtD",
+    "minExp": 400,
+    "maxExp": 500,
+    "level": 50
+  },
+  {
+    "name": "MistlandsHorror_RtD",
+    "minExp": 300,
+    "maxExp": 500,
+    "level": 62
+  },
+  {
+    "name": "SeekerMutant_RtD",
+    "minExp": 300,
+    "maxExp": 500,
+    "level": 57
+  },
+  {
+    "name": "AshLandsHorror_RtD",
+    "minExp": 500,
+    "maxExp": 600,
+    "level": 57
+  },
+  {
+    "name": "AshLandsHorror01_RtD",
+    "minExp": 600,
+    "maxExp": 700,
+    "level": 73
+  },
+  {
+    "name": "AshLandsCrawler_RtD",
+    "minExp": 600,
+    "maxExp": 700,
+    "level": 72
+  },
+  {
+    "name": "DeepNorthHorror_RtD",
+    "minExp": 400,
+    "maxExp": 450,
+    "level": 65
+  }
+]

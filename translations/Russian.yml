@@ -10,6 +10,10 @@ mmo_xp_orb5: “Магический шар уровня 5”
 mmo_xp_orb5_description: “Дает опыт!”
 mmo_xp_orb6: “Магический шар уровня 6” 
 mmo_xp_orb6_description: “Дает опыт!”
+mmo_xp_orb7: “Магический шар уровня 7”
+mmo_xp_orb7_description: “Дает опыт!”
+mmo_xp_orb8: “Магический шар уровня 8” 
+mmo_xp_orb8_description: “Дает опыт!”
 mmo_mead1: “Мед Минора Опыта” 
 mmo_mead1_description: “Мед для приготовления магического зелья Минора Опыта”
 mmo_mead2: “Средний Мед Опыта” 

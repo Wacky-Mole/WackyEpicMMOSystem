@@ -1,5 +1,5 @@
 # Description:
-This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.27
+This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.30
 
 
 Support me!
@@ -17,7 +17,8 @@ Features:
  - Non Combat XP earning.
  - Shared group XP. Outside of groups all XP awards go to the character who struck the last blow. Requires Group Mod
  - MMO-like friends list. -[Groups](https://valheim.thunderstore.io/package/Smoothbrain/Groups/)
- - Compatible with [ItemRequiresSkillLevel](https://valheim.thunderstore.io/package/Detalhes/ItemRequiresSkillLevel/) mod. Equipment can be limited by level or attribute.
+ - Compatible with [ItemRequiresSkillLevel](https://thunderstore.io/c/valheim/p/WackyMole/WackyItemRequiresSkillLevel/) mod. Equipment can be limited by level or attribute.
+ - Compatible with [Item Control](https://thunderstore.io/c/valheim/p/RustyMods/ItemControl/) mod. Control craft, equip, consume based on skill level or Almanac Classes or WackyEpicMMO
  - Compatible with [KGMarketplace mod](https://valheim.thunderstore.io/package/KGvalheim/Marketplace_And_Server_NPCs_Revamped/). Experience rewards can be added: <s>(EpicMMO_Exp:250) Quests can be limited by level (EpicMMO_Level: text, 20) </s> Read updated Marketplace docs
  
  ![https://wackymole.com/hosts/2nd%20image.png](https://wackymole.com/hosts/2nd%20image.png)
@@ -126,7 +127,7 @@ You can combine multiple Skills for one Requirement
 
 	Mob's data (names, levels, exp) from other mods are included:
 
-	Fantasy-Creatures, AirAnimals, Defaults(Ashlands), DoOrDieMonsters, LandAnimals, MonsterlabZ, Outsiders, SeaAnimals, Monstrum, Krumpac Mods, Teddy Bears, PungusSouls, JewelCrafting, RTDMonsters, Wizardy, NonCombat, Monstrum-DeepNorth
+	Fantasy-Creatures, AirAnimals, Defaults(Ashlands), DoOrDieMonsters, LandAnimals, MonsterlabZ, Outsiders, SeaAnimals, Monstrum, Krumpac Mods, Teddy Bears, PungusSouls, JewelCrafting, Wizardy, NonCombat, Monstrum-DeepNorth, RTD mods Horrors, Monsters, Monstrum, Sea
 
 	A folder listing all monsters and their levels is located in config/EpicMMOSystem/ Default is for vanilla mobs
 
@@ -134,7 +135,9 @@ You can combine multiple Skills for one Requirement
 
 	A file called Version.txt is created in the folder. It contains the mod version that was used to create it. Replace it with "NO" to stop it from overwritting on a future update.
 
-	Latest Update for Jsons config is <b> 1.9.23 </b>(Number will be updated when Jsons recieve an update)
+	Latest Update for Jsons config is <b> 1.9.30 </b>(Number will be updated when Jsons recieve an update)
+
+	1.9.30 changed the jsons names, your old files will be in EpicMMOSystem_backup folder
 
 </details>
 
@@ -170,7 +173,7 @@ A player gains a day alive for each morning that they are on for. Everyone start
 ![https://wackymole.com/hosts/SEeffectsMMO.png](https://wackymole.com/hosts/SEeffectsMMO.png)
 
 
-	6 Magic Orb Levels with Various XP given
+	8 Magic Orb Levels with Various XP given
 
 	They have by default a 1% chance to drop from any mob and 100% to drop 1-4 from Bosses
 
@@ -180,7 +183,10 @@ A player gains a day alive for each morning that they are on for. Everyone start
 	3 for Swamps and Oceans
 	4 for Mountains
 	5 for Plains
-	6 for Mistlands, Ashlands, Deep North
+	6 for Mistlands
+	7 for Ashlands
+	8 for Deep North
+
 
 	3 Potions 
 	XP Potion Minor: 30% extra XP for 10 min
@@ -252,7 +258,7 @@ To make UI elements disappear type "none" in the respective elements color setti
 
 EpicMMO uses a built-in custom Translation Manager and the blaxx Translation Manager for Items
 
-English, Russian, Chinese, Spanish and German are currently implemented. 
+English, Russian, Chinese, Spanish, Korean, French, Polish, Portuguese, Brazilian Portuguese, Swedish and German are currently implemented. 
 
 </details> 
 
@@ -261,6 +267,7 @@ English, Russian, Chinese, Spanish and German are currently implemented.
 Admin only commands: - Should work in singleplayer now
  - To set a character's level: `epicmmosystem level [value] [name]` 
  - To reset attribute points: `epicmmosystem reset_points [name]` 
+ - To reset total points and level and current points: `epicmmosystem reset_totalpoints [name]` 
  - To recalc levels based on total experience: `epicmmosystem recalc [name]` 
  - Should work with spaces in names now or replace spaces with '&'
 </details> 
@@ -272,7 +279,7 @@ Wacky Git https://github.com/Wacky-Mole/WackyEpicMMOSystem
 
 Original git - https://github.com/Single-sh/EpicMMOSystem
 
-For questions or suggestions please join discord channel: [Odin Plus Team](https://discord.gg/odinplus) or my discord at [Wolf Den](https://discord.gg/yPj7xjs3Xf)
+For questions or suggestions please join discord channel: [Odin Plus Team](https://discord.gg/odinplus) or my discord at [Wolf Den](https://discord.gg/uPjjH8y52j)
 
 Support me at https://www.buymeacoffee.com/WackyMole  or https://ko-fi.com/wackymole
 

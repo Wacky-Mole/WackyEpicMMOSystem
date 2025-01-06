@@ -23,7 +23,9 @@ public static class TerminalCommands
                 new Action<long, int>(RPC_SetLevel));
             //Приняли приглашение в друзья
             ZRoutedRpc.instance.Register($"{modName} terminal_ResetPoints",
-                new Action<long>(RPC_ResetPoints));
+                new Action<long>(RPC_ResetPoints));            
+            ZRoutedRpc.instance.Register($"{modName} terminal_ResetTotalPoints",
+                new Action<long>(RPC_ResetTotalPoints));
             ZRoutedRpc.instance.Register($"{modName} terminal_Recalc",
                 new Action<long>(RPC_Recalc));
         }
@@ -48,7 +50,13 @@ public static class TerminalCommands
         LevelSystem.Instance.ResetAllParameter();
         Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), local["$terminal_reset_points"],PrivilegeManager.GetNetworkUserId());
     }
-    
+
+    private static void RPC_ResetTotalPoints(long sender)
+    {
+        LevelSystem.Instance.ResetTotalPoints();
+        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), "Reset Everything -  Level/Points/Total of Player", PrivilegeManager.GetNetworkUserId());
+    }
+
     [HarmonyPatch(typeof(Terminal), nameof(Terminal.InitTerminal))]
     public class AddChatCommands
     {
@@ -117,6 +125,25 @@ public static class TerminalCommands
                             }
                             ZRoutedRpc.instance.InvokeRoutedRPC(userId ?? 200,$"{modName} terminal_ResetPoints");
                         }
+                        else if (args[1] == "reset_totalpoints")
+                        {
+                            string name = args[2];
+                            if (args.Length > 3)
+                            {
+                                for (var i = 3; i < args.Length; i++)
+                                {
+                                    name += " " + args[i];
+                                }
+
+                            }
+                            var userId = getPlayerId(name);
+                            if (userId == null)
+                            {
+                                EpicMMOSystem.print("Player is not found");
+                            }
+                            ZRoutedRpc.instance.InvokeRoutedRPC(userId ?? 200, $"{modName} terminal_ResetTotalPoints");
+                        }
+
                         else if (args[1] == "recalc")
                         {
                             string name = args[2];
@@ -146,12 +173,13 @@ public static class TerminalCommands
                         }
 
                         args.Context.AddString("level [value] [name] - set level for player name");
-                        args.Context.AddString("reset_points [name] - reset points from attribute for player name");
+                        args.Context.AddString("reset_points [name] - reset all attributes points for player");
+                        args.Context.AddString("reset_totalpoints [name] - reset total/current/level for player ");
                         args.Context.AddString("recalc [name] - recalc level for player name based on total gained XP");
                         args.Context.AddString("update - Updates the Json and pushes to all clients");
                     }),
                 optionsFetcher: () => new List<string>
-                    { "level", "reset_points", "recalc", "update" });
+                    { "level", "reset_points", "reset_totalpoints","recalc", "update" });
         }
     }
 }

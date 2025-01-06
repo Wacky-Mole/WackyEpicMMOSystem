@@ -58,6 +58,12 @@ public static class EffectPatches
                     break;
                 case "mmo_orb6":
                     LevelSystem.Instance.AddExp(EpicMMOSystem.XPforOrb6.Value, true);
+                    break;                
+                case "mmo_orb7":
+                    LevelSystem.Instance.AddExp(EpicMMOSystem.XPforOrb7.Value, true);
+                    break;               
+                case "mmo_orb8":
+                    LevelSystem.Instance.AddExp(EpicMMOSystem.XPforOrb8.Value, true);
                     break;
                 default:
                     break;

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Crystal_Frost_Reaper",
+    "minExp": 3000,
+    "maxExp": 4000,
+    "level": 0
+  },
+  {
+    "name": "Crystal_Flame_Reaper",
+    "minExp": 3000,
+    "maxExp": 4000,
+    "level": 0
+  },
+  {
+    "name": "Crystal_Soul_Reaper",
+    "minExp": 3000,
+    "maxExp": 4000,
+    "level": 0
+  }
+]

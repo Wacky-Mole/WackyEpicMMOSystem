@@ -1,0 +1,43 @@
+[{
+		"name": "Krump_Monster_Neck",
+		"minExp": 100,
+		"maxExp": 190,
+		"level": 10
+	},
+	{
+		"name": "Krump_Monster_Neck_Brute",
+		"minExp": 190,
+		"maxExp": 280,
+		"level": 20
+	},
+	{
+		"name": "Krump_Boss_Monster_Nokken",
+		"minExp": 330,
+		"maxExp": 450,
+		"level": 22
+	},
+	{
+		"name": "Krump_Monster_Draugr_Crawler_01",
+		"minExp": 280,
+		"maxExp": 340,
+		"level": 26
+	},
+	{
+		"name": "Krump_Monster_Draugr_Sword",
+		"minExp": 300,
+		"maxExp": 360,
+		"level": 28
+	},
+	{
+		"name": "Krump_Monster_Draugr_Spear",
+		"minExp": 300,
+		"maxExp": 360,
+		"level": 28
+	},
+	{
+		"name": "Krump_Monster_Draugr_Jarl",
+		"minExp": 340,
+		"maxExp": 400,
+		"level": 30
+	}
+]

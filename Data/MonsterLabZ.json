@@ -1,0 +1,398 @@
+[
+  {
+    "name": "Green_Butterfly",
+    "minExp": 15,
+    "maxExp": 20,
+    "level": 5
+  },
+  {
+    "name": "Rainbow_Butterfly",
+    "minExp": 15,
+    "maxExp": 20,
+    "level": 5
+  },
+  {
+    "name": "Silkworm_Butterfly",
+    "minExp": 15,
+    "maxExp": 20,
+    "level": 5
+  },
+  {
+    "name": "Greydwarf_Purple",
+    "minExp": 50,
+    "maxExp": 60,
+    "level": 12
+  },
+  {
+    "name": "Greydwarf_Purple_Shroom",
+    "minExp": 50,
+    "maxExp": 60,
+    "level": 12
+  },
+  {
+    "name": "BlackSpider",
+    "minExp": 15,
+    "maxExp": 25,
+    "level": 9
+  },
+  {
+    "name": "GreenSpider",
+    "minExp": 25,
+    "maxExp": 40,
+    "level": 9
+  },
+  {
+    "name": "BrownSpider",
+    "minExp": 200,
+    "maxExp": 250,
+    "level": 32
+  },
+  {
+    "name": "BrownSpider_Spawn",
+    "minExp": 200,
+    "maxExp": 250,
+    "level": 32
+  },
+  {
+    "name": "ForestSpider",
+    "minExp": 60,
+    "maxExp": 90,
+    "level": 14
+  },
+  {
+    "name": "TreeSpider",
+    "minExp": 45,
+    "maxExp": 70,
+    "level": 7
+  },
+  {
+    "name": "TreeSpider_Spawn",
+    "minExp": 45,
+    "maxExp": 70,
+    "level": 7
+  },
+  {
+    "name": "TanSpider",
+    "minExp": 230,
+    "maxExp": 290,
+    "level": 50
+  },
+  {
+    "name": "FrostSpider",
+    "minExp": 140,
+    "maxExp": 180,
+    "level": 40
+  },
+  {
+    "name": "FrigidSpider",
+    "minExp": 180,
+    "maxExp": 220,
+    "level": 40
+  },
+  {
+    "name": "ML_FrostHatchling",
+    "minExp": 250,
+    "maxExp": 300,
+    "level": 40
+  },
+  {
+    "name": "ML_FrostHatchling_Spawn",
+    "minExp": 250,
+    "maxExp": 300,
+    "level": 40
+  },
+  {
+    "name": "KrakenLD",
+    "minExp": 1380,
+    "maxExp": 1620,
+    "level": 51
+  },
+  {
+    "name": "Kraken_Blob",
+    "minExp": 200,
+    "maxExp": 500,
+    "level": 45
+  },
+  {
+    "name": "ML_DraugrShip",
+    "minExp": 500,
+    "maxExp": 800,
+    "level": 32
+  },
+  {
+    "name": "ML_Draugr_Boat",
+    "minExp": 500,
+    "maxExp": 800,
+    "level": 30
+  },
+  {
+    "name": "ML_Draugr_Spawn",
+    "minExp": 200,
+    "maxExp": 300,
+    "level": 30
+  },
+  {
+    "name": "ML_DraugrBomber_Boat",
+    "minExp": 600,
+    "maxExp": 900,
+    "level": 30
+  },
+  {
+    "name": "ML_GoblinShip",
+    "minExp": 600,
+    "maxExp": 900,
+    "level": 42
+  },
+  {
+    "name": "DwarfGoblin_NoAttack",
+    "minExp": 200,
+    "maxExp": 300,
+    "level": 40
+  },
+  {
+    "name": "DwarfGoblin_Spawn",
+    "minExp": 200,
+    "maxExp": 300,
+    "level": 40
+  },
+  {
+    "name": "DwarfGoblin_Boat",
+    "minExp": 300,
+    "maxExp": 400,
+    "level": 40
+  },
+  {
+    "name": "DwarfGoblinShaman_Boat",
+    "minExp": 400,
+    "maxExp": 600,
+    "level": 41
+  },
+  {
+    "name": "Molluscan",
+    "minExp": 420,
+    "maxExp": 480,
+    "level": 28
+  },
+  {
+    "name": "MolluscanLand",
+    "minExp": 150,
+    "maxExp": 200,
+    "level": 20
+  },
+  {
+    "name": "Surtling_Spawn",
+    "minExp": 190,
+    "maxExp": 230,
+    "level": 28
+  },
+  {
+    "name": "ML_Surtling",
+    "minExp": 190,
+    "maxExp": 230,
+    "level": 28
+  },
+  {
+    "name": "DwarfGoblin",
+    "minExp": 300,
+    "maxExp": 400,
+    "level": 51
+  },
+  {
+    "name": "DwarfGoblinLoot",
+    "minExp": 300,
+    "maxExp": 400,
+    "level": 50
+  },
+  {
+    "name": "DwarfGoblinShaman",
+    "minExp": 500,
+    "maxExp": 600,
+    "level": 52
+  },
+  {
+    "name": "ML_GoblinLox",
+    "minExp": 600,
+    "maxExp": 900,
+    "level": 53
+  },
+  {
+    "name": "GoblinLoxRider",
+    "minExp": 600,
+    "maxExp": 900,
+    "level": 53
+  },
+  {
+    "name": "GhostWarrior",
+    "minExp": 70,
+    "maxExp": 110,
+    "level": 15
+  },
+  {
+    "name": "NormalGhostWarrior",
+    "minExp": 70,
+    "maxExp": 110,
+    "level": 15
+  },
+  {
+    "name": "ChaosSkeletonWarrior",
+    "minExp": 140,
+    "maxExp": 200,
+    "level": 18
+  },
+  {
+    "name": "IceSkeletonWarrior",
+    "minExp": 120,
+    "maxExp": 180,
+    "level": 21
+  },
+  {
+    "name": "NormalSkeletonWarrior",
+    "minExp": 10,
+    "maxExp": 150,
+    "level": 16
+  },
+  {
+    "name": "PoisonSkeletonWarrior",
+    "minExp": 210,
+    "maxExp": 250,
+    "level": 20
+  },
+  {
+    "name": "MLNPC_Svartalfar0",
+    "minExp": 400,
+    "maxExp": 800,
+    "level": 33
+  },
+  {
+    "name": "SpiderBoss_Egg",
+    "minExp": 100,
+    "maxExp": 150,
+    "level": 30
+  },
+  {
+    "name": "Spider_Hatchling",
+    "minExp": 300,
+    "maxExp": 350,
+    "level": 30
+  },
+  {
+    "name": "WraithWarrior",
+    "minExp": 300,
+    "maxExp": 350,
+    "level": 31
+  },
+  {
+    "name": "ML_JellyFish0",
+    "minExp": 300,
+    "maxExp": 350,
+    "level": 30
+  },
+  {
+    "name": "DeepSea_Serpent",
+    "minExp": 400,
+    "maxExp": 600,
+    "level": 31
+  },
+  {
+    "name": "DeepSea_Serpent_Flying",
+    "minExp": 600,
+    "maxExp": 800,
+    "level": 33
+  },
+  {
+    "name": "Spider_Boss",
+    "minExp": 1100,
+    "maxExp": 1300,
+    "level": 40
+  },
+  {
+    "name": "IceGolem",
+    "minExp": 3600,
+    "maxExp": 4800,
+    "level": 65
+  },
+  {
+    "name": "TrollGiant",
+    "minExp": 800,
+    "maxExp": 1000,
+    "level": 39
+  },
+  {
+    "name": "FireGolem",
+    "minExp": 2000,
+    "maxExp": 2400,
+    "level": 72
+  },
+  {
+    "name": "ML_LavaRoot",
+    "minExp": 600,
+    "maxExp": 900,
+    "level": 70
+  },
+  {
+    "name": "FireSkeletonWarrior",
+    "minExp": 900,
+    "maxExp": 1100,
+    "level": 70
+  },
+  {
+    "name": "FireSkeletonWarriorNoFx",
+    "minExp": 900,
+    "maxExp": 1100,
+    "level": 70
+  },
+  {
+    "name": "ML_AshHuldra",
+    "minExp": 900,
+    "maxExp": 1100,
+    "level": 70
+  },
+  {
+    "name": "ML_AshHatchling",
+    "minExp": 900,
+    "maxExp": 1100,
+    "level": 70
+  },
+  {
+    "name": "ObsidianGolem",
+    "minExp": 2000,
+    "maxExp": 2400,
+    "level": 70
+  },
+  {
+    "name": "ML_AshHuldraQueen1",
+    "minExp": 900,
+    "maxExp": 1100,
+    "level": 71
+  },
+  {
+    "name": "ML_AshHuldraQueen2",
+    "minExp": 1100,
+    "maxExp": 1300,
+    "level": 72
+  },
+  {
+    "name": "ML_AshHuldraQueen3",
+    "minExp": 1300,
+    "maxExp": 1500,
+    "level": 73
+  },
+  {
+    "name": "Surtr",
+    "minExp": 3600,
+    "maxExp": 4800,
+    "level": 74
+  },
+  {
+    "name": "NightmareDragonEV",
+    "minExp": 3600,
+    "maxExp": 4800,
+    "level": 74
+  },
+  {
+    "name": "NightmareDragon",
+    "minExp": 3600,
+    "maxExp": 4800,
+    "level": 74
+  }
+]

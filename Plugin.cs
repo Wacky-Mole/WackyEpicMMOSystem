@@ -38,7 +38,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.27";
+    internal const string VERSION = "1.9.30";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -228,6 +228,8 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     public static ConfigEntry<int> XPforOrb4;
     public static ConfigEntry<int> XPforOrb5;
     public static ConfigEntry<int> XPforOrb6;
+    public static ConfigEntry<int> XPforOrb7;
+    public static ConfigEntry<int> XPforOrb8;
 
     public static ConfigEntry<float> XPforMinorPotion;
     public static ConfigEntry<float> XPforMediumPotion;
@@ -386,6 +388,8 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         XPforOrb4 = config(OrbandPotion, "XP for Orb 4", 2000, "Consuming Orb grants how much exp?");
         XPforOrb5 = config(OrbandPotion, "XP for Orb 5", 4000, "Consuming Orb grants how much exp?");
         XPforOrb6 = config(OrbandPotion, "XP for Orb 6", 8000, "Consuming Orb grants how much exp?");
+        XPforOrb7 = config(OrbandPotion, "XP for Orb 7", 16000, "Consuming Orb grants how much exp?");
+        XPforOrb8 = config(OrbandPotion, "XP for Orb 8", 32000, "Consuming Orb grants how much exp?");
         XPforMinorPotion = config(OrbandPotion, "Minor Potion", 1.3f, "XP Multiplier for XP Potion Minor");
         XPforMediumPotion = config(OrbandPotion, "Medium Potion", 1.6f, "XP Multiplier for XP Potion Medium");
         XPforGreaterPotion = config(OrbandPotion, "Greater Potion", 2.0f, "XP Multiplier for XP Potion Greater");
@@ -911,7 +915,7 @@ public partial class EpicMMOSystemUI : BaseUnityPlugin
 
     IEnumerator Positionpanels()
     {
-        yield return new WaitForSeconds(1.0f); // For some reason it doesn't work when directly called in Start(), have to add a small delay
+        yield return new WaitForSeconds(1.5f); // For some reason it doesn't work when directly called in Start(), have to add a small delay
         EpicMMOSystem.MLLogger.LogInfo("Restoring UI Positions now");
         Instance.ReadConfigValuesUI();
         StopCoroutine(coroutine);

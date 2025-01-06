@@ -1,15 +1,19 @@
 ﻿using HarmonyLib;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using static UnityEngine.UI.GridLayoutGroup;
 
 namespace EpicMMOSystem
 {
-    internal static class LevelSystem_noncombat
+
+    internal class LevelSystem_noncombat
     {
+
 
         [HarmonyPatch(typeof(Destructible), nameof(Destructible.RPC_Damage))]
         private static class Destructible_dmg_patch
@@ -34,6 +38,14 @@ namespace EpicMMOSystem
 
             }
         }
+        internal static bool readytopick = true;
+        public static IEnumerator PickWaitme()
+        {
+            yield return new WaitForSeconds(3f); // 3 second delay to pickables
+            readytopick = true;
+        }
+
+
 
         [HarmonyPatch(typeof(Pickable), nameof(Pickable.RPC_Pick))]
         private static class PickablePickMMOWacky
@@ -42,12 +54,19 @@ namespace EpicMMOSystem
             {
 
                 if (EpicMMOSystem.disableNonCombatObjects.Value || EpicMMOSystem.disableMiningXP.Value) return;
+
+                if (!readytopick)
+                {
+                    return;
+                }
                 if (EpicMMOSystem.debugNonCombatObjects.Value)
                     EpicMMOSystem.MLLogger.LogWarning("pickable name" + __instance.name);
 
                 if (!DataMonsters.contains(__instance.name)) return;
                 int expMonster = DataMonsters.getExp(__instance.name);
                 LevelSystem.Instance.AddExp(expMonster);
+                readytopick = false;
+                EpicMMOSystem.Instance.StartCoroutine(PickWaitme());
             }
         }
 

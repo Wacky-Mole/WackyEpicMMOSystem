@@ -1,0 +1,62 @@
+[
+	{
+		"name": "tb_blackbear",
+		"minExp": 350,
+		"maxExp": 500,
+		"level": 40
+	},
+	{
+		"name": "tb_blackbear_cub",
+		"minExp": 375,
+		"maxExp": 425,
+		"level": 30
+	},
+	{
+		"name": "tb_brownbear",
+		"minExp": 350,
+		"maxExp": 500,
+		"level": 40
+	},
+	{
+		"name": "tb_brownbear_cub",
+		"minExp": 375,
+		"maxExp": 425,
+		"level": 30
+	},
+	{
+		"name": "tb_cosmicbear",
+		"minExp": 1100,
+		"maxExp": 1500,
+		"level": 60
+	},
+	{
+		"name": "tb_cosmicbear_cub",
+		"minExp": 600,
+		"maxExp": 1000,
+		"level": 50
+	},
+	{
+		"name": "tb_grizzlybear",
+		"minExp": 350,
+		"maxExp": 500,
+		"level": 40
+	},
+	{
+		"name": "tb_grizzlybear_cub",
+		"minExp": 375,
+		"maxExp": 425,
+		"level": 30
+	},
+	{
+		"name": "tb_polarbear",
+		"minExp": 1100,
+		"maxExp": 1500,
+		"level": 60
+	},
+	{
+		"name": "tb_polarbear_cub",
+		"minExp": 600,
+		"maxExp": 1000,
+		"level": 50
+	}
+]

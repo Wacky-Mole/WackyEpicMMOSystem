@@ -62,6 +62,12 @@ mmo_xp_orb5: "Magic Orb Lvl 5"
 mmo_xp_orb5_description: "Gives XP!"
 mmo_xp_orb6: "Magic Orb Lvl 6"
 mmo_xp_orb6_description: "Gives XP!"
+mmo_xp_orb7: "Magic Orb Lvl 7"
+mmo_xp_orb7_description: "Gives XP!"
+mmo_xp_orb8: "Magic Orb Lvl 8"
+mmo_xp_orb8_description: "Gives XP!"
+
+
 mmo_mead1: "XP Mead Minor"
 mmo_mead2: "XP Mead Medium"
 mmo_mead3: "XP Mead Greater"

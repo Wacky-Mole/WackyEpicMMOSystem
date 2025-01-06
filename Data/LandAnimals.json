@@ -1,0 +1,175 @@
+[{
+		"name": "LA_Squirrel",
+		"minExp": 70,
+		"maxExp": 100,
+		"level": 10
+	},
+	{
+		"name": "LA_SquirrelFemale",
+		"minExp": 200,
+		"maxExp": 260,
+		"level": 26
+	},
+	{
+		"name": "LA_SquirrelCub",
+		"minExp": 200,
+		"maxExp": 260,
+		"level": 26
+	},
+	{
+		"name": "GraveBear",
+		"minExp": 200,
+		"maxExp": 260,
+		"level": 26
+	},
+	{
+		"name": "MrsGraveBear",
+		"minExp": 200,
+		"maxExp": 260,
+		"level": 26
+	},
+	{
+		"name": "GraveBearCub",
+		"minExp": 180,
+		"maxExp": 200,
+		"level": 22
+	},
+	{
+		"name": "LA_Capybara",
+		"minExp": 60,
+		"maxExp": 80,
+		"level": 12
+	},
+	{
+		"name": "LA_LittleCapy",
+		"minExp": 60,
+		"maxExp": 80,
+		"level": 12
+	},
+	{
+		"name": "LA_DeerDoe",
+		"minExp": 90,
+		"maxExp": 110,
+		"level": 15
+	},
+	{
+		"name": "LA_MooseBull",
+		"minExp": 100,
+		"maxExp": 120,
+		"level": 15
+	},
+	{
+		"name": "LA_MooseCow",
+		"minExp": 90,
+		"maxExp": 110,
+		"level": 15
+	},
+	{
+		"name": "LA_MooseCalf",
+		"minExp": 50,
+		"maxExp": 90,
+		"level": 12
+	},
+	{
+		"name": "LA_DeerStag",
+		"minExp": 100,
+		"maxExp": 120,
+		"level": 15
+	},
+	{
+		"name": "LA_DeerRed",
+		"minExp": 90,
+		"maxExp": 110,
+		"level": 15
+	},
+	{
+		"name": "LA_DeerCalf",
+		"minExp": 50,
+		"maxExp": 90,
+		"level": 12
+	},
+	{
+		"name": "LA_FoxFemale",
+		"minExp": 60,
+		"maxExp": 70,
+		"level": 13
+	},
+	{
+		"name": "LA_FoxMale",
+		"minExp": 60,
+		"maxExp": 70,
+		"level": 13
+	},
+	{
+		"name": "LA_WildBoarMale",
+		"minExp": 100,
+		"maxExp": 120,
+		"level": 20
+	},
+	{
+		"name": "LA_WildBoarFemale",
+		"minExp": 90,
+		"maxExp": 110,
+		"level": 20
+	},
+	{
+		"name": "LA_WildBoarCub",
+		"minExp": 50,
+		"maxExp": 90,
+		"level": 15
+	},
+	{
+		"name": "LA_WildHareMale",
+		"minExp": 80,
+		"maxExp": 100,
+		"level": 15
+	},
+	{
+		"name": "LA_WildHareFemale",
+		"minExp": 60,
+		"maxExp": 80,
+		"level": 15
+	},
+	{
+		"name": "LA_WildHareCub",
+		"minExp": 40,
+		"maxExp": 60,
+		"level": 10
+	},
+	{
+		"name": "LA_WolfMale",
+		"minExp": 250,
+		"maxExp": 290,
+		"level": 40
+	},
+	{
+		"name": "LA_WolfFemale",
+		"minExp": 250,
+		"maxExp": 290,
+		"level": 40
+	},
+	{
+		"name": "LA_WolfCub",
+		"minExp": 180,
+		"maxExp": 200,
+		"level": 38
+	},
+	{
+		"name": "LA_RaccoonMale",
+		"minExp": 180,
+		"maxExp": 200,
+		"level": 38
+	},
+	{
+		"name": "LA_RaccoonFemale",
+		"minExp": 180,
+		"maxExp": 200,
+		"level": 38
+	},
+	{
+		"name": "LA_RaccoonCub",
+		"minExp": 180,
+		"maxExp": 200,
+		"level": 38
+	}
+]

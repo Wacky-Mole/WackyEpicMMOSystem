@@ -1,0 +1,32 @@
+[
+	{
+		"name": "BlackKnight",
+		"minExp": 600,
+		"maxExp": 800,
+		"level": 60
+	},
+	{
+		"name": "Giantdad",
+		"minExp": 1500,
+		"maxExp": 2000,
+		"level": 68
+	},
+	{
+		"name": "GiantMushroom",
+		"minExp": 200,
+		"maxExp": 250,
+		"level": 20
+	},
+	{
+		"name": "HollowSoldier",
+		"minExp": 100,
+		"maxExp": 150,
+		"level": 15
+	},
+	{
+		"name": "TaurusDemon",
+		"minExp": 300,
+		"maxExp": 450,
+		"level": 30
+	}
+]

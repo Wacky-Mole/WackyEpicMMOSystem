@@ -49,7 +49,11 @@ public static class DataMonsters
         Item Orb5 = new("mmo_xp", "mmo_orb5", "asset");
         Orb5.ToggleConfigurationVisibility(Configurability.Disabled);
         Item Orb6 = new("mmo_xp", "mmo_orb6", "asset");
-        Orb6.ToggleConfigurationVisibility(Configurability.Disabled);
+        Orb6.ToggleConfigurationVisibility(Configurability.Disabled);       
+        Item Orb7 = new("mmo_xp", "mmo_orb7", "asset");
+        Orb7.ToggleConfigurationVisibility(Configurability.Disabled);        
+        Item Orb8 = new("mmo_xp", "mmo_orb8", "asset");
+        Orb8.ToggleConfigurationVisibility(Configurability.Disabled);
 
         MagicOrbDictionary.Add(Orb1.Prefab, EpicMMOSystem.XPforOrb1.Value);
         MagicOrbDictionary.Add(Orb2.Prefab, EpicMMOSystem.XPforOrb2.Value);
@@ -57,6 +61,8 @@ public static class DataMonsters
         MagicOrbDictionary.Add(Orb4.Prefab, EpicMMOSystem.XPforOrb4.Value);
         MagicOrbDictionary.Add(Orb5.Prefab, EpicMMOSystem.XPforOrb5.Value);
         MagicOrbDictionary.Add(Orb6.Prefab, EpicMMOSystem.XPforOrb6.Value);
+        MagicOrbDictionary.Add(Orb7.Prefab, EpicMMOSystem.XPforOrb7.Value);
+        MagicOrbDictionary.Add(Orb8.Prefab, EpicMMOSystem.XPforOrb8.Value);
         
 
 
@@ -65,10 +71,11 @@ public static class DataMonsters
         OrbsByBiomes.Add(Heightmap.Biome.Swamp, Orb3.Prefab);
         OrbsByBiomes.Add(Heightmap.Biome.Mountain, Orb4.Prefab);
         OrbsByBiomes.Add(Heightmap.Biome.Plains, Orb5.Prefab);
-        OrbsByBiomes.Add(Heightmap.Biome.DeepNorth, Orb6.Prefab);
-        OrbsByBiomes.Add(Heightmap.Biome.AshLands, Orb6.Prefab);
+        OrbsByBiomes.Add(Heightmap.Biome.DeepNorth, Orb8.Prefab);
+        OrbsByBiomes.Add(Heightmap.Biome.AshLands, Orb7.Prefab);
         OrbsByBiomes.Add(Heightmap.Biome.Ocean, Orb3.Prefab);
         OrbsByBiomes.Add(Heightmap.Biome.None, Orb2.Prefab);
+        OrbsByBiomes.Add(Heightmap.Biome.Mistlands, Orb6.Prefab);
     }
 
     /*
@@ -187,26 +194,29 @@ public static class DataMonsters
     {
         var versionpath = Path.Combine(Paths.ConfigPath, EpicMMOSystem.ModName, $"Version.txt");
         var folderpath = Path.Combine(Paths.ConfigPath, EpicMMOSystem.ModName);
+        var folderpathbackup = Path.Combine(Paths.ConfigPath, EpicMMOSystem.ModName +"_backup");
         var warningtext = Path.Combine(Paths.ConfigPath, EpicMMOSystem.ModName, $"If you want to stop from updating.txt");
-        var json = "MonsterDB_Default.json";
-        var json1 = "MonsterDB_AirAnimals.json";
-        var json2 = "MonsterDB_LandAnimals.json";
-        var json3 = "MonsterDB-Fantasy-Creatures.json";
-        var json4 = "MonsterDB_SeaAnimals.json";
-        var json5 = "MonsterDB_MonsterLabZ.json";
-        var json6 = "MonsterDB_Outsiders.json";
-        var json7 = "MonsterDB_DoorDieMonsters.json";
-        var json8 = "MonsterDB_MajesticChickens.json";
-        var json9 = "MonsterDB-Monstrum.json";
-        var json10 = "MonsterDB-Reforge_Krumpac.json";
-        var json11 = "MonsterDB_TeddyBears.json";
-        var json12 = "MonsterDB-PungusSouls.json";
-        var json13 = "MonsterDB_Jewelcrafting.json";
-        var json14 = "MonsterDB_RtDMonsters.json";
-        var json15 = "MonsterDB_Therzie.Wizardry.json";
-        var json16 = "MonsterDB_NonCombat.json";
-        var json17 = "MonsterDB-Monstrum-DeepNorth.json";
-
+        var json = "Default.json";
+        var json1 = "AirAnimals.json";
+        var json2 = "LandAnimals.json";
+        var json3 = "Fantasy_Creatures.json";
+        var json4 = "SeaAnimals.json";
+        var json5 = "MonsterLabZ.json";
+        var json6 = "Outsiders.json";
+        var json7 = "DoorDieMonsters.json";
+        var json8 = "MajesticChickens.json";
+        var json9 = "Therzie_Monstrum.json";
+        var json10 = "Reforge_Krumpac.json";
+        var json11 = "TeddyBears.json";
+        var json12 = "PungusSouls.json";
+        var json13 = "Jewelcrafting.json";
+        var json14 = "RtDMonsters.json";
+        var json15 = "Therzie_Wizardry.json";
+        var json16 = "NonCombat.json";
+        var json17 = "Monstrum_DeepNorth.json";
+        var json18 = "RtDHorrors.json";
+        var json19 = "RtDMonstrum.json";
+        var json20 = "RtDSea.json";
 
 
 
@@ -270,10 +280,15 @@ public static class DataMonsters
                 cleartowrite = true;            
             if (filev == "1.9.21")
                 cleartowrite = true;
+            if (filev == "1.9.23")
+            {
+                cleartowrite = true;
+                Directory.Move(folderpath, folderpathbackup);
+                Directory.CreateDirectory(folderpath);
+            }
+            
 
-
-
-            if (filev == "1.9.23") // last version to get a DB update
+            if (filev == "1.9.30") // last version to get a DB update
                 cleartowrite = false;
 
             if (filev == "NO" || filev == "no" || filev == "No" || filev == "STOP" || filev == "stop" || filev == "Stop")
@@ -285,7 +300,7 @@ public static class DataMonsters
         if (cleartowrite)
         {
             //list.Clear();
-            File.WriteAllText(versionpath, "1.9.23"); // Write Version file, don't auto update
+            File.WriteAllText(versionpath, "1.9.30"); // Write Version file, don't auto update
 
             File.WriteAllText(warningtext, "Erase numbers in Version.txt and write NO or stop in file. This should stop DB json files from updating on an update. If you make your own custom json file, then that one should never be updated.");
 
@@ -324,6 +339,13 @@ public static class DataMonsters
             File.WriteAllText(Path.Combine(folderpath, json16), getDefaultJsonMonster(json16));
 
             File.WriteAllText(Path.Combine(folderpath, json17), getDefaultJsonMonster(json17));
+
+            File.WriteAllText(Path.Combine(folderpath, json18), getDefaultJsonMonster(json18));
+
+            File.WriteAllText(Path.Combine(folderpath, json19), getDefaultJsonMonster(json19));
+
+            File.WriteAllText(Path.Combine(folderpath, json20), getDefaultJsonMonster(json20));
+
 
 
             if (EpicMMOSystem.extraDebug.Value)

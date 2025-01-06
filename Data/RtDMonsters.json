@@ -1,0 +1,152 @@
+[
+  {
+    "name": "Assassin_RtD",
+    "minExp": 500,
+    "maxExp": 600,
+    "level": 30
+  },
+  {
+    "name": "Berserker_RtD",
+    "minExp": 350,
+    "maxExp": 400,
+    "level": 30
+  },
+  {
+    "name": "Demon_RtD",
+    "minExp": 200,
+    "maxExp": 350,
+    "level": 35
+  },
+  {
+    "name": "DragonBoar_RtD",
+    "minExp": 200,
+    "maxExp": 400,
+    "level": 25
+  },
+  {
+    "name": "DragonBoarTamed_RtD",
+    "minExp": 700,
+    "maxExp": 800,
+    "level": 26
+  },
+  {
+    "name": "DragonPiglet_RtD",
+    "minExp": 700,
+    "maxExp": 800,
+    "level": 20
+  },
+  {
+    "name": "FallenCrusader_RtD",
+    "minExp": 300,
+    "maxExp": 350,
+    "level": 37
+  },
+  {
+    "name": "Wizard_RtD",
+    "minExp": 350,
+    "maxExp": 400,
+    "level": 38
+  },
+  {
+    "name": "ElfHunterF_RtD",
+    "minExp": 400,
+    "maxExp": 500,
+    "level": 35
+  },
+  {
+    "name": "ElfHunterM_RtD",
+    "minExp": 400,
+    "maxExp": 500,
+    "level": 37
+  },
+  {
+    "name": "ElfPriestM_RtD",
+    "minExp": 300,
+    "maxExp": 500,
+    "level": 37
+  },
+  {
+    "name": "ElfWarriorF_RtD",
+    "minExp": 300,
+    "maxExp": 500,
+    "level": 39
+  },
+  {
+    "name": "ElfWarriorM_RtD",
+    "minExp": 500,
+    "maxExp": 600,
+    "level": 40
+  },
+  {
+    "name": "FaeWolfIce_RtD",
+    "minExp": 600,
+    "maxExp": 700,
+    "level": 73
+  },
+  {
+    "name": "FaeWolfIceCub_RtD",
+    "minExp": 600,
+    "maxExp": 700,
+    "level": 72
+  },
+  {
+    "name": "FaeWolfIceTamed_RtD",
+    "minExp": 400,
+    "maxExp": 450,
+    "level": 65
+  },
+  {
+    "name": "FaeWolfLightening_RtD",
+    "minExp": 500,
+    "maxExp": 600,
+    "level": 78
+  },
+  {
+    "name": "FaeWolfLighteningCub_RtD",
+    "minExp": 350,
+    "maxExp": 400,
+    "level": 19
+  },
+  {
+    "name": "FaeWolfLighteningTamed_RtD",
+    "minExp": 200,
+    "maxExp": 350,
+    "level": 20
+  },
+  {
+    "name": "Fairy1_RtD",
+    "minExp": 200,
+    "maxExp": 400,
+    "level": 25
+  },
+  {
+    "name": "Fairy2_RtD",
+    "minExp": 700,
+    "maxExp": 800,
+    "level": 46
+  },
+  {
+    "name": "Fairy3_RtD",
+    "minExp": 700,
+    "maxExp": 800,
+    "level": 47
+  },
+  {
+    "name": "Fader_RtD",
+    "minExp": 300,
+    "maxExp": 350,
+    "level": 37
+  },
+  {
+    "name": "Necromancer_RtD",
+    "minExp": 350,
+    "maxExp": 400,
+    "level": 38
+  },
+  {
+    "name": "Spirit_RtD",
+    "minExp": 400,
+    "maxExp": 500,
+    "level": 50
+  }
+]

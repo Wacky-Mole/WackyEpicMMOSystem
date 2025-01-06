@@ -11,6 +11,10 @@ mmo_xp_orb5: “Magischer Orb Stufe 5”
 mmo_xp_orb5_description: “Gibt XP!”
 mmo_xp_orb6: “Magischer Orb Stufe 6”
 mmo_xp_orb6_description: “Gibt XP!”
+mmo_xp_orb7: “Magischer Orb Stufe 7”
+mmo_xp_orb7_description: “Gibt XP!”
+mmo_xp_orb8: “Magischer Orb Stufe 8”
+mmo_xp_orb8_description: “Gibt XP!”
 mmo_mead1: “XP-Met Minor” 
 mmo_mead1_description: “Met für die Herstellung des magischen XP-Minor-Tranks”
 mmo_mead2: “XP-Met Medium” 

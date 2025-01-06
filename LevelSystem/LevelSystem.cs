@@ -8,6 +8,7 @@ using EpicMMOSystem.Gui;
 using HarmonyLib;
 using UnityEngine;
 using UnityEngine.Networking;
+using YamlDotNet.Core.Tokens;
 using Random = UnityEngine.Random;
 
 namespace EpicMMOSystem;
@@ -321,6 +322,16 @@ public partial class LevelSystem
             setParameter((Parameter)i, 0);
         }
         MyUI.UpdateParameterPanel();
+    }
+
+    public void ResetTotalPoints()
+    {
+        if (!Player.m_localPlayer) return;
+        Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_CurrentExp"] = "1";
+        Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_TotalExp"] = "1";
+        Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_Level"] = "1";
+        MyUI.UpdateParameterPanel();
+        MyUI.updateExpBar();
     }
 
     public void ResetAllParameterPayment()

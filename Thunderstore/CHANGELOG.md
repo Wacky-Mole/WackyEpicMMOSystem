@@ -1,3 +1,5 @@
+| 1.9.30 | - Added a (3s) timer to pickable XP to reduce xp spamming. </br> Added extra command reset_totalpoints - Resets level, currentxp and total xp.</br> Changed Magic Fermentor material (hope you like it!) and removed excessive fireworks. </br> Added mmo_orb7 (ashlands) and mmo_orb8 (deep north) </br> TheOldWarden supplied RtD mob values. </br> WARNING - JSON Name Changes! Removed MonsterDB prefix. EpicMMOSystem_Backup folder should be created with old folder contents.  
+
 | 1.9.26 | - UI Placement fix ( bug - sometimes didn't restore position correctly)
 
 | 1.9.26 | - Expanded API a bit.

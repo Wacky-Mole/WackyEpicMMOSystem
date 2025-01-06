@@ -1,0 +1,109 @@
+[
+
+  {
+    "name": "Harpy_FC",
+    "minExp": 450,
+    "maxExp": 600,
+    "level": 35
+  },
+
+  {
+    "name": "Griffin_FC",
+    "minExp": 600,
+    "maxExp": 700,
+    "level": 40
+  },
+
+  {
+    "name": "DemonLord_DoD",
+    "minExp": 3500,
+    "maxExp": 4000,
+    "level": 70
+  },
+
+  {
+    "name": "FireElemental_DoD",
+    "minExp": 1400,
+    "maxExp": 1800,
+    "level": 80
+  },
+  {
+    "name": "IceElemental_DoD",
+    "minExp": 1400,
+    "maxExp": 1800,
+    "level": 80
+  },
+
+  {
+    "name": "EarthElemental_DoD",
+    "minExp": 1400,
+    "maxExp": 1800,
+    "level": 80
+  },
+  {
+    "name": "Manticore_FC",
+    "minExp": 750,
+    "maxExp": 800,
+    "level": 57
+  },
+
+  {
+    "name": "Cyclops_DoD",
+    "minExp": 800,
+    "maxExp": 900,
+    "level": 62
+  },
+  {
+    "name": "Ogre_DoD",
+    "minExp": 600,
+    "maxExp": 700,
+    "level": 57
+  },
+
+  {
+    "name": "Mummy_FC",
+    "minExp": 450,
+    "maxExp": 650,
+    "level": 38
+  },
+  {
+    "name": "Ghoul_FC",
+    "minExp": 420,
+    "maxExp": 540,
+    "level": 36
+  },
+
+  {
+    "name": "TreeEnt_DoD",
+    "minExp": 400,
+    "maxExp": 700,
+    "level": 28
+  },
+  {
+    "name": "Hobgoblin_DoD",
+    "minExp": 350,
+    "maxExp": 500,
+    "level": 26
+  },
+
+  {
+    "name": "GiantViper_FC",
+    "minExp": 325,
+    "maxExp": 450,
+    "level": 26
+  },
+  {
+    "name": "Kobold_DoD",
+    "minExp": 50,
+    "maxExp": 100,
+    "level": 13
+  },
+
+  {
+    "name": "DarknessSpider_FC",
+    "minExp": 45,
+    "maxExp": 95,
+    "level": 15
+  }
+ 
+]

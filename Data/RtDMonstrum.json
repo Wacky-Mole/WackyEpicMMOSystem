@@ -1,0 +1,152 @@
+[
+  {
+    "name": "BlackForestGolem_RtD",
+    "minExp": 350,
+    "maxExp": 400,
+    "level": 19
+  },
+  {
+    "name": "BlackForestLocMur_RtD",
+    "minExp": 200,
+    "maxExp": 350,
+    "level": 20
+  },
+  {
+    "name": "DeepNorthDemon1_RtD",
+    "minExp": 700,
+    "maxExp": 800,
+    "level": 65
+  },
+  {
+    "name": "DeepNorthDemon2_RtD",
+    "minExp": 700,
+    "maxExp": 800,
+    "level": 65
+  },
+  {
+    "name": "DeepNorthDemon3_RtD",
+    "minExp": 700,
+    "maxExp": 800,
+    "level": 65
+  },
+  {
+    "name": "DeepNorthDemon4_RtD",
+    "minExp": 700,
+    "maxExp": 800,
+    "level": 65
+  },
+  {
+    "name": "EikthyrSpirit_RtD",
+    "minExp": 500,
+    "maxExp": 2000,
+    "level": 25
+  },
+  {
+    "name": "MeadowsGolem_RtD",
+    "minExp": 200,
+    "maxExp": 300,
+    "level": 10
+  },
+  {
+    "name": "MeadowsSnade_RtD",
+    "minExp": 200,
+    "maxExp": 300,
+    "level": 10
+  },
+  {
+    "name": "MistlandsSpider1_RtD",
+    "minExp": 300,
+    "maxExp": 500,
+    "level": 57
+  },
+  {
+    "name": "MistlandsSpider2_RtD",
+    "minExp": 300,
+    "maxExp": 500,
+    "level": 57
+  },
+  {
+    "name": "MistlandsSpider3_RtD",
+    "minExp": 300,
+    "maxExp": 500,
+    "level": 57
+  },
+  {
+    "name": "MistlandsSpider4_RtD",
+    "minExp": 300,
+    "maxExp": 500,
+    "level": 57
+  },
+  {
+    "name": "MountainBoss_RtD",
+    "minExp": 3000,
+    "maxExp": 5000,
+    "level": 62
+  },
+  {
+    "name": "MountainUndead_RtD",
+    "minExp": 400,
+    "maxExp": 450,
+    "level": 45
+  },
+  {
+    "name": "MountainWatcher_RtD",
+    "minExp": 500,
+    "maxExp": 600,
+    "level": 52
+  },
+  {
+    "name": "PlainsBoss_RtD",
+    "minExp": 7000,
+    "maxExp": 9000,
+    "level": 72
+  },
+  {
+    "name": "PlainsChomper1_RtD",
+    "minExp": 400,
+    "maxExp": 500,
+    "level": 50
+  },
+  {
+    "name": "PlainsChomper2_RtD",
+    "minExp": 400,
+    "maxExp": 500,
+    "level": 51
+  },
+  {
+    "name": "PlainsChomper3_RtD",
+    "minExp": 400,
+    "maxExp": 500,
+    "level": 52
+  },
+  {
+    "name": "PlainsChomper4_RtD",
+    "minExp": 500,
+    "maxExp": 600,
+    "level": 53
+  },
+  {
+    "name": "PlainsSizzler_RtD",
+    "minExp": 250,
+    "maxExp": 400,
+    "level": 50
+  },
+  {
+    "name": "SpiderQueen_RtD",
+    "minExp": 1000,
+    "maxExp": 1400,
+    "level": 46
+  },
+  {
+    "name": "SwampBoss_RtD",
+    "minExp": 1500,
+    "maxExp": 3000,
+    "level": 56
+  },
+  {
+    "name": "SwampSludger_RtD",
+    "minExp": 400,
+    "maxExp": 450,
+    "level": 37
+  }
+]

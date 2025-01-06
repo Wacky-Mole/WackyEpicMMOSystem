@@ -1,0 +1,140 @@
+[
+	{
+		"name": "Orca",
+		"minExp": 280,
+		"maxExp": 325,
+		"level": 25
+	},
+	{
+		"name": "WhiteShark",
+		"minExp": 200,
+		"maxExp": 250,
+		"level": 20
+	},
+	{
+		"name": "BlacktipShark",
+		"minExp": 200,
+		"maxExp": 250,
+		"level": 20
+	},
+	{
+		"name": "BlueTurtle",
+		"minExp": 80,
+		"maxExp": 100,
+		"level": 12
+	},
+	{
+		"name": "GreenTurtle",
+		"minExp": 80,
+		"maxExp": 100,
+		"level": 12
+	},
+	{
+		"name": "RedTurtle",
+		"minExp": 150,
+		"maxExp": 170,
+		"level": 15
+	},
+	{
+		"name": "YellowTurtle",
+		"minExp": 150,
+		"maxExp": 170,
+		"level": 15
+	},
+	{
+		"name": "Crocodile",
+		"minExp": 175,
+		"maxExp": 200,
+		"level": 19
+	},
+	{
+		"name": "Seal",
+		"minExp": 170,
+		"maxExp": 180,
+		"level": 17
+	},
+	{
+		"name": "Penguin",
+		"minExp": 125,
+		"maxExp": 150,
+		"level": 14
+	},
+	{
+		"name": "Dolphin",
+		"minExp": 150,
+		"maxExp": 200,
+		"level": 18
+	},
+	{
+		"name": "SA_Orca",
+		"minExp": 280,
+		"maxExp": 325,
+		"level": 25
+	},
+	{
+		"name": "SA_WhiteShark",
+		"minExp": 200,
+		"maxExp": 250,
+		"level": 20
+	},
+	{
+		"name": "SA_BlacktipShark",
+		"minExp": 200,
+		"maxExp": 250,
+		"level": 20
+	},
+	{
+		"name": "SA_BlueTurtle",
+		"minExp": 80,
+		"maxExp": 100,
+		"level": 12
+	},
+	{
+		"name": "SA_GreenTurtle",
+		"minExp": 80,
+		"maxExp": 100,
+		"level": 12
+	},
+	{
+		"name": "SA_RedTurtle",
+		"minExp": 150,
+		"maxExp": 170,
+		"level": 15
+	},
+	{
+		"name": "SA_YellowTurtle",
+		"minExp": 150,
+		"maxExp": 170,
+		"level": 15
+	},
+	{
+		"name": "SA_JellyFish",
+		"minExp": 150,
+		"maxExp": 170,
+		"level": 18
+	},
+	{
+		"name": "SA_Crocodile",
+		"minExp": 175,
+		"maxExp": 200,
+		"level": 19
+	},
+	{
+		"name": "SA_Seal",
+		"minExp": 170,
+		"maxExp": 180,
+		"level": 17
+	},
+	{
+		"name": "SA_Penguin",
+		"minExp": 125,
+		"maxExp": 150,
+		"level": 14
+	},
+	{
+		"name": "SA_Dolphin",
+		"minExp": 150,
+		"maxExp": 200,
+		"level": 18
+	}
+]

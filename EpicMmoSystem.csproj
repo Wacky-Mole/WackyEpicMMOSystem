@@ -347,7 +347,7 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <EmbeddedResource Include="asset\epicasset" />
-    <EmbeddedResource Include="Data\MonsterDB_Default.json" />
+    <EmbeddedResource Include="Data\Default.json" />
     <Content Include="ILRepack.targets" />
     <Content Include="Libs\AnimationSpeedManager.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -376,26 +376,29 @@
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data\MonsterDB-Fantasy-Creatures.json" />
-    <EmbeddedResource Include="Data\MonsterDB_AirAnimals.json" />
-    <EmbeddedResource Include="Data\MonsterDB_LandAnimals.json" />
-    <EmbeddedResource Include="Data\MonsterDB_SeaAnimals.json" />
-    <EmbeddedResource Include="Data\MonsterDB_MonsterLabZ.json" />
-    <EmbeddedResource Include="Data\MonsterDB_Outsiders.json" />
-    <EmbeddedResource Include="Data\MonsterDB_DoorDieMonsters.json" />
-    <EmbeddedResource Include="Data\MonsterDB_MajesticChickens.json" />
+    <EmbeddedResource Include="Data\Fantasy_Creatures.json" />
+    <EmbeddedResource Include="Data\AirAnimals.json" />
+    <EmbeddedResource Include="Data\LandAnimals.json" />
+    <EmbeddedResource Include="Data\SeaAnimals.json" />
+    <EmbeddedResource Include="Data\MonsterLabZ.json" />
+    <EmbeddedResource Include="Data\Outsiders.json" />
+    <EmbeddedResource Include="Data\DoorDieMonsters.json" />
+    <EmbeddedResource Include="Data\MajesticChickens.json" />
     <EmbeddedResource Include="asset\epicmmoitems" />
-    <EmbeddedResource Include="Data\MonsterDB-Monstrum.json" />
-    <EmbeddedResource Include="Data\MonsterDB-Reforge_Krumpac.json" />
-    <EmbeddedResource Include="Data\MonsterDB_TeddyBears.json" />
+    <EmbeddedResource Include="Data\Therzie_Monstrum.json" />
+    <EmbeddedResource Include="Data\Reforge_Krumpac.json" />
+    <EmbeddedResource Include="Data\TeddyBears.json" />
     <EmbeddedResource Include="asset\mmo_xp" />
-    <EmbeddedResource Include="Data\MonsterDB-PungusSouls.json" />
-    <EmbeddedResource Include="Data\MonsterDB_Jewelcrafting.json" />
-    <EmbeddedResource Include="Data\MonsterDB_RtDMonsters.json" />
-    <EmbeddedResource Include="Data\MonsterDB_Therzie.Wizardry.json" />
-    <EmbeddedResource Include="Data\MonsterDB_NonCombat.json" />
+    <EmbeddedResource Include="Data\PungusSouls.json" />
+    <EmbeddedResource Include="Data\Jewelcrafting.json" />
+    <EmbeddedResource Include="Data\RtDMonsters.json" />
+    <EmbeddedResource Include="Data\Therzie_Wizardry.json" />
+    <EmbeddedResource Include="Data\NonCombat.json" />
     <EmbeddedResource Include="Data\Players.json" />
-    <EmbeddedResource Include="Data\MonsterDB-Monstrum-DeepNorth.json" />
+    <EmbeddedResource Include="Data\Monstrum_DeepNorth.json" />
+    <EmbeddedResource Include="Data\RtDHorrors.json" />
+    <EmbeddedResource Include="Data\RtDMonstrum.json" />
+    <EmbeddedResource Include="Data\RtDSea.json" />
     <None Include="packages.config" />
     <EmbeddedResource Include="translations\Russian.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
