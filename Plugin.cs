@@ -38,7 +38,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.30";
+    internal const string VERSION = "1.9.31";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -468,11 +468,11 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         DataMonsters.InitItems(); // call for obs and add configs
 
         Item Mead1 = new("mmo_xp", "mmo_mead_minor", "asset");
-        Mead1.ToggleConfigurationVisibility(Configurability.Disabled);
+        Mead1.ToggleConfigurationVisibility(Configurability.Recipe);
         Item Mead2 = new("mmo_xp", "mmo_mead_med", "asset");
-        Mead2.ToggleConfigurationVisibility(Configurability.Disabled);
+        Mead2.ToggleConfigurationVisibility(Configurability.Recipe);
         Item Mead3 = new("mmo_xp", "mmo_mead_greater", "asset");
-        Mead3.ToggleConfigurationVisibility (Configurability.Disabled);
+        Mead3.ToggleConfigurationVisibility (Configurability.Recipe);
 
         Item Chunks = new("mmo_xp", "Mob_chunks", "asset");
 
@@ -494,13 +494,13 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         Chunks.RequiredItems.Add("TrophyWolf", 4);
 
 
-        Mead1.Crafting.Add(ItemManager.CraftingTable.Cauldron, 1);
+        Mead1.Crafting.Add(ItemManager.CraftingTable.MeadKetill, 1);
         Mead1.RequiredItems.Add("Mob_chunks", 1);
         Mead1.RequiredItems.Add("mmo_orb1", 2);
-        Mead2.Crafting.Add(ItemManager.CraftingTable.Cauldron, 1);
+        Mead2.Crafting.Add(ItemManager.CraftingTable.MeadKetill, 1);
         Mead2.RequiredItems.Add("Mob_chunks", 1);
         Mead2.RequiredItems.Add("mmo_orb3", 2);
-        Mead3.Crafting.Add(ItemManager.CraftingTable.Cauldron, 1);
+        Mead3.Crafting.Add(ItemManager.CraftingTable.MeadKetill, 1);
         Mead3.RequiredItems.Add("Mob_chunks", 1);
         Mead3.RequiredItems.Add("mmo_orb5", 2);
 
@@ -597,7 +597,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
             foreach (var item in list)
             {
 
-                if (item.name == "piece_cauldron")
+                if (item.name == "piece_MeadCauldron")
                     cald = item;
             }
             Mead1Alt.m_craftingStation = cald;
