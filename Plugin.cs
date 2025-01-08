@@ -38,7 +38,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.31";
+    internal const string VERSION = "1.9.32";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -507,7 +507,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         Mead1D = Mead1.Prefab.GetComponent<ItemDrop>();
         Mead2D = Mead2.Prefab.GetComponent<ItemDrop>();
         Mead3D = Mead3.Prefab.GetComponent<ItemDrop>();
-
+        /*
 
         BuildPiece Ferm = new("mmo_xp", "mmo_fermenter", "asset");
         Ferm.Category.Set(BuildPieceCategory.Crafting);
@@ -516,7 +516,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         Ferm.RequiredItems.Add("FineWood", 30, true);
         Ferm.RequiredItems.Add("Bronze", 5, true);
         Ferm.RequiredItems.Add("Coins",200,true);
-
+        */
         
         Item ResetTrophy = new("epicmmoitems", "ResetTrophy", "asset");
         ResetTrophy.ToggleConfigurationVisibility(Configurability.Drop);

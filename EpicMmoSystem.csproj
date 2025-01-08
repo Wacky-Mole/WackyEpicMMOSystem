@@ -380,7 +380,7 @@
     <EmbeddedResource Include="Data\AirAnimals.json" />
     <EmbeddedResource Include="Data\LandAnimals.json" />
     <EmbeddedResource Include="Data\SeaAnimals.json" />
-    <EmbeddedResource Include="Data\MonsterLabZ.json" />
+    <EmbeddedResource Include="Data\MMO_MonsterLabZ.json" />
     <EmbeddedResource Include="Data\Outsiders.json" />
     <EmbeddedResource Include="Data\DoorDieMonsters.json" />
     <EmbeddedResource Include="Data\MajesticChickens.json" />

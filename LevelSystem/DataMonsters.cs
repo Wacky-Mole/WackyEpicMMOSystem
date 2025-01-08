@@ -201,7 +201,7 @@ public static class DataMonsters
         var json2 = "LandAnimals.json";
         var json3 = "Fantasy_Creatures.json";
         var json4 = "SeaAnimals.json";
-        var json5 = "MonsterLabZ.json";
+        var json5 = "MMO_MonsterLabZ.json";
         var json6 = "Outsiders.json";
         var json7 = "DoorDieMonsters.json";
         var json8 = "MajesticChickens.json";
@@ -217,6 +217,10 @@ public static class DataMonsters
         var json18 = "RtDHorrors.json";
         var json19 = "RtDMonstrum.json";
         var json20 = "RtDSea.json";
+
+
+        var badfile = "MonsterLabZ.json";
+        var badfilepath = Path.Combine(folderpath, badfile);
 
 
 
@@ -279,16 +283,20 @@ public static class DataMonsters
             if (filev == "1.9.20")
                 cleartowrite = true;            
             if (filev == "1.9.21")
-                cleartowrite = true;
+                cleartowrite = true;            
             if (filev == "1.9.23")
-            {
                 cleartowrite = true;
-                Directory.Move(folderpath, folderpathbackup);
-                Directory.CreateDirectory(folderpath);
-            }
-            
 
-            if (filev == "1.9.30") // last version to get a DB update
+            if (File.Exists(badfilepath))
+            {
+                File.Delete(badfilepath);
+            }
+
+            if (filev == "1.9.30")           
+                cleartowrite = true;
+                        
+
+            if (filev == "1.9.32") // last version to get a DB update
                 cleartowrite = false;
 
             if (filev == "NO" || filev == "no" || filev == "No" || filev == "STOP" || filev == "stop" || filev == "Stop")
@@ -300,7 +308,7 @@ public static class DataMonsters
         if (cleartowrite)
         {
             //list.Clear();
-            File.WriteAllText(versionpath, "1.9.30"); // Write Version file, don't auto update
+            File.WriteAllText(versionpath, "1.9.32"); // Write Version file, don't auto update
 
             File.WriteAllText(warningtext, "Erase numbers in Version.txt and write NO or stop in file. This should stop DB json files from updating on an update. If you make your own custom json file, then that one should never be updated.");
 

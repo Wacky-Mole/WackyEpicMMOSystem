@@ -1,6 +1,3 @@
-pointpanel_header_text:  "Attributes WM2"
-$pointpanel_header_text:  "Attributes WM4"
-attributes:  "Attributes WM3"
 parameter_strength:  "Strength"
 parameter_agility:  "Agility"
 parameter_intellect:  "Intellect"
