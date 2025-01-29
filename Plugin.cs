@@ -38,7 +38,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.33";
+    internal const string VERSION = "1.9.34";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -696,11 +696,17 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     {
         private static void Postfix()
         {
-            int.TryParse(Player.m_localPlayer.m_customData[PlayerAliveString], out int days);
+            int days = 0;
+            if (Player.m_localPlayer.m_customData.ContainsKey(PlayerAliveString))
+            {
+                int.TryParse(Player.m_localPlayer.m_customData[PlayerAliveString], out int daysint);
+                days = daysint;
+            }
+
             days = days + 1;
             string daystring = days.ToString();
-            Player.m_localPlayer.m_customData[PlayerAliveString] = daystring;
 
+            Player.m_localPlayer.m_customData[PlayerAliveString] = daystring;
             var zdo = Player.m_localPlayer.m_nview.GetZDO();
             zdo.Set($"{EpicMMOSystem.ModName + EpicMMOSystem.PlayerAliveString}", days);
             ZDOMan.instance.ForceSendZDO(zdo.m_uid);

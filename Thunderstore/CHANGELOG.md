@@ -1,3 +1,5 @@
+| 1.9.34 | - Bug fix for PlayerAliveString
+
 | 1.9.33 | - Forgot mmo_ferm
 
 | 1.9.32 | - Fix for Dedicated Server world breaking with MonsterLabZ.  (Loc Mananger having issues with MonsterLabZ.json) Fix - Renamed file. - 
