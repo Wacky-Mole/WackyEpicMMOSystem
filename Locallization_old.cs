@@ -1247,6 +1247,39 @@ public class Localizationold
         // Терминал
         _dictionary.Add("$terminal_set_level", "Ви отримали {0} рівень");
         _dictionary.Add("$terminal_reset_points", "Ваші очки атрибутів були скинуті");
+
+        _dictionary.Add("$strength_tooltip", "<size=20>Сила покращує:</size> \n" +
+                    "<color=yellow> Збільшує фізичну шкоду </color> \n" +
+                    "<color=blue> Збільшує вагу перенесення </color> \n" +
+                    "<color=green> Зменшує витрати витривалості на блокування </color> \n" +
+                    "<color=red> Збільшує критичну шкоду при критичних ударах </color>");
+
+        _dictionary.Add("$dexterity_tooltip", "<size=20>Спритність покращує:</size> \n" +
+                            "<color=red> Збільшує швидкість атаки (не для луків)</color> \n" +
+                            "<color=yellow> Зменшує витрати витривалості на атаки </color> \n" +
+                            "<color=green> Зменшує витрати витривалості на біг/стриби</color> ");
+
+        _dictionary.Add("$intelect_tooltip", "<size=20>Інтелект покращує:</size> \n" +
+                            "<color=green> Збільшує всю елементарну шкоду </color>\n" +
+                            "<color=red> Збільшує базову кількість Еітру (коли він є)</color> \n" +
+                            "<color=red> Збільшує регенерацію Еітру</color> ");
+
+        _dictionary.Add("$endurance_tooltip", "<size=20>Витривалість покращує:</size> \n" +
+                            "<color=yellow> Збільшує кількість витривалості</color>\n" +
+                            "<color=yellow> Збільшує регенерацію витривалості </color> \n" +
+                            "<color=green> Зменшує отриману фізичну шкоду</color> ");
+
+        _dictionary.Add("$vigour_tooltip", "<size=20>Життєва сила покращує:</size> \n" +
+                            "<color=red> Збільшує кількість HP</color>\n" +
+                            "<color=yellow> Регенерацію здоров'я </color> \n" +
+                            "<color=green> Зменшує отриману елементарну шкоду</color> ");
+
+        _dictionary.Add("$special_tooltip", "<size=20>Особливість покращує:</size> \n" +
+                            "<color=red> Збільшує шанс критичної атаки</color> \n" +
+                            "<color=blue> Збільшує шкоду від видобутку </color> \n" +
+                            "<color=blue> Збільшує здоров'я будівельних об'єктів </color> \n" +
+                            "<color=green> Збільшує шкоду від рубання дерев</color>");
+
     }
 
 
