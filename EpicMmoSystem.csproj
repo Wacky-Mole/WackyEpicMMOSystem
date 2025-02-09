@@ -399,6 +399,9 @@
     <EmbeddedResource Include="Data\RtDHorrors.json" />
     <EmbeddedResource Include="Data\RtDMonstrum.json" />
     <EmbeddedResource Include="Data\RtDSea.json" />
+    <EmbeddedResource Include="Data\RtDAdditions.json" />
+    <EmbeddedResource Include="Data\RtDFairyTale.json" />
+    <EmbeddedResource Include="Data\RtDSouls.json" />
     <None Include="packages.config" />
     <EmbeddedResource Include="translations\Russian.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -434,6 +437,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="UpdateManifest.ps1" />
+    <EmbeddedResource Include="translations\Ukrainian.yml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Libs\publicized_assemblies\" />

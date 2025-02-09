@@ -1,152 +1,200 @@
 [
   {
     "name": "Assassin_RtD",
-    "minExp": 500,
-    "maxExp": 600,
-    "level": 30
+    "minExp": 1010,
+    "maxExp": 1380,
+    "level": 76
   },
   {
     "name": "Berserker_RtD",
-    "minExp": 350,
-    "maxExp": 400,
-    "level": 30
+    "minExp": 910,
+    "maxExp": 1280,
+    "level": 74
   },
   {
     "name": "Demon_RtD",
-    "minExp": 200,
-    "maxExp": 350,
-    "level": 35
+    "minExp": 1110,
+    "maxExp": 1480,
+    "level": 77
   },
   {
     "name": "DragonBoar_RtD",
-    "minExp": 200,
-    "maxExp": 400,
-    "level": 25
+    "minExp": 800,
+    "maxExp": 1030,
+    "level": 71
   },
   {
     "name": "DragonBoarTamed_RtD",
-    "minExp": 700,
-    "maxExp": 800,
-    "level": 26
+    "minExp": 50,
+    "maxExp": 80,
+    "level": 27
   },
   {
     "name": "DragonPiglet_RtD",
-    "minExp": 700,
-    "maxExp": 800,
-    "level": 20
+    "minExp": 10,
+    "maxExp": 10,
+    "level": 70
   },
   {
     "name": "FallenCrusader_RtD",
-    "minExp": 300,
-    "maxExp": 350,
-    "level": 37
+    "minExp": 960,
+    "maxExp": 1130,
+    "level": 76
   },
   {
     "name": "Wizard_RtD",
-    "minExp": 350,
-    "maxExp": 400,
-    "level": 38
+    "minExp": 960,
+    "maxExp": 1130,
+    "level": 75
   },
   {
     "name": "ElfHunterF_RtD",
-    "minExp": 400,
-    "maxExp": 500,
-    "level": 35
+    "minExp": 1060,
+    "maxExp": 1330,
+    "level": 83
   },
   {
     "name": "ElfHunterM_RtD",
-    "minExp": 400,
-    "maxExp": 500,
-    "level": 37
+    "minExp": 1060,
+    "maxExp": 1330,
+    "level": 83
   },
   {
     "name": "ElfPriestM_RtD",
-    "minExp": 300,
-    "maxExp": 500,
-    "level": 37
+    "minExp": 1083,
+    "maxExp": 1430,
+    "level": 85
   },
   {
     "name": "ElfWarriorF_RtD",
-    "minExp": 300,
-    "maxExp": 500,
-    "level": 39
+    "minExp": 1083,
+    "maxExp": 1430,
+    "level": 84
   },
   {
     "name": "ElfWarriorM_RtD",
-    "minExp": 500,
-    "maxExp": 600,
-    "level": 40
+    "minExp": 1083,
+    "maxExp": 1430,
+    "level": 84
   },
   {
     "name": "FaeWolfIce_RtD",
-    "minExp": 600,
-    "maxExp": 700,
-    "level": 73
+    "minExp": 1013,
+    "maxExp": 1330,
+    "level": 81
   },
   {
     "name": "FaeWolfIceCub_RtD",
-    "minExp": 600,
-    "maxExp": 700,
-    "level": 72
+    "minExp": 200,
+    "maxExp": 200,
+    "level": 5
   },
   {
     "name": "FaeWolfIceTamed_RtD",
-    "minExp": 400,
-    "maxExp": 450,
-    "level": 65
+    "minExp": 100,
+    "maxExp": 100,
+    "level": 81
   },
   {
     "name": "FaeWolfLightening_RtD",
-    "minExp": 500,
-    "maxExp": 600,
-    "level": 78
+    "minExp": 1013,
+    "maxExp": 1330,
+    "level": 81
+  },
+  {
+    "name": "Golem_RtD",
+    "minExp": 1013,
+    "maxExp": 1730,
+    "level": 86
   },
   {
     "name": "FaeWolfLighteningCub_RtD",
-    "minExp": 350,
-    "maxExp": 400,
-    "level": 19
+    "minExp": 100,
+    "maxExp": 100,
+    "level": 5
   },
   {
     "name": "FaeWolfLighteningTamed_RtD",
-    "minExp": 200,
-    "maxExp": 350,
-    "level": 20
+    "minExp": 100,
+    "maxExp": 100,
+    "level": 81
   },
   {
     "name": "Fairy1_RtD",
-    "minExp": 200,
-    "maxExp": 400,
-    "level": 25
+    "minExp": 1193,
+    "maxExp": 1400,
+    "level": 87
   },
   {
     "name": "Fairy2_RtD",
-    "minExp": 700,
-    "maxExp": 800,
-    "level": 46
+    "minExp": 1193,
+    "maxExp": 1400,
+    "level": 87
   },
   {
     "name": "Fairy3_RtD",
-    "minExp": 700,
-    "maxExp": 800,
-    "level": 47
+    "minExp": 1193,
+    "maxExp": 1400,
+    "level": 87
   },
   {
     "name": "Fader_RtD",
-    "minExp": 300,
-    "maxExp": 350,
-    "level": 37
+    "minExp": 1400,
+    "maxExp": 1800,
+    "level": 78
   },
   {
     "name": "Necromancer_RtD",
-    "minExp": 350,
-    "maxExp": 400,
-    "level": 38
+    "minExp": 1630,
+    "maxExp": 2130,
+    "level": 80
   },
   {
     "name": "Spirit_RtD",
-    "minExp": 400,
-    "maxExp": 500,
-    "level": 50
+    "minExp": 2000,
+    "maxExp": 2400,
+    "level": 82
+  },
+  {
+    "name": "CursedKnight_RtD",
+    "minExp": 1450,
+    "maxExp": 2900,
+    "level": 76
+  },
+  {
+    "name": "Executioner_RtD",
+    "minExp": 1193,
+    "maxExp": 1400,
+    "level": 85
+  },
+  {
+    "name": "Davil_RtD",
+    "minExp": 1193,
+    "maxExp": 1400,
+    "level": 85
+  },
+  {
+    "name": "NorthernTroll_RtD",
+    "minExp": 1193,
+    "maxExp": 1450,
+    "level": 86
+  },
+  {
+    "name": "Befouler_RtD",
+    "minExp": 1193,
+    "maxExp": 1400,
+    "level": 85
+  },
+  {
+    "name": "LichKing_RtD",
+    "minExp": 4193,
+    "maxExp": 8400,
+    "level": 88
+  },
+  {
+    "name": "SO_Thor_RtD",
+    "minExp": 1193,
+    "maxExp": 1400,
+    "level": 90
   }
 ]

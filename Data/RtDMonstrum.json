@@ -1,152 +1,134 @@
 [
   {
+    "name": "MeadowsGolem_RtD",
+    "minExp": 50,
+    "maxExp": 70,
+    "level": 11
+  },
+  {
     "name": "BlackForestGolem_RtD",
-    "minExp": 350,
-    "maxExp": 400,
-    "level": 19
+    "minExp": 120,
+    "maxExp": 160,
+    "level": 21
+  },
+  {
+    "name": "MountainUndead_RtD",
+    "minExp": 280,
+    "maxExp": 300,
+    "level": 40
+  },
+  {
+    "name": "PlainsSizzler_RtD",
+    "minExp": 380,
+    "maxExp": 410,
+    "level": 50
   },
   {
     "name": "BlackForestLocMur_RtD",
-    "minExp": 200,
-    "maxExp": 350,
+    "minExp": 120,
+    "maxExp": 180,
     "level": 20
   },
   {
-    "name": "DeepNorthDemon1_RtD",
-    "minExp": 700,
-    "maxExp": 800,
-    "level": 65
-  },
-  {
-    "name": "DeepNorthDemon2_RtD",
-    "minExp": 700,
-    "maxExp": 800,
-    "level": 65
-  },
-  {
-    "name": "DeepNorthDemon3_RtD",
-    "minExp": 700,
-    "maxExp": 800,
-    "level": 65
-  },
-  {
-    "name": "DeepNorthDemon4_RtD",
-    "minExp": 700,
-    "maxExp": 800,
-    "level": 65
-  },
-  {
-    "name": "EikthyrSpirit_RtD",
-    "minExp": 500,
-    "maxExp": 2000,
-    "level": 25
-  },
-  {
-    "name": "MeadowsGolem_RtD",
-    "minExp": 200,
-    "maxExp": 300,
-    "level": 10
-  },
-  {
     "name": "MeadowsSnade_RtD",
-    "minExp": 200,
-    "maxExp": 300,
+    "minExp": 50,
+    "maxExp": 90,
     "level": 10
   },
   {
     "name": "MistlandsSpider1_RtD",
-    "minExp": 300,
-    "maxExp": 500,
-    "level": 57
+    "minExp": 420,
+    "maxExp": 490,
+    "level": 60
   },
   {
     "name": "MistlandsSpider2_RtD",
-    "minExp": 300,
-    "maxExp": 500,
-    "level": 57
+    "minExp": 420,
+    "maxExp": 490,
+    "level": 60
   },
   {
     "name": "MistlandsSpider3_RtD",
-    "minExp": 300,
-    "maxExp": 500,
-    "level": 57
+    "minExp": 420,
+    "maxExp": 490,
+    "level": 60
   },
   {
     "name": "MistlandsSpider4_RtD",
-    "minExp": 300,
-    "maxExp": 500,
-    "level": 57
-  },
-  {
-    "name": "MountainBoss_RtD",
-    "minExp": 3000,
-    "maxExp": 5000,
-    "level": 62
-  },
-  {
-    "name": "MountainUndead_RtD",
-    "minExp": 400,
-    "maxExp": 450,
-    "level": 45
+    "minExp": 420,
+    "maxExp": 490,
+    "level": 60
   },
   {
     "name": "MountainWatcher_RtD",
-    "minExp": 500,
-    "maxExp": 600,
-    "level": 52
-  },
-  {
-    "name": "PlainsBoss_RtD",
-    "minExp": 7000,
-    "maxExp": 9000,
-    "level": 72
+    "minExp": 320,
+    "maxExp": 390,
+    "level": 42
   },
   {
     "name": "PlainsChomper1_RtD",
-    "minExp": 400,
-    "maxExp": 500,
-    "level": 50
+    "minExp": 420,
+    "maxExp": 650,
+    "level": 52
   },
   {
     "name": "PlainsChomper2_RtD",
-    "minExp": 400,
-    "maxExp": 500,
-    "level": 51
+    "minExp": 420,
+    "maxExp": 650,
+    "level": 52
   },
   {
     "name": "PlainsChomper3_RtD",
-    "minExp": 400,
-    "maxExp": 500,
+    "minExp": 420,
+    "maxExp": 650,
     "level": 52
   },
   {
     "name": "PlainsChomper4_RtD",
-    "minExp": 500,
-    "maxExp": 600,
-    "level": 53
-  },
-  {
-    "name": "PlainsSizzler_RtD",
-    "minExp": 250,
-    "maxExp": 400,
-    "level": 50
-  },
-  {
-    "name": "SpiderQueen_RtD",
-    "minExp": 1000,
-    "maxExp": 1400,
-    "level": 46
-  },
-  {
-    "name": "SwampBoss_RtD",
-    "minExp": 1500,
-    "maxExp": 3000,
-    "level": 56
+    "minExp": 420,
+    "maxExp": 650,
+    "level": 52
   },
   {
     "name": "SwampSludger_RtD",
-    "minExp": 400,
-    "maxExp": 450,
-    "level": 37
+    "minExp": 300,
+    "maxExp": 600,
+    "level": 35
+  },
+  {
+    "name": "EikthyrSpirit_RtD",
+    "minExp": 190,
+    "maxExp": 220,
+    "level": 18
+  },
+  {
+    "name": "MountainBoss_RtD",
+    "minExp": 1400,
+    "maxExp": 1800,
+    "level": 49
+  },
+  {
+    "name": "PlainsBoss_RtD",
+    "minExp": 1700,
+    "maxExp": 1890,
+    "level": 59
+  },
+  {
+    "name": "SpiderQueen_RtD",
+    "minExp": 3520,
+    "maxExp": 4700,
+    "level": 69
+  },
+  {
+    "name": "SwampBoss_RtD",
+    "minExp": 820,
+    "maxExp": 1090,
+    "level": 39
+  },
+  {
+    "name": "TrollKing_RtD",
+    "minExp": 450,
+    "maxExp": 600,
+    "level": 29
   }
 ]

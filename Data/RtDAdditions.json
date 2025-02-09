@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Fenring_Alpha_RtD",
+        "minExp": 1450,
+        "maxExp": 2900,
+        "level": 83
+    },
+    {
+        "name": "Fenring_Cultist_RtD",
+        "minExp": 1450,
+        "maxExp": 2900,
+        "level": 82
+    },
+    {
+        "name": "MountainLox_RtD",
+        "minExp": 1450,
+        "maxExp": 2900,
+        "level": 81
+    },
+    {
+        "name": "MountainLoxTamed_RtD",
+        "minExp": 1450,
+        "maxExp": 2900,
+        "level": 81
+    },
+    {
+        "name": "Lox_Calf_RtD",
+        "minExp": 1450,
+        "maxExp": 2900,
+        "level": 78
+    }
+]

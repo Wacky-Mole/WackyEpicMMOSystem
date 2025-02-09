@@ -59,6 +59,10 @@ public class Localizationold
     else if (currentLanguage == "Polish")
     {
          PolishLocalization();
+    }     
+    else if (currentLanguage == "Ukrainian")
+    {
+         UkrLocalization();
     } 
     else if (currentLanguage == "Portuguese_Brazilian")
      {
@@ -1176,6 +1180,75 @@ public class Localizationold
                             "<color=blue> Aumento da saúde das peças de construção </color> \n" +
                             "<color=green> Aumento do dano causado ​​ao cortar árvores </color>");
     }
+
+    private void UkrLocalization()
+    {
+        _dictionary.Add("$attributes", "Атрибути");
+        _dictionary.Add("$parameter_strength", "Сила");
+        _dictionary.Add("$parameter_intellect", "Інтелект");
+        _dictionary.Add("$free_points", "Доступні очки");
+        _dictionary.Add("$level", "Рівень");
+        _dictionary.Add("$lvl", "Рів.");
+        _dictionary.Add("$exp", "Досвід");
+        _dictionary.Add("$cancel", "Скасувати");
+        _dictionary.Add("$apply", "Прийняти");
+        _dictionary.Add("$reset_parameters", "Скинути очки");
+        _dictionary.Add("$no", "Ні");
+        _dictionary.Add("$yes", "Так");
+        _dictionary.Add("$get_exp", "Отримано досвіду");
+        _dictionary.Add("$reset_point_text", "Ви дійсно хочете скинути всі очки для {0} {1}?");
+
+        // Параметри
+        _dictionary.Add("$physic_damage", "Фізична шкода");
+        _dictionary.Add("$add_weight", "Вага для переносу");
+        _dictionary.Add("$reduced_stamina", "Витрати витривалості (біг, стрибки)");
+        _dictionary.Add("$magic_damage", "Магічна шкода");
+        _dictionary.Add("$magic_armor", "Зменшення магічної шкоди");
+        _dictionary.Add("$add_hp", "Збільшення здоров'я");
+        _dictionary.Add("$add_stamina", "Збільшення витривалості");
+        _dictionary.Add("$physic_armor", "Зменшення фізичної шкоди");
+        _dictionary.Add("$reduced_stamina_block", "Витрати витривалості на блокування");
+        _dictionary.Add("$regen_hp", "Регенерація здоров'я");
+        _dictionary.Add("$damage", "Шкода");
+        _dictionary.Add("$armor", "Броня");
+        _dictionary.Add("$survival", "Виживання");
+        _dictionary.Add("$regen_eitr", "Регенерація Ейтра");
+        _dictionary.Add("$stamina_reg", "Регенерація витривалості");
+        _dictionary.Add("$add_eitr", "Збільшення Ейтра");
+
+        // Нові/змінені параметри 1.7.0
+        _dictionary.Add("$parameter_agility", "Спритність");
+        _dictionary.Add("$parameter_body", "Витривалість");
+        _dictionary.Add("$parameter_vigour", "Життєва сила");
+        _dictionary.Add("$parameter_special", "Спеціалізація");
+        _dictionary.Add("$specialother", "Спеціальне");
+        _dictionary.Add("$attack_speed", "Швидкість атаки");
+        _dictionary.Add("$attack_stamina", "Витрати витривалості на атаку");
+        _dictionary.Add("$crtcDmgMulti", "Множник критичної шкоди");
+        _dictionary.Add("$mining_speed", "Збільшення шкоди при видобутку");
+        _dictionary.Add("$piece_health", "Збільшення міцності будівель");
+        _dictionary.Add("$tree_cutting", "Збільшення шкоди деревам");
+        _dictionary.Add("$crit_chance", "Збільшення шансу критичної атаки");
+
+        // Список друзів
+        _dictionary.Add("$notify", "<color=#00E6FF>Сповіщення</color>");
+        _dictionary.Add("$friends_list", "Список друзів");
+        _dictionary.Add("$send", "Надіслати");
+        _dictionary.Add("$invited", "Запрошення");
+        _dictionary.Add("$friends", "Друзі");
+        _dictionary.Add("$online", "Онлайн");
+        _dictionary.Add("$offline", "Офлайн");
+        _dictionary.Add("$not_found", "Гравця {0} не знайдено.");
+        _dictionary.Add("$send_invite", "Запрошення в друзі надіслано гравцю {0}.");
+        _dictionary.Add("$get_invite", "Отримано запит у друзі від {0}.");
+        _dictionary.Add("$accept_invite", "Гравець {0} прийняв запит у друзі.");
+        _dictionary.Add("$cancel_invite", "Гравець {0} скасував запит у друзі.");
+
+        // Терминал
+        _dictionary.Add("$terminal_set_level", "Ви отримали {0} рівень");
+        _dictionary.Add("$terminal_reset_points", "Ваші очки атрибутів були скинуті");
+    }
+
 
     public string this[string key]
     {

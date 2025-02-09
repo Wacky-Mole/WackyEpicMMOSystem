@@ -194,7 +194,7 @@ public static class DataMonsters
     {
         var versionpath = Path.Combine(Paths.ConfigPath, EpicMMOSystem.ModName, $"Version.txt");
         var folderpath = Path.Combine(Paths.ConfigPath, EpicMMOSystem.ModName);
-        var folderpathbackup = Path.Combine(Paths.ConfigPath, EpicMMOSystem.ModName +"_backup");
+        //var folderpathbackup = Path.Combine(Paths.ConfigPath, EpicMMOSystem.ModName +"_backup");
         var warningtext = Path.Combine(Paths.ConfigPath, EpicMMOSystem.ModName, $"If you want to stop from updating.txt");
         var json = "Default.json";
         var json1 = "AirAnimals.json";
@@ -217,6 +217,9 @@ public static class DataMonsters
         var json18 = "RtDHorrors.json";
         var json19 = "RtDMonstrum.json";
         var json20 = "RtDSea.json";
+        var json21 = "RtDFairyTale.json";
+        var json22 = "RtDAdditions.json";
+        var json23 = "RtDSouls.json";
 
 
         var badfile = "MonsterLabZ.json";
@@ -285,18 +288,21 @@ public static class DataMonsters
             if (filev == "1.9.21")
                 cleartowrite = true;            
             if (filev == "1.9.23")
+                cleartowrite = true;            
+            if (filev == "1.9.30")
                 cleartowrite = true;
+            if (filev == "1.9.32")           
+                cleartowrite = true;
+
 
             if (File.Exists(badfilepath))
             {
                 File.Delete(badfilepath);
             }
 
-            if (filev == "1.9.30")           
-                cleartowrite = true;
                         
 
-            if (filev == "1.9.32") // last version to get a DB update
+            if (filev == "1.9.35") // last version to get a DB update
                 cleartowrite = false;
 
             if (filev == "NO" || filev == "no" || filev == "No" || filev == "STOP" || filev == "stop" || filev == "Stop")
@@ -308,7 +314,7 @@ public static class DataMonsters
         if (cleartowrite)
         {
             //list.Clear();
-            File.WriteAllText(versionpath, "1.9.32"); // Write Version file, don't auto update
+            File.WriteAllText(versionpath, "1.9.35"); // Write Version file, don't auto update
 
             File.WriteAllText(warningtext, "Erase numbers in Version.txt and write NO or stop in file. This should stop DB json files from updating on an update. If you make your own custom json file, then that one should never be updated.");
 
@@ -353,6 +359,12 @@ public static class DataMonsters
             File.WriteAllText(Path.Combine(folderpath, json19), getDefaultJsonMonster(json19));
 
             File.WriteAllText(Path.Combine(folderpath, json20), getDefaultJsonMonster(json20));
+
+            File.WriteAllText(Path.Combine(folderpath, json21), getDefaultJsonMonster(json21));
+
+            File.WriteAllText(Path.Combine(folderpath, json22), getDefaultJsonMonster(json22));
+
+            File.WriteAllText(Path.Combine(folderpath, json23), getDefaultJsonMonster(json23));
 
 
 

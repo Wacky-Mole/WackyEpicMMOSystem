@@ -1,3 +1,5 @@
+| 1.9.35 | - Added Ukrainian language </br> Update RtD mobs, provided by Guthix (Solo)
+
 | 1.9.34 | - Bug fix for PlayerAliveString
 
 | 1.9.33 | - Forgot mmo_ferm

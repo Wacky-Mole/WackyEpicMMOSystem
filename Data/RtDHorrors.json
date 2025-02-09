@@ -1,98 +1,116 @@
 [
   {
     "name": "MeadowsHorror_RtD",
-    "minExp": 500,
-    "maxExp": 600,
-    "level": 78
+    "minExp": 80,
+    "maxExp": 120,
+    "level": 13
   },
   {
     "name": "MeadowsHorror01_RtD",
-    "minExp": 350,
-    "maxExp": 400,
-    "level": 19
+    "minExp": 80,
+    "maxExp": 120,
+    "level": 13
   },
   {
     "name": "BlackForestHorror_RtD",
-    "minExp": 200,
-    "maxExp": 350,
-    "level": 20
-  },
-  {
-    "name": "BlackForestHorror01_RtD",
-    "minExp": 200,
-    "maxExp": 400,
+    "minExp": 160,
+    "maxExp": 200,
     "level": 25
   },
   {
-    "name": "MountainHorror_RtD",
-    "minExp": 700,
-    "maxExp": 800,
-    "level": 46
-  },
-  {
-    "name": "MountainHorror01_RtD",
-    "minExp": 700,
-    "maxExp": 800,
-    "level": 47
+    "name": "BlackForestHorror01_RtD",
+    "minExp": 160,
+    "maxExp": 200,
+    "level": 25
   },
   {
     "name": "SwampChaser_RtD",
-    "minExp": 300,
-    "maxExp": 350,
-    "level": 37
+    "minExp": 360,
+    "maxExp": 420,
+    "level": 35
   },
   {
     "name": "SwampHorror01_RtD",
-    "minExp": 350,
-    "maxExp": 400,
-    "level": 38
+    "minExp": 360,
+    "maxExp": 440,
+    "level": 35
+  },
+  {
+    "name": "MountainHorror_RtD",
+    "minExp": 460,
+    "maxExp": 500,
+    "level": 45
+  },
+  {
+    "name": "MountainHorror01_RtD",
+    "minExp": 460,
+    "maxExp": 500,
+    "level": 45
   },
   {
     "name": "PlainsHorror_RtD",
-    "minExp": 400,
-    "maxExp": 500,
-    "level": 50
+    "minExp": 640,
+    "maxExp": 690,
+    "level": 55
   },
   {
     "name": "PlainsHorror01_RtD",
-    "minExp": 400,
-    "maxExp": 500,
-    "level": 50
+    "minExp": 640,
+    "maxExp": 690,
+    "level": 55
   },
   {
     "name": "MistlandsHorror_RtD",
-    "minExp": 300,
-    "maxExp": 500,
-    "level": 62
+    "minExp": 1020,
+    "maxExp": 1090,
+    "level": 63
   },
   {
     "name": "SeekerMutant_RtD",
-    "minExp": 300,
-    "maxExp": 500,
-    "level": 57
+    "minExp": 1020,
+    "maxExp": 1090,
+    "level": 63
   },
   {
     "name": "AshLandsHorror_RtD",
-    "minExp": 500,
-    "maxExp": 600,
-    "level": 57
+    "minExp": 1200,
+    "maxExp": 1600,
+    "level": 74
   },
   {
     "name": "AshLandsHorror01_RtD",
-    "minExp": 600,
-    "maxExp": 700,
-    "level": 73
+    "minExp": 1200,
+    "maxExp": 1600,
+    "level": 74
   },
   {
     "name": "AshLandsCrawler_RtD",
-    "minExp": 600,
-    "maxExp": 700,
+    "minExp": 1000,
+    "maxExp": 1190,
     "level": 72
   },
   {
-    "name": "DeepNorthHorror_RtD",
-    "minExp": 400,
-    "maxExp": 450,
-    "level": 65
+    "name": "DeepNorthDemon1_RtD",
+    "minExp": 1520,
+    "maxExp": 1620,
+    "level": 82
+  },
+  {
+    "name": "DeepNorthDemon2_RtD",
+    "minExp": 1520,
+    "maxExp": 1620,
+    "level": 82
+  },
+  {
+    "name": "DeepNorthDemon3_RtD",
+    "minExp": 1520,
+    "maxExp": 1620,
+    "level": 82
+  },
+  {
+    "name": "DeepNorthDemon4_RtD",
+    "minExp": 1520,
+    "maxExp": 1620,
+    "level": 82
   }
 ]

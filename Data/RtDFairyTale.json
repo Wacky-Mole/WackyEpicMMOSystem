@@ -1,0 +1,98 @@
+[
+    {
+        "name": "MeadowsFairy_RtD",
+        "minExp": 80,
+        "maxExp": 120,
+        "level": 13
+    },
+    {
+        "name": "MeadowsPixie_RtD",
+        "minExp": 80,
+        "maxExp": 120,
+        "level": 13
+    },
+    {
+        "name": "BlackForestFairy_RtD",
+        "minExp": 160,
+        "maxExp": 200,
+        "level": 25
+    },
+    {
+        "name": "BlackForestPixie_RtD",
+        "minExp": 160,
+        "maxExp": 200,
+        "level": 25
+    },
+    {
+        "name": "SwampFairy_RtD",
+        "minExp": 360,
+        "maxExp": 420,
+        "level": 35
+    },
+    {
+        "name": "SwampPixie_RtD",
+        "minExp": 360,
+        "maxExp": 440,
+        "level": 35
+    },
+    {
+        "name": "MountainFairy_RtD",
+        "minExp": 460,
+        "maxExp": 500,
+        "level": 45
+    },
+    {
+        "name": "MountainPixie_RtD",
+        "minExp": 460,
+        "maxExp": 500,
+        "level": 45
+    },
+    {
+        "name": "PlainsFairy_RtD",
+        "minExp": 640,
+        "maxExp": 690,
+        "level": 55
+    },
+    {
+        "name": "PlainsPixie_RtD",
+        "minExp": 640,
+        "maxExp": 690,
+        "level": 55
+    },
+    {
+        "name": "AshLandsFairy_RtD",
+        "minExp": 1020,
+        "maxExp": 1090,
+        "level": 63
+    },
+    {
+        "name": "AshLandsPixie_RtD",
+        "minExp": 1020,
+        "maxExp": 1090,
+        "level": 63
+    },
+    {
+        "name": "DeepNorthFairy_RtD",
+        "minExp": 1800,
+        "maxExp": 2100,
+        "level": 80
+    },
+    {
+        "name": "DeepNorthPixie1_RtD",
+        "minExp": 1800,
+        "maxExp": 2100,
+        "level": 80
+    },
+    {
+        "name": "DeepNorthPixie2_RtD",
+        "minExp": 1800,
+        "maxExp": 2100,
+        "level": 80
+    },
+    {
+        "name": "DeepNorthPixie3_RtD",
+        "minExp": 1800,
+        "maxExp": 2100,
+        "level": 80
+    }
+]
