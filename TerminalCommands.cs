@@ -35,26 +35,26 @@ public static class TerminalCommands
     private static void RPC_SetLevel(long sender, int level)
     {
         LevelSystem.Instance.terminalSetLevel(level);
-        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), String.Format(local["$terminal_set_level"], level), PrivilegeManager.GetNetworkUserId());
+        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), String.Format(local["$terminal_set_level"], level));
     }
 
     private static void RPC_Recalc(long sender)
     {
         LevelSystem.Instance.recalcLevel();
-        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), "Recalc your Level", PrivilegeManager.GetNetworkUserId());
+        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), "Recalc your Level");
     }
 
     //Сброс поинтов
     private static void RPC_ResetPoints(long sender)
     {
         LevelSystem.Instance.ResetAllParameter();
-        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), local["$terminal_reset_points"],PrivilegeManager.GetNetworkUserId());
+        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), local["$terminal_reset_points"]);
     }
 
     private static void RPC_ResetTotalPoints(long sender)
     {
         LevelSystem.Instance.ResetTotalPoints();
-        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), "Reset Everything -  Level/Points/Total of Player", PrivilegeManager.GetNetworkUserId());
+        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), "Reset Everything -  Level/Points/Total of Player");
     }
 
     [HarmonyPatch(typeof(Terminal), nameof(Terminal.InitTerminal))]

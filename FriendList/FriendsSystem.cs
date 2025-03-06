@@ -1,5 +1,6 @@
 using System;
 using HarmonyLib;
+using Splatform;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -49,11 +50,11 @@ public static class FriendsSystem
                     $"{modName} InviteFriend",
                     level, Player.m_localPlayer.m_nview.GetZDO().GetInt("MagicOverhaulClass", 0)
                 );
-                Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), String.Format(local["$send_invite"], name),PrivilegeManager.GetNetworkUserId()); //local["$notify"]
+                Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), String.Format(local["$send_invite"], name)); //local["$notify"]
                 return;
             }
         }
-        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), String.Format(local["$not_found"], name),PrivilegeManager.GetNetworkUserId());
+        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), String.Format(local["$not_found"], name));
     }
 
     public static void acceptInvite(FriendInfo info, ZNet.PlayerInfo player)
@@ -81,10 +82,10 @@ public static class FriendsSystem
         var senderInfo = players.Find(f => f.m_characterID.UserID == sender);
         var info = new FriendInfo();
         info.name = senderInfo.m_name;
-        info.host = senderInfo.m_host;
+       // info.host = senderInfo.m_host;
         info.level = level;
         info.moClass = moClass;
-        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), string.Format(local["$get_invite"], info.name),PrivilegeManager.GetNetworkUserId());
+        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), string.Format(local["$get_invite"], info.name));
         MyUI.addInviteFriend(info, senderInfo);
     }
     
@@ -95,10 +96,10 @@ public static class FriendsSystem
         var senderInfo = players.Find(f => f.m_characterID.UserID == sender);
         var info = new FriendInfo();
         info.name = senderInfo.m_name;
-        info.host = senderInfo.m_host;
+        //info.host = senderInfo.m_host;
         info.level = level;
         info.moClass = moClass;
-        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), string.Format(local["$accept_invite"], info.name),PrivilegeManager.GetNetworkUserId());
+        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), string.Format(local["$accept_invite"], info.name));
         MyUI.acceptInvited(info);
         
     }
@@ -106,6 +107,7 @@ public static class FriendsSystem
     //Отклонили приглашение в друзья
     private static void RPC_RejectFriend(long sender, string name)
     {
-        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), string.Format(local["$cancel_invite"], name),PrivilegeManager.GetNetworkUserId());
+      //  Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), string.Format(local["$cancel_invite"], name), PlatformManager.DistributionPlatform.LocalUser.PlatformUserID.m_userID);
+        Chat.instance.RPC_ChatMessage(200, Vector3.zero, 0, UserInfo.GetLocalUser(), string.Format(local["$cancel_invite"]));
     }
 }

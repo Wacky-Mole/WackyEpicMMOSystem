@@ -26,6 +26,7 @@ using System.Collections;
 using HarmonyLib.Tools;
 using UnityEngine.UIElements;
 using System.Reflection.Emit;
+using static UnityEngine.UI.Image;
 
 
 namespace EpicMMOSystem;
@@ -38,7 +39,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.36";
+    internal const string VERSION = "1.9.37";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID

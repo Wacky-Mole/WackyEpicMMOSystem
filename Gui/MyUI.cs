@@ -24,6 +24,7 @@ public static partial class MyUI
         InitNavigationPanel();
         InitLevelSystem();
         InitFriendsList();
+        UI.GetComponentInChildren<Canvas>().sortingOrder = 1510;
         //Localizer.Load();
     }
 
@@ -47,6 +48,7 @@ public static partial class MyUI
         ShowNavigationPanel();
         navigationPanel.SetActive(true);
         UI.SetActive(true);
+        
     }
 
     [HarmonyPatch(typeof(InventoryGui), nameof(InventoryGui.Show))]

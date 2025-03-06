@@ -82,6 +82,7 @@ public partial class MyUI
     {
 
         expPanel = expPanelRoot.Find("EpicHudPanel");
+        expPanelRoot.GetComponentInChildren<Canvas>().sortingOrder = 1511;
 
         expPanelBackground = expPanel.Find("Background").gameObject;
         expPanelBackgroundColor = expPanelBackground.GetComponent<Image>().color;
@@ -148,7 +149,8 @@ public partial class MyUI
             {
                 //EpicMMOSystem.MLLogger.LogWarning("Call SetVisable vis");
                 expPanelRoot.gameObject.SetActive(true);
-                UIToggle= true;
+
+                UIToggle = true;
 
                 DragControl.SaveWindowPositions(expPanel.gameObject, true);
                 DragControl.SaveWindowPositions(hp.gameObject, true);
