@@ -135,20 +135,9 @@ public partial class LevelSystem
         {
              hold = int.Parse(Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_CurrentExp"]);
         }
-        catch { Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_CurrentExp"] = "1";
-            hold = 1;
-            EpicMMOSystem.MLLogger.LogWarning($"Error in getting current exp, setting exp to 1");
-        }
-        if (hold == 1) // try to restore
-        {
-            try
-            {
-                var total = getTotalExp();
-                hold = total; // try
-                Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_CurrentExp"] = hold.ToString(invC);
-            }
-            catch
-            { }
+        catch { Player.m_localPlayer.m_knownTexts[$"{pluginKey}_{midleKey}_CurrentExp"] = "2";
+            hold = 2;
+            EpicMMOSystem.MLLogger.LogWarning($"Error in getting current exp, setting exp to 2.");
         }
 
         return hold;
@@ -398,7 +387,7 @@ public partial class LevelSystem
         current += (int)giveExp;
         int addLvl = 0;
         var currentcopy = current;
-        while (current > need)
+        while (current >= need)
         {
             current -= need;
             addLvl++;
@@ -568,7 +557,7 @@ public partial class LevelSystem
     {
         var level = Mathf.Clamp(value, 1, EpicMMOSystem.maxLevel.Value);
         setLevel(level);
-        setCurrentExp(0);
+        setCurrentExp(1);
         ResetAllParameter();
         PlayerFVX.levelUp();
         MyUI.updateExpBar();

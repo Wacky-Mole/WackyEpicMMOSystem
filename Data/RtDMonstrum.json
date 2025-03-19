@@ -90,6 +90,12 @@
     "level": 52
   },
   {
+    "name": "SwampTroll_RtD",
+    "minExp": 292,
+    "maxExp": 577,
+    "level": 34
+  },
+  {
     "name": "SwampSludger_RtD",
     "minExp": 300,
     "maxExp": 600,

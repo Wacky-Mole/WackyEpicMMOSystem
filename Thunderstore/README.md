@@ -1,5 +1,5 @@
 # Description:
-This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.37
+This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.38
 
 
 Support me!
@@ -135,7 +135,7 @@ You can combine multiple Skills for one Requirement
 
 	A file called Version.txt is created in the folder. It contains the mod version that was used to create it. Replace it with "NO" to stop it from overwritting on a future update.
 
-	Latest Update for Jsons config is <b> 1.9.35 </b>(Number will be updated when Jsons recieve an update)
+	Latest Update for Jsons config is <b> 1.9.38 </b>(Number will be updated when Jsons recieve an update)
 
 	1.9.30 and 1.9.32 changed the jsons names, your old files will be in EpicMMOSystem_backup folder
 
