@@ -63,6 +63,10 @@ public class Localizationold
     else if (currentLanguage == "Ukrainian")
     {
          UkrLocalization();
+    }    
+    else if (currentLanguage == "Turkish")
+    {
+         TurkishLocalization();
     } 
     else if (currentLanguage == "Portuguese_Brazilian")
      {
@@ -1279,6 +1283,108 @@ public class Localizationold
                             "<color=blue> Збільшує шкоду від видобутку </color> \n" +
                             "<color=blue> Збільшує здоров'я будівельних об'єктів </color> \n" +
                             "<color=green> Збільшує шкоду від рубання дерев</color>");
+
+    }
+
+    private void TurkishLocalization()
+    {
+        _dictionary.Add("$attributes", "Nitelikler");
+        _dictionary.Add("$parameter_strength", "Güç");
+        _dictionary.Add("$parameter_intellect", "Zeka");
+        _dictionary.Add("$free_points", "Kullanılabilir Puanlar");
+        _dictionary.Add("$level", "Seviye");
+        _dictionary.Add("$lvl", "Sev.");
+        _dictionary.Add("$exp", "Deneyim");
+        _dictionary.Add("$cancel", "İptal");
+        _dictionary.Add("$apply", "Onayla");
+        _dictionary.Add("$reset_parameters", "Puanları Sıfırla");
+        _dictionary.Add("$no", "Hayır");
+        _dictionary.Add("$yes", "Evet");
+        _dictionary.Add("$get_exp", "Kazanılan Deneyim");
+        _dictionary.Add("$reset_point_text", "{0} {1} için tüm puanları gerçekten sıfırlamak istiyor musun?");
+
+        //Parametre
+        _dictionary.Add("$physic_damage", "Fiziksel Hasar");
+        _dictionary.Add("$add_weight", "Taşıma Kapasitesi");
+        _dictionary.Add("$reduced_stamina", "Dayanıklılık Tüketimi (koşma, zıplama)");
+        _dictionary.Add("$magic_damage", "Element Hasarı");
+        _dictionary.Add("$magic_armor", "Element Direnci");
+        _dictionary.Add("$add_hp", "Sağlık Artışı");
+        _dictionary.Add("$add_stamina", "Dayanıklılık Artışı");
+        _dictionary.Add("$physic_armor", "Fiziksel Direnç");
+        _dictionary.Add("$reduced_stamina_block", "Blok Dayanıklılık Tüketimi");
+        _dictionary.Add("$regen_hp", "Sağlık Yenilenmesi");
+        _dictionary.Add("$damage", "Hasar");
+        _dictionary.Add("$armor", "Zırh");
+        _dictionary.Add("$survival", "Hayatta Kalma");
+        _dictionary.Add("$regen_eitr", "Eitr Yenilenmesi");
+        _dictionary.Add("$stamina_reg", "Dayanıklılık Yenilenmesi");
+        _dictionary.Add("$add_eitr", "Eitr Artışı");
+
+        // Yeni/değiştirilen Parametreler 1.7.0
+        _dictionary.Add("$parameter_agility", "Çeviklik");
+        _dictionary.Add("$parameter_body", "Dayanıklılık");
+        _dictionary.Add("$parameter_vigour", "Canlılık");
+        _dictionary.Add("$parameter_special", "Uzmanlık");
+        _dictionary.Add("$specialother", "Özel");
+        _dictionary.Add("$attack_speed", "Saldırı Hızı");
+        _dictionary.Add("$attack_stamina", "Saldırı Dayanıklılık Tüketimi");
+        _dictionary.Add("$crtcDmgMulti", "Kritik Hasar Çarpanı");
+        _dictionary.Add("$mining_speed", "Madencilik Hasar Artışı");
+        _dictionary.Add("$piece_health", "Yapı Sağlığı Artışı");
+        _dictionary.Add("$tree_cutting", "Ağaç Kesme Hasar Artışı");
+        _dictionary.Add("$crit_chance", "Kritik Vuruş Şansı Artışı");
+
+        // Arkadaş Listesi
+        _dictionary.Add("$notify", "<color=#00E6FF>Uyarı</color>");
+        _dictionary.Add("$friends_list", "Arkadaş Listesi");
+        _dictionary.Add("$send", "Gönder");
+        _dictionary.Add("$invited", "Davetler");
+        _dictionary.Add("$friends", "Arkadaşlar");
+        _dictionary.Add("$online", "Çevrimiçi");
+        _dictionary.Add("$offline", "Çevrimdışı");
+        _dictionary.Add("$not_found", "{0} oyuncusu bulunamadı.");
+        _dictionary.Add("$send_invite", "{0} oyuncusuna arkadaşlık isteği gönderildi.");
+        _dictionary.Add("$get_invite", "{0} oyuncusundan arkadaşlık isteği alındı.");
+        _dictionary.Add("$accept_invite", "{0} oyuncusu arkadaşlık isteğini kabul etti.");
+        _dictionary.Add("$cancel_invite", "{0} oyuncusu arkadaşlık isteğini iptal etti.");
+
+        // Terminal
+        _dictionary.Add("$terminal_set_level", "{0} seviye kazandın");
+        _dictionary.Add("$terminal_reset_points", "Nitelik puanların sıfırlandı");
+
+        _dictionary.Add("$strength_tooltip", "<size=20>Güç şu alanları geliştirir:</size> \n" +
+            "<color=yellow> Fiziksel Hasar Artışı </color> \n" +
+            "<color=blue> Taşıma Kapasitesi Artışı </color> \n" +
+            "<color=green> Blok Dayanıklılığı Tüketimini Azaltır </color> \n" +
+            "<color=red> Kritik Vuruşta Kritik Hasar Artışı </color>");
+
+        _dictionary.Add("$dexterity_tooltip", "<size=20>Çeviklik şu alanları geliştirir:</size> \n" +
+            "<color=red> Saldırı Hızı Artışı (yaylar hariç)</color> \n" +
+            "<color=yellow> Saldırı Dayanıklılık Tüketimini Azaltır </color> \n" +
+            "<color=green> Koşma/Zıplama Dayanıklılık Tüketimini Azaltır</color> ");
+
+        _dictionary.Add("$intelect_tooltip", "<size=20>Zeka şu alanları geliştirir:</size> \n" +
+            "<color=green> Tüm Element Hasarlarında Artış </color>\n" +
+            "<color=red> Temel Eitr Miktarı Artışı (eitr elde ettiğinde) </color> \n" +
+            "<color=red> Eitr Yenilenmesi Artışı</color> ");
+
+        _dictionary.Add("$endurance_tooltip", "<size=20>Dayanıklılık şu alanları geliştirir:</size> \n" +
+            "<color=yellow> Dayanıklılık Miktarı Artışı</color>\n" +
+            "<color=yellow> Dayanıklılık Yenilenmesi Artışı </color> \n" +
+            "<color=green> Alınan Fiziksel Hasarı Azaltır</color> ");
+
+        _dictionary.Add("$vigour_tooltip", "<size=20>Canlılık şu alanları geliştirir:</size> \n" +
+            "<color=red> HP Miktarı Artışı</color>\n" +
+            "<color=yellow> Sağlık Yenilenmesi </color> \n" +
+            "<color=green> Alınan Element Hasarını Azaltır</color> ");
+
+        _dictionary.Add("$special_tooltip", "<size=20>Özel yetenekler şu alanları geliştirir:</size> \n" +
+            "<color=red> Kritik Saldırı Şansı Artışı</color> \n" +
+            "<color=blue> Madencilik Hasarı Artışı </color> \n" +
+            "<color=blue> Yapı Sağlığı Artışı </color> \n" +
+            "<color=green> Ağaç Kesme Hasarı Artışı</color>");
+
 
     }
 

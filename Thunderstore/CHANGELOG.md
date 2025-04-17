@@ -1,3 +1,5 @@
+| 1.9.39 | - Added Turkish </br> Added HudExpBackgroundScale for those who wish to scale just the background bar. 
+
 | 1.9.38 | - Bug fixes for too much xp/levels gained sometimes. </br> Updated RtDSea and RtDMonstrum mobs.
 
 | 1.9.37 | - Update for 220.3 </br> Changed the MMO Fermentor color again :)

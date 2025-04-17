@@ -39,7 +39,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.38";
+    internal const string VERSION = "1.9.39";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -210,6 +210,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     public static ConfigEntry<string> ExpColor;
 
     //HUD Scales
+    internal static ConfigEntry<Vector3> HudExpBackgroundScale = null!;
     internal static ConfigEntry<Vector3> ExpScale = null!;
     internal static ConfigEntry<Vector3> HPScale = null!;
     internal static ConfigEntry<Vector3> EitrScale = null!;
@@ -887,6 +888,7 @@ public partial class EpicMMOSystemUI : BaseUnityPlugin
 
         EpicMMOSystem.HudPanelPosition = config(hud, "1.0HudGrouplPosition", new Vector2(0, 0), "Position of the Main EpicHudBarBackground in (x,y) - You can drag individual components below");
         EpicMMOSystem.HudExpBackgroundCol = config(hud, "1.1BackgroundCol", "#2F1600", "Background color in Hex, set to 'none' to make transparent");
+        EpicMMOSystem.HudExpBackgroundScale = config(hud, "1.1BackgroundScale", new Vector3(1, 1, 1), "Background Bar Scale");
         EpicMMOSystem.HudBarScale = config(hud, "1.2HudGroupScale", .90f, "Scale for HudGroup - exp, background, hp, stamina, eitr - You can do individual below");
         EpicMMOSystem.ExpPanelPosition = config(hud, "2.0ExpPanelPosition", new Vector2(0, 0), "Position of the Exp panel (x,y)");
         EpicMMOSystem.ExpColor = config(hud, "2.1ExpColor", "#FFFFFF", "Exp fill color in Hex - White bleeds through with purple, set to 'none' to have no xp bar");
@@ -975,6 +977,7 @@ public partial class EpicMMOSystemUI : BaseUnityPlugin
         MyUI.hp.GetComponent<RectTransform>().localScale = EpicMMOSystem.HPScale.Value;
         MyUI.stamina.GetComponent<RectTransform>().localScale = EpicMMOSystem.StaminaScale.Value;
         MyUI.EitrTran.GetComponent<RectTransform>().localScale = EpicMMOSystem.EitrScale.Value;
+        MyUI.expPanelBackground.GetComponent<RectTransform>().localScale = EpicMMOSystem.HudExpBackgroundScale.Value;
 
         try
         {

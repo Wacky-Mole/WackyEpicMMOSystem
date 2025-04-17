@@ -443,6 +443,7 @@
     <EmbeddedResource Include="translations\Ukrainian.yml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="translations\Turkish.yml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Libs\publicized_assemblies\" />
