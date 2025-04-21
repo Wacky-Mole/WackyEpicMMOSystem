@@ -118,7 +118,7 @@ public partial class LevelSystem
         {
             static void Prefix(Character __instance, ref bool showDamageText, ref HitData hit)
             {
-            if (__instance != null && hit.HaveAttacker() && __instance.m_faction != 0 && hit.GetAttacker().m_faction == Character.Faction.Players)
+            if (__instance != null && hit.HaveAttacker() && __instance.m_faction != 0 && hit.GetAttacker().m_faction == Character.Faction.Players && Player.m_localPlayer == hit.GetAttacker())
             {
                 float num = UnityEngine.Random.Range(0f, 100f);
                 //EpicMMOSystem.MLLogger.LogInfo("RandChance Crit " +num + " needed "+ Instance.getAddCriticalChance());

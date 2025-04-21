@@ -1,4 +1,4 @@
-| 1.9.39 | - Added Turkish </br> Added HudExpBackgroundScale for those who wish to scale just the background bar. 
+| 1.9.39 | - Added Turkish </br> Added HudExpBackgroundScale for those who wish to scale just the background bar. </br> Maybe a fix for crit hitting too often for players nearby.
 
 | 1.9.38 | - Bug fixes for too much xp/levels gained sometimes. </br> Updated RtDSea and RtDMonstrum mobs.
 
