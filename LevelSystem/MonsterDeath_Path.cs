@@ -200,6 +200,53 @@ public static class MonsterDeath_Path
     {
         public static void Prefix(Character __instance, HitData hit) // maybe check for tames as well to prevent them from hurting high lvl
         {
+            if (__instance.IsPlayer() && hit.GetAttacker().IsPlayer())
+            {
+                Player player = __instance as Player;
+                string playerDefendingName = player.GetPlayerName();
+                var attackplayer = hit.GetAttacker() as Player;
+                string playerAttackingName = attackplayer.GetPlayerName();
+                int playerdefendinglevel = 0;
+                int playerattackinglevel = 0;
+
+                var playerlist2 = Player.GetAllPlayers();
+                foreach (var pla in playerlist2)
+                {
+                    if (pla.GetPlayerName() == playerDefendingName)
+                    {
+                        var zdopla = pla.m_nview.GetZDO();
+                         playerdefendinglevel = zdopla.GetInt($"{EpicMMOSystem.ModName}_level", 1);
+                       
+                    }
+                    if (pla.GetPlayerName() == playerAttackingName)
+                    {
+                        var zdopla = pla.m_nview.GetZDO();
+                         playerattackinglevel = zdopla.GetInt($"{EpicMMOSystem.ModName}_level", 1);
+                    }
+                }
+                if (playerdefendinglevel > 0 && playerattackinglevel > 0)
+                {
+                    int pvprange = EpicMMOSystem.pvpPlayerRange.Value;
+                    int levelDifference = Math.Abs(playerattackinglevel - playerdefendinglevel);
+
+                    if (levelDifference > pvprange)
+                    {
+
+                        player.Message(MessageHud.MessageType.TopLeft,
+                            $"PvP blocked: level difference too high (Range: {pvprange})");
+
+                        if (attackplayer != null)
+                        {
+                            attackplayer.Message(MessageHud.MessageType.TopLeft,
+                                $"Your level difference with {playerDefendingName} is too high for PvP (Range: {pvprange})");
+                        }
+                        hit.ApplyModifier(0);
+                    }
+
+                }
+            }
+                
+
             if (!EpicMMOSystem.enabledLevelControl.Value) return;
             //if (EpicMMOSystem.removeDrop.Value) hit.m_toolTier = LevelSystem.Instance.getLevel(); // using toolTier to pass the Lvl of player         
             hit.m_toolTier = (short)LevelSystem.Instance.getLevel();

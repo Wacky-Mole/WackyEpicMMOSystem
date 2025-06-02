@@ -39,7 +39,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.39";
+    internal const string VERSION = "1.9.40";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -261,6 +261,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     public static ConfigEntry<bool> enablePVPXP;
     public static ConfigEntry<int> xpPerLevelPVP;
     public static ConfigEntry<int> xpPerDayNotDead;
+    public static ConfigEntry<int> pvpPlayerRange;
 
 
 
@@ -342,7 +343,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
 
         string levelSystemSpecializing = "1.LevelSystem Specializing------";
         startCritChance = config(levelSystemSpecializing, "Critical Start Chance", 1f, "Critical Chance Starts at (1%) after 1 point assigned ");
-        critChance = config(levelSystemSpecializing, "Critical Chance", 0.1f, "Critical Chance, Starts with Critical Start Chance, increment per point - default 0.1% ");
+        critChance = config(levelSystemSpecializing, "Critical Chance", 0.2f, "Critical Chance, Starts with Critical Start Chance, increment per point - default 0.1% ");
         miningSpeed = config(levelSystemSpecializing, "MiningSpeed", 0.4f, "Mining Dmg Multiplier per point"); //check
         constructionPieceHealth = config(levelSystemSpecializing, "PieceHealth", 2f, "Increase max health of new pieces built per point"); // check
         treeCuttingSpeed = config(levelSystemSpecializing, "TreeCuttingSpeed", 0.4f, "Increase tree cutting speed per point.");
@@ -380,7 +381,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         addDefaultHealth = config(optionalEffect, "AddDefaultHealth", 0f, "Add health by default");
         addDefaultWeight = config(optionalEffect, "AddDefaultWeight", 0f, "Add weight by default");
         CriticalStartChance = config(optionalEffect, "CriticalStartChance", 0f, "Add Critical Chance by default");
-        CriticalDefaultDamage = config(optionalEffect, "DefaultCriticalDamage", 30f, "Add Critical Damage by default");
+        CriticalDefaultDamage = config(optionalEffect, "DefaultCriticalDamage", 50f, "Add Critical Damage by default");
         addDefaultEitr =config(optionalEffect, "addDefaultEitr", 0f, "Add Eitr by default");
 
         string OrbandPotion = "6.Orbs and Potions-------";
@@ -421,6 +422,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         enablePVPXP = config(PVPCombat, "Enable PVP XP", true, "Enable PVP XP, victor gets XP of fallen player.");
         xpPerLevelPVP = config(PVPCombat, "XP Per Level", 50, "How much XP is a player worth on defeat by another player per level.");
         xpPerDayNotDead = config(PVPCombat, "XP Per Day Alive", 10, "How much extra a player is worth if they haven't died, per day.");
+        pvpPlayerRange = config(PVPCombat, "Player PVP Range", 15, "How close in level, do the players have to be in order to recieve damage in PVP?");
 
 
 
