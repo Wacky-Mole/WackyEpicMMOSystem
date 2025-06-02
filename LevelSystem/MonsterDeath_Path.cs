@@ -200,46 +200,43 @@ public static class MonsterDeath_Path
     {
         public static void Prefix(Character __instance, HitData hit) // maybe check for tames as well to prevent them from hurting high lvl
         {
-            if (__instance.IsPlayer() && hit.GetAttacker().IsPlayer())
+            if (__instance.IsPlayer() && hit.GetAttacker() is Player attackPlayer)
             {
-                Player player = __instance as Player;
-                string playerDefendingName = player.GetPlayerName();
-                var attackplayer = hit.GetAttacker() as Player;
-                string playerAttackingName = attackplayer.GetPlayerName();
-                int playerdefendinglevel = 0;
-                int playerattackinglevel = 0;
+                if (attackPlayer == null) return;
 
-                var playerlist2 = Player.GetAllPlayers();
-                foreach (var pla in playerlist2)
+                Player defendPlayer = __instance as Player;
+                string playerDefendingName = defendPlayer.GetPlayerName();
+                string playerAttackingName = attackPlayer.GetPlayerName();
+
+                int defenderLevel = 0;
+                int attackerLevel = 0;
+
+                foreach (var pla in Player.GetAllPlayers())
                 {
+                    var zdo = pla.m_nview?.GetZDO();
+                    if (zdo == null) continue;
+
                     if (pla.GetPlayerName() == playerDefendingName)
-                    {
-                        var zdopla = pla.m_nview.GetZDO();
-                         playerdefendinglevel = zdopla.GetInt($"{EpicMMOSystem.ModName}_level", 1);
-                       
-                    }
+                        defenderLevel = zdo.GetInt($"{EpicMMOSystem.ModName}_level", 1);
+
                     if (pla.GetPlayerName() == playerAttackingName)
-                    {
-                        var zdopla = pla.m_nview.GetZDO();
-                         playerattackinglevel = zdopla.GetInt($"{EpicMMOSystem.ModName}_level", 1);
-                    }
+                        attackerLevel = zdo.GetInt($"{EpicMMOSystem.ModName}_level", 1);
                 }
-                if (playerdefendinglevel > 0 && playerattackinglevel > 0)
+
+                if (defenderLevel > 0 && attackerLevel > 0)
                 {
-                    int pvprange = EpicMMOSystem.pvpPlayerRange.Value;
-                    int levelDifference = Math.Abs(playerattackinglevel - playerdefendinglevel);
+                    int allowedRange = EpicMMOSystem.pvpPlayerRange.Value;
+                    int levelDifference = Math.Abs(attackerLevel - defenderLevel);
 
-                    if (levelDifference > pvprange)
+                    if (levelDifference > allowedRange)
                     {
+                        defendPlayer.Message(MessageHud.MessageType.TopLeft,
+                            $"PvP blocked: level difference too high (Range: {allowedRange})");
 
-                        player.Message(MessageHud.MessageType.TopLeft,
-                            $"PvP blocked: level difference too high (Range: {pvprange})");
+                        EpicMMOSystem.MLLogger.LogInfo( $"PvP blocked: level difference too high (Range: {allowedRange})");
 
-                        if (attackplayer != null)
-                        {
-                            attackplayer.Message(MessageHud.MessageType.TopLeft,
-                                $"Your level difference with {playerDefendingName} is too high for PvP (Range: {pvprange})");
-                        }
+                        attackPlayer.Message(MessageHud.MessageType.TopLeft,
+                            $"Your level difference with {playerDefendingName} is too high for PvP (Range: {allowedRange})");
                         hit.ApplyModifier(0);
                     }
 

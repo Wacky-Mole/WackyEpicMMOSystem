@@ -1,3 +1,5 @@
+| 1.9.41 | - Bug Fix
+
 | 1.9.40 | - Adjust the base CriticalDefaultDamage and startCritChance. </br> Added pvpPlayerRange. Let's you set a range where pvp is "allowed". Outside of it no damage is done.
 
 | 1.9.39 | - Added Turkish </br> Added HudExpBackgroundScale for those who wish to scale just the background bar. </br> Maybe a fix for crit hitting too often for players nearby.
