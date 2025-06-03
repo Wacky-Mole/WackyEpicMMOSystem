@@ -444,6 +444,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="translations\Turkish.yml" />
+    <EmbeddedResource Include="translations\Czech.yml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Libs\publicized_assemblies\" />

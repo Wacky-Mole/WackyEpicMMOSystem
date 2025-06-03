@@ -72,17 +72,21 @@ public class Localizationold
      {
          Portuguese_Brazilian();
      }
-    else
-    {
-        var fileName = $"Custom_EpicMMOSystem_Localization.txt";
-        var basePath = Path.Combine(Paths.PluginPath, EpicMMOSystem.ModName, fileName);
-        if (File.Exists(basePath))
+    else if (currentLanguage == "Czech")
         {
-            ReadLocalization(basePath);
-            return;
+            CzechLocalization();
         }
-        CreateLocalizationFile();
-    }
+    else
+        {
+            var fileName = $"Custom_EpicMMOSystem_Localization.txt";
+            var basePath = Path.Combine(Paths.PluginPath, EpicMMOSystem.ModName, fileName);
+            if (File.Exists(basePath))
+            {
+                ReadLocalization(basePath);
+                return;
+            }
+            CreateLocalizationFile();
+        }
     
 }
 
@@ -1388,6 +1392,104 @@ public class Localizationold
 
     }
 
+    private void CzechLocalization()
+    {
+        _dictionary.Add("$attributes", "Atributy");
+        _dictionary.Add("$parameter_strength", "Síla");
+        _dictionary.Add("$parameter_intellect", "Inteligence");
+        _dictionary.Add("$free_points", "Dostupné body");
+        _dictionary.Add("$level", "Úroveň");
+        _dictionary.Add("$lvl", "Úrov.");
+        _dictionary.Add("$exp", "Zkušenosti");
+        _dictionary.Add("$cancel", "Zrušit");
+        _dictionary.Add("$apply", "Potvrdit");
+        _dictionary.Add("$reset_parameters", "Resetovat body");
+        _dictionary.Add("$no", "Ne");
+        _dictionary.Add("$yes", "Ano");
+        _dictionary.Add("$get_exp", "Získané zkušenosti");
+        _dictionary.Add("$reset_point_text", "Opravdu chcete resetovat všechny body za {0} {1}?");
+        // Parameter
+        _dictionary.Add("$physic_damage", "Fyzické poškození");
+        _dictionary.Add("$add_weight", "Nosnost");
+        _dictionary.Add("$reduced_stamina", "Spotřeba výdrže (běh, skákání)");
+        _dictionary.Add("$magic_damage", "Elementární poškození");
+        _dictionary.Add("$magic_armor", "Redukce elementárního poškození");
+        _dictionary.Add("$add_hp", "Navýšení zdraví");
+        _dictionary.Add("$add_stamina", "Navýšení výdrže");
+        _dictionary.Add("$physic_armor", "Redukce fyzického poškození");
+        _dictionary.Add("$reduced_stamina_block", "Spotřeba výdrže při blokování");
+        _dictionary.Add("$regen_hp", "Regenerace zdraví");
+        _dictionary.Add("$damage", "Poškození");
+        _dictionary.Add("$armor", "Brnění");
+        _dictionary.Add("$survival", "Přežití");
+        _dictionary.Add("$regen_eitr", "Regenerace Eitru");
+        _dictionary.Add("$stamina_reg", "Regenerace výdrže");
+        _dictionary.Add("$add_eitr", "Navýšení Eitru");
+        // new/changed Params 1.7.0
+        _dictionary.Add("$parameter_agility", "Obratnost");
+        _dictionary.Add("$parameter_body", "Výdrž");
+        _dictionary.Add("$parameter_vigour", "Vitalita");
+        _dictionary.Add("$parameter_special", "Specializace");
+        _dictionary.Add("$specialother", "Speciální"); // divheader
+        _dictionary.Add("$attack_speed", "Rychlost útoku");
+        _dictionary.Add("$attack_stamina", "Spotřeba výdrže při útoku");
+        _dictionary.Add("$crtcDmgMulti", "Násobič kritického poškození");
+        _dictionary.Add("$mining_speed", "Zvýšení poškození těžby");
+        _dictionary.Add("$piece_health", "Navýšení zdraví konstrukcí");
+        _dictionary.Add("$tree_cutting", "Zvýšení poškození stromů");
+        _dictionary.Add("$crit_chance", "Šance na kritický zásah");
+
+        // Friends list
+        _dictionary.Add("$notify", "<color=#00E6FF>Upozornění</color>");
+        _dictionary.Add("$friends_list", "Seznam přátel");
+        _dictionary.Add("$send", "Odeslat");
+        _dictionary.Add("$invited", "Pozvánky");
+        _dictionary.Add("$friends", "Přátelé");
+        _dictionary.Add("$online", "Online");
+        _dictionary.Add("$offline", "Offline");
+        _dictionary.Add("$not_found", "Hráč {0} nebyl nalezen.");
+        _dictionary.Add("$send_invite", "Pozvánka byla odeslána hráči {0}.");
+        _dictionary.Add("$get_invite", "Obdrželi jste žádost o přátelství od {0}.");
+        _dictionary.Add("$accept_invite", "Hráč {0} přijal žádost o přátelství.");
+        _dictionary.Add("$cancel_invite", "Hráč {0} zrušil svou žádost o přátelství.");
+        // Terminal
+        _dictionary.Add("$terminal_set_level", "Získali jste úroveň {0}");
+        _dictionary.Add("$terminal_reset_points", "Vaše atributové body byly resetovány");
+
+        _dictionary.Add("$strength_tooltip", "<size=20>Silou získáte:</size> \n" +
+            "<color=yellow> Zvýšení fyzického poškození </color> \n" +
+            "<color=blue> Zvýšení nosnosti </color> \n" +
+            "<color=green> Snížení spotřeby výdrže při blokování </color> \n" +
+            "<color=red> Zvýšení kritického poškození při zásahu </color>");
+
+        _dictionary.Add("$dexterity_tooltip", "<size=20>Obratností získáte:</size> \n" +
+            "<color=red> Zvýšení rychlosti útoku (ne luky)</color> \n" +
+            "<color=yellow> Snížená spotřeba výdrže při útoku </color> \n" +
+            "<color=green> Snížená spotřeba výdrže při běhu a skákání</color>");
+
+        _dictionary.Add("$intelect_tooltip", "<size=20>Inteligencí získáte:</size> \n" +
+            "<color=green> Zvýšení elementárního poškození </color>\n" +
+            "<color=red> Zvýšení základního množství Eitru (jakmile jej máte)</color> \n" +
+            "<color=red> Zvýšení regenerace Eitru</color>");
+
+        _dictionary.Add("$endurance_tooltip", "<size=20>Výdrží získáte:</size> \n" +
+            "<color=yellow> Zvýšení množství výdrže</color>\n" +
+            "<color=yellow> Zvýšení regenerace výdrže </color> \n" +
+            "<color=green> Snížení utrženého fyzického poškození</color>");
+
+        _dictionary.Add("$vigour_tooltip", "<size=20>Vitalitou získáte:</size> \n" +
+            "<color=red> Zvýšení množství zdraví</color>\n" +
+            "<color=yellow> Regenerace zdraví </color> \n" +
+            "<color=green> Snížení utrženého elementárního poškození</color>");
+
+        _dictionary.Add("$special_tooltip", "<size=20>Specializací získáte:</size> \n" +
+            "<color=red> Zvýšení šance na kritický útok</color> \n" +
+            "<color=blue> Zvýšení poškození při těžbě </color> \n" +
+            "<color=blue> Zvýšení zdraví stavebních prvků </color> \n" +
+            "<color=green> Zvýšení poškození při kácení stromů</color>");
+
+
+    }
 
     public string this[string key]
     {

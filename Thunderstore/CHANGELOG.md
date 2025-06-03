@@ -1,3 +1,5 @@
+| 1.9.42 | - Added Czech language
+
 | 1.9.41 | - Bug Fix
 
 | 1.9.40 | - Adjust the base CriticalDefaultDamage and startCritChance. </br> Added pvpPlayerRange. Let's you set a range where pvp is "allowed". Outside of it no damage is done.
