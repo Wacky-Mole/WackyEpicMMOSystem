@@ -235,53 +235,51 @@ public class Localizationold
 
     private void RusLocalization()
     {
-        _dictionary.Add("$attributes", "Параметры");
+        _dictionary.Add("$attributes", "Характеристики");
         _dictionary.Add("$parameter_strength", "Сила");
         _dictionary.Add("$parameter_intellect", "Интеллект");
-        _dictionary.Add("$free_points", "Доступно очков");
+        _dictionary.Add("$free_points", "Свободных очков");
         _dictionary.Add("$level", "Уровень");
         _dictionary.Add("$lvl", "Ур.");
         _dictionary.Add("$exp", "Опыт");
         _dictionary.Add("$cancel", "Отмена");
         _dictionary.Add("$apply", "Принять");
-        _dictionary.Add("$reset_parameters", "Сбросить параметры");
+        _dictionary.Add("$reset_parameters", "Сбросить очки");
         _dictionary.Add("$no", "Нет");
         _dictionary.Add("$yes", "Да");
         _dictionary.Add("$get_exp", "Получено опыта");
-        _dictionary.Add("$reset_point_text", "Вы действительно хотите сбросить все поинты за {0} {1}?");
+        _dictionary.Add("$reset_point_text", "Вы действительно хотите сбросить все очки характеристик за {0} {1}?");
         //Parameter
-        _dictionary.Add("$physic_damage", "Ув. физ. урона");
-        _dictionary.Add("$add_weight", "Ув. переносимого веса");
-        _dictionary.Add("$speed_attack", "Расход вын. на атаку");
-        _dictionary.Add("$reduced_stamina", "Расход вын. (бег, прыжок)");
-        _dictionary.Add("$magic_damage", "Ув. маг. урона");
-        _dictionary.Add("$magic_armor", "Ув. маг. защиты");
-        _dictionary.Add("$add_hp", "Ув. здоровья");
-        _dictionary.Add("$add_stamina", "Ув. выносливости");
-        _dictionary.Add("$physic_armor", "Ув. физ. защиты");
-        _dictionary.Add("$reduced_stamina_block", "Расход вын. на блок");
-        _dictionary.Add("$regen_hp", "Регенерация здоровья");
+        _dictionary.Add("$physic_damage", "Физический урон");
+        _dictionary.Add("$add_weight", "Переносимый вес");
+        _dictionary.Add("$reduced_stamina", "Выносливость на бег и прыжки");
+        _dictionary.Add("$magic_damage", "Магический урон");
+        _dictionary.Add("$magic_armor", "Магическая защита");
+        _dictionary.Add("$add_hp", "Здоровье");
+        _dictionary.Add("$add_stamina", "Выносливость");
+        _dictionary.Add("$physic_armor", "Физическая защита");
+        _dictionary.Add("$reduced_stamina_block", "Выносливость на блок");
+        _dictionary.Add("$regen_hp", "Восстановление здоровья");
         _dictionary.Add("$damage", "Урон");
         _dictionary.Add("$armor", "Защита");
-        _dictionary.Add("$survival", "Выживание");
-
-        _dictionary.Add("$regen_eitr", "регенерация Eitr");
-        _dictionary.Add("$stamina_reg", "Регенерация выносливости");
-        _dictionary.Add("$add_eitr", "Повышение Eitr");
-
+        _dictionary.Add("$survival", "Выживаемость");
+        _dictionary.Add("$regen_eitr", "Восстановление эйтра");
+        _dictionary.Add("$stamina_reg", "Восстановление выносливости");
+        _dictionary.Add("$add_eitr", "Эйтр");
         // new/changed Params 1.7.0
         _dictionary.Add("$parameter_agility", "Ловкость");
-        _dictionary.Add("$parameter_body", "Выносливость");
-        _dictionary.Add("$parameter_vigour", "Энергия");
+        _dictionary.Add("$parameter_body", "Стойкость");
+        _dictionary.Add("$parameter_vigour", "Телосложение");
         _dictionary.Add("$parameter_special", "Специализация");
-        _dictionary.Add("$specialother", "Особенный");//divheader
+        _dictionary.Add("$specialother", "Специализация");//divheader
         _dictionary.Add("$attack_speed", "Скорость атаки");
-        _dictionary.Add("$attack_stamina", "Расход выносливости атаки");
-        _dictionary.Add("$crtcDmgMulti", "Множитель критического урона");
-        _dictionary.Add("$mining_speed", "Увеличение урона от добычи полезных ископаемых");
-        _dictionary.Add("$piece_health", "Увеличение здоровья куска");
-        _dictionary.Add("$tree_cutting", "Увеличение урона дерева");
-        _dictionary.Add("$crit_chance", "Увеличение шанса критического удара");
+        _dictionary.Add("$attack_stamina", "Выносливость на атаку");
+        _dictionary.Add("$crtcDmgMulti", "Крит. урон");
+        _dictionary.Add("$mining_speed", "Урон по рудам");
+        _dictionary.Add("$piece_health", "Прочность построек");
+        _dictionary.Add("$tree_cutting", "Урон по деревьям");
+        _dictionary.Add("$crit_chance", "Шанс крит. удара");
+
         //Friends list
         _dictionary.Add("$notify", "<color=#00E6FF>Оповещение</color>");
         _dictionary.Add("$friends_list", "Список друзей");
@@ -289,47 +287,52 @@ public class Localizationold
         _dictionary.Add("$invited", "Приглашения");
         _dictionary.Add("$friends", "Друзья");
         _dictionary.Add("$online", "В игре");
-        _dictionary.Add("$offline", "Нет в игре");
+        _dictionary.Add("$offline", "Не в игре");
         _dictionary.Add("$not_found", "Игрок {0} не найден.");
-        _dictionary.Add("$send_invite", "Игроку {0}, отправлен запрос в друзья.");
+        _dictionary.Add("$send_invite", "Запрос в друзья отправлен игроку {0}.");
         _dictionary.Add("$get_invite", "Получен запрос в друзья от {0}.");
-        _dictionary.Add("$accept_invite", "Игрок {0}, принял запрос в друзья.");
-        _dictionary.Add("$cancel_invite", "Игрок {0}, отменил запрос в друзья.");
+        _dictionary.Add("$accept_invite", "{0} принял ваш запрос в друзья.");
+        _dictionary.Add("$cancel_invite", "{0} отклонил ваш запрос в друзья.");
         //Terminal
         _dictionary.Add("$terminal_set_level", "Вы получили {0} уровень");
         _dictionary.Add("$terminal_reset_points", "Ваши очки характеристик были сброшены");
 
-        _dictionary.Add("$strength_tooltip", "<size=20>Сила усилит следующие эффекты:</size> \n" +
-        "<color=yellow>Увеличение физического урона</color> \n" +
-        "<color=blue>Увеличение грузоподъемности</color> \n" +
-        "<color=green>Снижение расхода выносливости при блокировании</color> \n" +
-        "<color=red>Увеличение критического урона при критических попаданиях</color>");
 
-        _dictionary.Add("$dexterity_tooltip", "<size=20>Ловкость усилит следующие эффекты:</size> \n" +
-        "<color=red>Увеличение скорости атаки (кроме луков)</color> \n" +
-        "<color=yellow>Снижение расхода выносливости при атаке</color> \n" +
-        "<color=green>Снижение расхода выносливости при беге/прыжках</color>");
+        _dictionary.Add("$strength_tooltip", "<size=20>Сила влияет на следующие показатели:</size> \n" +
+                            "<color=yellow>Физический урон</color> \n" +
+                            "<color=blue>Переносимый вес</color> \n" +
+                            "<color=green>Расход выносливости на блок</color> \n" +
+                            "<color=red>Множитель крит. урона</color>");
 
-        _dictionary.Add("$intelect_tooltip", "<size=20>Интеллект усилит следующие эффекты:</size> \n" +
-        "<color=green>Увеличение урона от всех элементов</color> \n" +
-        "<color=red>Увеличение базового количества Эйтра (после получения Эйтра)</color> \n" +
-        "<color=red>Увеличение регенерации Эйтра</color>");
+        _dictionary.Add("$dexterity_tooltip", "<size=20>Ловкость влияет на следующие показатели:</size> \n" +
+                            "<color=red>Скорость атаки (кроме луков)</color> \n" +
+                            "<color=yellow>Расход выносливости на атаку</color> \n" +
+                            "<color=green>Расход выносливости на бег и прыжки</color> ");
 
-        _dictionary.Add("$endurance_tooltip", "<size=20>Стойкость усилит следующие эффекты:</size> \n" +
-        "<color=yellow>Увеличение запаса выносливости</color> \n" +
-        "<color=yellow>Увеличение регенерации выносливости</color> \n" +
-        "<color=green>Снижение получаемого физического урона</color>");
 
-        _dictionary.Add("$vigour_tooltip", "<size=20>Сила жизни усилит следующие эффекты:</size> \n" +
-        "<color=red>Увеличение запаса здоровья</color> \n" +
-        "<color=yellow>Регенерация здоровья</color> \n" +
-        "<color=green>Снижение получаемого элементального урона</color>");
+        _dictionary.Add("$intelect_tooltip", "<size=20>Интеллект влияет на следующие показатели:</size> \n" +
+                            "<color=green>Магический урон </color>\n" +
+                            "<color=red>Запас эйтра (после его получения)</color> \n" +
+                            "<color=red>Восстановление эйтра</color> ");
 
-        _dictionary.Add("$special_tooltip", "<size=20>Специальные навыки усилит следующие эффекты:</size> \n" +
-        "<color=red>Увеличение шанса критической атаки</color> \n" +
-        "<color=blue>Увеличение урона при добыче</color> \n" +
-        "<color=blue>Увеличение прочности конструкций</color> \n" +
-        "<color=green>Увеличение урона при рубке деревьев</color>");
+
+        _dictionary.Add("$endurance_tooltip", "<size=20>Стойкость влияет на следующие показатели:</size> \n" +
+                            "<color=yellow>Запас выносливости</color>\n" +
+                            "<color=yellow>Восстановление выносливости</color> \n" +
+                            "<color=green>Получаемый физический урон</color> ");
+
+
+        _dictionary.Add("$vigour_tooltip", "<size=20>Телосложение влияет на следующие показатели:</size> \n" +
+                            "<color=red>Запас здоровья</color>\n" +
+                            "<color=yellow>Восстановление здоровья</color> \n" +
+                            "<color=green>Получаемый магический урон</color> ");
+
+
+        _dictionary.Add("$special_tooltip", "<size=20>Специализация влияет на следующие показатели:</size> \n" +
+                            "<color=red>Шанс крит. удара</color> \n" +
+                            "<color=blue>Урон по рудам</color> \n" +
+                            "<color=blue>Прочность построек</color> \n" +
+                            "<color=green>Урон по деревьям</color>");
     }
     private void KoreanLocalization()
     {

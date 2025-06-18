@@ -1,3 +1,5 @@
+| 1.9.43 | - Updated Russian language </br> Added Mob Lvl increase per star
+
 | 1.9.42 | - Added Czech language
 
 | 1.9.41 | - Bug Fix

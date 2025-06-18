@@ -39,7 +39,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.42";
+    internal const string VERSION = "1.9.43";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -175,6 +175,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     public static ConfigEntry<string> XPColor;
     public static ConfigEntry<bool> removeAllDropsFromNonPlayerKills;
     public static ConfigEntry<bool> noExpPastLVL;
+    public static ConfigEntry<bool> mobLvlPerStar;
     public static ConfigEntry<string> noExpPastLVLPopup;
 
     //Reset attributes items
@@ -368,6 +369,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         MobLVLChars = config(creatureLevelControl, "Mob Level UI String", "[@]", "[@] uses @ for moblevel, must include '@', but you coudl do 'Level @' or something similar");
         removeAllDropsFromNonPlayerKills = config(creatureLevelControl, "RemoveAllDrops From NonPlayer Kills", true, "Remove all drops from mobs that were not killed by a player or tame -ie no drops from mobs attacking each other");
         noExpPastLVL = config(creatureLevelControl, "U Jerk, NoExpOn Red/Blue", false, "You are a jerk admin if you enable this, this removes all exp on creatures that are above level (RED) or Below (Blue)");
+        mobLvlPerStar = config(creatureLevelControl, "Mob Lvl increase per star", true, "By default a mob lvl goes up per star, change to false to disable this.");
         noExpPastLVLPopup = config(creatureLevelControl, "Popup Message For noExpPastLVL", "No XP for red/blue creatures :(", "This message displays when you enable U Jerk, NoExpOn Red/Blue and Kill a Red or blue mob");
 
         string resetAttributesItems = "3.Reset attributes items";

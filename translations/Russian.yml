@@ -1,35 +1,89 @@
-﻿mmo_xp_orb1: “Магический шар уровня 1” 
-mmo_xp_orb1_description: “Дает опыт!”
-mmo_xp_orb2: “Магический шар уровня 2”
-mmo_xp_orb2_description: “Дает опыт!”
-mmo_xp_orb3: “Магический шар уровня 3”
-mmo_xp_orb3_description: “Дает опыт!”
-mmo_xp_orb4: “Магический шар уровня 4”
-mmo_xp_orb4_description: “Дает опыт!”
-mmo_xp_orb5: “Магический шар уровня 5”
-mmo_xp_orb5_description: “Дает опыт!”
-mmo_xp_orb6: “Магический шар уровня 6” 
-mmo_xp_orb6_description: “Дает опыт!”
-mmo_xp_orb7: “Магический шар уровня 7”
-mmo_xp_orb7_description: “Дает опыт!”
-mmo_xp_orb8: “Магический шар уровня 8” 
-mmo_xp_orb8_description: “Дает опыт!”
-mmo_mead1: “Мед Минора Опыта” 
-mmo_mead1_description: “Мед для приготовления магического зелья Минора Опыта”
-mmo_mead2: “Средний Мед Опыта” 
-mmo_mead2_description: “Мед для приготовления магического зелья Среднего Опыта”
-mmo_mead3: “Большой Мед Опыта”
-mmo_mead3_description: “Мед для приготовления магического зелья Большого Опыта”
-Mob_Chunks: “Части мобов”
-Mob_Chunks_description: “Кусочки разных существ из 9-го мира. Не слишком вкусно. Вызывает тошноту.”
-magicferm: “Магический бродильник” 
-magicferm_description: “Магический бродильник может обрабатывать Магический Мед”
-mmo_xp_gain: “Получение опыта”
-mmo_potion1: “Зелье Минора Опыта” 
-mmoxpdrink1_description: “Пока активно, это зелье дает вам увеличение получаемого опыта на {power1}%”
-mmo_potion2: “Зелье Среднего Опыта”
-mmoxpdrink2_description: “Пока активно, это зелье дает вам увеличение получаемого опыта на {power2}%”
-mmo_potion3: “Зелье Большого Опыта” 
-mmoxpdrink3_description: “Пока активно, это зелье дает вам увеличение получаемого опыта на {power3}%”
-ResetTrophy: “Сброс трофея” 
-ResetTrophy_description: “Трофей, который можно использовать для сброса MMO-очков. Редко”
+parameter_strength:  "Сила"
+parameter_agility:  "Ловкость"
+parameter_intellect:  "Интеллект"
+parameter_body:  "Стойкость"
+free_points:  "Свободных очков"
+level:  "Уровень"
+lvl:  "Ур."
+exp:  "Опыт"
+cancel:  "Отмена"
+apply:  "Принять"
+reset_parameters:  "Сбросить очки"
+no:  "Нет"
+yes:  "Да"
+get_exp:  "Получено опыта"
+reset_point_text:  "Вы действительно хотите сбросить все очки характеристик за {0} {1}?"
+physic_damage:  "Физический урон"
+add_weight:  "Переносимый вес"
+speed_attack:  "Выносливость на атаку"
+reduced_stamina:  "Выносливость на бег и прыжки"
+magic_damage:  "Магический урон"
+magic_armor:  "Магическая защита"
+add_hp:  "Здоровье"
+add_stamina:  "Выносливость"
+physic_armor:  "Физическая защита"
+reduced_stamina_block:  "Выносливость на блок"
+regen_hp:  "Восстановление здоровья"
+damage:  "Урон"
+armor:  "Защита"
+survival:  "Специализация"
+StaminaRegeneration: "Восстановление выносливости"
+$regen_eitr: "Восстановление эйтра"
+$add_eitr: "Эйтр"
+notify:  "<color=#00E6FF>Оповещение</color>"
+friends_list:  "Список друзей"
+send:  "Отправить"
+invited:  "Приглашения"
+friends:  "Друзья"
+online:  "В игре"
+offline:  "Не в игре"
+not_found:  "Игрок {0} не найден."
+send_invite:  "Запрос в друзья отправлен игроку {0}."
+get_invite:  "Получен запрос в друзья от {0}."
+accept_invite:  "{0} принял ваш запрос в друзья."
+cancel_invite:  "{0} отклонил ваш запрос в друзья."
+terminal_set_level:  "Вы получили {0} уровен"
+terminal_reset_points:  "Ваши очки характеристик были сброшены"
+
+
+
+mmo_xp_orb1: "Орб опыта: Ур. 1"
+mmo_xp_orb1_description: "Дает опыт!"
+mmo_xp_orb2: "Орб опыта: Ур. 2"
+mmo_xp_orb2_description: "Дает опыт!"
+mmo_xp_orb3: "Орб опыта: Ур. 3"
+mmo_xp_orb3_description: "Дает опыт!"
+mmo_xp_orb4: "Орб опыта: Ур. 4"
+mmo_xp_orb4_description: "Дает опыт!"
+mmo_xp_orb5: "Орб опыта: Ур. 5"
+mmo_xp_orb5_description: "Дает опыт!"
+mmo_xp_orb6: "Орб опыта: Ур. 6"
+mmo_xp_orb6_description: "Дает опыт!"
+mmo_xp_orb7: "Орб опыта: Ур. 7"
+mmo_xp_orb7_description: "Дает опыт!"
+mmo_xp_orb8: "Орб опыта: Ур. 8"
+mmo_xp_orb8_description: "Дает опыт!"
+
+
+mmo_mead1: "Малая медовуха опыта"
+mmo_mead2: "Средняя медовуха опыта"
+mmo_mead3: "Большая медовуха опыта"
+mmo_mead1_description: "Медовуха для создания малого зелья опыта."
+mmo_mead2_description: "Медовуха для создания среднего зелья опыта."
+mmo_mead3_description: "Медовуха для создания большого зелья опыта."
+Mob_Chunks: "Кусочки существ"
+Mob_Chunks_description: "Куски различных существ девяти миров. Не совсем вкусные. У большинства вызывают тошноту."
+magicferm: "Магическая бродильная бочка"
+magicferm_description: "Может создавать магическую медовуху."
+mmo_xp_gain: "Получение опыта"
+mmo_potion1: "Малое зелье опыта"
+mmo_potion2: "Среднее зелье опыта"
+mmo_potion3: "Большое зелье опыта"
+mmoxpdrink1: "Малое зелье опыта"
+mmoxpdrink2: "Среднее зелье опыта"
+mmoxpdrink3: "Большое зелье опыта"
+mmoxpdrink1_description: "Увеличивает получаемый опыт на {power1}%."
+mmoxpdrink2_description: "Увеличивает получаемый опыт на {power2}%."
+mmoxpdrink3_description: "Увеличивает получаемый опыт на {power3}%."
+ResetTrophy: "Трофей сброса"
+ResetTrophy_description: "Применяется для сброса очков характеристик. Довольно редкий."

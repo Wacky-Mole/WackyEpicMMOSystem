@@ -527,13 +527,19 @@ public static class DataMonsters
             try { if (c.m_tamed) return; } catch { } // might remove this in future so tames can give xp ect
 
             //if (___m_huds)
+
+
+
             if (!EpicMMOSystem.enabledLevelControl.Value) return;
             if (!contains(c.gameObject.name)) return;
             Transform go = ___m_huds[c].m_gui.transform.Find("Name/Name(Clone)");
             if (go) return;
             int maxLevelExp = LevelSystem.Instance.getLevel() + EpicMMOSystem.maxLevelExp.Value;
             int minLevelExp = LevelSystem.Instance.getLevel() - EpicMMOSystem.minLevelExp.Value;
-            int monsterLevel = getLevel(c.gameObject.name) + c.m_level - 1;
+            int monsterLevel = getLevel(c.gameObject.name);
+            if (EpicMMOSystem.mobLvlPerStar.Value)
+                monsterLevel = monsterLevel + c.m_level - 1;
+
             GameObject component = ___m_huds[c].m_gui.transform.Find("Name").gameObject;
             //var textspace = component.GetComponent<Text>().text;
             //component.GetComponent<Text>().text = " "+ textspace + " "; // add some spacing for single letter names
@@ -579,7 +585,7 @@ public static class DataMonsters
        
                 foreach (KeyValuePair<Character, EnemyHud.HudData> keyValuePair in ___m_huds)
                 {
-                    if (keyValuePair.Key.IsPlayer() && keyValuePair.Value.m_gui != null)
+                    if (keyValuePair.Key.IsPlayer() && keyValuePair.Value.m_gui != null) // player pvp
                     {
                         int level = 1;
                         int daysalive = 0;
@@ -597,7 +603,7 @@ public static class DataMonsters
                                 daysalive = zdopla.GetInt(EpicMMOSystem.ModName + EpicMMOSystem.PlayerAliveString, -1);
                                 if (daysalive == -1)
                                 {
-                                    EpicMMOSystem.MLLogger.LogWarning("Days alive not found" + daysalive);
+                                    EpicMMOSystem.MLLogger.LogWarning("Days alive not found" + daysalive + " for player "+ namesearch);
                                     daysalive = 0;
                                 }
                                 level = zdopla.GetInt($"{EpicMMOSystem.ModName}_level", 1);
@@ -641,7 +647,7 @@ public static class DataMonsters
                         }*/
                         component.GetComponent<TextMeshProUGUI>().text = levelstring + keyValuePair.Key.GetHoverName() + xpstring + daysstring;
                                              
-                    }
+                    } // end player search
 
                     if (!EpicMMOSystem.enabledLevelControl.Value) continue;
 
@@ -654,7 +660,10 @@ public static class DataMonsters
                         //key.IsPlayer();
                         int maxLevelExp = LevelSystem.Instance.getLevel() + EpicMMOSystem.maxLevelExp.Value;
                         int minLevelExp = LevelSystem.Instance.getLevel() - EpicMMOSystem.minLevelExp.Value;
-                        int monsterLevel = getLevel(key.gameObject.name) + key.m_level - 1;
+                        int monsterLevel = getLevel(key.gameObject.name);
+                        if (EpicMMOSystem.mobLvlPerStar.Value)
+                            monsterLevel = monsterLevel + key.m_level - 1;
+
                         string mobLevelString = monsterLevel.ToString();
                         Color color = monsterLevel > maxLevelExp ? Color.red : Color.white;
                         if (monsterLevel < minLevelExp) color = Color.cyan;
