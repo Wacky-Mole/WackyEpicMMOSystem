@@ -528,6 +528,61 @@ public static class DataMonsters
 
             //if (___m_huds)
 
+            if (c.IsPlayer() && ___m_huds[c].m_gui != null) // player pvp
+            {
+                  Transform go2 = ___m_huds[c].m_gui.transform.Find("Name/Name(Clone)");
+                 if (go2) return;
+
+                int level = 1;
+                int daysalive = 0;
+                int maxLevelExpplayer = LevelSystem.Instance.getLevel() + EpicMMOSystem.maxLevelExp.Value;
+                int minLevelExpplayer = LevelSystem.Instance.getLevel() - EpicMMOSystem.minLevelExp.Value;
+
+
+                GameObject component2 = ___m_huds[c].m_gui.transform.Find("Name").gameObject;
+                GameObject compCheck = Object.Instantiate(component2, component2.transform);
+                compCheck.GetComponent<TextMeshProUGUI>().text = "";
+               string namesearch = c.GetHoverName();
+
+                var playerlist2 = Player.GetAllPlayers();
+                foreach (var pla in playerlist2)
+                {
+                    if (pla.GetPlayerName() == namesearch)
+                    {
+                        var zdopla = pla.m_nview.GetZDO();
+                        daysalive = zdopla.GetInt(EpicMMOSystem.ModName + EpicMMOSystem.PlayerAliveString, -1);
+                        if (daysalive == -1)
+                        {
+                            EpicMMOSystem.MLLogger.LogWarning("Days alive not found" + daysalive + " for player " + namesearch);
+                            daysalive = 0;
+                        }
+                        level = zdopla.GetInt($"{EpicMMOSystem.ModName}_level", 1);
+                        break;
+                    }
+                }
+
+                int monsterLevelplayer = level;
+                Color color2 = monsterLevelplayer > maxLevelExpplayer ? Color.red : Color.white;
+                if (monsterLevelplayer < minLevelExpplayer) color2 = Color.cyan;
+
+                string levelstring = "";
+                string xpstring = "";
+                string daysstring = "";
+                int xpworth = (level * EpicMMOSystem.xpPerLevelPVP.Value) + (daysalive * EpicMMOSystem.xpPerDayNotDead.Value);
+
+                levelstring = EpicMMOSystem.displayPlayerLevel.Value;
+                levelstring = levelstring.Replace("@", level.ToString());
+
+                xpstring = EpicMMOSystem.displayPlayerXP.Value;
+                xpstring = xpstring.Replace("@", xpworth.ToString());
+
+                daysstring = EpicMMOSystem.displayDaysAlive.Value;
+                daysstring = daysstring.Replace("@", daysalive.ToString());
+
+                component2.GetComponent<TextMeshProUGUI>().text = levelstring + c.GetHoverName() + xpstring + daysstring;
+
+            } // end player search
+
 
 
             if (!EpicMMOSystem.enabledLevelControl.Value) return;
@@ -615,7 +670,6 @@ public static class DataMonsters
                         Color color = monsterLevel > maxLevelExp ? Color.red : Color.white;
                         if (monsterLevel < minLevelExp) color = Color.cyan;
 
-                        //component.GetComponent<TextMeshProUGUI>().color = color;
                         string levelstring = "";
                         string xpstring = "";
                         string daysstring = "";
@@ -630,21 +684,6 @@ public static class DataMonsters
                         daysstring = EpicMMOSystem.displayDaysAlive.Value;
                         daysstring = daysstring.Replace("@", daysalive.ToString());
 
-
-                        /*
-                        if (EpicMMOSystem.displayPlayerLevel.Value)
-                        {
-                            levelstring = "(<size=8>Lvl <color=blue>" + level + "</size></color>) ";
-                        }
-                        if (EpicMMOSystem.displayPlayerXP.Value)
-                        {
-                            xpstring = " [" + xpworth + " XP]";
-                        }
-
-                        if (EpicMMOSystem.displayDaysAlive.Value)
-                        {
-                            daysstring = "<color=red>(" + daysalive + "Days Alive)</color>";
-                        }*/
                         component.GetComponent<TextMeshProUGUI>().text = levelstring + keyValuePair.Key.GetHoverName() + xpstring + daysstring;
                                              
                     } // end player search
