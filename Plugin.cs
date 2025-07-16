@@ -27,6 +27,7 @@ using HarmonyLib.Tools;
 using UnityEngine.UIElements;
 using System.Reflection.Emit;
 using static UnityEngine.UI.Image;
+using UnityEngine.Animations;
 
 
 namespace EpicMMOSystem;
@@ -39,7 +40,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.43";
+    internal const string VERSION = "1.9.44";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -256,6 +257,8 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     public static ConfigEntry<bool> disableDestructablesXP;
 
     // PVP 
+    public static ConfigEntry<bool> displayUIString;
+    public static ConfigEntry<int> displayUIStringYPosition;
     public static ConfigEntry<string> displayPlayerLevel;
     public static ConfigEntry<string> displayPlayerXP;
     public static ConfigEntry<string> displayDaysAlive;
@@ -418,6 +421,8 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         debugNonCombatObjects = config(NonCombat, "2.Debug NonCombat Objects", false, "Gives a Warning log for various objects names. Don't forgot that (Clone) is added to everything in the jsons.", false);
 
         string PVPCombat = "8.PVP Combat XP------";
+        displayUIString = config(PVPCombat, "Display Player Info", true, "Display Player Info above head for other players, Saves performance if you never use it.");
+        displayUIStringYPosition = config(PVPCombat, "Display Player Info Y-Axis", -110, "Y-Axis of the player info, will not change right away. ");
         displayPlayerLevel = config(PVPCombat, "Display Player Level", "(Lvl<color=blue> @ </color>) ", " Use @, to display player Level next to name. Blank for nothing.");
         displayPlayerXP = config(PVPCombat, "Display Players XP Worth", " [@ XP]", "Use @, to display the current XP a player is worth next to name. Blank for nothing.");
         displayDaysAlive = config(PVPCombat, "Display Days Alive", " <color=red>(@ Days Alive)</color>", "Use @, to display the how long the player has been alive in days. Blank for nothing.");
@@ -525,7 +530,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         
         
         Item ResetTrophy = new("epicmmoitems", "ResetTrophy", "asset");
-        ResetTrophy.ToggleConfigurationVisibility(Configurability.Drop);
+        ResetTrophy.ToggleConfigurationVisibility(Configurability.Drop | Configurability.Trader);
         //ResetTrophy.Snapshot();
 
         

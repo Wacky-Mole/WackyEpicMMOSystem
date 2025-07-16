@@ -1,26 +1,29 @@
+using BepInEx;
+using fastJSON;
+using HarmonyLib;
+using ItemManager;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Mime;
+using System.Numerics;
 using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.Remoting.Messaging;
 using System.Threading;
-using BepInEx;
-using fastJSON;
-using HarmonyLib;
-
+//using Text = UnityEngine.UI.Text;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.XR;
 //using UnityEngine.UI;
 using static System.Net.Mime.MediaTypeNames;
 using Object = UnityEngine.Object;
+using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
-//using Text = UnityEngine.UI.Text;
-using TMPro;
-using UnityEngine.UI;
-using ItemManager;
-using UnityEngine.XR;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 namespace EpicMMOSystem;
 
@@ -527,21 +530,37 @@ public static class DataMonsters
             try { if (c.m_tamed) return; } catch { } // might remove this in future so tames can give xp ect
 
             //if (___m_huds)
-
-            if (c.IsPlayer() && ___m_huds[c].m_gui != null) // player pvp
+            
+            if (c.IsPlayer() && ___m_huds[c].m_gui != null && EpicMMOSystem.displayUIString.Value) // player pvp
             {
-                  Transform go2 = ___m_huds[c].m_gui.transform.Find("Name/Name(Clone)");
-                 if (go2) return;
+                GameObject hudBase = ___m_huds[c].m_gui;
+                TextMeshProUGUI playerName = hudBase.transform.Find("Name").GetComponent<TextMeshProUGUI>();
+
+
+                if (hudBase.transform.Find("mmoname")?.gameObject is not { } mmonameObject)
+                {
+                    mmonameObject = new GameObject("mmoname", typeof(RectTransform));
+                    mmonameObject.transform.SetParent(hudBase.transform, false);
+                    ((RectTransform)mmonameObject.transform).sizeDelta = hudBase.transform.Find("Name").GetComponent<RectTransform>().sizeDelta + new Vector2(0, EpicMMOSystem.displayUIStringYPosition.Value);  // new UnityEngine.Vector2(300, -18);
+                    TextMeshProUGUI MMOnametext = mmonameObject.AddComponent<TextMeshProUGUI>();
+                    MMOnametext.font = playerName.font;
+                    MMOnametext.fontSize = 16;
+                    MMOnametext.alignment = playerName.alignment;
+                   
+                    //Outline outline = mmonameObject.AddComponent<Outline>();
+                    //outline.effectColor = Color.black;
+                    //outline.effectDistance = new UnityEngine.Vector2(1, -1);
+                }
+
+                TextMeshProUGUI MMONameText = mmonameObject.GetComponent<TextMeshProUGUI>();
+                RectTransform nameTransform = playerName.GetComponent<RectTransform>();
+                UnityEngine.Vector2 namePrivot = nameTransform.pivot;
 
                 int level = 1;
                 int daysalive = 0;
                 int maxLevelExpplayer = LevelSystem.Instance.getLevel() + EpicMMOSystem.maxLevelExp.Value;
                 int minLevelExpplayer = LevelSystem.Instance.getLevel() - EpicMMOSystem.minLevelExp.Value;
 
-
-                GameObject component2 = ___m_huds[c].m_gui.transform.Find("Name").gameObject;
-                GameObject compCheck = Object.Instantiate(component2, component2.transform);
-                compCheck.GetComponent<TextMeshProUGUI>().text = "";
                string namesearch = c.GetHoverName();
 
                 var playerlist2 = Player.GetAllPlayers();
@@ -579,11 +598,13 @@ public static class DataMonsters
                 daysstring = EpicMMOSystem.displayDaysAlive.Value;
                 daysstring = daysstring.Replace("@", daysalive.ToString());
 
-                component2.GetComponent<TextMeshProUGUI>().text = levelstring + c.GetHoverName() + xpstring + daysstring;
+                namePrivot.y = 0.2f;
+                mmonameObject.GetComponent<TextMeshProUGUI>().text = levelstring + xpstring + daysstring;
+                nameTransform.pivot = namePrivot;
 
             } // end player search
 
-
+          
 
             if (!EpicMMOSystem.enabledLevelControl.Value) return;
             if (!contains(c.gameObject.name)) return;
@@ -640,6 +661,7 @@ public static class DataMonsters
        
                 foreach (KeyValuePair<Character, EnemyHud.HudData> keyValuePair in ___m_huds)
                 {
+                    /*
                     if (keyValuePair.Key.IsPlayer() && keyValuePair.Value.m_gui != null) // player pvp
                     {
                         int level = 1;
@@ -685,8 +707,9 @@ public static class DataMonsters
                         daysstring = daysstring.Replace("@", daysalive.ToString());
 
                         component.GetComponent<TextMeshProUGUI>().text = levelstring + keyValuePair.Key.GetHoverName() + xpstring + daysstring;
+                   
                                              
-                    } // end player search
+                    }  */  // end player search
 
                     if (!EpicMMOSystem.enabledLevelControl.Value) continue;
 

@@ -1,5 +1,5 @@
 # Description:
-This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.43
+This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.44
 
 
 Support me!
@@ -258,7 +258,7 @@ To make UI elements disappear type "none" in the respective elements color setti
 
 EpicMMO uses a built-in custom Translation Manager and the blaxx Translation Manager for Items
 
-English, Russian, Chinese, Spanish, Korean, French, Polish, Portuguese, Brazilian Portuguese, Swedish and German are currently implemented. 
+English, Russian, Chinese, Spanish, Korean, French, Polish, Portuguese, Brazilian Portuguese, Swedish, Ukrainian, Czech, Turkish, and German are currently implemented. 
 
 </details> 
 

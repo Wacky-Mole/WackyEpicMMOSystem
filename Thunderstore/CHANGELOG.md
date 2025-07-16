@@ -1,3 +1,5 @@
+| 1.9.44 | - Adjusting the players lvls and days alive again. Added some more configs to save on performance and adjust positioning. </br> Added trader config to ResetTrophy
+
 | 1.9.43 | - Updated Russian language </br> Added Mob Lvl increase per star. </br> Fixed players lvls and days alive not showing up sometimes near other players. 
 
 | 1.9.42 | - Added Czech language
