@@ -1,4 +1,4 @@
-| 1.9.45 | - Removed the color filter off of EXP bar (old and new), but now you can choose whatever color you would like. It's less shiny, but more freedom. </br> Added UseMagicFerm config, allows your mmo_fermentor to be more useful and ferments all Meads. Off by default. You need to restart and replace existing pieces. </br> Updated LocalizationManager </br> Updated ServerSync
+| 1.9.45 | - Removed the color filter off of EXP bar (old and new), but now you can choose whatever color you would like. It's less shiny, but more freedom. </br> Added UseMagicFerm config, allows your mmo_fermentor to be more useful and ferments all Meads. Off by default. </br> Updated LocalizationManager </br> Updated ServerSync </br> Add a button for GuildsUI if Guidls is installed.
 
 | 1.9.44 | - Adjusting the players lvls and days alive again. Added some more configs to save on performance and adjust positioning. </br> Added trader config to ResetTrophy
 

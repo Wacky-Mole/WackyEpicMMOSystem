@@ -48,6 +48,15 @@ public static class MainReloadStartSoLoad
     {
         EpicMMOSystem.MLLogger.LogInfo("ReLoading exp chart");
         LevelSystem.Instance.FillLevelsExp();
+        //EpicMMOSystem.runSSvalues();
+    }
+
+}
+[HarmonyPatch(typeof(ZoneSystem), nameof(ZoneSystem.Start))] // Need something that runs after Dungeon DB but fore Game spawn
+public static class MainReloadStarEarly
+{
+    static void Prefix(Game __instance)
+    { 
         EpicMMOSystem.runSSvalues();
     }
 

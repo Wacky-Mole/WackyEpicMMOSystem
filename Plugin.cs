@@ -409,7 +409,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         OrbDropChancefromBoss = config(OrbandPotion, "Ord Drop Boss", 100f, "Drop Chance for Orbs to drop from a boss - default 100%");
         OrdDropMaxAmountFromBoss = config(OrbandPotion, "Orb Boss Max Amount", 3, "Max Amount of Orbs to drop from Boss if any orbs drop. So there is a chance 1-3 will drop on default");
         UseRegFerm = config(OrbandPotion, "Use Regular Fermentor", false, "For the people that can't handle a little fireworks in their bases, you can use the regular fermentor instead.");
-        UseMagicFerm = config(OrbandPotion, "MMO Fermentor Can Ferment all Meads", false, " Give the mmo_fermentor all the recipes. Duplicates the conversions from regular fermentor, restart and replace piece.");
+        UseMagicFerm = config(OrbandPotion, "MMO Fermentor Can Ferment all Meads", false, " Give the mmo_fermentor all the recipes. Duplicates the conversions from regular fermentor.");
 
         string NonCombat = "7.Non Combat XP------";
 
