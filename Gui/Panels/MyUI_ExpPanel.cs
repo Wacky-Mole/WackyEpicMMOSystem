@@ -14,6 +14,7 @@ public partial class MyUI
     internal static Text eLevelText;
     internal static Text eExpText;
     internal static Image eBarImage;
+    internal static Image eOldBarImage;
     internal static Transform Exp;
     internal static bool DisableExpBar = false;
 
@@ -182,8 +183,18 @@ public partial class MyUI
                 eLevelText = oldExpPanel.Find("Lvl").GetComponent<Text>();
                 eExpText = oldExpPanel.Find("Exp").GetComponent<Text>();
                 eBarImage = oldExpPanel.Find("Bar/Fill").GetComponent<Image>();
-                //DragWindowCntrl.ApplyDragWindowCntrl(oldPanel);
-                return;
+                eOldBarImage = eBarImage;
+                    
+                Color tempC;
+                if (ColorUtility.TryParseHtmlString(EpicMMOSystem.ExpColor.Value, out tempC))
+                {
+                    if (EpicMMOSystem.ExpColor.Value == "#FFFFFF")
+                        eBarImage.color = tempC;
+                    else
+                        eBarImage.color = tempC * 2;
+                }
+                    //DragWindowCntrl.ApplyDragWindowCntrl(oldPanel);
+                    return;
             }
 
             GameObject panel = EpicMMOSystem._asset.LoadAsset<GameObject>("EpicHudPanelCanvas"); //DragWindowCntrl.ApplyDragWindowCntrl(panel); //ended up working for some reason, 

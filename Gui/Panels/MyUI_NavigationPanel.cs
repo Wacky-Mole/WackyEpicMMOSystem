@@ -4,6 +4,7 @@ using EpicMMOSystem.OtherApi;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 namespace EpicMMOSystem;
 
 public partial class MyUI
@@ -13,7 +14,7 @@ public partial class MyUI
     private static Transform buttonFriendsList;
     private static Transform buttonQuestPanel;
     private static Transform buttonProfessionsPanel;
-    private static Transform buttonShopPanel;
+    private static Transform ButtonGuildsPanel;
     private static void InitNavigationPanel()
     {
         navigationPanel = UI.transform.Find("Canvas/NavigatePanel").gameObject;
@@ -39,11 +40,11 @@ public partial class MyUI
             buttonProfessionsPanel.gameObject.SetActive(true);
         }
 
-        if (DonatShop_API.IsInstalled())
+        if (Guilds_API.IsInstalled())
         {
-            buttonShopPanel = navigationPanel.transform.Find("Buttons/ButtonShop");
-            buttonShopPanel.GetComponent<Button>().onClick.AddListener(ClickButtonDonatShop);
-            buttonShopPanel.gameObject.SetActive(true);
+            ButtonGuildsPanel = navigationPanel.transform.Find("Buttons/ButtonGuilds");
+            ButtonGuildsPanel.GetComponent<Button>().onClick.AddListener(ClickButtonButtonGuilds);
+            ButtonGuildsPanel.gameObject.SetActive(true);
         }
     }
 
@@ -59,9 +60,9 @@ public partial class MyUI
         friendsListPanel.SetActive(!friendsListPanel.activeSelf);
     }
     
-    private static void ClickButtonDonatShop()
+    private static void ClickButtonButtonGuilds()
     {
-        DonatShop_API.OpenShop();
+        Guilds_API.ShowGuilds();
     }
     
     private static void ClickQuestPanel()

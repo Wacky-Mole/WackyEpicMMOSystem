@@ -316,6 +316,7 @@
     <Compile Include="LevelSystem\LevelSystem_noncombat.cs" />
     <Compile Include="LevelSystem\LevelSystem_Specializing.cs" />
     <Compile Include="LevelSystem\LevelSystem_Vigour.cs" />
+    <Compile Include="OtherApi\Guilds_API.cs" />
     <Compile Include="OtherApi\wackydb_api.cs" />
     <Compile Include="Scripts\Drag.cs" />
     <Compile Include="EpicMMOSystem_API.cs" />
@@ -339,7 +340,6 @@
     <Compile Include="Locallization_old.cs" />
     <Compile Include="OtherApi\Marketplace_API.cs" />
     <Compile Include="OtherApi\Professions_API.cs" />
-    <Compile Include="OtherApi\DonatShop_API.cs" />
     <Compile Include="PanelRefs.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

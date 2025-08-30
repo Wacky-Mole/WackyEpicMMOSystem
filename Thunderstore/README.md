@@ -1,5 +1,5 @@
 # Description:
-This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.44
+This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.45
 
 
 Support me!
@@ -19,8 +19,11 @@ Features:
  - MMO-like friends list. -[Groups](https://valheim.thunderstore.io/package/Smoothbrain/Groups/)
  - Compatible with [ItemRequiresSkillLevel](https://thunderstore.io/c/valheim/p/WackyMole/WackyItemRequiresSkillLevel/) mod. Equipment can be limited by level or attribute.
  - Compatible with [Item Control](https://thunderstore.io/c/valheim/p/RustyMods/ItemControl/) mod. Control craft, equip, consume based on skill level or Almanac Classes or WackyEpicMMO
- - Compatible with [KGMarketplace mod](https://valheim.thunderstore.io/package/KGvalheim/Marketplace_And_Server_NPCs_Revamped/). Experience rewards can be added: <s>(EpicMMO_Exp:250) Quests can be limited by level (EpicMMO_Level: text, 20) </s> Read updated Marketplace docs
- 
+ - Compatible with [KGMarketplace mod](https://valheim.thunderstore.io/package/KGvalheim/Marketplace_And_Server_NPCs_Revamped/). Experience rewards can be added: <s>(EpicMMO_Exp:250) Quests can be limited by level (EpicMMO_Level: text, 20) </s> Read updated Marketplace docs. Adds a Dedicated Quest Button.
+ - Adds a Dedicated Professions Button-[Professions](https://thunderstore.io/c/valheim/p/Smoothbrain/Professions/)
+ - Adds a Dedicated Guilds Button-[Guilds](https://thunderstore.io/c/valheim/p/Smoothbrain/Guilds/)
+
+
  ![https://wackymole.com/hosts/2nd%20image.png](https://wackymole.com/hosts/2nd%20image.png)
 
 <details><summary>Attributes</summary>

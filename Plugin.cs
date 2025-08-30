@@ -35,12 +35,13 @@ namespace EpicMMOSystem;
 [BepInPlugin(ModGUID, ModName, VERSION)]
 [BepInDependency("org.bepinex.plugins.groups", BepInDependency.DependencyFlags.SoftDependency)]
 [BepInDependency("org.bepinex.plugins.creaturelevelcontrol", BepInDependency.DependencyFlags.SoftDependency)]
+[BepInDependency("Smoothbrain.Guilds", BepInDependency.DependencyFlags.SoftDependency)]
 [BepInDependency("WackyMole.WackysDatabase", BepInDependency.DependencyFlags.SoftDependency)]
 
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.44";
+    internal const string VERSION = "1.9.45";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -244,6 +245,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     public static ConfigEntry<float> OrbDropChancefromBoss;
     public static ConfigEntry<int> OrdDropMaxAmountFromBoss;
     public static ConfigEntry<bool> UseRegFerm;
+    public static ConfigEntry<bool> UseMagicFerm;
 
     // Non Combat
     public static ConfigEntry<bool> disableNonCombatObjects;
@@ -361,8 +363,8 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         removeDropMin = config(creatureLevelControl, "Remove_creature_drop_min", false, "Monsters after death do not give items if their level is lower than player level - MinLevel");
         removeBossDropMax = config(creatureLevelControl, "Remove_boss_drop_max", false, "Bosses after death do not give items if their level is higher than player level + MaxLevel");
         removeBossDropMin = config(creatureLevelControl, "Remove_boss_drop_min", false, "Bosses after death do not give items if their level is lower than player level - Minlevel");
-        curveExp = config(creatureLevelControl, "Curve_creature_exp", true, "Monsters after death will give less exp if player is outside Max or Min Level Range");
-        curveBossExp = config(creatureLevelControl, "Curve_Boss_exp", true, "Bosses after death will give less exp if player is outside Max or Min Level Range");
+        curveExp = config(creatureLevelControl, "Curve_creature_exp", false, "Monsters after death will give less exp if player is outside Max or Min Level Range");
+        curveBossExp = config(creatureLevelControl, "Curve_Boss_exp", false, "Bosses after death will give less exp if player is outside Max or Min Level Range");
         lowDamageLevel = config(creatureLevelControl, "Low_damage_level", false, "Decreased damage to the monster if the level is insufficient");
         lowDamageExtraConfig = config(creatureLevelControl, "Low_damage_config", 0, "Extra paramater to low damage config - for reference(float)(playerLevel + lowDamageConfig) / monsterLevel; when player is below lvl");
         minLevelExp = config(creatureLevelControl, "MinLevelRange", 10, "Character level - MinLevelRange is less than the level of the monster, then you will receive reduced experience. Уровень персонажа - MinLevelRange меньше уровня монстра, то вы будете получать урезанный опыт");
@@ -407,6 +409,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         OrbDropChancefromBoss = config(OrbandPotion, "Ord Drop Boss", 100f, "Drop Chance for Orbs to drop from a boss - default 100%");
         OrdDropMaxAmountFromBoss = config(OrbandPotion, "Orb Boss Max Amount", 3, "Max Amount of Orbs to drop from Boss if any orbs drop. So there is a chance 1-3 will drop on default");
         UseRegFerm = config(OrbandPotion, "Use Regular Fermentor", false, "For the people that can't handle a little fireworks in their bases, you can use the regular fermentor instead.");
+        UseMagicFerm = config(OrbandPotion, "MMO Fermentor Can Ferment all Meads", false, " Give the mmo_fermentor all the recipes. Duplicates the conversions from regular fermentor, restart and replace piece.");
 
         string NonCombat = "7.Non Combat XP------";
 
@@ -538,15 +541,19 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     
     internal static void runSSvalues()
     {
-        if (EpicMMOSystem.UseRegFerm.Value)
+        if (EpicMMOSystem.UseRegFerm.Value || EpicMMOSystem.UseMagicFerm.Value)
         {
             Fermenter cald = null;
+            Fermenter mmocald = null;
             var list2 = Resources.FindObjectsOfTypeAll<Fermenter>();
             foreach (var item in list2)
             {
                 
                 if (item.name == "fermenter")
                     cald = item;
+
+                if (item.name == "mmo_fermenter")
+                    mmocald = item;
             }
             if (cald != null)
             {
@@ -556,26 +563,47 @@ public partial class EpicMMOSystem : BaseUnityPlugin
                     if (conv.m_from == Mead1D)
                         contains = true;
                 }
-                if (!contains)
+
+                Fermenter.ItemConversion one = new();
+                Fermenter.ItemConversion two = new();
+                Fermenter.ItemConversion three = new();
+                one.m_from = Mead1D;
+                one.m_to = Drink1;
+                one.m_producedItems = 3;
+
+                two.m_from = Mead2D;
+                two.m_to = Drink2;
+                two.m_producedItems = 3;
+
+                three.m_from = Mead3D;
+                three.m_to = Drink3;
+                three.m_producedItems = 3;
+
+
+                if (!contains && EpicMMOSystem.UseRegFerm.Value)
                 {
-                    Fermenter.ItemConversion one = new();
-                    Fermenter.ItemConversion two = new();
-                    Fermenter.ItemConversion three = new();
-                    one.m_from = Mead1D;
-                    one.m_to = Drink1;
-                    one.m_producedItems = 3;
-
-                    two.m_from = Mead2D;
-                    two.m_to = Drink2;
-                    two.m_producedItems = 3;
-
-                    three.m_from = Mead3D;
-                    three.m_to = Drink3;
-                    three.m_producedItems = 3;
-
                     cald.m_conversion.Add(one);
                     cald.m_conversion.Add(two);
                     cald.m_conversion.Add(three);
+                }
+
+                if (EpicMMOSystem.UseMagicFerm.Value)
+                {
+                    if (mmocald == null)
+                    {
+                        EpicMMOSystem.MLLogger.LogWarning("mmo ferm is null");
+                        return;
+                    }
+
+                    //EpicMMOSystem.MLLogger.LogWarning("Added MMO all recipes");
+                    mmocald.m_conversion = cald.m_conversion;
+                    if (!contains)
+                    {
+                        mmocald.m_conversion.Add(one);
+                        mmocald.m_conversion.Add(two);
+                        mmocald.m_conversion.Add(three);
+                    } 
+
                 }
             }
 
@@ -900,7 +928,7 @@ public partial class EpicMMOSystemUI : BaseUnityPlugin
         EpicMMOSystem.HudExpBackgroundScale = config(hud, "1.1BackgroundScale", new Vector3(1, 1, 1), "Background Bar Scale");
         EpicMMOSystem.HudBarScale = config(hud, "1.2HudGroupScale", .90f, "Scale for HudGroup - exp, background, hp, stamina, eitr - You can do individual below");
         EpicMMOSystem.ExpPanelPosition = config(hud, "2.0ExpPanelPosition", new Vector2(0, 0), "Position of the Exp panel (x,y)");
-        EpicMMOSystem.ExpColor = config(hud, "2.1ExpColor", "#FFFFFF", "Exp fill color in Hex - White bleeds through with purple, set to 'none' to have no xp bar");
+        EpicMMOSystem.ExpColor = config(hud, "2.1ExpColor", "#1E0620", "Exp fill color in Hex or a named color -  Set to 'none' to have no xp bar");
         EpicMMOSystem.ExpScale = config(hud, "2.2ExpScale", new Vector3(1, 1, 1), "Exp Bar Scale factor");
         EpicMMOSystem.StaminaPanelPosition = config(hud, "3.0StaminaPanelPosition", new Vector2(0, 0), "Position of the Stamina panel (x,y)");
         EpicMMOSystem.StaminaColor = config(hud, "3.1StaminaColor", "#986100", "Stamina color in Hex, set to 'none' to make vanilla");
@@ -977,9 +1005,15 @@ public partial class EpicMMOSystemUI : BaseUnityPlugin
         if (ColorUtility.TryParseHtmlString(EpicMMOSystem.ExpColor.Value, out tempC))
         {
             if (EpicMMOSystem.ExpColor.Value == "#FFFFFF")
+            {
                 MyUI.eBarImage.color = tempC;
+                MyUI.eOldBarImage.color = tempC;
+            }
             else
+            {
                 MyUI.eBarImage.color = tempC * 2;
+                MyUI.eOldBarImage.color = tempC * 2;
+            }
         }
 
         MyUI.Exp.GetComponent<RectTransform>().localScale = EpicMMOSystem.ExpScale.Value;
