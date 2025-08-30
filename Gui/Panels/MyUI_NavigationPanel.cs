@@ -62,6 +62,7 @@ public partial class MyUI
     
     private static void ClickButtonButtonGuilds()
     {
+        CloseAllUI();
         Guilds_API.ShowGuilds();
     }
     
@@ -81,6 +82,16 @@ public partial class MyUI
         buttonLevelSystem.GetChild(0).gameObject.SetActive(point > 0);
         buttonFriendsList.GetChild(0).gameObject.SetActive(hasInvite());
     }
-    
-    
+
+
+    private static void CloseAllUI()
+    {
+            navigationPanel.SetActive(false);
+            InventoryGui.instance.Hide();
+        
+
+        // you can add more as needed (e.g. any other mod panels you know about)
+    }
+
+
 }

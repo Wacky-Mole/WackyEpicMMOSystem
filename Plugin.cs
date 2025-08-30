@@ -543,17 +543,17 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     {
         if (EpicMMOSystem.UseRegFerm.Value || EpicMMOSystem.UseMagicFerm.Value)
         {
-            Fermenter[] cald = null;
-            Fermenter[] mmocald = null;
+            List <Fermenter> cald = new List<Fermenter>();
+            List <Fermenter> mmocald = new List<Fermenter>();
             var list2 = Resources.FindObjectsOfTypeAll<Fermenter>();
             foreach (var item in list2)
             {
                 
                 if (item.name == "fermenter")
-                    cald.AddItem(item);
+                    cald.Add(item);
 
                 if (item.name == "mmo_fermenter")
-                    mmocald.AddItem(item);
+                    mmocald.Add(item);
             }
             if (cald != null)
             {
