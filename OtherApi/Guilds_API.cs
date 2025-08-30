@@ -27,14 +27,12 @@ namespace EpicMMOSystem.OtherApi
 
         public static void ShowGuilds()
         {
-            if (!IsInstalled())
+            if (Player.m_localPlayer == null )
             {
-                Debug.LogWarning("[EpicMMO] Guilds not installed.");
+                Debug.LogWarning("[EpicMMO] Guilds UI: player not ready (no local player / no input).");
                 return;
             }
 
-
-            // Types
             var ifaceType = Type.GetType("Guilds.Interface, Guilds");
             if (ifaceType == null)
             {
@@ -42,10 +40,9 @@ namespace EpicMMOSystem.OtherApi
                 return;
             }
 
-            // Static UI fields
+            // 1) Fetch canvases
             var fNoGuild = ifaceType.GetField("NoGuildUI", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
             var fMgmtGuild = ifaceType.GetField("GuildManagementUI", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
-
             var noGuildGO = fNoGuild?.GetValue(null) as GameObject;
             var mgmtGuildGO = fMgmtGuild?.GetValue(null) as GameObject;
 
@@ -55,40 +52,57 @@ namespace EpicMMOSystem.OtherApi
                 return;
             }
 
-            // Optional: use API if present to decide which panel
-            bool hasGuild = false;
+            // 2) Determine if player has a guild (soft: use API if present)
+            bool hasGuild = true; // default to management UI if API not found
             var apiType = Type.GetType("Guilds.API.GuildsAPI, GuildsAPI");
             if (apiType != null)
             {
                 try
                 {
                     var getOwnGuild = apiType.GetMethod("GetOwnGuild", BindingFlags.Public | BindingFlags.Static);
-                    var ownGuild = getOwnGuild?.Invoke(null, null);
-                    hasGuild = ownGuild != null;
+                    hasGuild = getOwnGuild?.Invoke(null, null) != null;
                 }
-                catch (Exception e)
-                {
-                    Debug.Log($"[EpicMMO] Guilds UI: GetOwnGuild() reflection failed: {e.Message}");
-                }
-            }
-            else
-            {
-                // If API not present, default to management UI (safe path for players already in a guild).
-                hasGuild = true;
+                catch { /* ignore and keep default */ }
             }
 
-            // Mirror hotkey behavior
-            if (!hasGuild)
+            // 3) Mirror hotkey: show exactly one canvas
+            if (noGuildGO != null) noGuildGO.SetActive(!hasGuild);
+            if (mgmtGuildGO != null) mgmtGuildGO.SetActive(hasGuild);
+
+            // 4) Flip internal "open" style flags so buttons are live
+            //    (the mod may guard handlers on these)
+            foreach (var bf in ifaceType.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static))
             {
-                if (mgmtGuildGO != null) mgmtGuildGO.SetActive(false);
-                if (noGuildGO != null) noGuildGO.SetActive(true);
+                var n = bf.Name.ToLowerInvariant();
+                if (bf.FieldType == typeof(bool) && (n.Contains("open") || n.Contains("visible") || n.Contains("active")))
+                {
+                    try { bf.SetValue(null, true); } catch { /* ignore */ }
+                }
             }
-            else
+
+            // 5) Call any likely open/refresh hooks if they exist (no-arg)
+            string[] openNames = { "OnOpen", "Open", "OpenUI", "Refresh", "RefreshUI", "UpdateUI" };
+            foreach (var mn in openNames)
             {
-                if (noGuildGO != null) noGuildGO.SetActive(false);
-                if (mgmtGuildGO != null) mgmtGuildGO.SetActive(true);
+                var m = ifaceType.GetMethod(mn, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
+                if (m != null && m.GetParameters().Length == 0)
+                {
+                    try { m.Invoke(null, null); } catch { /* ignore */ }
+                }
             }
+
+            // Optional: make sure the canvas group is interactable if they use one
+            void EnsureInteractable(GameObject go)
+            {
+                if (!go) return;
+                var cg = go.GetComponentInChildren<CanvasGroup>(true);
+                if (cg != null) { cg.interactable = true; cg.blocksRaycasts = true; cg.alpha = 1f; }
+            }
+            EnsureInteractable(hasGuild ? mgmtGuildGO : noGuildGO);
+
+            Debug.Log("[EpicMMO] Guilds UI opened via reflection with state flags set.");
         }
+
 
         private static void Init()
         {

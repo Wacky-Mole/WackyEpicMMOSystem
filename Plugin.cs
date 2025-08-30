@@ -543,22 +543,22 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     {
         if (EpicMMOSystem.UseRegFerm.Value || EpicMMOSystem.UseMagicFerm.Value)
         {
-            Fermenter cald = null;
-            Fermenter mmocald = null;
+            Fermenter[] cald = null;
+            Fermenter[] mmocald = null;
             var list2 = Resources.FindObjectsOfTypeAll<Fermenter>();
             foreach (var item in list2)
             {
                 
                 if (item.name == "fermenter")
-                    cald = item;
+                    cald.AddItem(item);
 
                 if (item.name == "mmo_fermenter")
-                    mmocald = item;
+                    mmocald.AddItem(item);
             }
             if (cald != null)
             {
                 bool contains = false;
-                foreach (var conv in cald.m_conversion)
+                foreach (var conv in cald[0].m_conversion)
                 {
                     if (conv.m_from == Mead1D)
                         contains = true;
@@ -582,9 +582,13 @@ public partial class EpicMMOSystem : BaseUnityPlugin
 
                 if (!contains && EpicMMOSystem.UseRegFerm.Value)
                 {
-                    cald.m_conversion.Add(one);
-                    cald.m_conversion.Add(two);
-                    cald.m_conversion.Add(three);
+                    foreach (var pcald in cald)
+                    {
+                        pcald.m_conversion.Add(one);
+                        pcald.m_conversion.Add(two);
+                        pcald.m_conversion.Add(three);
+
+                    }
                 }
 
                 if (EpicMMOSystem.UseMagicFerm.Value)
@@ -596,12 +600,20 @@ public partial class EpicMMOSystem : BaseUnityPlugin
                     }
 
                     //EpicMMOSystem.MLLogger.LogWarning("Added MMO all recipes");
-                    mmocald.m_conversion = cald.m_conversion;
+                    foreach (var pmmocald in mmocald)
+                    {
+                        pmmocald.m_conversion = cald[0].m_conversion;
+                    }
+
                     if (!contains)
                     {
-                        mmocald.m_conversion.Add(one);
-                        mmocald.m_conversion.Add(two);
-                        mmocald.m_conversion.Add(three);
+                        foreach (var pmmocald in mmocald)
+                        {
+                            pmmocald.m_conversion.Add(one);
+                            pmmocald.m_conversion.Add(two);
+                            pmmocald.m_conversion.Add(three);
+
+                        }
                     } 
 
                 }
