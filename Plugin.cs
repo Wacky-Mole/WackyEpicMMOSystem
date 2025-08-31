@@ -41,7 +41,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.45";
+    internal const string VERSION = "1.9.46";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -1019,12 +1019,16 @@ public partial class EpicMMOSystemUI : BaseUnityPlugin
             if (EpicMMOSystem.ExpColor.Value == "#FFFFFF")
             {
                 MyUI.eBarImage.color = tempC;
-                MyUI.eOldBarImage.color = tempC;
+
+                if (MyUI.eOldBarImage != null)
+                    MyUI.eOldBarImage.color = tempC;
             }
             else
             {
                 MyUI.eBarImage.color = tempC * 2;
-                MyUI.eOldBarImage.color = tempC * 2;
+
+                if (MyUI.eOldBarImage != null)
+                    MyUI.eOldBarImage.color = tempC * 2;
             }
         }
 

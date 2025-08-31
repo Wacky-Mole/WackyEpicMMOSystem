@@ -14,7 +14,7 @@ public partial class MyUI
     internal static Text eLevelText;
     internal static Text eExpText;
     internal static Image eBarImage;
-    internal static Image eOldBarImage;
+    internal static Image eOldBarImage = null;
     internal static Transform Exp;
     internal static bool DisableExpBar = false;
 
