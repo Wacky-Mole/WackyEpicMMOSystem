@@ -78,6 +78,12 @@
     "level": 22
   },
   {
+    "name": "Bjorn",
+    "minExp": 300,
+    "maxExp": 500,
+    "level": 22
+  },
+  {
     "name": "Blob",
     "minExp": 120,
     "maxExp": 180,
@@ -205,6 +211,12 @@
   },
   {
     "name": "Lox",
+    "minExp": 500,
+    "maxExp": 700,
+    "level": 55
+  },
+  {
+    "name": "Unbjorn",
     "minExp": 500,
     "maxExp": 700,
     "level": 55

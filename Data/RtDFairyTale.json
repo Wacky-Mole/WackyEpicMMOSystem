@@ -60,16 +60,28 @@
         "level": 55
     },
     {
+      "name": "MistlandsFairy_RtD",
+      "minExp": 640,
+      "maxExp": 690,
+      "level": 63
+    },
+    {
+      "name": "MistlandsPixie_RtD",
+      "minExp": 640,
+      "maxExp": 690,
+      "level": 63
+    },
+    {
         "name": "AshLandsFairy_RtD",
         "minExp": 1020,
         "maxExp": 1090,
-        "level": 63
+        "level": 73
     },
     {
         "name": "AshLandsPixie_RtD",
         "minExp": 1020,
         "maxExp": 1090,
-        "level": 63
+        "level": 73
     },
     {
         "name": "DeepNorthFairy_RtD",
