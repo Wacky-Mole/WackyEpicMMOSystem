@@ -7,23 +7,23 @@ namespace EpicMMOSystem;
 public partial class LevelSystem
 {
 
-    public float getaddMiningDmg()
+    public float getaddMiningDmg(int pointpending = 0)
     {
-        var parameter = getParameter(Parameter.Special);
+        var parameter = getParameter(Parameter.Special) + pointpending;
         var multiplayer = EpicMMOSystem.miningSpeed.Value;
         return parameter * multiplayer;
     }
 
-    public float getAddPieceHealth()
+    public float getAddPieceHealth(int pointpending = 0)
     {
-        var parameter = getParameter(Parameter.Special);
+        var parameter = getParameter(Parameter.Special) + pointpending;
         var multiplayer = EpicMMOSystem.constructionPieceHealth.Value;
         return parameter * multiplayer;
     }
 
-    public float getAddTreeCuttingDmg() 
+    public float getAddTreeCuttingDmg(int pointpending = 0) 
     {
-        var parameter = getParameter(Parameter.Special);
+        var parameter = getParameter(Parameter.Special) + pointpending;
         var multiplayer = EpicMMOSystem.treeCuttingSpeed.Value;
         return parameter * multiplayer;
     }

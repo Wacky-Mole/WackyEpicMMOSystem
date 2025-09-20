@@ -1,5 +1,5 @@
 # Description:
-This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.47
+This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.48
 
 
 Support me!

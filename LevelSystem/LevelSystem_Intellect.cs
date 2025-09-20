@@ -4,23 +4,23 @@ namespace EpicMMOSystem;
 
 public partial class LevelSystem
 {
-    public float getAddMagicDamage()
+    public float getAddMagicDamage(int pointpending = 0)
     {
-        var parameter = getParameter(Parameter.Intellect);
+        var parameter = getParameter(Parameter.Intellect) + pointpending;
         var multiplayer = EpicMMOSystem.magicDamage.Value;
         return parameter * multiplayer;
     }
     
-    public float getEitrRegen()
+    public float getEitrRegen(int pointpending = 0)
     {
-        var parameter = getParameter(Parameter.Intellect);
+        var parameter = getParameter(Parameter.Intellect) + pointpending;
         var multiplayer = EpicMMOSystem.magicEitrRegen.Value;
         return parameter * multiplayer;
     }
 
-    public float getAddEitr()
+    public float getAddEitr(int pointpending = 0)
     {
-        var parameter = getParameter(Parameter.Intellect);
+        var parameter = getParameter(Parameter.Intellect) + pointpending;
         var multiplayer = EpicMMOSystem.addEitr.Value;
         return parameter * multiplayer;
     }

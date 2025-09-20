@@ -7,22 +7,22 @@ namespace EpicMMOSystem;
 public partial class LevelSystem
 {
 
-    public float getAddAttackSpeed()
+    public float getAddAttackSpeed(int pointpending = 0)
     {
-        var parameter = getParameter(Parameter.Agility);
+        var parameter = getParameter(Parameter.Agility) + pointpending;
         var multiplayer = EpicMMOSystem.attackSpeed.Value;
         return parameter * multiplayer;
     }
-    public float getAttackStamina()
+    public float getAttackStamina(int pointpending = 0)
     {
-        var parameter = getParameter(Parameter.Agility);
+        var parameter = getParameter(Parameter.Agility) + pointpending;
         var multiplayer = EpicMMOSystem.attackStamina.Value;
         return parameter * multiplayer;
     }
     
-    public float getStaminaReduction()
+    public float getStaminaReduction(int pointpending = 0)
     {
-        var parameter = getParameter(Parameter.Agility);
+        var parameter = getParameter(Parameter.Agility) + pointpending;
         var multiplayer = EpicMMOSystem.staminaReduction.Value;
         return parameter * multiplayer;
     }

@@ -8,23 +8,23 @@ namespace EpicMMOSystem;
 
 public partial class LevelSystem
 {
-    public float getAddPhysicDamage()
+    public float getAddPhysicDamage(int pointpending = 0)
     {
-        var parameter = getParameter(Parameter.Strength);
+        var parameter = getParameter(Parameter.Strength) + pointpending;
         var multiplayer = EpicMMOSystem.physicDamage.Value;
         return parameter * multiplayer;
     }
   
    private static int HoldCarryWeightTimes = 0; // this gets called too much for my liking
    private static float HoldCarryWeight = 0;  
-    public float getAddWeight()
+    public float getAddWeight(int pointpending = 0)
     {
         if (!Player.m_localPlayer) return 0;
 
         float HOLD = 0;
         if (HoldCarryWeightTimes == 0)
         {         
-            var parameter = getParameter(Parameter.Strength);
+            var parameter = getParameter(Parameter.Strength) + pointpending;
             var multiplayer = EpicMMOSystem.addWeight.Value;
             //EpicMMOSystem.MLLogger.LogWarning("Call Strenth 2");Performance enhancement
             HOLD = parameter * multiplayer;
@@ -40,24 +40,24 @@ public partial class LevelSystem
         return HOLD;
     }
 
-    public float getReducedStaminaBlock()
+    public float getReducedStaminaBlock(int pointpending = 0)
     {
-        var parameter = getParameter(Parameter.Strength);
+        var parameter = getParameter(Parameter.Strength) + pointpending;
         var multiplayer = EpicMMOSystem.staminaBlock.Value;
         return parameter * multiplayer;
     }
 
-    public float getAddCriticalDmg()
+    public float getAddCriticalDmg(int pointpending = 0)
     {
-        var parameter = getParameter(Parameter.Strength);
+        var parameter = getParameter(Parameter.Strength) + pointpending;
         var multiplayer = EpicMMOSystem.critDmg.Value;
         return (float)parameter * multiplayer + EpicMMOSystem.CriticalDefaultDamage.Value;
 
     }
 
-    public float getAddCriticalChance() // this in in special field, but its nice to see. 
+    public float getAddCriticalChance(int pointpending = 0) // this in in special field, but its nice to see. 
     {
-        var parameter = getParameter(Parameter.Special);
+        var parameter = getParameter(Parameter.Special) + pointpending;
         var multiplayer = EpicMMOSystem.critChance.Value ;
         var hello = parameter * multiplayer;
         hello = hello + EpicMMOSystem.startCritChance.Value;

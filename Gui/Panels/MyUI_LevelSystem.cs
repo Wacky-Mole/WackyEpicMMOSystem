@@ -185,6 +185,7 @@ public partial class MyUI
 
     public static void UpdateParameterPanel()
     {
+
         var points = LevelSystem.Instance.getFreePoints();
         var hasDeposit = LevelSystem.Instance.hasDepositPoints();
         parameterButtons.ForEach(p => p.UpdateParameters(points));
@@ -203,37 +204,37 @@ public partial class MyUI
 
 
         //Description strength
-        physicDamageText.text = $"{localization["$physic_damage"]}: +{LevelSystem.Instance.getAddPhysicDamage()}%";
-        addWeightText.text = $"{localization["$add_weight"]}: +{LevelSystem.Instance.getAddWeight()}";
-        reducedStaminaBlockText.text = $"{localization["$reduced_stamina_block"]}: -{LevelSystem.Instance.getReducedStaminaBlock()}%";
-        criticalDmgMultText.text = $"{localization["$crtcDmgMulti"]}: +{LevelSystem.Instance.getAddCriticalDmg()}%"; // new
+        physicDamageText.text = $"{localization["$physic_damage"]}: +{LevelSystem.Instance.getAddPhysicDamage(LevelSystem.Instance.getDepositPoint(Parameter.Strength))}%";
+        addWeightText.text = $"{localization["$add_weight"]}: +{LevelSystem.Instance.getAddWeight(LevelSystem.Instance.getDepositPoint(Parameter.Strength))}";
+        reducedStaminaBlockText.text = $"{localization["$reduced_stamina_block"]}: -{LevelSystem.Instance.getReducedStaminaBlock(LevelSystem.Instance.getDepositPoint(Parameter.Strength))}%";
+        criticalDmgMultText.text = $"{localization["$crtcDmgMulti"]}: +{LevelSystem.Instance.getAddCriticalDmg(LevelSystem.Instance.getDepositPoint(Parameter.Strength))}%"; // new
 
         //Description Dexterity
-        attackSpeedMultiText.text = $"{localization["$attack_speed"]}: +{LevelSystem.Instance.getAddAttackSpeed()}%"; // new
-        attackStamina.text = $"{localization["$attack_stamina"]}: -{LevelSystem.Instance.getAttackStamina()}%"; // rename
-        reducedStaminaText.text = $"{localization["$reduced_stamina"]}: -{LevelSystem.Instance.getStaminaReduction()}%";
+        attackSpeedMultiText.text = $"{localization["$attack_speed"]}: +{LevelSystem.Instance.getAddAttackSpeed(LevelSystem.Instance.getDepositPoint(Parameter.Agility))}%"; // new
+        attackStamina.text = $"{localization["$attack_stamina"]}: -{LevelSystem.Instance.getAttackStamina(LevelSystem.Instance.getDepositPoint(Parameter.Agility))}%"; // rename
+        reducedStaminaText.text = $"{localization["$reduced_stamina"]}: -{LevelSystem.Instance.getStaminaReduction(LevelSystem.Instance.getDepositPoint(Parameter.Agility))}%";
 
 
         //Description intellect
-        magicDamageText.text = $"{localization["$magic_damage"]}: +{LevelSystem.Instance.getAddMagicDamage()}%";    
-        eitrIncreaseText.text = $"{localization["$add_eitr"]}: +{LevelSystem.Instance.getAddEitr()}";
-        magicEitrRegText.text = $"{localization["$regen_eitr"]}: +{LevelSystem.Instance.getEitrRegen()}%";
+        magicDamageText.text = $"{localization["$magic_damage"]}: +{LevelSystem.Instance.getAddMagicDamage(LevelSystem.Instance.getDepositPoint(Parameter.Intellect))}%";    
+        eitrIncreaseText.text = $"{localization["$add_eitr"]}: +{LevelSystem.Instance.getAddEitr(LevelSystem.Instance.getDepositPoint(Parameter.Intellect))}";
+        magicEitrRegText.text = $"{localization["$regen_eitr"]}: +{LevelSystem.Instance.getEitrRegen(LevelSystem.Instance.getDepositPoint(Parameter.Intellect))}%";
 
         //Description Endurance
-        physicArmorText.text = $"{localization["$physic_armor"]}: +{LevelSystem.Instance.getAddPhysicArmor()}%";    
-        staminaRegen.text = $"{localization["$stamina_reg"]}: +{LevelSystem.Instance.getStaminaRegen()}%";
-        addStaminaText.text = $"{localization["$add_stamina"]}: +{LevelSystem.Instance.getAddStamina()}";
+        physicArmorText.text = $"{localization["$physic_armor"]}: +{LevelSystem.Instance.getAddPhysicArmor(LevelSystem.Instance.getDepositPoint(Parameter.Body))}%";    
+        staminaRegen.text = $"{localization["$stamina_reg"]}: +{LevelSystem.Instance.getStaminaRegen(LevelSystem.Instance.getDepositPoint(Parameter.Body))}%";
+        addStaminaText.text = $"{localization["$add_stamina"]}: +{LevelSystem.Instance.getAddStamina(LevelSystem.Instance.getDepositPoint(Parameter.Body))}";
 
         //Description Vigour
-        addHpText.text = $"{localization["$add_hp"]}: +{LevelSystem.Instance.getAddHp()}";
-        regenHpText.text = $"{localization["$regen_hp"]}: +{LevelSystem.Instance.getAddRegenHp()}%";
-        magicArmorText.text = $"{localization["$magic_armor"]}: +{LevelSystem.Instance.getAddMagicArmor()}%";
+        addHpText.text = $"{localization["$add_hp"]}: +{LevelSystem.Instance.getAddHp(LevelSystem.Instance.getDepositPoint(Parameter.Vigour))}";
+        regenHpText.text = $"{localization["$regen_hp"]}: +{LevelSystem.Instance.getAddRegenHp(LevelSystem.Instance.getDepositPoint(Parameter.Vigour))}%";
+        magicArmorText.text = $"{localization["$magic_armor"]}: +{LevelSystem.Instance.getAddMagicArmor(LevelSystem.Instance.getDepositPoint(Parameter.Vigour))}%";
 
         //Description Specializing
-        criticalChanceText.text = $"{localization["$crit_chance"]}: +{LevelSystem.Instance.getAddCriticalChance()}%"; // new
-        miningSpeedText.text = $"{localization["$mining_speed"]}: +{LevelSystem.Instance.getaddMiningDmg()}%"; // new
-        addpieceHealthText.text = $"{localization["$piece_health"]}: +{LevelSystem.Instance.getAddPieceHealth()}"; // new
-        treeCuttingSpeedText.text = $"{localization["$tree_cutting"]}: +{LevelSystem.Instance.getAddTreeCuttingDmg()}%"; //new
+        criticalChanceText.text = $"{localization["$crit_chance"]}: +{LevelSystem.Instance.getAddCriticalChance(LevelSystem.Instance.getDepositPoint(Parameter.Special))}%"; // new
+        miningSpeedText.text = $"{localization["$mining_speed"]}: +{LevelSystem.Instance.getaddMiningDmg(LevelSystem.Instance.getDepositPoint(Parameter.Special))}%"; // new
+        addpieceHealthText.text = $"{localization["$piece_health"]}: +{LevelSystem.Instance.getAddPieceHealth(LevelSystem.Instance.getDepositPoint(Parameter.Special))}"; // new
+        treeCuttingSpeedText.text = $"{localization["$tree_cutting"]}: +{LevelSystem.Instance.getAddTreeCuttingDmg(LevelSystem.Instance.getDepositPoint(Parameter.Special))}%"; //new
 
         #endregion
     }

@@ -7,23 +7,23 @@ namespace EpicMMOSystem;
 public partial class LevelSystem // Body or Endurance
 {
 
-    public float getStaminaRegen()
+    public float getStaminaRegen(int pointpending = 0)
     {
-        var parameter = getParameter(Parameter.Body);
+        var parameter = getParameter(Parameter.Body) + pointpending;
         var multiplayer = EpicMMOSystem.staminaRegen.Value;
         return parameter * multiplayer;
     }
 
-    public float getAddStamina()
+    public float getAddStamina(int pointpending = 0)
     {
-        var parameter = getParameter(Parameter.Body);
+        var parameter = getParameter(Parameter.Body) + pointpending;
         var multiplayer = EpicMMOSystem.addStamina.Value;
         return parameter * multiplayer;
     }
 
-    public float getAddPhysicArmor()
+    public float getAddPhysicArmor(int pointpending = 0)
     {
-        var parameter = getParameter(Parameter.Body);
+        var parameter = getParameter(Parameter.Body) + pointpending;
         var multiplayer = EpicMMOSystem.physicArmor.Value;
         return parameter * multiplayer;
     }
