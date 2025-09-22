@@ -282,6 +282,12 @@
     "level": 61
   },
   {
+    "name": "Volture",
+    "minExp": 700,
+    "maxExp": 900,
+    "level": 70
+  },
+  {
     "name": "Charred_Archer",
     "minExp": 1000,
     "maxExp": 1100,
@@ -344,7 +350,7 @@
   {
     "name": "FallenValkyrie",
     "minExp": 1500,
-    "maxExp": 1700,
+    "maxExp": 1800,
     "level": 73
   },
   {
@@ -355,8 +361,8 @@
   },
   {
     "name": "Morgen",
-    "minExp": 1400,
-    "maxExp": 1600,
+    "minExp": 1500,
+    "maxExp": 1800,
     "level": 73
   },
   {

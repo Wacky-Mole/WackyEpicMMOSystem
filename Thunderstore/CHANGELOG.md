@@ -1,3 +1,5 @@
+| 1.9.48 | - Finally added Volture to Default.json
+
 | 1.9.48 | - Fix for skillpoints live updating Stats for pending points.
 
 | 1.9.47 | - Updated Default.json and RtdFairyTales json.
