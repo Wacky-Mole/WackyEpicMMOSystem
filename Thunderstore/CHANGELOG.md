@@ -1,4 +1,6 @@
-| 1.9.48 | - Finally added Volture to Default.json
+| 1.9.50 | - Made it so non combat owners can get critical hits, uses combat users crit values.
+
+| 1.9.49 | - Finally added Volture to Default.json Updated Mob list.
 
 | 1.9.48 | - Fix for skillpoints live updating Stats for pending points.
 

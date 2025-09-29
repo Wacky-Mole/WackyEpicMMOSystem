@@ -85,6 +85,7 @@ public static class MonsterDeath_Path
 
     public static void RPC_DeadMonster(long sender, ZPackage pkg)
     {
+
         if (!Player.m_localPlayer) return;
         if(Player.m_localPlayer.IsDead()) return;
         string monsterName = pkg.ReadString();
@@ -276,7 +277,27 @@ public static class MonsterDeath_Path
     {
         static void Prefix(Character __instance, long sender, HitData hit)
         {
+            if (__instance == null || hit == null || hit.m_damage == null) return;
+
             if (__instance.GetHealth() <= 0) return;
+
+            var nview = __instance.m_nview;
+            bool nviewValid = nview != null && nview.IsValid();
+            var zdo = nviewValid ? nview.GetZDO() : null;
+            bool hasSEMan = __instance.m_seman != null;
+
+            // If the target isn't ready, strip elemental channels that trigger Add*Damage()
+            if (!hasSEMan || zdo == null)
+            {
+                var dmg = hit.m_damage;
+                if (dmg.m_frost > 0f) dmg.m_frost = 0f;
+                if (dmg.m_spirit > 0f) dmg.m_spirit = 0f;
+                if (dmg.m_fire > 0f) dmg.m_fire = 0f;
+                if (dmg.m_poison > 0f) dmg.m_poison = 0f;
+                if (dmg.m_lightning > 0f) dmg.m_lightning = 0f;
+                // (leave physical: blunt/slash/pierce/pickaxe/chop as-is)
+            }
+
             var BossDropFlag = false;
             if (__instance.GetFaction() == Character.Faction.Boss )
             {
