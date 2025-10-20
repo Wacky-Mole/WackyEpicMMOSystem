@@ -1,3 +1,5 @@
+| 1.9.51 | - Bug Fix for lowDamage mode inside of range with mobLvlPerStar.  </br> Added mobs lvls from Bestiary mod (Dr). 
+
 | 1.9.50 | - Made it so non combat owners can get critical hits, uses combat users crit values.
 
 | 1.9.49 | - Finally added Volture to Default.json Updated Mob list.

@@ -223,6 +223,7 @@ public static class DataMonsters
         var json21 = "RtDFairyTale.json";
         var json22 = "RtDAdditions.json";
         var json23 = "RtDSouls.json";
+        var json24 = "Bestiary.json";
 
 
         var badfile = "MonsterLabZ.json";
@@ -239,29 +240,7 @@ public static class DataMonsters
             //MonsterDB = File.ReadAllText(path);
             var filev = File.ReadAllText(versionpath);
             cleartowrite = false; // default is false because it exists in the first place
-
-            if (filev == "1.4.0")
-                cleartowrite = true;
-            if (filev == "1.4.1")
-                cleartowrite = true;
-            if (filev == "1.5.0")
-                cleartowrite = true;
-            if (filev == "1.5.3")
-                cleartowrite = true;
-            if (filev == "1.5.4")
-                cleartowrite = true;
-            if (filev == "1.5.8")
-                cleartowrite = true;
-            if (filev == "1.6.2")
-                cleartowrite = true;
-            if (filev == "1.6.3")
-                cleartowrite = true;            
-            if (filev == "1.6.5")
-                cleartowrite = true;
-            if (filev == "1.6.7")
-                cleartowrite = true;
-            if (filev == "1.7.0")
-                cleartowrite = true;            
+           
             if (filev == "1.7.3")
                 cleartowrite = true;            
             if (filev == "1.7.4")
@@ -302,6 +281,8 @@ public static class DataMonsters
                 cleartowrite = true;
             if (filev == "1.9.47")           
                 cleartowrite = true;
+            if (filev == "1.9.49")           
+                cleartowrite = true;
 
 
             if (File.Exists(badfilepath))
@@ -311,7 +292,7 @@ public static class DataMonsters
 
                         
 
-            if (filev == "1.9.49") // last version to get a DB update
+            if (filev == "1.9.51") // last version to get a DB update
                 cleartowrite = false;
 
             if (filev == "NO" || filev == "no" || filev == "No" || filev == "STOP" || filev == "stop" || filev == "Stop")
@@ -323,7 +304,7 @@ public static class DataMonsters
         if (cleartowrite)
         {
             //list.Clear();
-            File.WriteAllText(versionpath, "1.9.49"); // Write Version file, don't auto update
+            File.WriteAllText(versionpath, "1.9.51"); // Write Version file, don't auto update
 
             File.WriteAllText(warningtext, "Erase numbers in Version.txt and write NO or stop in file. This should stop DB json files from updating on an update. If you make your own custom json file, then that one should never be updated.");
 
@@ -374,6 +355,8 @@ public static class DataMonsters
             File.WriteAllText(Path.Combine(folderpath, json22), getDefaultJsonMonster(json22));
 
             File.WriteAllText(Path.Combine(folderpath, json23), getDefaultJsonMonster(json23));
+
+            File.WriteAllText(Path.Combine(folderpath, json24), getDefaultJsonMonster(json24));
 
 
 

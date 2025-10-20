@@ -1,5 +1,5 @@
 # Description:
-This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9.49
+This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9...
 
 
 Support me!
@@ -130,17 +130,19 @@ You can combine multiple Skills for one Requirement
 
 	Mob's data (names, levels, exp) from other mods are included:
 
-	Fantasy-Creatures, AirAnimals, Defaults(Ashlands), DoOrDieMonsters, LandAnimals, MonsterlabZ, Outsiders, SeaAnimals, Monstrum, Krumpac Mods, Teddy Bears, PungusSouls, JewelCrafting, Wizardy, NonCombat, Monstrum-DeepNorth, RTD mods Horrors, Monsters, Monstrum, Sea
+	Fantasy-Creatures, AirAnimals, Defaults(Ashlands), DoOrDieMonsters, LandAnimals, MonsterlabZ, Outsiders, SeaAnimals, Monstrum, Krumpac Mods, Teddy Bears, PungusSouls, JewelCrafting, Wizardy, NonCombat, Monstrum-DeepNorth, RTD mods Horrors, Monsters, Monstrum, Sea, Bestiary
 
 	A folder listing all monsters and their levels is located in config/EpicMMOSystem/ Default is for vanilla mobs
+
+	1.9.30 and 1.9.32 changed the jsons names, your old files will be in EpicMMOSystem_backup folder
 
 	These jsons will get auto updated everytime the line below Version gets changed.
 
 	A file called Version.txt is created in the folder. It contains the mod version that was used to create it. Replace it with "NO" to stop it from overwritting on a future update.
 
-	Latest Update for Jsons config is <b> 1.9.49 </b>(Number will be updated when Jsons recieve an update)
+	Latest Update for Jsons config is <b> 1.9.51 </b>(Number will be updated when Jsons recieve an update)
 
-	1.9.30 and 1.9.32 changed the jsons names, your old files will be in EpicMMOSystem_backup folder
+	
 
 </details>
 

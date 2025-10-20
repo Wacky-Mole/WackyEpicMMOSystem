@@ -1,0 +1,92 @@
+[
+  {
+    "name": "RDB_rabbit",
+    "minExp": 9,
+    "maxExp": 9,
+    "level": 0
+  },
+  {
+    "name": "RDB_Bee",
+    "minExp": 34,
+    "maxExp": 41,
+    "level": 2
+  },
+  {
+    "name": "RDB_Genganger",
+    "minExp": 118,
+    "maxExp": 145,
+    "level": 12
+  },
+  {
+    "name": "RDB_crocodile",
+    "minExp": 135,
+    "maxExp": 165,
+    "level": 14
+  },
+  {
+    "name": "RDB_minotaur",
+    "minExp": 199,
+    "maxExp": 271,
+    "level": 18
+  },
+  {
+    "name": "RDB_lizardwarrior",
+    "minExp": 237,
+    "maxExp": 290,
+    "level": 26
+  },
+  {
+    "name": "RDB_Wendigo",
+    "minExp": 320,
+    "maxExp": 432,
+    "level": 30
+  },
+  {
+    "name": "RDB_Werewolf",
+    "minExp": 438,
+    "maxExp": 596,
+    "level": 42
+  },
+  {
+    "name": "RDB_graywolf",
+    "minExp": 474,
+    "maxExp": 579,
+    "level": 54
+  },
+  {
+    "name": "RDB_lion",
+    "minExp": 598,
+    "maxExp": 812,
+    "level": 58
+  },
+  {
+    "name": "RDB_Smadrek",
+    "minExp": 799,
+    "maxExp": 1081,
+    "level": 78
+  },
+  {
+    "name": "RDB_white_shark",
+    "minExp": 254,
+    "maxExp": 310,
+    "level": 28
+  },
+  {
+    "name": "RDB_Goblin_Treasure",
+    "minExp": 2,
+    "maxExp": 2,
+    "level": 0
+  },
+  {
+    "name": "RDB_Goblin_Treasure_red",
+    "minExp": 2,
+    "maxExp": 2,
+    "level": 0
+  },
+  {
+    "name": "RDB_Goblin_Treasure_blue",
+    "minExp": 2,
+    "maxExp": 2,
+    "level": 0
+  }
+]

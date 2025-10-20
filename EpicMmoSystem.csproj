@@ -405,6 +405,7 @@
     <EmbeddedResource Include="Data\RtDAdditions.json" />
     <EmbeddedResource Include="Data\RtDFairyTale.json" />
     <EmbeddedResource Include="Data\RtDSouls.json" />
+    <EmbeddedResource Include="Data\Bestiary.json" />
     <None Include="packages.config" />
     <EmbeddedResource Include="translations\Russian.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
