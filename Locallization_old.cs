@@ -72,6 +72,10 @@ public class Localizationold
      {
          Portuguese_Brazilian();
      }
+    else if (currentLanguage == "Hungarian")
+     {
+            HungLocalization();
+     }
     else if (currentLanguage == "Czech")
         {
             CzechLocalization();
@@ -1492,6 +1496,108 @@ public class Localizationold
             "<color=green> Zvýšení poškození při kácení stromů</color>");
 
 
+    }
+
+    private void HungLocalization()
+    {
+        _dictionary.Add("$attributes", "Tulajdonságok");
+        _dictionary.Add("$parameter_strength", "Erő");
+        _dictionary.Add("$parameter_intellect", "Intelligencia");
+        _dictionary.Add("$free_points", "Elérhető pontok");
+        _dictionary.Add("$level", "Szint");
+        _dictionary.Add("$lvl", "Lvl.");
+        _dictionary.Add("$exp", "Tapasztalat");
+        _dictionary.Add("$cancel", "Mégse");
+        _dictionary.Add("$apply", "Elfogad");
+        _dictionary.Add("$reset_parameters", "Pontok visszaállítása");
+        _dictionary.Add("$no", "Nem");
+        _dictionary.Add("$yes", "Igen");
+        _dictionary.Add("$get_exp", "Tapasztalat szerzve");
+        _dictionary.Add("$reset_point_text", "Biztosan vissza akarod állítani az összes tulajdonságpontodat {0} {1} -ért?");
+        //Parameter
+        _dictionary.Add("$physic_damage", "Fizikai sebzés");
+        _dictionary.Add("$add_weight", "Teherbírás");
+        _dictionary.Add("$reduced_stamina", "Állóképesség-fogyasztás (futás, ugrás)");
+        _dictionary.Add("$magic_damage", "Elemi sebzés");
+        _dictionary.Add("$magic_armor", "Elemi védelem");
+        _dictionary.Add("$add_hp", "Életerő növelés");
+        _dictionary.Add("$add_stamina", "Állóképesség növelés");
+        _dictionary.Add("$physic_armor", "Fizikai védelem");
+        _dictionary.Add("$reduced_stamina_block", "Blokkolás állóképesség-fogyasztása");
+        _dictionary.Add("$regen_hp", "Életerő regeneráció");
+        _dictionary.Add("$damage", "Sebzés");
+        _dictionary.Add("$armor", "Páncél");
+        _dictionary.Add("$survival", "Túlélés");
+        _dictionary.Add("$regen_eitr", "Eitr regeneráció");
+        _dictionary.Add("$stamina_reg", "Állóképesség regeneráció");
+        _dictionary.Add("$add_eitr", "Eitr növelés");
+        // new/changed Params 1.7.0
+        _dictionary.Add("$parameter_agility", "Ügyesség");
+        _dictionary.Add("$parameter_body", "Kitartás");
+        _dictionary.Add("$parameter_vigour", "Vitalitás");
+        _dictionary.Add("$parameter_special", "Fókusz");
+        _dictionary.Add("$specialother", "Speciális");//divheader
+        _dictionary.Add("$attack_speed", "Támadási sebesség");
+        _dictionary.Add("$attack_stamina", "Támadás állóképesség-fogyasztása");
+        _dictionary.Add("$crtcDmgMulti", "Kritikus sebzés szorzó");
+        _dictionary.Add("$mining_speed", "Bányászati sebzés növelés");
+        _dictionary.Add("$piece_health", "Építmények életereje");
+        _dictionary.Add("$tree_cutting", "Favágás sebzése");
+        _dictionary.Add("$crit_chance", "Kritikus találat esélye");
+
+        //Friends list
+        _dictionary.Add("$notify", "<color=#00E6FF>Értesítés</color>");
+        _dictionary.Add("$friends_list", "Barátlista");
+        _dictionary.Add("$send", "Küldés");
+        _dictionary.Add("$invited", "Meghívások");
+        _dictionary.Add("$friends", "Barátok");
+        _dictionary.Add("$online", "Elérhető");
+        _dictionary.Add("$offline", "Offline");
+        _dictionary.Add("$not_found", "A(z) {0} nevű játékos nem található.");
+        _dictionary.Add("$send_invite", "Barátkérelem elküldve neki: {0}");
+        _dictionary.Add("$get_invite", "Barátkérelmet kaptál tőle: {0}");
+        _dictionary.Add("$accept_invite", "{0} elfogadta a barátkérelmet.");
+        _dictionary.Add("$cancel_invite", "{0} visszavonta a barátkérelmet.");
+        //Terminal
+        _dictionary.Add("$terminal_set_level", "{0}. szintű lettél.");
+        _dictionary.Add("$terminal_reset_points", "Tulajdonságpontok visszaállítva");
+
+
+        _dictionary.Add("$strength_tooltip", "<size=20>Az Erő növeli:</size> \n" +
+                            "<color=yellow> A fizikai sebzést </color> \n" +
+                            "<color=blue> A teherbírást </color> \n" +
+                            "<color=green> Csökkenti a blokkolás állóképesség-fogyasztását </color> \n" +
+                            "<color=red> Növeli a kritikus találatok sebzését </color>");
+
+        _dictionary.Add("$dexterity_tooltip", "<size=20>Az Ügyesség növeli:</size> \n" +
+                            "<color=red> A támadások sebességét (íjak kivételével)</color> \n" +
+                            "<color=yellow> Csökkenti a támadások állóképesség-fogyasztását </color> \n" +
+                            "<color=green> Csökkenti a futás és ugrás állóképesség-fogyasztását</color> ");
+
+
+        _dictionary.Add("$intelect_tooltip", "<size=20>Az Intelligencia növeli:</size> \n" +
+                            "<color=green> Az összes elemi sebzést </color>\n" +
+                            "<color=red> Az alap Eitr mennyiségét (ha rendelkezel vele)</color> \n" +
+                            "<color=red> Az Eitr regenerációt</color> ");
+
+
+        _dictionary.Add("$endurance_tooltip", "<size=20>A Kitartás növeli:</size> \n" +
+                            "<color=yellow> Az állóképesség mennyiségét</color>\n" +
+                            "<color=yellow> Az állóképesség regenerációt </color> \n" +
+                            "<color=green> Csökkenti a kapott fizikai sebzést</color> ");
+
+
+        _dictionary.Add("$vigour_tooltip", "<size=20>A Vitalitás növeli:</size> \n" +
+                            "<color=red> A maximális életerőt (HP)</color>\n" +
+                            "<color=yellow> Az életerő regenerációt </color> \n" +
+                            "<color=green> Csökkenti a kapott elemi sebzést</color> ");
+
+
+        _dictionary.Add("$special_tooltip", "<size=20>A Fókusz növeli:</size> \n" +
+                            "<color=red> A kritikus találat esélyét</color> \n" +
+                            "<color=blue> A bányászati sebzést </color> \n" +
+                            "<color=blue> Az építmények életerejét </color> \n" +
+                            "<color=green> A favágási sebzést</color>");
     }
 
     public string this[string key]
