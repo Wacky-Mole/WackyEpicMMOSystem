@@ -41,71 +41,122 @@ namespace EpicMMOSystem.OtherApi
         {
             try
             {
-                // Guilds.Interface contains static refs to the UI roots
+                // --- grab Guilds.Interface static fields ---
                 var ifaceType = Type.GetType("Guilds.Interface, Guilds");
-                if (ifaceType == null) { Debug.LogWarning("[EpicMMO] Guilds UI: Interface not found."); return; }
+                if (ifaceType == null)
+                {
+                    Debug.LogWarning("[EpicMMO] Guilds UI: Interface type not found.");
+                    return;
+                }
 
-                var fNoGuild = ifaceType.GetField("NoGuildUI", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
-                var fMgmtGuild = ifaceType.GetField("GuildManagementUI", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
+                var fNoGuild = ifaceType.GetField("NoGuildUI",
+                    BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
+                var fMgmtGuild = ifaceType.GetField("GuildManagementUI",
+                    BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
 
                 var noGuildGO = fNoGuild?.GetValue(null) as GameObject;
                 var mgmtGuildGO = fMgmtGuild?.GetValue(null) as GameObject;
 
-                // If neither is available yet, delay and retry
+                // If neither panel exists yet, Guilds hasn't spawned UI prefabs
                 if (!noGuildGO && !mgmtGuildGO)
                 {
                     RetryLater("[EpicMMO] Guilds UI: objects not ready yet.");
                     return;
                 }
 
-                // Determine if player has a guild (best-effort; default true)
-                bool hasGuild = true;
-                var apiType = Type.GetType("Guilds.API.GuildsAPI, GuildsAPI");
+                // --- ask Guilds.API if we're in a guild ---
+                // this is basically what Guilds.Interface.Update() does:
+                // if (API.GetOwnGuild() is null) { NoGuildUI.SetActive(true); }
+                // else { GuildManagementUI.SetActive(true); }
+
+                var apiType = Type.GetType("Guilds.API, Guilds"); // NOTE: namespace is Guilds; class is API
+                bool inStableGuild = false;
+
                 if (apiType != null)
                 {
-                    try
+                    var getOwnGuild = apiType.GetMethod("GetOwnGuild",
+                        BindingFlags.Public | BindingFlags.Static);
+
+                    if (getOwnGuild != null)
                     {
-                        var getOwnGuild = apiType.GetMethod("GetOwnGuild", BindingFlags.Public | BindingFlags.Static);
-                        hasGuild = getOwnGuild?.Invoke(null, null) != null;
+                        // guildObj is whatever Guilds.API thinks is "your guild"
+                        var guildObj = getOwnGuild.Invoke(null, null);
+
+                        if (guildObj != null)
+                        {
+                            // extra safety: make sure the guild is actually initialized
+                            // We'll reflect a "General" field/property and require it's non-null.
+                            var guildType = guildObj.GetType();
+
+                            // Try field first
+                            var generalField = guildType.GetField("General",
+                                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                            object generalVal = generalField?.GetValue(guildObj);
+
+                            if (generalVal == null)
+                            {
+                                // Sometimes mods make it a property instead of a field.
+                                var generalProp = guildType.GetProperty("General",
+                                    BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                                generalVal = generalProp?.GetValue(guildObj, null);
+                            }
+
+                            // If General is not null, we consider this a "ready" guild.
+                            // If it's null, it's that half-synced stub that explodes GuildManagementUI.OnEnable().
+                            inStableGuild = generalVal != null;
+                        }
                     }
-                    catch { /* keep default */ }
                 }
 
-                // Deactivate both first, then activate the one we want
-                if (noGuildGO && noGuildGO.activeSelf) noGuildGO.SetActive(false);
-                if (mgmtGuildGO && mgmtGuildGO.activeSelf) mgmtGuildGO.SetActive(false);
+                // Before showing anything, hide both (if they exist & are active)
+                if (noGuildGO && noGuildGO.activeSelf)
+                    noGuildGO.SetActive(false);
+                if (mgmtGuildGO && mgmtGuildGO.activeSelf)
+                    mgmtGuildGO.SetActive(false);
 
-                if (hasGuild)
+                if (inStableGuild)
                 {
+                    // Player is actually in a fully initialized guild
                     if (!mgmtGuildGO)
                     {
                         RetryLater("[EpicMMO] Guilds UI: mgmt panel not ready yet.");
                         return;
                     }
-                    mgmtGuildGO.SetActive(true);   // may invoke Guilds.GuildManagementUI.OnEnable()
+
+                    // Enabling this normally triggers GuildManagementUI.OnEnable().
+                    // Now it's safe because we verified guild.General != null.
+                    mgmtGuildGO.SetActive(true);
                 }
                 else
                 {
+                    // Player is not in a real / synced guild yet.
+                    // Show the create/search popup instead of crashing mgmt UI.
                     if (!noGuildGO)
                     {
                         RetryLater("[EpicMMO] Guilds UI: no-guild panel not ready yet.");
                         return;
                     }
+
                     noGuildGO.SetActive(true);
                 }
 
-                Debug.Log("[EpicMMO] Guilds UI opened.");
-                _tries = 0; // success
+                Debug.Log("[EpicMMO] Guilds UI opened safely.");
+                _tries = 0; // success, stop retry loop
             }
             catch (NullReferenceException)
             {
+                // Guilds is still wiring itself, bail and retry.
                 RetryLater("[EpicMMO] Guilds UI: NRE during open (Guilds not fully initialized).");
             }
             catch (Exception e)
             {
-                Debug.LogWarning($"[EpicMMO] Guilds UI: failed to open ({e.GetType().Name}).");
+                Debug.LogWarning($"[EpicMMO] Guilds UI: failed to open ({e.GetType().Name}): {e}");
             }
         }
+
+
+
+
 
         private static void RetryLater(string reason)
         {
