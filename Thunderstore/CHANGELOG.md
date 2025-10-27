@@ -1,3 +1,5 @@
+| 1.9.55 | - Added Sheep to Monstrum Therzie, Bug fix for mobLvlPerStar xp.
+
 | 1.9.54 | - Maybe fix #2 for NRE on Guilds button.
 
 | 1.9.53 | - Added Hungarian language.

@@ -124,5 +124,11 @@
     "minExp": 100,
     "maxExp": 110,
     "level": 51
+  },
+  {
+    "name": "Sheep_TW",
+    "minExp": 25,
+    "maxExp": 45,
+    "level": 7
   }
 ]

@@ -112,8 +112,14 @@ public static class MonsterDeath_Path
                 EpicMMOSystem.print($"{EpicMMOSystem.ModName}: Can't find monster {monsterName}");
                 return;
             }
-        
-            monsterLevel = DataMonsters.getLevel(monsterName) + level - 1;
+
+            monsterLevel = DataMonsters.getLevel(monsterName);
+
+            if (EpicMMOSystem.mobLvlPerStar.Value)
+            {
+                monsterLevel = monsterLevel + level - 1;
+            }
+
             if (DataMonsters.getLevel(monsterName) == 0)
                 monsterLevel = 0;
 
