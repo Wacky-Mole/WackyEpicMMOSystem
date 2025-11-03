@@ -838,7 +838,16 @@ public static class DataMonsters
 
                     int maxLevelExp = playerLevel + EpicMMOSystem.maxLevelExp.Value;
                     int minLevelExp = playerLevel - EpicMMOSystem.minLevelExp.Value;
-                    int monsterLevel = getLevel(__instance.m_character.gameObject.name) + __instance.m_character.m_level - 1; // interesting that it's using m_char as well
+                    
+                    //int monsterLevel = getLevel(__instance.m_character.gameObject.name) + __instance.m_character.m_level - 1; // fuck!
+
+                    int monsterLevel = DataMonsters.getLevel(__instance.m_character.gameObject.name);
+
+                    if (EpicMMOSystem.mobLvlPerStar.Value)
+                    {
+                        monsterLevel = monsterLevel + __instance.m_character.m_level - 1;
+                    }
+
                     if (getLevel(__instance.m_character.gameObject.name) == 0)
                         return;
 
