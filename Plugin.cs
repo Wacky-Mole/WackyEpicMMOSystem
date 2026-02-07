@@ -41,7 +41,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.56";
+    internal const string VERSION = "1.9.57";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -436,9 +436,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
 
 
 
-        Localizer.AddPlaceholder("mmoxpdrink1_description", "power1", XPforMinorPotion, power1 => ((power1 -1)*100).ToString());
-        Localizer.AddPlaceholder("mmoxpdrink2_description", "power2", XPforMediumPotion, power2 => ((power2 - 1) * 100).ToString());
-        Localizer.AddPlaceholder("mmoxpdrink3_description", "power3", XPforGreaterPotion, power3 => ((power3 - 1) * 100).ToString());
+
 
 
         AnimationSpeedManager.Add((character, speed) => { // animation controller because reasons and stuff
@@ -458,8 +456,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         
         _asset = GetAssetBundle("epicasset");
         itemassets();
-        localizationold = new Localizationold();
-
+        
         if (Chainloader.PluginInfos.ContainsKey("org.bepinex.plugins.creaturelevelcontrol")){
             CLLCLoaded = true;
         }
@@ -508,13 +505,13 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         Chunks.RequiredItems.Add("TrophyWolf", 4);
 
 
-        Mead1.Crafting.Add(ItemManager.CraftingTable.MeadKetill, 1);
+        Mead1.Crafting.Add(ItemManager.CraftingTable.MeadCauldron, 1);
         Mead1.RequiredItems.Add("Mob_chunks", 1);
         Mead1.RequiredItems.Add("mmo_orb1", 2);
-        Mead2.Crafting.Add(ItemManager.CraftingTable.MeadKetill, 1);
+        Mead2.Crafting.Add(ItemManager.CraftingTable.MeadCauldron, 1);
         Mead2.RequiredItems.Add("Mob_chunks", 1);
         Mead2.RequiredItems.Add("mmo_orb3", 2);
-        Mead3.Crafting.Add(ItemManager.CraftingTable.MeadKetill, 1);
+        Mead3.Crafting.Add(ItemManager.CraftingTable.MeadCauldron, 1);
         Mead3.RequiredItems.Add("Mob_chunks", 1);
         Mead3.RequiredItems.Add("mmo_orb5", 2);
 
@@ -629,6 +626,10 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         {
             ObjectDB __instance = ObjectDB.m_instance;
 
+            Localizer.AddPlaceholder("mmoxpdrink1_description", "power1", XPforMinorPotion, power1 => ((power1 - 1) * 100).ToString());
+            Localizer.AddPlaceholder("mmoxpdrink2_description", "power2", XPforMediumPotion, power2 => ((power2 - 1) * 100).ToString());
+            Localizer.AddPlaceholder("mmoxpdrink3_description", "power3", XPforGreaterPotion, power3 => ((power3 - 1) * 100).ToString());
+
 
             if (__instance.GetItemPrefab("Wood") == null)
             {
@@ -712,6 +713,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
    
     private void Start()
     {
+        localizationold = new Localizationold();
         MyUI.Init();
         DataMonsters.Init();
         FriendsSystem.Init();
@@ -974,7 +976,7 @@ public partial class EpicMMOSystemUI : BaseUnityPlugin
     IEnumerator Positionpanels()
     {
         yield return new WaitForSeconds(1.5f); // For some reason it doesn't work when directly called in Start(), have to add a small delay
-        EpicMMOSystem.MLLogger.LogInfo("Restoring UI Positions now");
+        EpicMMOSystem.MLLogger.LogInfo("Restoring UI Positions ");
         Instance.ReadConfigValuesUI();
         StopCoroutine(coroutine);
     }

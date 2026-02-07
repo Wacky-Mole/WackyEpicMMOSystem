@@ -1,3 +1,5 @@
+| 1.9.57 | - Update for 221.10
+
 | 1.9.56 | - Bug fix for mobLvlPerStar xp, final fix.
 
 | 1.9.55 | - Added Sheep to Monstrum Therzie, Bug fix for mobLvlPerStar xp.
