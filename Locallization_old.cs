@@ -847,25 +847,25 @@ public class Localizationold
         _dictionary.Add("$reset_parameters", "重置属性");
         _dictionary.Add("$no", "否");
         _dictionary.Add("$yes", "是");
-        _dictionary.Add("$get_exp", "所需经验");
+        _dictionary.Add("$get_exp", "获得经验");
         _dictionary.Add("$reset_point_text", "你是否要消耗 {0} {1} 重置你的所有属性吗? ");
         _dictionary.Add("$physic_damage", "物理伤害");
         _dictionary.Add("$add_weight", "负重");
-        _dictionary.Add("$speed_attack", "攻击耐力值消耗");
-        _dictionary.Add("$reduced_stamina", "耐力值消耗（奔跑/跳跃）");
+        _dictionary.Add("$speed_attack", "攻击体力值消耗");
+        _dictionary.Add("$reduced_stamina", "体力值消耗（奔跑/跳跃）");
         _dictionary.Add("$magic_damage", "元素伤害");
         _dictionary.Add("$magic_armor", "元素抗性");
         _dictionary.Add("$add_hp", "生命值");
-        _dictionary.Add("$add_stamina", "耐力值");
+        _dictionary.Add("$add_stamina", "体力值");
         _dictionary.Add("$physic_armor", "物理抗性");
-        _dictionary.Add("$reduced_stamina_block", "格挡耐力值消耗");
+        _dictionary.Add("$reduced_stamina_block", "格挡体力值消耗");
         _dictionary.Add("$regen_hp", "生命值恢复");
         _dictionary.Add("$damage", "攻击属性");
         _dictionary.Add("$armor", "防御属性");
         _dictionary.Add("$survival", "基础属性");
-        _dictionary.Add("$regen_eitr", "埃达之力恢复");
-        _dictionary.Add("$stamina_reg", "耐力值恢复");
-        _dictionary.Add("$add_eitr", "埃达之力");
+        _dictionary.Add("$regen_eitr", "魔力值恢复");
+        _dictionary.Add("$stamina_reg", "体力值恢复");
+        _dictionary.Add("$add_eitr", "魔力值");
         _dictionary.Add("$notify", "<color=#00E6FF>通知</color>");
         _dictionary.Add("$friends_list", "好友列表");
         _dictionary.Add("$send", "发送");
@@ -883,12 +883,12 @@ public class Localizationold
 
         // new/changed Params 1.7.0
         _dictionary.Add("$parameter_agility", "敏捷");
-        _dictionary.Add("$parameter_body", "耐力");
+        _dictionary.Add("$parameter_body", "体力");
         _dictionary.Add("$parameter_vigour", "精力");
         _dictionary.Add("$parameter_special", "特性");
         _dictionary.Add("$specialother", "特性属性");
         _dictionary.Add("$attack_speed", "攻击速度");
-        _dictionary.Add("$attack_stamina", "攻击耐力值消耗");
+        _dictionary.Add("$attack_stamina", "攻击体力值消耗");
         _dictionary.Add("$crtcDmgMulti", "暴击伤害");
         _dictionary.Add("$mining_speed", "采矿伤害");
         _dictionary.Add("$piece_health", "建筑物耐久度");
@@ -898,22 +898,22 @@ public class Localizationold
         _dictionary.Add("$strength_tooltip", "<size=20>力量将获得以下效果：</size> \n" +
         "<color=yellow>增加：物理伤害</color> \n" +
         "<color=blue>增加：负重上限</color> \n" +
-        "<color=green>减少：格挡耐力值消耗</color> \n" +
+        "<color=green>减少：格挡体力值消耗</color> \n" +
         "<color=red>增加：暴击伤害</color>");
 
         _dictionary.Add("$dexterity_tooltip", "<size=20>敏捷将获得以下效果：</size> \n" +
         "<color=red>增加：攻击速度（仅限近战）</color> \n" +
-        "<color=yellow>减少：攻击耐力值消耗</color> \n" +
-        "<color=green>减少：奔跑/跳跃 耐力值消耗</color>");
+        "<color=yellow>减少：攻击体力值消耗</color> \n" +
+        "<color=green>减少：奔跑/跳跃 体力值消耗</color>");
 
         _dictionary.Add("$intelect_tooltip", "<size=20>智力将获得以下效果：</size> \n" +
         "<color=green>增加：元素伤害</color> \n" +
-        "<color=red>增加：埃达之力（激活埃达之力后）</color> \n" +
-        "<color=red>增加：埃达之力恢复速度</color>");
+        "<color=red>增加：魔力值（激活魔力值后）</color> \n" +
+        "<color=red>增加：魔力值恢复速度</color>");
 
-        _dictionary.Add("$endurance_tooltip", "<size=20>耐力将获得以下效果：</size> \n" +
-        "<color=yellow>增加：耐力值</color> \n" +
-        "<color=yellow>增加：耐力值恢复速度</color> \n" +
+        _dictionary.Add("$endurance_tooltip", "<size=20>体力将获得以下效果：</size> \n" +
+        "<color=yellow>增加：体力值</color> \n" +
+        "<color=yellow>增加：体力值恢复速度</color> \n" +
         "<color=green>增加：物理抗性</color>");
 
         _dictionary.Add("$vigour_tooltip", "<size=20>精力将获得以下效果：</size> \n" +
