@@ -1,3 +1,5 @@
+| 1.9.58 | - Chinese Localization update </br> Light optimization.
+
 | 1.9.57 | - Update for 221.10
 
 | 1.9.56 | - Bug fix for mobLvlPerStar xp, final fix.
@@ -138,7 +140,8 @@
 
 | 1.7.1  | - Fixed Orb XP spam,
 
-| 1.7.0  | - BIG WACKY UPDATE! - Delete CONFIGS! <br/> Added Category Vitality and Specializing, while rearranging the categories. <br/>Added hover stats, so you can see what exactly adding points to a category does.  Red being most powerful <br/> Added 6 magic orbs that grant various levels of XP on consumption, they have 1 % chance to drop from all mobs. Guaranteed from Bosses. </br> Added Magic Potions and Magical Fermentor, so you can utilize trophies to make the mead and use the potion to get more XP! 3 Potion levels and various ways to craft mead. <br/> added attackSpeed, MiningDmg, TreeCuttingDmg and Critical attack chance and Critical Damage. 
+| 1.7.0  | - BIG WACKY UPDATE! - Delete CONFIGS! <br/> Added Category Vitality and Specializing, while rearranging the categories. <br/>Added hover stats, so you can see what exactly adding points to a category does.  Red being most powerful <br/> Added 6 magic orbs that grant various levels of XP on consumption, they have 1 % chance to drop from all mobs. Guaranteed from Bosses. </br> Added Magic Potions and Magical Fermentor, so you can utilize trophies to make the mead and use the potion to get more XP! 3 Potion levels and various ways to craft mead. <br/> added attackSpeed, MiningDmg, 
+Dmg and Critical attack chance and Critical Damage. 
 
 | 1.6.7  | - Updated KG Marketplace API <br/> Updated DoororDieMob and LandAnimals jsons thanks to DeeJay <br/> Fixed a bug with FloatText XP not being correct
 

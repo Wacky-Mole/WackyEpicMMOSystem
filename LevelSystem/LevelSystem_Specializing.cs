@@ -65,13 +65,21 @@ public partial class LevelSystem
     {
         private static void Postfix(ItemDrop.ItemData __instance, ref HitData.DamageTypes __result)
         {
-            if (__instance != null && (__instance.m_shared.m_skillType == Skills.SkillType.Axes || __instance.m_shared.m_skillType == Skills.SkillType.WoodCutting)) 
-                // need to make sure it's only being used for wood not mob slaying // no idea where that is checked
-            {
-                
-                float num = 1f + (Instance.getAddTreeCuttingDmg() / 100f);
-                __result.m_chop *= num;
-            }
+            // Early exit 1: Null check
+            if (__instance == null) return;
+
+            // Early exit 2: Skill check (fastest enums first)
+            var skill = __instance.m_shared.m_skillType;
+            if (skill != Skills.SkillType.Axes && skill != Skills.SkillType.WoodCutting) return;
+
+            // Early exit 3: Check if we actually have a bonus to apply before doing math/allocations
+            // If the Instance isn't ready or GetParameter would be 0, we can skip.
+            // Assuming getParameter(Parameter.Special) corresponds to the 'Special' attribute.
+            var bonus = Instance.getAddTreeCuttingDmg();
+            if (bonus <= 0f) return;
+
+            float num = 1f + (bonus / 100f);
+            __result.m_chop *= num;
         }
     }
 
