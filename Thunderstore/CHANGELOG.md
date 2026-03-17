@@ -1,3 +1,5 @@
+| 1.9.59 | - Bug fix for piece health. 
+
 | 1.9.58 | - Chinese Localization update </br> Light optimization.
 
 | 1.9.57 | - Update for 221.10
