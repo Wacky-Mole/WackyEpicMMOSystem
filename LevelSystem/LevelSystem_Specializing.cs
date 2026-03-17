@@ -51,10 +51,33 @@ public partial class LevelSystem
     {
         internal static void Prefix(ref WearNTear __instance)
         {
-            //piece.gameObject.GetComponent<WearNTear>().m_health
-            __instance.m_health = Instance.getAddPieceHealth() + __instance.m_health;
-            //EpicMMOSystem.MLLogger.LogWarning("health "+ __instance.m_health);
+            float extraHealth = Instance.getAddPieceHealth();
+            if (extraHealth > 0)
+            {
+                __instance.m_health += extraHealth;
+                ZNetView nview = __instance.GetComponent<ZNetView>();
+                if (nview && nview.IsValid())
+                {
+                    nview.GetZDO().Set("MMO_ExtraHealth", extraHealth);
+                }
+            }
+        }
+    }
 
+    [HarmonyPatch(typeof(WearNTear), "Awake")]
+    internal static class WearNTear_Awake_HealthChange
+    {
+        internal static void Prefix(ref WearNTear __instance)
+        {
+            ZNetView nview = __instance.GetComponent<ZNetView>();
+            if (nview && nview.IsValid())
+            {
+                float extraHealth = nview.GetZDO().GetFloat("MMO_ExtraHealth", 0f);
+                if (extraHealth > 0)
+                {
+                    __instance.m_health += extraHealth;
+                }
+            }
         }
     }
 
