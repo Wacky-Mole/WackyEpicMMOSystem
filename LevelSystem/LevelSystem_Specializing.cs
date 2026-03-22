@@ -45,9 +45,9 @@ public partial class LevelSystem
         }
     }
 
-
+    [HarmonyPriority(Priority.High)]
     [HarmonyPatch(typeof(WearNTear), "OnPlaced")]
-    internal static class Player_HealthChange
+    internal static class Player_HealthChangeMMO
     {
         internal static void Prefix(ref WearNTear __instance)
         {
@@ -64,8 +64,9 @@ public partial class LevelSystem
         }
     }
 
+    [HarmonyPriority(Priority.High)]
     [HarmonyPatch(typeof(WearNTear), "Awake")]
-    internal static class WearNTear_Awake_HealthChange
+    internal static class WearNTear_Awake_HealthChangeMMO
     {
         internal static void Prefix(ref WearNTear __instance)
         {
