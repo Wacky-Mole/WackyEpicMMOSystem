@@ -1,3 +1,5 @@
+| 1.9.60 | - Increase priority for piece health. 
+
 | 1.9.59 | - Bug fix for piece health. 
 
 | 1.9.58 | - Chinese Localization update </br> Light optimization.
