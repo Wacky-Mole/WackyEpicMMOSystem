@@ -137,29 +137,77 @@ public static class DataMonsters
 
     public static void createNewDataMonsters(List<string> json)
     {
+        createNewDataMonsters(json, null);
+    }
+
+    public static void createNewDataMonsters(List<string> json, List<string> sources)
+    {
         dictionary.Clear();
 
+        if (json == null)
+        {
+            EpicMMOSystem.MLLogger.LogWarning("Monster database payload was null.");
+            return;
+        }
+
+        int payloadIndex = 0;
         foreach (var monster2 in json)
         {
-        if (EpicMMOSystem.extraDebug.Value)
-            EpicMMOSystem.MLLogger.LogInfo($"/n Json loading /n");
+            payloadIndex++;
+            string sourceLabel = sources != null && payloadIndex - 1 < sources.Count && !string.IsNullOrWhiteSpace(sources[payloadIndex - 1])
+                ? sources[payloadIndex - 1]
+                : $"payload #{payloadIndex}";
 
-            //var temp = JsonUtility.FromJson<Monster[]>(monster2);
-            var temp = (fastJSON.JSON.ToObject<Monster[]>(monster2));
+            if (string.IsNullOrWhiteSpace(monster2))
+            {
+                EpicMMOSystem.MLLogger.LogWarning($"Monster database {sourceLabel} was empty and has been skipped.");
+                continue;
+            }
+
+            if (EpicMMOSystem.extraDebug.Value)
+                EpicMMOSystem.MLLogger.LogInfo($"Loading monster json {sourceLabel}");
+
+            Monster[] temp;
+            try
+            {
+                temp = fastJSON.JSON.ToObject<Monster[]>(monster2);
+            }
+            catch (Exception ex)
+            {
+                string preview = monster2.Length > 200 ? monster2.Substring(0, 200) + "..." : monster2;
+                EpicMMOSystem.MLLogger.LogWarning($"Failed to parse monster database {sourceLabel}. Expected a JSON array of Monster objects. Preview: {preview}");
+                EpicMMOSystem.MLLogger.LogWarning(ex.ToString());
+                continue;
+            }
+
+            if (temp == null || temp.Length == 0)
+            {
+                EpicMMOSystem.MLLogger.LogWarning($"Monster database {sourceLabel} did not contain any monsters and has been skipped.");
+                continue;
+            }
+
             foreach (var monster in temp)
             {
+                if (string.IsNullOrWhiteSpace(monster.name))
+                {
+                    EpicMMOSystem.MLLogger.LogWarning($"Monster database {sourceLabel} contains an entry with no name and it has been skipped.");
+                    continue;
+                }
+
                 if (EpicMMOSystem.extraDebug.Value)
                     EpicMMOSystem.MLLogger.LogInfo($"{monster.name}");
 
-                if (dictionary.ContainsKey(monster.name + "(Clone)"))
+                string key = $"{monster.name}(Clone)";
+                if (dictionary.ContainsKey(key))
                 {
-                    EpicMMOSystem.MLLogger.LogWarning($"{monster.name} is already entered");
+                    EpicMMOSystem.MLLogger.LogWarning($"{monster.name} from {sourceLabel} is already entered");
                 }
                 else
-                    dictionary.Add($"{monster.name}(Clone)", monster);
-            }            
-        }   
-     
+                {
+                    dictionary.Add(key, monster);
+                }
+            }
+        }
     }
 
     public static void setplayeralivetoZero(string playerset)
@@ -371,8 +419,9 @@ public static class DataMonsters
             File.WriteAllText(EpicMMOSystem.playerspath, getDefaultJsonMonster(EpicMMOSystem.playerjson));
         } */ 
         List<string> list = new List<string>();
+        List<string> sources = new List<string>();
         foreach (string file in Directory.GetFiles(folderpath, "*.json", SearchOption.AllDirectories))
-        { 
+        {
             var nam = Path.GetFileName(file);
             if (nam == EpicMMOSystem.playerjson)
                 continue;
@@ -382,24 +431,15 @@ public static class DataMonsters
 
             var temp = File.ReadAllText(file);
             list.Add(temp);
+            sources.Add(nam);
             MonsterDB += temp;
            
         }
         if (EpicMMOSystem.extraDebug.Value)
             EpicMMOSystem.MLLogger.LogInfo($"Mobs Read");
 
-        /*
-        var players = File.ReadAllText(EpicMMOSystem.playerspath);
-        PlayerDBL = players;
-        List<string> playerslist = new List<string>();
-        playerslist.Add(players);
-        createUpdateDataPlayer(playerslist);        
-        if (EpicMMOSystem.extraDebug.Value)
-            EpicMMOSystem.MLLogger.LogInfo($"Player Read"); */
-
-
         MonsterDBL = list;
-        createNewDataMonsters(list);
+        createNewDataMonsters(list, sources);
         
     }
 
@@ -438,14 +478,19 @@ public static class DataMonsters
     public static void ReloadJsons(long peer, bool reload)
     {
         List<string> list = new List<string>();
+        List<string> sources = new List<string>();
         foreach (string file in Directory.GetFiles(EpicMMOSystem.folderpath, "*.json", SearchOption.AllDirectories))
         {
             var nam = Path.GetFileName(file);
+            if (nam == EpicMMOSystem.playerjson)
+                continue;
+
             if (EpicMMOSystem.extraDebug.Value)
                 EpicMMOSystem.MLLogger.LogInfo(nam + " read");
 
             var temp = File.ReadAllText(file);
             list.Add(temp);
+            sources.Add(nam);
 
         }
         if (EpicMMOSystem.extraDebug.Value)
@@ -453,7 +498,7 @@ public static class DataMonsters
 
         DataMonsters.MonsterDBL = list;
 
-        createNewDataMonsters(list); // could update coop
+        createNewDataMonsters(list, sources); // could update coop
 
         List<ZNetPeer> peers2 = ZNet.instance.GetPeers();
         foreach (var peer1 in peers2)
