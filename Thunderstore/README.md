@@ -46,7 +46,7 @@ Features:
 
 MMO-like friends list. - Groups MOD Group to earn XP, download requires Group mod for each client https://valheim.thunderstore.io/package/Smoothbrain/Groups/
 
-Click the plus button at the bottom of the friends bar. Enter the name of the character you wish to add, starting with a capital letter. ****
+Click the plus button at the bottom of the friends bar. Enter the name of the character you wish to add, starting with a capital letter.
    ![https://wackymole.com/hosts/3rd%20image.png](https://wackymole.com/hosts/3rd%20image.png)
 The player will receive a friend request. Once accepted, the character will appear in your friends list. Group invites can be sent from the friends list. 
 
