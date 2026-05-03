@@ -80,6 +80,11 @@ public static class FriendsSystem
     {
         var players = ZNet.instance.GetPlayerList();
         var senderInfo = players.Find(f => f.m_characterID.UserID == sender);
+        if (senderInfo.m_characterID.UserID != sender)
+        {
+            EpicMMOSystem.MLLogger.LogWarning("Friend invite sender was not found in player list.");
+            return;
+        }
         var info = new FriendInfo();
         info.name = senderInfo.m_name;
        // info.host = senderInfo.m_host;
@@ -94,6 +99,11 @@ public static class FriendsSystem
     {
         var players = ZNet.instance.GetPlayerList();
         var senderInfo = players.Find(f => f.m_characterID.UserID == sender);
+        if (senderInfo.m_characterID.UserID != sender)
+        {
+            EpicMMOSystem.MLLogger.LogWarning("Accepted friend sender was not found in player list.");
+            return;
+        }
         var info = new FriendInfo();
         info.name = senderInfo.m_name;
         //info.host = senderInfo.m_host;

@@ -95,7 +95,8 @@ public static class MonsterDeath_Path
             if (EpicMMOSystem.extraDebug.Value)
                 EpicMMOSystem.MLLogger.LogInfo("Player was in group so applying exp from group kill");
 
-            if ((double)Vector3.Distance(position, Player.m_localPlayer.transform.position) >= EpicMMOSystem.groupRange.Value) return;
+            float groupRange = EpicMMOSystem.groupRange.Value;
+            if ((position - Player.m_localPlayer.transform.position).sqrMagnitude >= groupRange * groupRange) return;
 
             var playerExp = exp;
             var MobisBoss = false;
@@ -184,7 +185,8 @@ public static class MonsterDeath_Path
                 monsterLevel = 0;
 
 
-            if ((double)Vector3.Distance(position, Player.m_localPlayer.transform.position) >= EpicMMOSystem.playerRange.Value) return;
+            float playerRange = EpicMMOSystem.playerRange.Value;
+            if ((position - Player.m_localPlayer.transform.position).sqrMagnitude >= playerRange * playerRange) return;
 
             int expMonster = DataMonsters.getExp(monsterName);
             int maxExp = DataMonsters.getMaxExp(monsterName);
@@ -232,9 +234,10 @@ public static class MonsterDeath_Path
             monsterLevel = -1 * monsterLevel;
 
         var groupFactor = EpicMMOSystem.groupExp.Value;
+        string localPlayerName = Player.m_localPlayer.GetPlayerName();
         foreach (var playerReference in Groups.API.GroupPlayers())
         {
-            if (playerReference.name != Player.m_localPlayer.GetPlayerName() && exp > 0)
+            if (playerReference.name != localPlayerName && exp > 0)
             {
                 var sendExp = exp * groupFactor;
                 ZRoutedRpc.instance.InvokeRoutedRPC(
@@ -253,26 +256,16 @@ public static class MonsterDeath_Path
         {
             if (__instance.IsPlayer() && hit.GetAttacker() is Player attackPlayer)
             {
-                if (attackPlayer == null) return;
-
                 Player defendPlayer = __instance as Player;
+                if (defendPlayer == null) return;
+
+                var defenderZdo = defendPlayer.m_nview?.GetZDO();
+                var attackerZdo = attackPlayer.m_nview?.GetZDO();
+                if (defenderZdo == null || attackerZdo == null) return;
+
                 string playerDefendingName = defendPlayer.GetPlayerName();
-                string playerAttackingName = attackPlayer.GetPlayerName();
-
-                int defenderLevel = 0;
-                int attackerLevel = 0;
-
-                foreach (var pla in Player.GetAllPlayers())
-                {
-                    var zdo = pla.m_nview?.GetZDO();
-                    if (zdo == null) continue;
-
-                    if (pla.GetPlayerName() == playerDefendingName)
-                        defenderLevel = zdo.GetInt($"{EpicMMOSystem.ModName}_level", 1);
-
-                    if (pla.GetPlayerName() == playerAttackingName)
-                        attackerLevel = zdo.GetInt($"{EpicMMOSystem.ModName}_level", 1);
-                }
+                int defenderLevel = defenderZdo.GetInt($"{EpicMMOSystem.ModName}_level", 1);
+                int attackerLevel = attackerZdo.GetInt($"{EpicMMOSystem.ModName}_level", 1);
 
                 if (defenderLevel > 0 && attackerLevel > 0)
                 {
