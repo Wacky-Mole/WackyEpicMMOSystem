@@ -13,6 +13,57 @@ namespace EpicMMOSystem
 
     internal class LevelSystem_noncombat
     {
+        private const string FishXpAwardedKey = "EpicMMOSystem_FishXpAwarded";
+        private static readonly HashSet<int> FishXpAwardedFallback = new();
+
+        private static bool HasFishXpBeenAwarded(Fish fish)
+        {
+            if (fish == null) return true;
+
+            ZNetView nview = fish.m_nview;
+            if (nview != null && nview.IsValid())
+            {
+                return nview.GetZDO().GetBool(FishXpAwardedKey);
+            }
+
+            return FishXpAwardedFallback.Contains(fish.GetInstanceID());
+        }
+
+        private static void MarkFishXpAwarded(Fish fish)
+        {
+            if (fish == null) return;
+
+            ZNetView nview = fish.m_nview;
+            if (nview != null && nview.IsValid())
+            {
+                nview.GetZDO().Set(FishXpAwardedKey, true);
+                return;
+            }
+
+            FishXpAwardedFallback.Add(fish.GetInstanceID());
+        }
+
+        private static void TryGiveFishExp(Fish fish, Player player, bool pickupOnly)
+        {
+            if (EpicMMOSystem.disableNonCombatObjects.Value) return;
+            if (pickupOnly && EpicMMOSystem.disableFishPickupXP.Value) return;
+            if (fish == null || player == null) return;
+            if (player != Player.m_localPlayer) return;
+            if (!DataMonsters.contains(fish.gameObject.name)) return;
+            if (HasFishXpBeenAwarded(fish)) return;
+
+            if (EpicMMOSystem.debugNonCombatObjects.Value)
+                EpicMMOSystem.MLLogger.LogWarning((pickupOnly ? "fish Interact name" : "fish name") + fish.gameObject.name);
+
+            MarkFishXpAwarded(fish);
+
+            int expMonster = DataMonsters.getExp(fish.gameObject.name);
+            int maxExp = DataMonsters.getMaxExp(fish.gameObject.name);
+            float lvlExp = EpicMMOSystem.expForLvlMonster.Value;
+            int monsterLevel = DataMonsters.getLevel(fish.gameObject.name);
+            var resultExp = expMonster + (maxExp * lvlExp * (monsterLevel - 1));
+            LevelSystem.Instance.AddExp(Convert.ToInt32(resultExp));
+        }
 
 
         [HarmonyPatch(typeof(Destructible), nameof(Destructible.RPC_Damage))]
@@ -250,61 +301,26 @@ namespace EpicMMOSystem
         {
             private static void Postfix(Fish __instance)
             {
-                if (EpicMMOSystem.disableNonCombatObjects.Value) return;
-                // if (!__instance) return;
                 if (__instance.m_fishingFloat == null) return;
-                if (EpicMMOSystem.debugNonCombatObjects.Value)
-                    EpicMMOSystem.MLLogger.LogWarning("fish name" + __instance.gameObject.name);
-
-                if (!DataMonsters.contains(__instance.gameObject.name)) return;
                 Character owner = __instance.m_fishingFloat.GetOwner();
                 if (owner == null) return;
                 if (owner is not Player player) return;
-
-                int expMonster = DataMonsters.getExp(__instance.gameObject.name);
-                int maxExp = DataMonsters.getMaxExp(__instance.gameObject.name);
-                float lvlExp = EpicMMOSystem.expForLvlMonster.Value;
-                int monsterLevel = DataMonsters.getLevel(__instance.gameObject.name);
-                var resultExp = expMonster + (maxExp * lvlExp * (monsterLevel - 1));
-                var exp = Convert.ToInt32(resultExp);
-                var playerExp = exp;
-                LevelSystem.Instance.AddExp(playerExp);
+                TryGiveFishExp(__instance, player, false);
             }
         }
-        private static string lastfishname = "";
+
         [HarmonyPatch(typeof(Fish), nameof(Fish.Interact))]
         private static class Fish_Caught_patch_interact
         {
             private static void Postfix(Fish __instance, Humanoid character, bool repeat, bool alt)
             {
-                if (EpicMMOSystem.disableNonCombatObjects.Value || EpicMMOSystem.disableFishPickupXP.Value) return;
                 if (!__instance) return;
-
-                if (repeat)
-                {
-                    return ;
-                }
+                if (repeat || alt) return;
 
                 if (character == null) return;
                 if (character is not Player player) return;
 
-
-                if (EpicMMOSystem.debugNonCombatObjects.Value)
-                    EpicMMOSystem.MLLogger.LogWarning("fish Interact name" + __instance.name);
-                if (!DataMonsters.contains(__instance.name)) return;
-
-                if (__instance.gameObject.name == lastfishname) return; // cant pickup fish over and over
-                lastfishname = __instance.gameObject.name;
-
-                int expMonster = DataMonsters.getExp(__instance.gameObject.name);
-                int maxExp = DataMonsters.getMaxExp(__instance.gameObject.name);
-                float lvlExp = EpicMMOSystem.expForLvlMonster.Value;
-                int monsterLevel = DataMonsters.getLevel(__instance.gameObject.name);
-                var resultExp = expMonster + (maxExp * lvlExp * (monsterLevel - 1));
-                var exp = Convert.ToInt32(resultExp);
-                var playerExp = exp;
-                LevelSystem.Instance.AddExp(playerExp);
-
+                TryGiveFishExp(__instance, player, true);
             }
 
         }
