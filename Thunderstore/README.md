@@ -130,7 +130,7 @@ You can combine multiple Skills for one Requirement
 
 	Mob's data (names, levels, exp) from other mods are included:
 
-	Fantasy-Creatures, AirAnimals, Defaults(Ashlands), DoOrDieMonsters, LandAnimals, MonsterlabZ, Outsiders, SeaAnimals, Monstrum, Krumpac Mods, Teddy Bears, PungusSouls, JewelCrafting, Wizardy, NonCombat, Monstrum-DeepNorth, RTD mods Horrors, Monsters, Monstrum, Sea, Bestiary
+	Fantasy-Creatures, AirAnimals, Defaults(Ashlands), DoOrDieMonsters, LandAnimals, MonsterlabZ, Outsiders, SeaAnimals, Monstrum, Krumpac Mods, Teddy Bears, PungusSouls, JewelCrafting, Wizardy, NonCombat, Monstrum-DeepNorth, RTD mods Horrors, Monsters, Monstrum, Sea, Bestiary, NonCombat_RtD
 
 	A folder listing all monsters and their levels is located in config/EpicMMOSystem/ Default is for vanilla mobs
 
@@ -140,7 +140,7 @@ You can combine multiple Skills for one Requirement
 
 	A file called Version.txt is created in the folder. It contains the mod version that was used to create it. Replace it with "NO" to stop it from overwritting on a future update.
 
-	Latest Update for Jsons config is <b> 1.9.55 </b>(Number will be updated when Jsons recieve an update)
+	Latest Update for Jsons config is <b> 1.9.65 </b>(Number will be updated when Jsons recieve an update)
 
 	
 

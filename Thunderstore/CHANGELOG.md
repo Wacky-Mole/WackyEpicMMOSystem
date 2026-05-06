@@ -1,3 +1,5 @@
+| 1.9.65 | - Update for RTD mob files, Added NonCombat_Rtd. </br> Bug fixes, rewrote monster json loading, less crashes with bad jsons. </br> Did a light code cleanup. </br> Rewrote EXP giving, EXP is now given based on who did the most damage and not who did the last hit. Group mod EXP sharing has been reworked a bit, especially mentor mode. </br> Boss faction autoidentifies now. 
+
 | 1.9.60 | - Increase priority for piece health. 
 
 | 1.9.59 | - Bug fix for piece health. 

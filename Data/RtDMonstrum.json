@@ -1,9 +1,21 @@
 [
   {
-    "name": "MeadowsGolem_RtD",
+    "name": "MeadowsKobald_RtD",
+    "minExp": 60,
+    "maxExp": 80,
+    "level": 9
+  },
+  {
+    "name": "MeadowsHobgoblin_RtD",
+    "minExp": 66,
+    "maxExp": 90,
+    "level": 10
+  },
+  {
+    "name": "MeadowsSpider_RtD",
     "minExp": 50,
     "maxExp": 70,
-    "level": 11
+    "level": 8
   },
   {
     "name": "BlackForestGolem_RtD",
@@ -12,9 +24,45 @@
     "level": 21
   },
   {
+    "name": "BlackForestUndead_RtD",
+    "minExp": 120,
+    "maxExp": 160,
+    "level": 22
+  },
+  {
+    "name": "BlackForestTroll_RtD",
+    "minExp": 120,
+    "maxExp": 160,
+    "level": 23
+  },
+  {
+    "name": "BlackForestTreeEnt_RtD",
+    "minExp": 120,
+    "maxExp": 160,
+    "level": 24
+  },
+  {
     "name": "MountainUndead_RtD",
     "minExp": 280,
     "maxExp": 300,
+    "level": 40
+  },
+  {
+    "name": "MountainWyvern_RtD",
+    "minExp": 380,
+    "maxExp": 600,
+    "level": 44
+  },
+  {
+    "name": "MountainWerewolf_RtD",
+    "minExp": 312,
+    "maxExp": 500,
+    "level": 40
+  },
+  {
+    "name": "MountainGriffin_RtD",
+    "minExp": 280,
+    "maxExp": 450,
     "level": 40
   },
   {
@@ -22,6 +70,24 @@
     "minExp": 380,
     "maxExp": 410,
     "level": 50
+  },
+  {
+    "name": "PlainsChimera_RtD",
+    "minExp": 397,
+    "maxExp": 525,
+    "level": 54
+  },
+  {
+    "name": "PlainsDragonide_RtD",
+    "minExp": 390,
+    "maxExp": 512,
+    "level": 53
+  },
+  {
+    "name": "PlainsOrc_RtD",
+    "minExp": 380,
+    "maxExp": 490,
+    "level": 52
   },
   {
     "name": "BlackForestLocMur_RtD",
@@ -42,22 +108,22 @@
     "level": 60
   },
   {
-    "name": "MistlandsSpider2_RtD",
-    "minExp": 420,
+    "name": "MistlandsWolf_RtD",
+    "minExp": 430,
     "maxExp": 490,
-    "level": 60
+    "level": 63
   },
   {
-    "name": "MistlandsSpider3_RtD",
-    "minExp": 420,
-    "maxExp": 490,
-    "level": 60
+    "name": "MistlandsHarpy_RtD",
+    "minExp": 440,
+    "maxExp": 498,
+    "level": 62
   },
   {
-    "name": "MistlandsSpider4_RtD",
+    "name": "MistlandsManticora_RtD",
     "minExp": 420,
-    "maxExp": 490,
-    "level": 60
+    "maxExp": 690,
+    "level": 64
   },
   {
     "name": "MountainWatcher_RtD",
@@ -90,10 +156,28 @@
     "level": 52
   },
   {
-    "name": "SwampTroll_RtD",
-    "minExp": 292,
-    "maxExp": 577,
-    "level": 34
+    "name": "SwampRat_RtD",
+    "minExp": 222,
+    "maxExp": 527,
+    "level": 30
+  },
+  {
+    "name": "SwampGhoul_RtD",
+    "minExp": 242,
+    "maxExp": 545,
+    "level": 31
+  },
+  {
+    "name": "SwampMummy_RtD",
+    "minExp": 252,
+    "maxExp": 567,
+    "level": 32
+  },
+  {
+    "name": "SwampVampire_RtD",
+    "minExp": 282,
+    "maxExp": 578,
+    "level": 33
   },
   {
     "name": "SwampSludger_RtD",

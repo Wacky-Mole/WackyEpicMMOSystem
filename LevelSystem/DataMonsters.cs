@@ -272,6 +272,7 @@ public static class DataMonsters
         var json22 = "RtDAdditions.json";
         var json23 = "RtDSouls.json";
         var json24 = "Bestiary.json";
+        var json25 = "NonCombat_RtD.json";
 
 
         var badfile = "MonsterLabZ.json";
@@ -333,6 +334,8 @@ public static class DataMonsters
                 cleartowrite = true;
             if (filev == "1.9.51")           
                 cleartowrite = true;
+            if (filev == "1.9.55")           
+                cleartowrite = true;
 
 
             if (File.Exists(badfilepath))
@@ -342,7 +345,7 @@ public static class DataMonsters
 
                         
 
-            if (filev == "1.9.55") // last version to get a DB update
+            if (filev == "1.9.65") // last version to get a DB update
                 cleartowrite = false;
 
             if (filev == "NO" || filev == "no" || filev == "No" || filev == "STOP" || filev == "stop" || filev == "Stop")
@@ -354,7 +357,7 @@ public static class DataMonsters
         if (cleartowrite)
         {
             //list.Clear();
-            File.WriteAllText(versionpath, "1.9.55"); // Write Version file, don't auto update
+            File.WriteAllText(versionpath, "1.9.65"); // Write Version file, don't auto update
 
             File.WriteAllText(warningtext, "Erase numbers in Version.txt and write NO or stop in file. This should stop DB json files from updating on an update. If you make your own custom json file, then that one should never be updated.");
 
@@ -407,6 +410,8 @@ public static class DataMonsters
             File.WriteAllText(Path.Combine(folderpath, json23), getDefaultJsonMonster(json23));
 
             File.WriteAllText(Path.Combine(folderpath, json24), getDefaultJsonMonster(json24));
+
+            File.WriteAllText(Path.Combine(folderpath, json25), getDefaultJsonMonster(json25));
 
 
 

@@ -3,7 +3,7 @@
     "name": "BoneFish_RtD",
     "minExp": 290,
     "maxExp": 360,
-    "level": 24
+    "level": 68
   },
   {
     "name": "Neck_RtD",
@@ -27,25 +27,25 @@
     "name": "LuminousLooker_RtD",
     "minExp": 310,
     "maxExp": 380,
-    "level": 26
+    "level": 74
   },
   {
     "name": "BoneSquid_RtD",
     "minExp": 320,
     "maxExp": 390,
-    "level": 27
+    "level": 77
   },
   {
     "name": "Shark_RtD",
     "minExp": 340,
     "maxExp": 410,
-    "level": 29
+    "level": 63
   },
   {
     "name": "Mirmaid_RtD",
     "minExp": 340,
     "maxExp": 600,
-    "level": 30
+    "level": 65
   },
   {
     "name": "CatFish_RtD",
@@ -88,5 +88,65 @@
     "minExp": 1590,
     "maxExp": 1660,
     "level": 60
+  },
+  {
+    "name": "Animal_Crab_RtD",
+    "minExp": 90,
+    "maxExp": 112,
+    "level": 8
+  },
+  {
+    "name": "Animal_Dolphin_RtD",
+    "minExp": 97,
+    "maxExp": 143,
+    "level": 10
+  },
+  {
+    "name": "Animal_Cod_RtD",
+    "minExp": 102,
+    "maxExp": 162,
+    "level": 15
+  },
+  {
+    "name": "Animal_Tuna_RtD",
+    "minExp": 102,
+    "maxExp": 162,
+    "level": 15
+  },
+  {
+    "name": "Monster_GreatWhiteShark_RtD",
+    "minExp": 337,
+    "maxExp": 446,
+    "level": 28
+  },
+  {
+    "name": "Animal_Squid_RtD",
+    "minExp": 337,
+    "maxExp": 446,
+    "level": 28
+  },
+  {
+    "name": "Animal_Manta_RtD",
+    "minExp": 337,
+    "maxExp": 446,
+    "level": 28
+  },
+  {
+    "name": "Monster_HammerheadShark_RtD",
+    "minExp": 397,
+    "maxExp": 496,
+    "level": 32
+  },
+  {
+    "name": "Animal_Marlin_RtD",
+    "minExp": 397,
+    "maxExp": 496,
+    "level": 32
+  },
+  {
+    "name": "Animal_Turtle_RtD",
+    "minExp": 397,
+    "maxExp": 496,
+    "level": 32
   }
 ]

@@ -3,13 +3,13 @@
         "name": "MeadowsFairy_RtD",
         "minExp": 80,
         "maxExp": 120,
-        "level": 13
+        "level": 12
     },
     {
         "name": "MeadowsPixie_RtD",
         "minExp": 80,
         "maxExp": 120,
-        "level": 13
+        "level": 10
     },
     {
         "name": "BlackForestFairy_RtD",

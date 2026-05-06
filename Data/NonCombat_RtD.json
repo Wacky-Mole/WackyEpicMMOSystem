@@ -1,0 +1,500 @@
+[
+  {
+    "name": "Acacia1_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "Acacia2_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "Acacia3_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "Acacia4_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "AspenSwampTree_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "Blossom1_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "Blossom2_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "Blossom3_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "Blossom4_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "Blossom5_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "CottonWood1_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "CottonWood2_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "DeadTree1_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "DeadTree2_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "DeadTree3_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "DeadTree4_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "DeadTree5_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "DeadTree6_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "DeadTree7_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "DeadTree8_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "DeadTree9_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicTree1_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicTree2_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicTree3_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicTree4_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicTree5_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicTree6_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicTree9_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicTree10_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "Oak1_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "Oak2_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "PalmTree1_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "PalmTree2_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "RedPine1_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "RedPine2_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "RedPine3_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "RedPine4_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "RedPine_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "SwampTree1_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "SwampTree2_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "SwampTree3_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "SwampTree4_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "SwampTree5_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "SwampTree6_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "WillowTree1_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "WillowTree2_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "WinterPine3_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "WinterPine4_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "WinterPine5_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MeadowsZinc_RtD",
+    "minExp": 1,
+    "maxExp": 1,
+    "level": 1
+  },
+  {
+    "name": "Prop_BlackForestGold_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "Prop_SwampMooniron_RtD",
+    "minExp": 1,
+    "maxExp": 3,
+    "level": 1
+  },
+  {
+    "name": "Prop_MountainOrichalcum_RtD",
+    "minExp": 1,
+    "maxExp": 4,
+    "level": 1
+  },
+  {
+    "name": "Prop_PlainsBloodiron_RtD",
+    "minExp": 1,
+    "maxExp": 4,
+    "level": 1
+  },
+  {
+    "name": "Prop_MistlandsFelOre_RtD",
+    "minExp": 2,
+    "maxExp": 5,
+    "level": 1
+  },
+  {
+    "name": "Prop_FlametalMine_RtD",
+    "minExp": 2,
+    "maxExp": 5,
+    "level": 1
+  },
+  {
+    "name": "DeepNorthFroOre_RtD",
+    "minExp": 2,
+    "maxExp": 5,
+    "level": 1
+  },
+  {
+    "name": "Prop_ArcaneMine_RtD",
+    "minExp": 2,
+    "maxExp": 5,
+    "level": 1
+  },
+  {
+    "name": "SwampTree2_log_RtD",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog1",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog1Half",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog2",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog2Half",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog3",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog3Half",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog4",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog4Half",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog4Half1",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog5",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog5Half",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog5Half1",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog6",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog6Half",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog7",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog7Half",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog8",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog8Half",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog9",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog9Half",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog10",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog10Half",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog11",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+  {
+    "name": "MagicLog12",
+    "minExp": 1,
+    "maxExp": 2,
+    "level": 1
+  },
+]
