@@ -37,6 +37,35 @@ public static class DataMonsters
     private static readonly Dictionary<Heightmap.Biome, GameObject> OrbsByBiomes = new(10);
     public static readonly Dictionary<GameObject, int> MagicOrbDictionary = new Dictionary<GameObject, int>(10);// thx KG
 
+    private static TMP_FontAsset ResolveHudFont(TextMeshProUGUI referenceText = null)
+    {
+        if (referenceText != null && referenceText.font != null)
+        {
+            return referenceText.font;
+        }
+
+        if (TMP_Settings.defaultFontAsset != null)
+        {
+            return TMP_Settings.defaultFontAsset;
+        }
+
+        return Resources.FindObjectsOfTypeAll<TMP_FontAsset>().FirstOrDefault();
+    }
+
+    private static void EnsureHudFont(TextMeshProUGUI text, TextMeshProUGUI referenceText = null)
+    {
+        if (text == null)
+        {
+            return;
+        }
+
+        var font = ResolveHudFont(referenceText ?? text);
+        if (font != null)
+        {
+            text.font = font;
+        }
+    }
+
 
     public static void InitItems()
     {// Visit  https://github.com/Wacky-Mole/MagicHeim/blob/master/MagicTomes.cs for more details
@@ -582,7 +611,7 @@ public static class DataMonsters
                     mmonameObject.transform.SetParent(hudBase.transform, false);
                     ((RectTransform)mmonameObject.transform).sizeDelta = hudBase.transform.Find("Name").GetComponent<RectTransform>().sizeDelta + new Vector2(0, EpicMMOSystem.displayUIStringYPosition.Value);  // new UnityEngine.Vector2(300, -18);
                     TextMeshProUGUI MMOnametext = mmonameObject.AddComponent<TextMeshProUGUI>();
-                    MMOnametext.font = playerName.font;
+                    EnsureHudFont(MMOnametext, playerName);
                     MMOnametext.fontSize = 16;
                     MMOnametext.alignment = playerName.alignment;
                    
@@ -592,6 +621,7 @@ public static class DataMonsters
                 }
 
                 TextMeshProUGUI MMONameText = mmonameObject.GetComponent<TextMeshProUGUI>();
+                EnsureHudFont(MMONameText, playerName);
                 RectTransform nameTransform = playerName.GetComponent<RectTransform>();
                 UnityEngine.Vector2 namePrivot = nameTransform.pivot;
 
@@ -659,6 +689,7 @@ public static class DataMonsters
             //var textspace = component.GetComponent<Text>().text;
             //component.GetComponent<Text>().text = " "+ textspace + " "; // add some spacing for single letter names
             GameObject levelName = Object.Instantiate(component, component.transform);
+            EnsureHudFont(levelName.GetComponent<TextMeshProUGUI>(), component.GetComponent<TextMeshProUGUI>());
             levelName.GetComponent<RectTransform>().anchoredPosition = EpicMMOSystem.MobLevelPosition.Value;
             if (c.m_boss)
             {
@@ -782,6 +813,7 @@ public static class DataMonsters
                         {
                             GameObject component = keyValuePair.Value.m_gui.transform.Find("Name").gameObject;
                             transform = Object.Instantiate(component, component.transform).transform;
+                            EnsureHudFont(transform.GetComponent<TextMeshProUGUI>(), component.GetComponent<TextMeshProUGUI>());
                             transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(37, -30);
                             transform.GetComponent<TextMeshProUGUI>().fontSize = 13;
                             transform.GetComponent<TextMeshProUGUI>().text = $"[{mobLevelString}]";
