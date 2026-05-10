@@ -90,9 +90,10 @@ public static class MonsterDeath_Path
         if(Player.m_localPlayer.IsDead()) return;
         string monsterName = pkg.ReadString();
         int level = pkg.ReadInt();
+        bool isBoss = pkg.ReadBool();
         Vector3 position = pkg.ReadVector3();
         bool playerdead  = false;
-        var MobisBoss = false;
+        var MobisBoss = isBoss;
         int monsterLevel = 1;
         int playerExp = 0;
         int exp = 0;
@@ -124,22 +125,7 @@ public static class MonsterDeath_Path
                 monsterLevel = 0;
 
                 
-            if (EpicMMOSystem.curveBossExp.Value) 
-            {
-                switch (monsterName) // if a boss then check otherwise false
-                {
-                    case "Eikthyr": MobisBoss = true; break;
-                    case "gd_king": MobisBoss = true; break;
-                    case "Bonemass": MobisBoss = true; break;
-                    case "Dragon": MobisBoss = true; break;
-                    case "GoblinKing": MobisBoss = true; break;
-                    case "SeekerQueen": MobisBoss = true; break;
-                    case "Fader": MobisBoss = true; break;
-                    default: MobisBoss = false; break;// all other mobs
-                }
-            }
-        
-        
+
             if ((double)Vector3.Distance(position, Player.m_localPlayer.transform.position) >= EpicMMOSystem.playerRange.Value) return;
 
             int expMonster = DataMonsters.getExp(monsterName);
@@ -401,6 +387,8 @@ public static class MonsterDeath_Path
                 {
                     pkg.Write(__instance.GetLevel());
                 }
+
+                pkg.Write(__instance.GetFaction() == Character.Faction.Boss);
                 
                 pkg.Write(__instance.transform.position);
                 ZRoutedRpc.instance.InvokeRoutedRPC(attacker, $"{EpicMMOSystem.ModName} DeadMonsters", new object[] { pkg });
@@ -453,6 +441,8 @@ public static class MonsterDeath_Path
                     {
                         pkg.Write(__instance.GetLevel());
                     }
+
+                    pkg.Write(__instance.GetFaction() == Character.Faction.Boss);
 
                     pkg.Write(__instance.transform.position);            
                     ZRoutedRpc.instance.InvokeRoutedRPC(attacker, $"{EpicMMOSystem.ModName} DeadMonsters", new object[] { pkg });
