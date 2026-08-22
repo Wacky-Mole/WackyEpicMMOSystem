@@ -30,7 +30,7 @@ public partial class LevelSystem
     {
         public static void Postfix(ref float eitr)
         {
-            if (eitr > 2 || EpicMMOSystem.addDefaultEitr.Value > 0f)
+            if (eitr > 2 || EpicMMOSystem.addDefaultEitr.Value > 0f || EpicMMOSystem.allowEitrWithoutFood.Value)
             {
                 var addeitr = Instance.getAddEitr();
                 eitr += addeitr + EpicMMOSystem.addDefaultEitr.Value;

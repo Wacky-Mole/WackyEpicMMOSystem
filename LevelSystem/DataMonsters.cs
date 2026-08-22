@@ -630,23 +630,18 @@ public static class DataMonsters
                 int maxLevelExpplayer = LevelSystem.Instance.getLevel() + EpicMMOSystem.maxLevelExp.Value;
                 int minLevelExpplayer = LevelSystem.Instance.getLevel() - EpicMMOSystem.minLevelExp.Value;
 
-               string namesearch = c.GetHoverName();
-
-                var playerlist2 = Player.GetAllPlayers();
-                foreach (var pla in playerlist2)
+                Player targetPlayer = c as Player;
+                var targetZdo = targetPlayer?.m_nview?.GetZDO();
+                if (targetZdo != null)
                 {
-                    if (pla.GetPlayerName() == namesearch)
+                    daysalive = targetZdo.GetInt(EpicMMOSystem.ModName + EpicMMOSystem.PlayerAliveString, -1);
+                    if (daysalive == -1)
                     {
-                        var zdopla = pla.m_nview.GetZDO();
-                        daysalive = zdopla.GetInt(EpicMMOSystem.ModName + EpicMMOSystem.PlayerAliveString, -1);
-                        if (daysalive == -1)
-                        {
-                            EpicMMOSystem.MLLogger.LogWarning("Days alive not found" + daysalive + " for player " + namesearch);
-                            daysalive = 0;
-                        }
-                        level = zdopla.GetInt($"{EpicMMOSystem.ModName}_level", 1);
-                        break;
+                        EpicMMOSystem.MLLogger.LogWarning("Days alive not found" + daysalive + " for player " + c.GetHoverName());
+                        daysalive = 0;
                     }
+
+                    level = targetZdo.GetInt($"{EpicMMOSystem.ModName}_level", 1);
                 }
 
                 int monsterLevelplayer = level;

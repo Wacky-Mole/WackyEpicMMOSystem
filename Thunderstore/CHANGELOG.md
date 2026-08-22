@@ -1,3 +1,5 @@
+| 1.9.61 | - Optimized Pvp Name geting. </br> Allow Eitr without food config
+
 | 1.9.60 | - Update for RTD mob files, Added NonCombat_Rtd. </br> Bug fixes, rewrote monster json loading, less crashes with bad jsons. </br> Did a light code cleanup. </br> Boss faction auto identifies now. </br> Fixed a warning for guilds and maybe fonts. 
 
 | 1.9.60 | - Increase priority for piece health. 

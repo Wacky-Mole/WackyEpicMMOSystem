@@ -41,7 +41,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.60";
+    internal const string VERSION = "1.9.61";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -139,6 +139,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
     public static ConfigEntry<float> addEitr;
     public static ConfigEntry<float> magicDamage;
     public static ConfigEntry<float> magicEitrRegen;
+    public static ConfigEntry<bool> allowEitrWithoutFood;
 
     //LevelSystem arg property <Endurance>
     public static ConfigEntry<float> addStamina;
@@ -336,6 +337,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         magicDamage = config(levelSystemIntellect, "MagicAttack", 0.20f, "Increase magic attack per point.");      
         magicEitrRegen = config(levelSystemIntellect, "MagicEitrReg", 0.3f, "Increase magical Eitr Regeneration per point.");
         addEitr = config(levelSystemIntellect, "AddEitr", 0.3f, "Eitr Increase per point ONLY when player has above 1 base Eitr");
+        allowEitrWithoutFood = config(levelSystemIntellect, "AllowEitrWithoutFood", false, "Allow Intellect and default Eitr bonuses without eating food that provides Eitr.");
 
         string levelSystemBody = "1.LevelSystem Endurance------";
         addStamina = config(levelSystemBody, "AddStamina", 1f, "One Point Stamina Increase.");      

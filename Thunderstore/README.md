@@ -1,8 +1,10 @@
-# Description:
+# Wacky EpicMMO System
 This mod adds an RPG-like system of levels and attribute increases: - Wacky Branch 1.9...
 
 
 Support me!
+
+<a href="https://www.survivalservers.com/services/game_servers/valheim/?ref=WackyMole"><img src="https://www.wackymole.com/hosts/WackySurvivalBanner.png" alt="Valheim Server Hosting - Survival Servers" width="768" height="90"></a>
 
 <a href="https://www.buymeacoffee.com/WackyMole" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height='36' style="height: 36px;" ></a>  [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H6LL5GA)
 
