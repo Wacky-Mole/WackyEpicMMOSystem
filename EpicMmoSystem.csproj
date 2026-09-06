@@ -448,6 +448,7 @@
     <EmbeddedResource Include="translations\Turkish.yml" />
     <EmbeddedResource Include="translations\Czech.yml" />
     <EmbeddedResource Include="translations\Hungarian.yml" />
+    <EmbeddedResource Include="translations\Vietnamese.yml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Libs\publicized_assemblies\" />
