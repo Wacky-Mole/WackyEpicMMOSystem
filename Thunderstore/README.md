@@ -149,7 +149,7 @@ You can combine multiple Skills for one Requirement
 
 	A file called Version.txt is created in the folder. It contains the mod version that was used to create it. Replace it with "NO" to stop it from overwritting on a future update.
 
-	Latest Update for Jsons config is <b> 1.9.60 </b>(Number will be updated when Jsons recieve an update)
+	Latest Update for Jsons config is <b> 1.9.66 </b>(Number will be updated when Jsons recieve an update)
 
 	
 

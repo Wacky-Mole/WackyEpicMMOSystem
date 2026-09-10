@@ -1,4 +1,4 @@
-using BepInEx;
+﻿using BepInEx;
 using fastJSON;
 using HarmonyLib;
 using ItemManager;
@@ -365,6 +365,10 @@ public static class DataMonsters
                 cleartowrite = true;
             if (filev == "1.9.55")           
                 cleartowrite = true;
+            if (filev == "1.9.60")           
+                cleartowrite = true;
+            if (filev == "1.9.65")           
+                cleartowrite = true;
 
 
             if (File.Exists(badfilepath))
@@ -374,7 +378,7 @@ public static class DataMonsters
 
                         
 
-            if (filev == "1.9.60") // last version to get a DB update
+            if (filev == "1.9.66") // last version to get a DB update
                 cleartowrite = false;
 
             if (filev == "NO" || filev == "no" || filev == "No" || filev == "STOP" || filev == "stop" || filev == "Stop")
@@ -386,7 +390,7 @@ public static class DataMonsters
         if (cleartowrite)
         {
             //list.Clear();
-            File.WriteAllText(versionpath, "1.9.60"); // Write Version file, don't auto update
+            File.WriteAllText(versionpath, "1.9.66"); // Write Version file, don't auto update
 
             File.WriteAllText(warningtext, "Erase numbers in Version.txt and write NO or stop in file. This should stop DB json files from updating on an update. If you make your own custom json file, then that one should never be updated.");
 
@@ -857,7 +861,7 @@ public static class DataMonsters
         public static void Postfix(CharacterDrop __instance, ref List<KeyValuePair<GameObject, int>> __result)
         {
             if (__instance.m_character.IsTamed() ) return;
-            Heightmap.Biome biome = EnvMan.instance.m_currentBiome;
+            Heightmap.Biome biome = EnvMan.instance.GetCurrentBiome();
 
             float rand = Random.value;
             var dropChance = __instance.m_character.IsBoss() ? EpicMMOSystem.OrbDropChancefromBoss.Value : EpicMMOSystem.OrbDropChance.Value;

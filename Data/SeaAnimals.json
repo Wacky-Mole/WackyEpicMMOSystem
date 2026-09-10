@@ -48,12 +48,6 @@
 		"level": 19
 	},
 	{
-		"name": "Seal",
-		"minExp": 170,
-		"maxExp": 180,
-		"level": 17
-	},
-	{
 		"name": "Penguin",
 		"minExp": 125,
 		"maxExp": 150,

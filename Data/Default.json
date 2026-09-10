@@ -432,6 +432,98 @@
     "level": 53
   },
   {
+    "name": "Seal_Pup",
+    "minExp": 0,
+    "maxExp": 0,
+    "level": 80
+  },
+  {
+    "name": "Moose_calf",
+    "minExp": 0,
+    "maxExp": 0,
+    "level": 80
+  },
+  {
+    "name": "Seal",
+    "minExp": 50,
+    "maxExp": 100,
+    "level": 80
+  },
+  {
+    "name": "BlobMorkMini",
+    "minExp": 100,
+    "maxExp": 200,
+    "level": 80
+  },
+  {
+    "name": "BlobMork",
+    "minExp": 300,
+    "maxExp": 500,
+    "level": 80
+  },
+  {
+    "name": "Writhan",
+    "minExp": 300,
+    "maxExp": 500,
+    "level": 34
+  },
+  {
+    "name": "Elaking",
+    "minExp": 800,
+    "maxExp": 1100,
+    "level": 80
+  },
+  {
+    "name": "Moose",
+    "minExp": 600,
+    "maxExp": 900,
+    "level": 80
+  },
+  {
+    "name": "JotunWarrior",
+    "minExp": 1000,
+    "maxExp": 1200,
+    "level": 81
+  },
+  {
+    "name": "JotunWarriorDualWield",
+    "minExp": 1000,
+    "maxExp": 1200,
+    "level": 81
+  },  
+  {
+    "name": "FallenWarrior",
+    "minExp": 1000,
+    "maxExp": 1300,
+    "level": 82
+  },
+  {
+    "name": "ElakingMole",
+    "minExp": 1500,
+    "maxExp": 1700,
+    "level": 83
+  },
+  {
+    "name": "JotunWitch",
+    "minExp": 1600,
+    "maxExp": 1700,
+    "level": 87
+  },
+  {
+    "name": "TrollFrost",
+    "minExp": 1800,
+    "maxExp": 2400,
+    "level": 88
+  },
+
+  {
+    "name": "Barka",
+    "minExp": 2000,
+    "maxExp": 3000,
+    "level": 89
+  },
+
+  {
     "name": "Eikthyr",
     "minExp": 150,
     "maxExp": 200,
@@ -472,5 +564,11 @@
     "minExp": 4700,
     "maxExp": 6400,
     "level": 76
+  },
+  {
+    "name": "FrozenKing",
+    "minExp": 10500,
+    "maxExp": 17500,
+    "level": 99
   }
 ]
