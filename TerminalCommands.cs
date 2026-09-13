@@ -91,9 +91,18 @@ public static class TerminalCommands
                             }
                         }
 
-                        if ( args[1] == "level")
+                        if (args.Length < 2)
                         {
-                            int level = Int32.Parse(args[2]);
+                            args.Context.AddString("Missing EpicMMOSystem command.");
+                        }
+                        else if (args[1] == "level")
+                        {
+                            if (args.Length < 4 || !Int32.TryParse(args[2], out var level))
+                            {
+                                args.Context.AddString("Usage: EpicMMOSystem level [value] [name]");
+                                return;
+                            }
+
                             string name = args[3];
                             if (args.Length > 4)
                             {
@@ -106,10 +115,18 @@ public static class TerminalCommands
                             if (userId == null)
                             {
                                 EpicMMOSystem.print("Player is not found");
+                                args.Context.AddString("Player is not found.");
+                                return;
                             }
-                            ZRoutedRpc.instance.InvokeRoutedRPC(userId ?? 200,$"{modName} terminal_SetLevel", level);
+                            ZRoutedRpc.instance.InvokeRoutedRPC(userId.Value,$"{modName} terminal_SetLevel", level);
                         }else if ( args[1] == "reset_points")
                         {
+                            if (args.Length < 3)
+                            {
+                                args.Context.AddString("Usage: EpicMMOSystem reset_points [name]");
+                                return;
+                            }
+
                             string name = args[2];
                             if (args.Length > 3)
                             {
@@ -122,11 +139,19 @@ public static class TerminalCommands
                             if (userId == null)
                             {
                                 EpicMMOSystem.print("Player is not found");
+                                args.Context.AddString("Player is not found.");
+                                return;
                             }
-                            ZRoutedRpc.instance.InvokeRoutedRPC(userId ?? 200,$"{modName} terminal_ResetPoints");
+                            ZRoutedRpc.instance.InvokeRoutedRPC(userId.Value,$"{modName} terminal_ResetPoints");
                         }
                         else if (args[1] == "reset_totalpoints")
                         {
+                            if (args.Length < 3)
+                            {
+                                args.Context.AddString("Usage: EpicMMOSystem reset_totalpoints [name]");
+                                return;
+                            }
+
                             string name = args[2];
                             if (args.Length > 3)
                             {
@@ -140,12 +165,20 @@ public static class TerminalCommands
                             if (userId == null)
                             {
                                 EpicMMOSystem.print("Player is not found");
+                                args.Context.AddString("Player is not found.");
+                                return;
                             }
-                            ZRoutedRpc.instance.InvokeRoutedRPC(userId ?? 200, $"{modName} terminal_ResetTotalPoints");
+                            ZRoutedRpc.instance.InvokeRoutedRPC(userId.Value, $"{modName} terminal_ResetTotalPoints");
                         }
 
                         else if (args[1] == "recalc")
                         {
+                            if (args.Length < 3)
+                            {
+                                args.Context.AddString("Usage: EpicMMOSystem recalc [name]");
+                                return;
+                            }
+
                             string name = args[2];
                             if (args.Length > 3)
                             {
@@ -159,8 +192,10 @@ public static class TerminalCommands
                             if (userId == null)
                             {
                                 EpicMMOSystem.print("Player is not found");
+                                args.Context.AddString("Player is not found.");
+                                return;
                             }
-                            ZRoutedRpc.instance.InvokeRoutedRPC(userId ?? 200, $"{modName} terminal_Recalc");
+                            ZRoutedRpc.instance.InvokeRoutedRPC(userId.Value, $"{modName} terminal_Recalc");
                         }                        
                         else if (args[1] == "update")
                         {
