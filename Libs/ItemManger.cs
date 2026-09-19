@@ -1174,7 +1174,7 @@ public class Item
             new CodeInstruction(OpCodes.Ldarg_0),
             new CodeInstruction(OpCodes.Ldfld, AccessTools.DeclaredField(typeof(InventoryGui), nameof(InventoryGui.m_recipeRequirementList))),
             new CodeInstruction(OpCodes.Ldlen),
-            new CodeInstruction(OpCodes.Bgt, loopSkipLabel),
+            new CodeInstruction(OpCodes.Bge, loopSkipLabel),
             new CodeInstruction(OpCodes.Ldc_I4_0),
             index1Store.Clone(),
             new CodeInstruction(OpCodes.Ldc_I4_0),
@@ -1855,6 +1855,7 @@ public static class PrefabManager
             m_price = (int)price,
             m_stack = (int)stack,
             m_requiredGlobalKey = requiredGlobalKey ?? "",
+            m_tooltip = "",
         });
     }
 
