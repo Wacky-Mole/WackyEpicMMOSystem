@@ -41,7 +41,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.67";
+    internal const string VERSION = "1.9.68";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -507,13 +507,13 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         Chunks.RequiredItems.Add("TrophyWolf", 4);
 
 
-        Mead1.Crafting.Add(ItemManager.CraftingTable.MeadCauldron, 1);
+        Mead1.Crafting.Add(ItemManager.CraftingTable.MeadKetill, 1);
         Mead1.RequiredItems.Add("Mob_chunks", 1);
         Mead1.RequiredItems.Add("mmo_orb1", 2);
-        Mead2.Crafting.Add(ItemManager.CraftingTable.MeadCauldron, 1);
+        Mead2.Crafting.Add(ItemManager.CraftingTable.MeadKetill, 1);
         Mead2.RequiredItems.Add("Mob_chunks", 1);
         Mead2.RequiredItems.Add("mmo_orb3", 2);
-        Mead3.Crafting.Add(ItemManager.CraftingTable.MeadCauldron, 1);
+        Mead3.Crafting.Add(ItemManager.CraftingTable.MeadKetill, 1);
         Mead3.RequiredItems.Add("Mob_chunks", 1);
         Mead3.RequiredItems.Add("mmo_orb5", 2);
 

@@ -11,7 +11,7 @@
     <AssemblyName>EpicMMOSystem</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <LangVersion>10</LangVersion>
+    <LangVersion>11</LangVersion>
     <Nullable>enable</Nullable>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -84,10 +84,6 @@
     <Reference Include="GroupsAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\GroupsAPI.dll</HintPath>
-    </Reference>
-    <Reference Include="ItemManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\ItemManager.dll</HintPath>
     </Reference>
     <Reference Include="LocalizationManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -316,6 +312,7 @@
     <Compile Include="LevelSystem\LevelSystem_noncombat.cs" />
     <Compile Include="LevelSystem\LevelSystem_Specializing.cs" />
     <Compile Include="LevelSystem\LevelSystem_Vigour.cs" />
+    <Compile Include="Libs\ItemManger.cs" />
     <Compile Include="OtherApi\Guilds_API.cs" />
     <Compile Include="OtherApi\wackydb_api.cs" />
     <Compile Include="Scripts\Drag.cs" />
@@ -357,9 +354,6 @@
     </Content>
     <Content Include="Libs\fastJSON.dll" />
     <Content Include="Libs\GroupsAPI.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Libs\ItemManager.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Libs\LocalizationManager.dll">

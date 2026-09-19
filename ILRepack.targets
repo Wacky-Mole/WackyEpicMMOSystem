@@ -10,7 +10,7 @@
             <InputAssemblies Include="$(OutputPath)\GroupsAPI.dll" />
 			<InputAssemblies Include="$(OutputPath)\LocalizationManager.dll" />
 			<InputAssemblies Include="$(OutputPath)YamlDotNet.dll"/>
-			<InputAssemblies Include="$(OutputPath)ItemManager.dll"/>
+			<!--<InputAssemblies Include="$(OutputPath)ItemManager.dll"/>-->
 			<InputAssemblies Include="$(OutputPath)PieceManager.dll"/>
 			<InputAssemblies Include="$(OutputPath)StatusEffectManager.dll"/>
 			<InputAssemblies Include="$(OutputPath)AnimationSpeedManager.dll"/>

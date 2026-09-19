@@ -1,4 +1,6 @@
-| 1.9.67| - Bug Fix
+| 1.9.68 | - Update Vietnamese language,
+
+| 1.9.67 | - Bug Fix
 
 | 1.9.66 | - Update for 1.07 Release. Updated Default.json Updated SeaAnimals.json
 
