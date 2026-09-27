@@ -13,11 +13,14 @@ public static class PlayerFVX
     public static void levelUp()
     {
         Transform parent = Player.m_localPlayer.transform.Find("Visual/Armature/Hips/Spine/Spine1/Spine2");
-        Transform vfx = null;
-        if (!EpicMMOSystem.altLevelUpSound.Value)
-             vfx = EpicMMOSystem.Instantiate(ZNetScene.instance.GetPrefab("LevelUpVFX"), parent).transform;
-        else
-            vfx = EpicMMOSystem.Instantiate(ZNetScene.instance.GetPrefab("LevelUpVFX2"), parent).transform;
+        string prefabName = EpicMMOSystem.altLevelUpSound.Value ? "LevelUpVFX2" : "LevelUpVFX";
+        Transform vfx = EpicMMOSystem.Instantiate(ZNetScene.instance.GetPrefab(prefabName), parent).transform;
+        float volume = EpicMMOSystem.levelUpSoundVolume.Value;
+
+        foreach (AudioSource audioSource in vfx.GetComponentsInChildren<AudioSource>(true))
+        {
+            audioSource.volume *= volume;
+        }
 
         vfx.localPosition = Vector3.zero;
         vfx.localScale = new Vector3(0.01352632f, 0.01352632f, 0.01352632f);

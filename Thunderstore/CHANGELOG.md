@@ -1,3 +1,7 @@
+| 1.9.70 | - Added config for level up sound levelUpSoundVolume.
+
+| 1.9.69 | - Update Piece Usage
+
 | 1.9.68 | - Update Vietnamese language,
 
 | 1.9.67 | - Bug Fix
