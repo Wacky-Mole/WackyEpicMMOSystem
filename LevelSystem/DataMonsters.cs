@@ -163,6 +163,95 @@ public static class DataMonsters
         return dictionary[name].level;     
     }
 
+    public const string XPOverrideZdoKey = "EpicMMOSystem_XPOverride";
+    public const string LevelOverrideZdoKey = "EpicMMOSystem_LevelOverride";
+
+    private static string BiomeKey(string name, Heightmap.Biome biome)
+    {
+        return name + "|biome:" + biome;
+    }
+
+    public static string GetConfigurationKey(Character character)
+    {
+        if (character == null) return "";
+        string name = character.gameObject.name;
+        if (character.IsPlayer()) return name;
+
+        if (WorldGenerator.instance != null)
+        {
+            var biome = WorldGenerator.instance.GetBiome(character.transform.position);
+            string key = BiomeKey(name, biome);
+            if (dictionary.ContainsKey(key)) return key;
+        }
+
+        return name;
+    }
+
+    public static bool contains(Character character)
+    {
+        return character != null && (GetLevelOverride(character) >= 0 || contains(GetConfigurationKey(character)));
+    }
+
+    public static int getLevel(Character character)
+    {
+        int levelOverride = GetLevelOverride(character);
+        if (levelOverride >= 0) return levelOverride;
+        string key = GetConfigurationKey(character);
+        return dictionary.TryGetValue(key, out var monster) ? monster.level : 0;
+    }
+
+    public static int GetEffectiveLevel(int configuredLevel, int characterLevel, int levelOverride = -1)
+    {
+        if (levelOverride >= 0) return levelOverride;
+        if (configuredLevel == 0 || !EpicMMOSystem.mobLvlPerStar.Value) return configuredLevel;
+        return configuredLevel + characterLevel - 1;
+    }
+
+    public static int GetEffectiveLevel(Character character)
+    {
+        return GetEffectiveLevel(getLevel(character), character != null ? character.GetLevel() : 1,
+            GetLevelOverride(character));
+    }
+
+    public static int GetXPOverride(Character character)
+    {
+        return GetOverride(character, XPOverrideZdoKey);
+    }
+
+    public static int GetLevelOverride(Character character)
+    {
+        return GetOverride(character, LevelOverrideZdoKey);
+    }
+
+    private static int GetOverride(Character character, string key)
+    {
+        if (character == null || character.IsPlayer()) return -1;
+        var view = character.m_nview;
+        var zdo = view != null && view.IsValid() ? view.GetZDO() : null;
+        return zdo != null ? Math.Max(-1, zdo.GetInt(key, -1)) : -1;
+    }
+
+    public static bool SetXPOverride(Character character, int xp)
+    {
+        return SetOverride(character, XPOverrideZdoKey, xp);
+    }
+
+    public static bool SetLevelOverride(Character character, int level)
+    {
+        return SetOverride(character, LevelOverrideZdoKey, level);
+    }
+
+    private static bool SetOverride(Character character, string key, int value)
+    {
+        if (character == null || character.IsPlayer() || value < -1) return false;
+        var view = character.m_nview;
+        if (view == null || !view.IsValid() || !view.IsOwner()) return false;
+        var zdo = view.GetZDO();
+        if (zdo == null) return false;
+        zdo.Set(key, value);
+        return true;
+    }
+
 
     public static void createNewDataMonsters(List<string> json)
     {
@@ -227,9 +316,21 @@ public static class DataMonsters
                     EpicMMOSystem.MLLogger.LogInfo($"{monster.name}");
 
                 string key = $"{monster.name}(Clone)";
+                if (!string.IsNullOrWhiteSpace(monster.biome))
+                {
+                    if (!Enum.TryParse<Heightmap.Biome>(monster.biome.Trim(), true, out var biome) ||
+                        !Enum.IsDefined(typeof(Heightmap.Biome), biome))
+                    {
+                        EpicMMOSystem.MLLogger.LogWarning($"Invalid biome '{monster.biome}' for {monster.name} in {sourceLabel}; entry skipped.");
+                        continue;
+                    }
+
+                    key = BiomeKey(key, biome);
+                }
+
                 if (dictionary.ContainsKey(key))
                 {
-                    EpicMMOSystem.MLLogger.LogWarning($"{monster.name} from {sourceLabel} is already entered");
+                    EpicMMOSystem.MLLogger.LogWarning($"{key} from {sourceLabel} is already entered");
                 }
                 else
                 {
@@ -369,6 +470,8 @@ public static class DataMonsters
                 cleartowrite = true;
             if (filev == "1.9.65")           
                 cleartowrite = true;
+            if (filev == "1.9.66")           
+                cleartowrite = true;
 
 
             if (File.Exists(badfilepath))
@@ -378,7 +481,7 @@ public static class DataMonsters
 
                         
 
-            if (filev == "1.9.66") // last version to get a DB update
+            if (filev == "1.9.71") // last version to get a DB update
                 cleartowrite = false;
 
             if (filev == "NO" || filev == "no" || filev == "No" || filev == "STOP" || filev == "stop" || filev == "Stop")
@@ -390,7 +493,7 @@ public static class DataMonsters
         if (cleartowrite)
         {
             //list.Clear();
-            File.WriteAllText(versionpath, "1.9.66"); // Write Version file, don't auto update
+            File.WriteAllText(versionpath, "1.9.71"); // Write Version file, don't auto update
 
             File.WriteAllText(warningtext, "Erase numbers in Version.txt and write NO or stop in file. This should stop DB json files from updating on an update. If you make your own custom json file, then that one should never be updated.");
 
@@ -675,14 +778,12 @@ public static class DataMonsters
           
 
             if (!EpicMMOSystem.enabledLevelControl.Value) return;
-            if (!contains(c.gameObject.name)) return;
+            if (!contains(c)) return;
             Transform go = ___m_huds[c].m_gui.transform.Find("Name/Name(Clone)");
             if (go) return;
             int maxLevelExp = LevelSystem.Instance.getLevel() + EpicMMOSystem.maxLevelExp.Value;
             int minLevelExp = LevelSystem.Instance.getLevel() - EpicMMOSystem.minLevelExp.Value;
-            int monsterLevel = getLevel(c.gameObject.name);
-            if (EpicMMOSystem.mobLvlPerStar.Value)
-                monsterLevel = monsterLevel + c.m_level - 1;
+            int monsterLevel = GetEffectiveLevel(c);
 
             GameObject component = ___m_huds[c].m_gui.transform.Find("Name").gameObject;
             //var textspace = component.GetComponent<Text>().text;
@@ -698,7 +799,7 @@ public static class DataMonsters
             string moblvlstring = monsterLevel.ToString();
             Color color = monsterLevel > maxLevelExp ? Color.red : Color.white;
             if (monsterLevel < minLevelExp) color = Color.cyan;
-            if (getLevel(c.gameObject.name) == 0)
+            if (monsterLevel == 0)
             {
                 moblvlstring = "???";
                 color = Color.yellow;
@@ -786,19 +887,17 @@ public static class DataMonsters
                     if (key.IsTamed()) return;
                     if (key != null && keyValuePair.Value.m_gui)
                     {
-                        if (!contains(key.gameObject.name)) return;
+                        if (!contains(key)) return;
 
                         //key.IsPlayer();
                         int maxLevelExp = LevelSystem.Instance.getLevel() + EpicMMOSystem.maxLevelExp.Value;
                         int minLevelExp = LevelSystem.Instance.getLevel() - EpicMMOSystem.minLevelExp.Value;
-                        int monsterLevel = getLevel(key.gameObject.name);
-                        if (EpicMMOSystem.mobLvlPerStar.Value)
-                            monsterLevel = monsterLevel + key.m_level - 1;
+                        int monsterLevel = GetEffectiveLevel(key);
 
                         string mobLevelString = monsterLevel.ToString();
                         Color color = monsterLevel > maxLevelExp ? Color.red : Color.white;
                         if (monsterLevel < minLevelExp) color = Color.cyan;
-                        if (getLevel(key.gameObject.name) == 0)
+                        if (monsterLevel == 0)
                         {
                             mobLevelString = "???";
                             color = Color.yellow;
@@ -892,7 +991,7 @@ public static class DataMonsters
                 {
                     if (EpicMMOSystem.removeAllDropsFromNonPlayerKills.Value)
                     {
-                        if (contains(__instance.m_character.gameObject.name))
+                        if (contains(__instance.m_character))
                         {
                             __result = new(); // no drops from charcter related objects
                         }
@@ -900,7 +999,7 @@ public static class DataMonsters
                     playerLevel = 0;
                 }
 
-                if (!contains(__instance.m_character.gameObject.name)) return;
+                if (!contains(__instance.m_character)) return;
                 if (playerLevel != 0)
                 {                
                     // could just use isBoss above
@@ -922,14 +1021,9 @@ public static class DataMonsters
                     
                     //int monsterLevel = getLevel(__instance.m_character.gameObject.name) + __instance.m_character.m_level - 1; // fuck!
 
-                    int monsterLevel = DataMonsters.getLevel(__instance.m_character.gameObject.name);
+                    int monsterLevel = GetEffectiveLevel(__instance.m_character);
 
-                    if (EpicMMOSystem.mobLvlPerStar.Value)
-                    {
-                        monsterLevel = monsterLevel + __instance.m_character.m_level - 1;
-                    }
-
-                    if (getLevel(__instance.m_character.gameObject.name) == 0)
+                    if (monsterLevel == 0)
                         return;
 
                     if ((monsterLevel > maxLevelExp) && (EpicMMOSystem.removeBossDropMax.Value && !Regmob || EpicMMOSystem.removeDropMax.Value && Regmob))

@@ -1,3 +1,5 @@
+| 1.9.71 | - Added optional biome json, for different mob levels and xp based on biome. </br> Added XP and level ZDO override for other mods. EpicMMOSystem_XPOverride and EpicMMOSystem_LevelOverride . </br> Updated Default.json
+
 | 1.9.70 | - Added config for level up sound levelUpSoundVolume.
 
 | 1.9.69 | - Update Piece Usage

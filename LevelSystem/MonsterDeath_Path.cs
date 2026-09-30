@@ -92,6 +92,17 @@ public static class MonsterDeath_Path
         int level = pkg.ReadInt();
         bool isBoss = pkg.ReadBool();
         Vector3 position = pkg.ReadVector3();
+        string configurationKey = monsterName;
+        int xpOverride = -1;
+        int levelOverride = -1;
+        if (pkg.GetPos() < pkg.Size())
+        {
+            configurationKey = pkg.ReadString();
+            xpOverride = Math.Max(-1, pkg.ReadInt());
+            if (pkg.Size() - pkg.GetPos() >= sizeof(int))
+                levelOverride = Math.Max(-1, pkg.ReadInt());
+        }
+        if (!DataMonsters.contains(configurationKey)) configurationKey = monsterName;
         bool playerdead  = false;
         var MobisBoss = isBoss;
         int monsterLevel = 1;
@@ -108,33 +119,36 @@ public static class MonsterDeath_Path
         }
         else
         {
-            if (!DataMonsters.contains(monsterName))
+            bool configured = DataMonsters.contains(configurationKey);
+            if (!configured && xpOverride < 0)
             {
                 EpicMMOSystem.print($"{EpicMMOSystem.ModName}: Can't find monster {monsterName}");
                 return;
             }
 
-            monsterLevel = DataMonsters.getLevel(monsterName);
-
-            if (EpicMMOSystem.mobLvlPerStar.Value)
-            {
-                monsterLevel = monsterLevel + level - 1;
-            }
-
-            if (DataMonsters.getLevel(monsterName) == 0)
-                monsterLevel = 0;
-
-                
+            int baseLevel = configured ? DataMonsters.getLevel(configurationKey) : 0;
+            monsterLevel = DataMonsters.GetEffectiveLevel(baseLevel, level, levelOverride);
 
             if ((double)Vector3.Distance(position, Player.m_localPlayer.transform.position) >= EpicMMOSystem.playerRange.Value) return;
 
-            int expMonster = DataMonsters.getExp(monsterName);
-            int maxExp = DataMonsters.getMaxExp(monsterName);
-            float lvlExp = EpicMMOSystem.expForLvlMonster.Value;
-            var resultExp = expMonster + (maxExp * lvlExp * (level - 1));
-            exp = Convert.ToInt32(resultExp);
+            if (xpOverride >= 0)
+            {
+                exp = xpOverride;
+            }
+            else
+            {
+                int expMonster = DataMonsters.getExp(configurationKey);
+                int maxExp = DataMonsters.getMaxExp(configurationKey);
+                float lvlExp = EpicMMOSystem.expForLvlMonster.Value;
+                var resultExp = expMonster + (maxExp * lvlExp * (level - 1));
+                exp = Convert.ToInt32(resultExp);
+            }
             playerExp = exp;
-       
+
+            if (EpicMMOSystem.extraDebug.Value)
+                EpicMMOSystem.MLLogger.LogInfo($"XP reward: {monsterName}, configuration={configurationKey}, stars={level - 1}, override={xpOverride}, levelOverride={levelOverride}, level={monsterLevel}, baseXP={exp}");
+
+            if (xpOverride == 0) return;
 
             if (EpicMMOSystem.enabledLevelControl.Value && (EpicMMOSystem.curveExp.Value || MobisBoss && EpicMMOSystem.curveBossExp.Value || EpicMMOSystem.noExpPastLVL.Value) && monsterLevel != 0)
             {
@@ -245,16 +259,12 @@ public static class MonsterDeath_Path
                 if (__instance.IsPlayer()) return;
                 if (__instance.IsTamed()) return;
 
-                if (!DataMonsters.contains(__instance.gameObject.name)) return;
+                if (!DataMonsters.contains(__instance)) return;
                 int playerLevel = LevelSystem.Instance.getLevel();
                 int maxLevelExp = playerLevel + EpicMMOSystem.maxLevelExp.Value +EpicMMOSystem.lowDamageExtraConfig.Value;
-                int monsterLevel = DataMonsters.getLevel(__instance.gameObject.name); 
-                if (EpicMMOSystem.mobLvlPerStar.Value)
-                {
-                    monsterLevel = monsterLevel + __instance.m_level - 1;
-                }
+                int monsterLevel = DataMonsters.GetEffectiveLevel(__instance);
 
-                if (DataMonsters.getLevel(__instance.gameObject.name) == 0)
+                if (monsterLevel == 0)
                     return;
                 if (monsterLevel > maxLevelExp)
                 {
@@ -268,6 +278,13 @@ public static class MonsterDeath_Path
     
         
     private static bool lasthitplayer = false;
+
+    private static void AppendMonsterReward(ZPackage pkg, Character character)
+    {
+        pkg.Write(DataMonsters.GetConfigurationKey(character));
+        pkg.Write(DataMonsters.GetXPOverride(character));
+        pkg.Write(DataMonsters.GetLevelOverride(character));
+    }
     
     [HarmonyPatch(typeof(Character), nameof(Character.RPC_Damage))]
     static class QuestEnemyKill
@@ -391,6 +408,7 @@ public static class MonsterDeath_Path
                 pkg.Write(__instance.GetFaction() == Character.Faction.Boss);
                 
                 pkg.Write(__instance.transform.position);
+                AppendMonsterReward(pkg, __instance);
                 ZRoutedRpc.instance.InvokeRoutedRPC(attacker, $"{EpicMMOSystem.ModName} DeadMonsters", new object[] { pkg });
                 CharacterLastDamageList.Remove(__instance);
             }
@@ -445,6 +463,7 @@ public static class MonsterDeath_Path
                     pkg.Write(__instance.GetFaction() == Character.Faction.Boss);
 
                     pkg.Write(__instance.transform.position);            
+                    AppendMonsterReward(pkg, __instance);
                     ZRoutedRpc.instance.InvokeRoutedRPC(attacker, $"{EpicMMOSystem.ModName} DeadMonsters", new object[] { pkg });
                     CharacterLastDamageList.Remove(__instance);
                 }

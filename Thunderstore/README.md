@@ -149,9 +149,73 @@ You can combine multiple Skills for one Requirement
 
 	A file called Version.txt is created in the folder. It contains the mod version that was used to create it. Replace it with "NO" to stop it from overwritting on a future update.
 
-	Latest Update for Jsons config is <b> 1.9.66 </b>(Number will be updated when Jsons recieve an update)
+	Latest Update for Jsons config is <b> 1.9.71 </b>(Number will be updated when Jsons recieve an update)
 
-	
+
+</details>
+
+<details><summary>Biome-Specific and ZDO override</summary>	
+
+## Biome-specific monster XP
+
+Monster JSON entries can optionally specify `biome`. Entries without it remain
+the prefab fallback. A biome entry replaces the complete XP range and MMO level
+for that prefab in that biome; it does not multiply the default entry.
+
+Example entries (XP and level values are illustrative):
+
+```json
+[
+  { "name": "Skeleton", "minExp": 10, "maxExp": 20, "level": 5 },
+  { "name": "Skeleton", "biome": "BlackForest", "minExp": 20, "maxExp": 30, "level": 10 },
+  { "name": "Skeleton", "biome": "Swamp", "minExp": 40, "maxExp": 60, "level": 20 }
+]
+```
+
+Add these entries to the existing monster configuration files, replacing any
+duplicate prefab/biome entries. Biome names are case-insensitive and must match
+`Heightmap.Biome`, such as `BlackForest`, `Swamp`, `Mountain`, or `AshLands`.
+Invalid biome entries are skipped with a warning. Existing star XP scaling still
+applies to configured XP. The same biome entry supplies HUD and restriction levels.
+
+Biome matching uses the creature's current world position. Moving into another
+biome can change its matching configuration; kill rewards use its location at
+death.
+
+## Per-creature numeric XP and level overrides
+
+Other mods can independently write integers to these creature ZDO keys, without
+referencing EpicMMOSystem:
+
+- `EpicMMOSystem_XPOverride`: exact creature XP reward before player/group modifiers.
+- `EpicMMOSystem_LevelOverride`: exact MMO level used by the HUD, XP penalties,
+  damage restrictions, and drop restrictions. This is not the game's star level.
+
+```csharp
+var view = creature.m_nview;
+if (view != null && view.IsValid() && view.IsOwner())
+{
+	view.GetZDO()?.Set("EpicMMOSystem_XPOverride", 125);
+	view.GetZDO()?.Set("EpicMMOSystem_LevelOverride", 20);
+}
+```
+
+- XP `0` disables XP from this creature, including group XP.
+- A positive XP value replaces the creature reward exactly, bypassing the configured
+  random XP range and star XP scaling.
+- A positive level value overrides the configured MMO level without star increments.
+- Level `0` means unknown level (`???` in the HUD), exempt from level restrictions.
+- `-1` (or an absent key) restores the corresponding biome/prefab setting. Values
+  below `-1` are treated as unset when read.
+- Existing player-level penalties, XP rates, potions, and group multipliers still
+	apply after the creature reward is determined, using the overridden level if set.
+- XP and level overrides are independent: a level-only override does not change
+  configured random/star XP scaling, and an XP-only override does not change level.
+- An unconfigured creature can award overridden XP; without a level override its
+  MMO level is unknown (`0`). A level override alone does not supply missing XP.
+
+The initialized creature's owning peer must perform the write.
+
 
 </details>
 

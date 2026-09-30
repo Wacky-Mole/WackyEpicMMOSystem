@@ -9,6 +9,7 @@ public struct Monster
     public int minExp;
     public int maxExp;
     public int level;
+    public string biome;
     
 }
 /*

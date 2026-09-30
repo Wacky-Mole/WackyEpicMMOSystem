@@ -48,6 +48,13 @@
     "level": 15
   },
   {
+    "name": "Skeleton",
+    "biome": "Swamp",
+    "minExp": 80,
+    "maxExp": 100,
+    "level": 20
+  },
+  {
     "name": "Skeleton_Poison",
     "minExp": 100,
     "maxExp": 150,
