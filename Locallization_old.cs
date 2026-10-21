@@ -1610,11 +1610,11 @@ public class Localizationold
         _dictionary.Add("$parameter_strength", "Sức mạnh");
         _dictionary.Add("$parameter_intellect", "Trí tuệ");
         _dictionary.Add("$free_points", "Điểm khả dụng");
-        _dictionary.Add("$level", "Cấp");
+        _dictionary.Add("$level", "Cấp độ");
         _dictionary.Add("$lvl", "Cấp");
         _dictionary.Add("$exp", "Kinh nghiệm");
         _dictionary.Add("$cancel", "Hủy");
-        _dictionary.Add("$apply", "Xác nhận");
+        _dictionary.Add("$apply", "Áp dụng");
         _dictionary.Add("$reset_parameters", "Đặt lại điểm");
         _dictionary.Add("$no", "Không");
         _dictionary.Add("$yes", "Có");
@@ -1623,7 +1623,7 @@ public class Localizationold
 
         // Tham số
         _dictionary.Add("$physic_damage", "Sát thương vật lý");
-        _dictionary.Add("$add_weight", "Trọng lượng mang theo");
+        _dictionary.Add("$add_weight", "Sức mang");
         _dictionary.Add("$reduced_stamina", "Tiêu hao thể lực (chạy, nhảy)");
         _dictionary.Add("$magic_damage", "Sát thương nguyên tố");
         _dictionary.Add("$magic_armor", "Giảm sát thương nguyên tố");
@@ -1640,21 +1640,21 @@ public class Localizationold
         _dictionary.Add("$add_eitr", "Tăng Eitr");
 
         // Tham số mới/thay đổi trong phiên bản 1.7.0
-        _dictionary.Add("$parameter_agility", "Khéo léo");
-        _dictionary.Add("$parameter_body", "Sức bền");
+        _dictionary.Add("$parameter_agility", "Nhanh nhẹn");
+        _dictionary.Add("$parameter_body", "Thể chất");
         _dictionary.Add("$parameter_vigour", "Sinh lực");
         _dictionary.Add("$parameter_special", "Chuyên môn");
         _dictionary.Add("$specialother", "Đặc biệt"); // Tiêu đề mục
-        _dictionary.Add("$attack_speed", "Tốc độ tấn công");
+        _dictionary.Add("$attack_speed", "Tốc độ đánh");
         _dictionary.Add("$attack_stamina", "Thể lực tiêu hao khi tấn công");
         _dictionary.Add("$crtcDmgMulti", "Hệ số sát thương chí mạng");
         _dictionary.Add("$mining_speed", "Tăng sát thương khai thác");
         _dictionary.Add("$piece_health", "Tăng độ bền công trình");
         _dictionary.Add("$tree_cutting", "Tăng sát thương chặt cây");
-        _dictionary.Add("$crit_chance", "Tăng tỉ lệ chí mạng");
+        _dictionary.Add("$crit_chance", "Tăng tỷ lệ chí mạng");
 
         // Danh sách bạn bè
-        _dictionary.Add("$notify", "<color=#00E6FF>Cảnh báo</color>");
+        _dictionary.Add("$notify", "<color=#00E6FF>Thông báo</color>");
         _dictionary.Add("$friends_list", "Danh sách bạn bè");
         _dictionary.Add("$send", "Gửi");
         _dictionary.Add("$invited", "Lời mời");
@@ -1667,18 +1667,18 @@ public class Localizationold
         _dictionary.Add("$accept_invite", "Người chơi {0} đã chấp nhận lời mời kết bạn.");
         _dictionary.Add("$cancel_invite", "Người chơi {0} đã hủy lời mời kết bạn.");
 
-        // Thiết bị đầu cuối
-        _dictionary.Add("$terminal_set_level", "Bạn đã đạt cấp {0}");
+        // Lệnh console
+        _dictionary.Add("$terminal_set_level", "Bạn đã đạt cấp độ {0}");
         _dictionary.Add("$terminal_reset_points", "Điểm thuộc tính của bạn đã được đặt lại");
 
         _dictionary.Add("$strength_tooltip", "<size=20>Sức mạnh sẽ tăng cường:</size> \n" +
                             "<color=yellow> Tăng sát thương vật lý </color> \n" +
-                            "<color=blue> Tăng trọng lượng mang theo </color> \n" +
+                            "<color=blue> Tăng sức mang </color> \n" +
                             "<color=green> Giảm thể lực tiêu hao khi đỡ đòn </color> \n" +
-                            "<color=red> Tăng sát thương chí mạng khi đánh chí mạng </color>");
+                            "<color=red> Tăng sát thương chí mạng </color>");
 
-        _dictionary.Add("$dexterity_tooltip", "<size=20>Khéo léo sẽ tăng cường:</size> \n" +
-                            "<color=red> Tăng tốc độ tấn công (không áp dụng cho cung)</color> \n" +
+        _dictionary.Add("$dexterity_tooltip", "<size=20>Nhanh nhẹn sẽ tăng cường:</size> \n" +
+                            "<color=red> Tăng tốc độ đánh (không áp dụng cho cung)</color> \n" +
                             "<color=yellow> Giảm thể lực tiêu hao khi tấn công </color> \n" +
                             "<color=green> Giảm thể lực tiêu hao khi chạy hoặc nhảy</color> ");
 
@@ -1687,7 +1687,7 @@ public class Localizationold
                             "<color=red> Tăng lượng Eitr cơ bản (sau khi bạn có Eitr)</color> \n" +
                             "<color=red> Tăng tốc độ hồi phục Eitr</color> ");
 
-        _dictionary.Add("$endurance_tooltip", "<size=20>Sức bền sẽ tăng cường:</size> \n" +
+        _dictionary.Add("$endurance_tooltip", "<size=20>Thể chất sẽ tăng cường:</size> \n" +
                             "<color=yellow> Tăng lượng thể lực</color>\n" +
                             "<color=yellow> Tăng tốc độ hồi phục thể lực </color> \n" +
                             "<color=green> Giảm sát thương vật lý phải chịu</color> ");
@@ -1698,7 +1698,7 @@ public class Localizationold
                             "<color=green> Giảm sát thương nguyên tố phải chịu</color> ");
 
         _dictionary.Add("$special_tooltip", "<size=20>Chuyên môn sẽ tăng cường:</size> \n" +
-                            "<color=red> Tăng tỉ lệ tấn công chí mạng</color> \n" +
+                            "<color=red> Tăng tỷ lệ chí mạng</color> \n" +
                             "<color=blue> Tăng sát thương khai thác </color> \n" +
                             "<color=blue> Tăng độ bền của các công trình </color> \n" +
                             "<color=green> Tăng sát thương chặt cây</color>");

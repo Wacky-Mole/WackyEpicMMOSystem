@@ -41,7 +41,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.72";
+    internal const string VERSION = "1.9.74";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -317,7 +317,7 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         maxValueSpecializing = config(levelSystem, "maxValueSpecializing", 200, "Maximum number of points you can put into Specializing");
         MultiplierForXPTaming = config(levelSystem, "Taming XP Multiplier", 5, "You get normal xp amount, times this number for taming a creature");
         altLevelUpSound = config(levelSystem, "altLevelUpSound", false, "It's Loud and Heart attack inducing");
-        levelUpSoundVolume = config(levelSystem, "LevelUpSoundVolume2   ", 0.5f,
+        levelUpSoundVolume = config(levelSystem, "LevelUpSoundVolume2", 0.5f,
             new ConfigDescription("Level-up sound volume, from 0 (muted) to 1 (prefab volume).",
                 new AcceptableValueRange<float>(0f, 1f)), false);
 
