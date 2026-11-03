@@ -487,8 +487,8 @@
   },
   {
     "name": "JotunWarrior",
-    "minExp": 3000,
-    "maxExp": 4000,
+    "minExp": 2000,
+    "maxExp": 3000,
     "level": 84
   },
   {
@@ -509,8 +509,12 @@
     "maxExp": 4000,
     "level": 84
   },
-  
-  
+  {
+    "name": "ElakingMole",
+    "minExp": 1600,
+    "maxExp": 3000,
+    "level": 81
+  },
   {
     "name": "Skeleton_Hildir",
     "minExp": 600,

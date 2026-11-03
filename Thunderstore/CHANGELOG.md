@@ -1,3 +1,5 @@
+| 1.9.75 | - Updated Default.json and Bestiary.json
+
 | 1.9.74 | - Bug fix
 
 | 1.9.73 | - Vietnamese language update. 

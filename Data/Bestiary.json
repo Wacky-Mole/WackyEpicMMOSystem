@@ -12,6 +12,12 @@
     "level": 2
   },
   {
+    "name": "RDB_Fox",
+    "minExp": 46,
+    "maxExp": 64,
+    "level": 4
+  },
+  {
     "name": "RDB_Genganger",
     "minExp": 118,
     "maxExp": 145,
@@ -30,7 +36,19 @@
     "level": 18
   },
   {
+    "name": "RDB_Ent",
+    "minExp": 215,
+    "maxExp": 242,
+    "level": 22
+  },
+  {
     "name": "RDB_lizardwarrior",
+    "minExp": 237,
+    "maxExp": 290,
+    "level": 26
+  },
+  {
+    "name": "RDB_giant_rat",
     "minExp": 237,
     "maxExp": 290,
     "level": 26
@@ -43,6 +61,12 @@
   },
   {
     "name": "RDB_Werewolf",
+    "minExp": 438,
+    "maxExp": 596,
+    "level": 42
+  },
+  {
+    "name": "RDB_Weregoat",
     "minExp": 438,
     "maxExp": 596,
     "level": 42
