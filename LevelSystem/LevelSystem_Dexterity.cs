@@ -13,6 +13,31 @@ public partial class LevelSystem
         var multiplayer = EpicMMOSystem.attackSpeed.Value;
         return parameter * multiplayer;
     }
+
+    [HarmonyPatch(typeof(Player), nameof(Player.QueueReloadAction))]
+    private static class ReloadSpeed_Patch
+    {
+        private static void Prefix(Player __instance, out int __state)
+        {
+            __state = __instance.m_actionQueue.Count;
+        }
+
+        private static void Postfix(Player __instance, int __state)
+        {
+            if (__instance != Player.m_localPlayer || Instance is null || __instance.m_actionQueue.Count <= __state)
+            {
+                return;
+            }
+
+            Player.MinorActionData action = __instance.m_actionQueue[__instance.m_actionQueue.Count - 1];
+            if (action.m_type == Player.MinorActionData.ActionType.Reload)
+            {
+                // Reload readiness is timer-driven, independently of the animation speed.
+                action.m_duration /= 1 + Instance.getAddAttackSpeed() / 100;
+            }
+        }
+    }
+
     public float getAttackStamina(int pointpending = 0)
     {
         var parameter = getParameter(Parameter.Agility) + pointpending;

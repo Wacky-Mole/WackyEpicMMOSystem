@@ -41,7 +41,7 @@ namespace EpicMMOSystem;
 public partial class EpicMMOSystem : BaseUnityPlugin
 {
     internal const string ModName = "EpicMMOSystem";
-    internal const string VERSION = "1.9.75";
+    internal const string VERSION = "1.9.76";
     internal const string Author = "WackyMole";
    // internal const string configV = "_1_7";
     private const string ModGUID = Author + "." + ModName; //+ configV; changes GUID
@@ -445,12 +445,27 @@ public partial class EpicMMOSystem : BaseUnityPlugin
 
 
 
-        AnimationSpeedManager.Add((character, speed) => { // animation controller because reasons and stuff
-            if (character is not Player player || !player.InAttack() || player.m_currentAttack is null || (LevelSystem.Instance.getParameter(Parameter.Agility) == 0) || player.GetCurrentWeapon().m_shared.m_skillType == Skills.SkillType.Bows)
+        AnimationSpeedManager.Add((character, speed) => {
+            if (character is not Player player || LevelSystem.Instance.getParameter(Parameter.Agility) == 0)
             {
                 return speed;
             }
-            return speed * (1+LevelSystem.Instance.getAddAttackSpeed()/100);
+
+            if (!IsReloading(player))
+            {
+                if (!player.InAttack() || player.m_currentAttack is null)
+                {
+                    return speed;
+                }
+
+                ItemDrop.ItemData weapon = player.GetCurrentWeapon();
+                if (weapon is null || weapon.m_shared.m_skillType == Skills.SkillType.Bows)
+                {
+                    return speed;
+                }
+            }
+
+            return speed * (1 + LevelSystem.Instance.getAddAttackSpeed() / 100);
         });
 
         //ConfigSync.value
@@ -466,6 +481,18 @@ public partial class EpicMMOSystem : BaseUnityPlugin
         if (Chainloader.PluginInfos.ContainsKey("org.bepinex.plugins.creaturelevelcontrol")){
             CLLCLoaded = true;
         }
+    }
+
+    private static bool IsReloading(Player player)
+    {
+        if (player.m_actionAnimation is null || player.m_actionQueue.Count == 0)
+        {
+            return false;
+        }
+
+        Player.MinorActionData action = player.m_actionQueue[0];
+        return action.m_type == Player.MinorActionData.ActionType.Reload
+            && player.m_actionAnimation == action.m_animation;
     }
 
     private static void itemassets()

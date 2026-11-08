@@ -1,3 +1,5 @@
+| 1.9.76 | - Updated Default.json </br> Update Speed Animation Manager. </br>  Dexterity AttackSpeed now also shortens weapon reload completion time.
+
 | 1.9.75 | - Updated Default.json and Bestiary.json
 
 | 1.9.74 | - Bug fix

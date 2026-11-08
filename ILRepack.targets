@@ -13,8 +13,8 @@
 			<!--<InputAssemblies Include="$(OutputPath)ItemManager.dll"/>-->
 			<InputAssemblies Include="$(OutputPath)PieceManager.dll"/>
 			<InputAssemblies Include="$(OutputPath)StatusEffectManager.dll"/>
-			<InputAssemblies Include="$(OutputPath)AnimationSpeedManager.dll"/>
-        </ItemGroup>
+			<!--<InputAssemblies Include="$(OutputPath)AnimationSpeedManager.dll"/>-->
+		</ItemGroup>
         <ILRepack Parallel="true" DebugInfo="true" Internalize="true" InputAssemblies="@(InputAssemblies)" OutputFile="$(TargetPath)" TargetKind="SameAsPrimaryAssembly" LibraryPath="$(OutputPath)" />
     </Target>
 	<Target Name="Release" AfterTargets="ILRepack" Condition=" '$(Configuration)' == 'Release'">

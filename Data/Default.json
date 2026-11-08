@@ -564,6 +564,120 @@
     "level": 0
   },
   {
+    "name": "TentaRoot_wild",
+    "minExp": 50,
+    "maxExp": 75,
+    "level": 15
+  },
+  {
+    "name": "FallenWarrior",
+    "minExp": 2500,
+    "maxExp": 3500,
+    "level": 82
+  },
+  {
+    "name": "BlobMork",
+    "minExp": 200,
+    "maxExp": 3500,
+    "level": 82
+  },
+  {
+    "name": "BlobMorkBig",
+    "minExp": 3000,
+    "maxExp": 3500,
+    "level": 82
+  },
+  {
+    "name": "BlobMorkMini",
+    "minExp": 0,
+    "maxExp": 0,
+    "level": 5
+  },
+  {
+    "name": "GoblinDeepNorth",
+    "minExp": 2500,
+    "maxExp": 3000,
+    "level": 82
+  },
+  {
+    "name": "JotunWarriorDualWield",
+    "minExp": 3000,
+    "maxExp": 3500,
+    "level": 84
+  },
+  {
+    "name": "TrollFrost",
+    "minExp": 5000,
+    "maxExp": 6000,
+    "level": 85
+  },
+  {
+    "name": "Aspect_Eikthyr",
+    "minExp": 2000,
+    "maxExp": 2000,
+    "level": 84
+  },
+  {
+    "name": "Aspect_Elder",
+    "minExp": 2000,
+    "maxExp": 2000,
+    "level": 84
+  },
+  {
+    "name": "Aspect_Bonemass",
+    "minExp": 2000,
+    "maxExp": 2000,
+    "level": 84
+  },
+  {
+    "name": "BlobAspect",
+    "minExp": 500,
+    "maxExp": 500,
+    "level": 80
+  },
+  {
+    "name": "Skeleton_aspect",
+    "minExp": 500,
+    "maxExp": 500,
+    "level": 80
+  },
+  {
+    "name": "Aspect_Moder",
+    "minExp": 2000,
+    "maxExp": 2000,
+    "level": 84
+  },
+  {
+    "name": "Aspect_Yagluth",
+    "minExp": 2000,
+    "maxExp": 2000,
+    "level": 84
+  },
+  {
+    "name": "Aspect_SeekerQueen",
+    "minExp": 2000,
+    "maxExp": 2000,
+    "level": 84
+  },
+  {
+    "name": "Aspect_Fader",
+    "minExp": 2000,
+    "maxExp": 2000,
+    "level": 84
+  },
+  {
+    "name": "SummonedSeeker_TW",
+    "minExp": 800,
+    "maxExp": 1000,
+    "level": 59
+  },
+  {
+    "name": "CorruptedDvergerMage_TW",
+    "minExp": 800,
+    "maxExp": 1000,
+    "level": 59
+  },
+  {
     "name": "Eikthyr",
     "minExp": 500,
     "maxExp": 1500,

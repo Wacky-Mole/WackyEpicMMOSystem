@@ -312,6 +312,7 @@
     <Compile Include="LevelSystem\LevelSystem_noncombat.cs" />
     <Compile Include="LevelSystem\LevelSystem_Specializing.cs" />
     <Compile Include="LevelSystem\LevelSystem_Vigour.cs" />
+    <Compile Include="Libs\AnimationSpeedManager.cs" />
     <Compile Include="Libs\ItemManger.cs" />
     <Compile Include="OtherApi\Guilds_API.cs" />
     <Compile Include="OtherApi\wackydb_api.cs" />
@@ -349,9 +350,6 @@
     <EmbeddedResource Include="asset\epicasset" />
     <EmbeddedResource Include="Data\Default.json" />
     <Content Include="ILRepack.targets" />
-    <Content Include="Libs\AnimationSpeedManager.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Libs\fastJSON.dll" />
     <Content Include="Libs\GroupsAPI.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
