@@ -297,6 +297,8 @@ public partial class MyUI
     {
         private static void Postfix(InventoryGui __instance)
         {
+            ApplyVanillaUIStyle(__instance);
+
             foreach (UITooltip uiTooltip in levelSystemPanel.GetComponentsInChildren<UITooltip>(true))
             {
                 uiTooltip.m_tooltipPrefab = __instance.m_playerGrid.m_elementPrefab.GetComponent<UITooltip>()

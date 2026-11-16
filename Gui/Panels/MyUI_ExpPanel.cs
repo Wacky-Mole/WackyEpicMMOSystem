@@ -180,6 +180,7 @@ public partial class MyUI
             {
                 GameObject oldPanel = EpicMMOSystem._asset.LoadAsset<GameObject>("ExpPanel");
                 Transform oldExpPanel = EpicMMOSystem.Instantiate(oldPanel, __instance.m_rootObject.transform).transform;
+                RegisterForVanillaUIStyle(oldExpPanel.gameObject);
                 eLevelText = oldExpPanel.Find("Lvl").GetComponent<Text>();
                 eExpText = oldExpPanel.Find("Exp").GetComponent<Text>();
                 eBarImage = oldExpPanel.Find("Bar/Fill").GetComponent<Image>();
@@ -201,6 +202,7 @@ public partial class MyUI
             // expPanelRoot = EpicMMOSystem.Instantiate(panel, __instance.m_rootObject.transform).transform;
             expPanelRoot = EpicMMOSystem.Instantiate(panel).transform;//GameObject.DontDestroyOnLoad(expPanelRoot.gameObject);
             expPanelRoot.gameObject.SetActive(false);
+            RegisterForVanillaUIStyle(expPanelRoot.gameObject);
 
             InitHudPanel();
             DHpBar = __instance.m_healthPanel.Find("Health").gameObject;

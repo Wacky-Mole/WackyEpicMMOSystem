@@ -1,3 +1,5 @@
+| 1.9.77 | - Added Lite support for Melange https://valheim.hexium.gg/mods/Azumatt/Melange and other UI mods.
+
 | 1.9.76 | - Updated Default.json </br> Update Speed Animation Manager. </br>  Dexterity AttackSpeed now also shortens weapon reload completion time.
 
 | 1.9.75 | - Updated Default.json and Bestiary.json

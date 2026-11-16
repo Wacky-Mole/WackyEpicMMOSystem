@@ -40,6 +40,7 @@ public partial class MyUI
             friendsListPanel.transform;
         friendsListPanel.transform.Find("Header/Text").GetComponent<Text>().text = localization["$friends_list"];
         friendsCell = EpicMMOSystem._asset.LoadAsset<GameObject>("FriendCell");
+        RegisterForVanillaUIStyle(friendsCell);
         friendsListPanel.transform.Find("Border").GetComponent<Image>().raycastTarget = false;
         friendsListPanel.transform.Find("Add").GetComponent<Button>().onClick.AddListener(clickButtonAdd);
 
