@@ -85,7 +85,7 @@ public partial class MyUI
         Dictionary<string, ZNet.PlayerInfo> playersInfo = new ();
         foreach (var player in ZNet.instance.GetPlayerList())
         {
-            playersInfo.Add(player.m_name, player);
+            playersInfo[player.m_name] = player;
         }
         var friends = new Dictionary<string, FriendInfo>(friendsData.getFriends());
         headerFriends.SetActive(friends.Count > 0);
